@@ -1,4 +1,4 @@
-export interface Products {
+export interface Iproduct {
     id:string,
     catid: string,
     subid: string,
@@ -11,5 +11,4 @@ export interface Products {
     old_price: number,
     new_price: number,
     discount: number,
-
 }

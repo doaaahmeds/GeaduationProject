@@ -4,6 +4,9 @@ import { ProductsComponent } from './products/products.component';
 import { SortComponent } from './sort/sort.component';
 import { SecondlayoutComponent } from './secondlayout/secondlayout.component';
 import {  RouterModule, Routes } from '@angular/router';
+import { EgyptPipe } from 'src/app/pipes/egypt.pipe';
+import { NavbarComponent } from './navbar/navbar.component';
+
 
 const routes :Routes=[
   
@@ -15,11 +18,15 @@ const routes :Routes=[
   declarations: [
     ProductsComponent,
     SortComponent,
-    SecondlayoutComponent
+    SecondlayoutComponent,
+   EgyptPipe,
+   NavbarComponent 
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes), 
+   
+    
   ]
 })
 export class ProdModule { }
