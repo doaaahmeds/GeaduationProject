@@ -50,6 +50,7 @@ export class ProductsAPIService {
     return collectionData(q, { idField: 'id' }) as Observable<Iproduct[]>
   }
 
+  
 
   // get all products
   getAllProductes(): Observable<Iproduct[]> {
