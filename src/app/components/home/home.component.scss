@@ -1,0 +1,91 @@
+body{
+    font-family: "Helvetica";
+    font-size: 23px;
+    box-sizing: border-box;
+}
+.cont ::selection{
+    background-color: rgb(243, 228, 201);
+    
+}
+.navbar .nav-item,
+.navbar .nav-item .dropdown-menu
+{
+   font-family: "Helvetica";
+   font-weight: 400px;
+   font-size: 14px;
+}
+
+.transimg{
+    overflow: hidden;
+}
+.transimg img{
+  
+    transition: 6s;
+  
+}
+.transimg:hover img{
+    transform: scale(1.2);
+}
+.landing a{
+    color: black;
+    text-decoration: none;
+}
+.landing .content{
+    font-size: 17px;
+}
+
+.ci .circle {
+    width: 50px;
+    height: 50px;
+    color: white;
+    background: brown;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+   align-items: center;
+    
+}
+.shop a{
+    color: black;
+    text-decoration: none;  
+}
+.shoes a{
+    color: black;
+    text-decoration: none;
+}
+.blogs h5 a{
+    color: black;
+    text-decoration: none;
+
+}
+.blogs a{
+    color:rgb(43, 167, 167);
+}
+.blogs p{
+    font-size: 14px;
+}
+
+.bogtrans{
+    overflow: hidden;
+}
+.bogtrans img{
+  
+    transition: 6s;
+  
+}
+.bogtrans:hover img{
+    transform: scale(1.5);
+}
+
+.containerimg{
+    position: relative;
+    text-align: center;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    font-size: 30px;
+    transform: translate(-50%, -50%);
+  }
