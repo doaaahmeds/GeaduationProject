@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    color: #000000;
+    font-size: 14px;
+    font-family:  Helvetica, Arial, sans-serif;
+}
+
+@media only screen and (min-width: 2000px) {
+   
+    .fixd-width{
+        width:2000px;
+    }
+  }

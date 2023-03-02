@@ -9,7 +9,7 @@ const routes: Routes = [
   {path:'home', component: HomeComponent },
 
   {
-    path: 'products', 
+    path:  'products/:id', 
     loadChildren: () => import('src/app/Products-module/prod/prod.module').then(m => m.ProdModule)
   },
   {path:'**',component:NotFoundComponent}

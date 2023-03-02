@@ -1,36 +1,65 @@
-
-  <app-navbar></app-navbar>
+<app-navbar></app-navbar>
 <section class="mx-5  pe-md-2 px-xl-5 fixd-width mx-auto ">
-   
-    <aside>
-          <div class="h1. mt-2" >
-        <span><a class="text-decoration-none text-dark"  href="">HOME</a>  	&gt; </span>
-        <span> BUY SHOULDER BAGS ONLINE - DEJAVU EGYPT</span>
-    </div>
 
-    <div class=" mb-5 ">
-        <h5  class=" text-center mt-5  ">
-             <span class=" border-bottom border-4 border-dark pb-2 mb-5 " >Shoulder Bags</span>
-        </h5>
-    </div>
+    <aside>
+        <div class="h1. mt-2">
+            <span><a class="text-decoration-none text-dark" href="">HOME</a> &gt; </span>
+            <span> BUY SHOULDER BAGS ONLINE - DEJAVU EGYPT</span>
+        </div>
+
+        <div class=" mb-5 ">
+            <h5 class=" text-center mt-5  ">
+                <span class=" border-bottom border-4 border-dark pb-2 mb-5 ">Shoulder Bags</span>
+            </h5>
+        </div>
     </aside>
 
-   <div class="d-flex container-fluid " >
-    <div class="col-md-4  col-xl-3  " >
-        <h6 class="d-none d-md-block">Remove Filter</h6>
+    <div class="d-flex container-fluid ">
+        <div class="col-md-4  col-xl-3  ">
+            <h6 class="d-none d-md-block">Remove Filter</h6>
+        </div>
+
+        <div class="d-none d-md-block text-start ms-3">
+            <h6>Shop from our elegant collection of handbags online.</h6>
+        </div>
+
     </div>
 
-    <div class="d-none d-md-block text-start ms-3" >
-        <h6 >Shop from our elegant collection of handbags online.</h6>
-      </div>
+    <article class=" d-md-flex container-fluid  ">
 
-   </div> 
+        <app-sort class="col-md-4  col-xl-3  me-1"></app-sort>
 
-<article class=" d-md-flex container-fluid  " >
-  
-    <app-sort class="col-md-4  col-xl-3  me-1" ></app-sort>
+        <!-- products -->
+        <section class="row  row-cols-2  row-cols-md-3  row-cols-lg-4  gx-2  text-center">
 
-    <app-products></app-products>
-</article>
+            <article *ngFor="let product of products" class="col my-4  full-width">
+                <a href="" class="nav-link">
+                    <div class="  col-md-11 position-relative ">
+                        <span class="dis-icn badge ">{{product.discount}}%</span>
+                        <img [src]="product.imgs[0]" class="d-block w-100 " height="320px">
+                    </div>
+                    <div>
+                        <span class="h6 fs-14"> {{product.name}}</span>
+                    </div>
+                </a>
+                <div>
+                    <span class="text-danger fs-14 me-1 ">{{product.new_price|currency |Egypt }}</span>
+                    <span class="text-decoration-line-through fs-14">{{product.old_price |currency |Egypt }}</span>
+                </div>
+
+                <div>
+                    <img *ngIf="product.imgs[0]" [src]="product.imgs[0]" height="50px"
+                        class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                    <img *ngIf="product.imgs[3]" [src]="product.imgs[3]" height="50px"
+                        class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                    <img *ngIf="product.imgs[5]" [src]="product.imgs[5]" height="50px"
+                        class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                    <img *ngIf="product.imgs[7]" [src]="product.imgs[7]" height="50px"
+                        class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                </div>
+
+            </article>
+
+        </section>
+    </article>
 </section>
-
