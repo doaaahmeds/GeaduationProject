@@ -1,8 +1,13 @@
-<header class="sticky-top">
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary mb-1  ">
+
+<header class="sticky-top  bg-body-tertiary ">
+
+    <nav class="navbar navbar-expand-lg  bg-body-tertiary mb-1 fixd-width m-auto ">
         <div class="container-fluid  ">
-            <article class="row  row-cols-3 justify-content-between col-12 align-items-center  ">
+
+            <article class="row  row-cols-3 justify-content-between col-12 align-items-lg-center  ">
+
+
                 <div class="col">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -12,38 +17,35 @@
                     <div class="collapse navbar-collapse p-1 " id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-5 m-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                                <a class="nav-link active" aria-current="page" href="">Home</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="./offers.html">Offers</a>
+                                <a class="nav-link active" href="">Offers</a>
                             </li>
                             <div id="drop1" class="nav-item dropdown  ">
-                                <a class="nav-link active dropdown-toggle" href="./shoes.html" role="button"
+                                <a class="nav-link active dropdown-toggle" href="" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Shoes
                                 </a>
-                                <ul class="dropdown-menu  ">
-                                    <li><a class="dropdown-item" href="./shoes.html">Ankle boots </a></li>
-                                    <li><a class="dropdown-item" href="./shoes.html">Half Boots</a></li>
-                                    <li><a class="dropdown-item" href="./shoes.html">High Boots</a></li>
-                                    <li><a class="dropdown-item" href="./shoes.html">Over Knee Boots</a></li>
-                                    <li><a class="dropdown-item" href="./shoes.html">Sneakers</a></li>
-                                    <li><a class="dropdown-item" href="./shoes.html">Loafers</a></li>
-                                    <li><a class="dropdown-item" href="./shoes.html">Ballerinas</a></li>
-                                    <li><a class="dropdown-item" href="./shoes.html">Pumps</a></li>
-                                    <li><a class="dropdown-item" href="./shoes.html">Oxfords</a></li>
-                                    <li><a class="dropdown-item" href="./shoes.html">Sandals</a></li>
+                                <ul class="dropdown-menu rounded-0  ">
+                                    <li *ngFor="let subcat of subCategoryofShose" >
+                                        <a class="dropdown-item"[routerLink]="['products', subcat.id]"
+                                         >{{subcat.name}}</a>
+                                    </li>
+                           
                                 </ul>
                             </div>
                             <div id="drop2" class="nav-item dropdown ">
-                                <a class="nav-link active dropdown-toggle" href="./Bags.html" role="button"
+                                <a class="nav-link active dropdown-toggle" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Bags
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-white">
-                                    <li><a class="dropdown-item" href="./Bags.html">Hand bags </a></li>
-                                    <li><a class="dropdown-item" href="./Bags.html">Shoulder Bags</a></li>
-                                    <li><a class="dropdown-item" href="./Bags.html">Crossbody Bags </a></li>
+
+                                <ul class="dropdown-menu rounded-0 dropdown-menu-white">
+                                    <li *ngFor="let subcat of subCategoryofBags" >
+                                        <a class="dropdown-item nav-link" [routerLink]="['products', subcat.id]">{{subcat.name}}</a>
+                                    </li>
+
                                 </ul>
                             </div>
                         </ul>
@@ -52,25 +54,24 @@
                 </div>
 
                 <div class="head-img text-center col	">
-                    <img src="./images/logo.avif" style="width: 150px;height: 50px;">
-
+                    <img src="assets/images/logo.avif" style="width: 150px;height: 50px;">
                 </div>
 
-                <div class="col">
+                <div class="col mt-3">
                     <ul class="navbar-nav flex-row justify-content-end  ">
 
                         <li class="d-none d-lg-inline ">
-                            <a class="text-dark " href="#" onclick="Hide()">
+                            <a class="text-dark " href="#" >
                                 <i class="fa-solid fa-magnifying-glass "></i></a>
                         </li>
 
                         <li class="d-none d-lg-inline mx-3">
-                            <a href="./Signup.html" class="text-dark ">
+                            <a href="" class="text-dark ">
                                 <i class="fa-regular fa-user "></i></a>
                         </li>
 
                         <li>
-                            <a href="./Cart.html" class="text-dark me-3">
+                            <a href="" class="text-dark me-3">
                                 <i class="fa-solid fa-cart-shopping "></i></a>
                         </li>
 
@@ -87,3 +88,4 @@
 
 
 </header>
+

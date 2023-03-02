@@ -17,13 +17,13 @@ export class ProductsComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.prodAPIService.getProductesOfSub().subscribe(data => {
-      this.products = data
-      // console.log(this.products);      
-    })
 
+    // this.prodAPIService.getProductesOfSub().subscribe((data: Iproduct[]) => {
 
-
+    //   this.products = data
+      // console.log(this.products);
+      
+    // })
   }
 
 

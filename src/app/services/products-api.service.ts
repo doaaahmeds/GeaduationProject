@@ -44,9 +44,15 @@ export class ProductsAPIService {
 
 
   // get all products of sub category
-  getProductesOfSub(): Observable<Iproduct[]> {
+  // getProductesOfSub(): Observable<Iproduct[]> {
+  //   let productes = collection(this.db, 'product');
+  //   const q = query(productes, where("subid", "==", "Mp7jz79bKhJXW0TsHjw8"));
+  //   return collectionData(q, { idField: 'id' }) as Observable<Iproduct[]>
+  // }
+
+  getProductesOfSub(subId:string): Observable<Iproduct[]> {
     let productes = collection(this.db, 'product');
-    const q = query(productes, where("subid", "==", "Mp7jz79bKhJXW0TsHjw8"));
+    const q = query(productes, where("subid", "==", subId));
     return collectionData(q, { idField: 'id' }) as Observable<Iproduct[]>
   }
 
