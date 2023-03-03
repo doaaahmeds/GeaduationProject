@@ -49,12 +49,16 @@
 
 
                 <div>
-                   <ng-container *ngFor="let img of product.imgs ,let i=index">
-
-                    <img  [src]="img" height="50px"
-                    class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
-
-                   </ng-container>
+                    <div>
+                        <img *ngIf="product.imgs[0]" [src]="product.imgs[0]" height="50px"
+                            class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                        <img *ngIf="product.imgs[3]" [src]="product.imgs[3]" height="50px"
+                            class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                        <img *ngIf="product.imgs[5]" [src]="product.imgs[5]" height="50px"
+                            class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                        <img *ngIf="product.imgs[7]" [src]="product.imgs[7]" height="50px"
+                            class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                    </div>
                  
                 </div>
 
