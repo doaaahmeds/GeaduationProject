@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
-
-
-
-
+<section>
     <div id="carouselExampleControls" class="carousel slide mb-4 " data-bs-ride="carousel">
         <div class="carousel-inner ">
             <div class="carousel-item active  ">
@@ -24,7 +6,7 @@
 
             </div>
             <div class="carousel-item ">
-                <img src="assets/imges/Dejavu_s2.png" class="d-block w-100" alt="...">
+                <img src="https://cdn.shopify.com/s/files/1/0499/3079/7217/files/Dejavu_Desktop_Banner_7cbbd2ce-d6c8-44d9-9b51-1d7ab03f8565_1512x.jpg?v=1677527333" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" id="pre" type="button" data-bs-target="#carouselExampleControls"
@@ -56,7 +38,7 @@
                 <div class="col ">
                     <div class="transimg ">
                         <div class="containerimg">
-                            <a [routerLink]="['products',links[0]]"> <img src="assets/imges/Dejavu-Shoes.png"
+                            <a [routerLink]="['/products',links[0]]"> <img src="assets/imges/Dejavu-Shoes.png"
                                     (click)="AllCategory()" class="w-100 "></a>
                             <div class="centered">Shoes</div>
                         </div>
@@ -67,7 +49,7 @@
                 <div class="col">
                     <div class="transimg ">
                         <div class="containerimg">
-                            <a [routerLink]="['products', links[1]]"><img src="assets/imges/Dejavu-Bags.png"
+                            <a [routerLink]="['/products', links[1]]"><img src="assets/imges/Dejavu-Bags.png"
                                     class="w-100" (click)="AllCategory()"></a>
                             <div class="centered">Bags</div>
                             <!-- <span class="dv2">Bags</span> -->
@@ -316,6 +298,4 @@
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/all.min.js"></script>
-</body>
-
-</html>
+</section>
