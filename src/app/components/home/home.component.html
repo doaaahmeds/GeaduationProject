@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title> 
+    <title>Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
@@ -15,11 +14,10 @@
 <body>
 
 
-   
 
 
-    <div id="carouselExampleControls"class="carousel slide mb-4 "
-        data-bs-ride="carousel">
+
+    <div id="carouselExampleControls" class="carousel slide mb-4 " data-bs-ride="carousel">
         <div class="carousel-inner ">
             <div class="carousel-item active  ">
                 <div><img src="assets/imges/Dejavu-s1.png" class="d-block w-100 " alt="..."></div>
@@ -57,18 +55,20 @@
             <div class="row text-center  ">
                 <div class="col ">
                     <div class="transimg ">
-                        <div class="containerimg" >
-                            <img src="assets/imges/Dejavu-Shoes.png" class="w-100 ">
+                        <div class="containerimg">
+                            <a [routerLink]="['products',links[0]]"> <img src="assets/imges/Dejavu-Shoes.png"
+                                    (click)="AllCategory()" class="w-100 "></a>
                             <div class="centered">Shoes</div>
                         </div>
-                        
+
 
                     </div>
                 </div>
                 <div class="col">
                     <div class="transimg ">
-                        <div class="containerimg" >
-                            <img src="assets/imges/Dejavu-Bags.png" class="w-100">
+                        <div class="containerimg">
+                            <a [routerLink]="['products', links[1]]"><img src="assets/imges/Dejavu-Bags.png"
+                                    class="w-100" (click)="AllCategory()"></a>
                             <div class="centered">Bags</div>
                             <!-- <span class="dv2">Bags</span> -->
                         </div>
@@ -83,109 +83,84 @@
             <div class="text-center mb-5 pb-4">
                 <h5><a href="#">New Collection</a> </h5>
             </div>
-            <div class="row content m-5">
-                <div class="col ">
-                    <div dir="rtl" dir="rtl" class="ci">
-                        <div class=" text-center circle ">
-                            <span>30%</span>
 
+            <div id="carouselExampleControls" class="carousel slide mb-4 " data-bs-ride="carousel">
+                <div class="carousel-inner ">
+                    <div class="carousel-item active  ">
+                        <div class="row content m-5">
+                            <ng-container *ngFor="let prd of AllCat,let i=index" class="col ">
+                                <div *ngIf="i>=0&&i<5" class="col ">
+                                    <div dir="rtl" dir="rtl" class="ci">
+                                        <div class=" text-center circle ">
+                                            <span>{{prd.discount}}%</span>
+                                        </div>
+                                        <a href="./oneProduct.html">
+                                            <img [src]="prd.imgs[0]" class="img-fluid ">
+                                        </a>
+                                    </div>
+                                    <div class="text-center">
+                                        <p>{{prd.name}}</p>
+                                        <div>
+                                            <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency }}</span>
+                                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency
+                                                }}</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <ng-container *ngFor="let img of prd.imgs ,let i=index">
+
+                                            <img *ngIf="i>0&&i<=4" [src]="img" height="50px"
+                                                class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </ng-container>
                         </div>
-                        <a href="./oneProduct.html">
-                            <img src="assets/imges/GPS-DVTH-048-Black_1_720x.png" class="img-fluid ">
-                        </a>
                     </div>
-                    <div class="text-center">
-                        <p>GPS-DVTH-048 </p>
-                        <p class="d-inline">
-                        <p style="color: red;">LE 804.00 <del style="color:black"> LE 1,149.00</del></p>
-                       
-                    </div>
-                    <div>
-                        <img src="assets/imges/GPS-DVTH-048-Nude_1_720x.png"
-                            class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-                        <img src="assets/imges/GPS-DVTH-048-Black_1_720x.png"
-                            class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-                        <img src="assets/imges/GPS-DVTH-048-Of.white_1_720x.png"
-                            class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
+                    <div class="carousel-item ">
+                        <div class="row content m-5">
+                            <ng-container *ngFor="let prd of AllCat,let i=index" class="col ">
+                                <div *ngIf="i>=5&&i<=10" class="col ">
+                                    <div dir="rtl" dir="rtl" class="ci">
+                                        <div class=" text-center circle ">
+                                            <span>{{prd.discount}}%</span>
+                                        </div>
+                                        <a href="./oneProduct.html">
+                                            <img [src]="prd.imgs[0]" class="img-fluid ">
+                                        </a>
+                                    </div>
+                                    <div class="text-center">
+                                        <p>{{prd.name}}</p>
+                                        <div>
+                                            <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency }}</span>
+                                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency
+                                                }}</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <ng-container *ngFor="let img of prd.imgs ,let i=index">
 
-                    </div>
-
-                </div>
-                <div class="col">
-                    <div dir="rtl" class="ci">
-                        <div class=" text-center circle ">
-                            <span>30%</span>
+                                            <img *ngIf="i>0&&i<=4" [src]="img" height="50px"
+                                                class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </ng-container>
                         </div>
-                        <a href="#">
-                            <img src="assets/imges/GER-DVTH-024-BROWN_1_720x.png" class="img-fluid ">
-                        </a>
-                    </div>
-                    <div class="text-center">
-                        <p>GER-DVTH-024</p>
-                        <p class="d-inline">
-                        <p style="color: red;">LE 699.00 <del style="color:black">LE 999.00 </del></p>
-                        
-                    </div>
-                    <div>
-                        <img src="assets/imges/GER-DVTH-024-BLACK_1_720x.png"
-                            class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-                        <img src="assets/imges/GER-DVTH-024-BROWN_1_720x.png"
-                            class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-
-                    </div>
-                </div>
-                <div class="col">
-                    <div dir="rtl" class="ci">
-                        <div class=" text-center circle ">
-                            <span>30%</span>
-                        </div>
-                        <a href="#">
-                            <img src="assets/imges/SUN-DVTH-005-OF.WHITE_1_720x.png" class="img-fluid ">
-                        </a>
-                    </div>
-                    <div class="text-center">
-                        <p>SUN-DVTH-005 </p>
-                        <p class="d-inline">
-                        <p style="color: red;">LE 699.00 <del style="color:black"> LE 999.00</del></p>
-                      
-                    </div>
-                    <div>
-                        <img src="imges/SUN-DVTH-005-OF.WHITE_1_720x.png"
-                            class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-                        <img src="imges/SUN-DVTH-005-BLACK_1_720x.png"
-                            class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
                     </div>
                 </div>
-                <div class="col">
-                    <div dir="rtl" class="ci">
-                        <div class=" text-center circle ">
-                            <span>30%</span>
-                        </div>
-                        <a href="./oneProduct.html">
-                            <img src="assets/imges/GPS-DVTH-026-WHITE.png" class="img-fluid ">
-                        </a>
-                    </div>
-                    <div class="text-center">
-                        <p>GPS-DVTH-026</p>
-                        <p class="d-inline">
-                        <p style="color:red;">LE 804.00<del style="color:black">LE 1,149.00</del></p>
-                       
-                    </div>
-                    <div>
-                        <img src="assets/imges/GPS-DVTH-026-WHITE.png" class="col-2 shadow-sm border border-1 rounded-2 m-2"
-                            alt="">
-                        <img src="assets/imges/GPS-DVTH-026-MINT_1_720x.png"
-                            class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-                        <img src="assets/imges/GPS-DVTH-026-BLUE_1_720x.png"
-                            class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-
-                    </div>
-                </div>
-
+                <button class="carousel-control-prev" id="pre" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" id="nex" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-
         </div>
-
 
         <div class="shop mb-5 pb-3">
             <div class="row">
@@ -212,110 +187,37 @@
 
         </div>
 
-
-
         <div class="shoes mb-5 pb-3">
             <div class="text-center mb-5 pb-4">
                 <h5><a href="#">More Items on Sale</a> </h5>
             </div>
             <div class="row content m-5">
-                <div class="col ">
-                    <div dir="rtl" class="ci">
+<!-- 
+                <div *ngFor="let prd of AllCat" class="col ">
+                    <div dir="rtl" dir="rtl" class="ci">
                         <div class=" text-center circle ">
-                            <span>30%</span>
+                            <span>{{prd.discount}}%</span>
                         </div>
                         <a href="./oneProduct.html">
-                            <img src="assets/imges/SUN-DVTT-001-CAMEL_1_720x.png" class="img-fluid ">
-                        </a>
-
-                    </div>
-                    <div class="text-center">
-                        <p>SUN-DVTT-001</p>
-                        <p class="d-inline">
-                        <p style="color: red;">LE 699.00 &nbsp<del style="color:black"> LE 999.00</del></p>
-                       
-                    </div>
-                    <div>
-                        <img src="assets/imges/SUN-DVTT-001-CAMEL_1_720x.png"
-                            class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-                        <img src="assets/imges/SUN-DVTT-001-VISON_1_720x.png"
-                            class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-                    </div>
-                </div>
-                <div class="col">
-                    <div dir="rtl" class="ci">
-                        <div class=" text-center circle ">
-                            <span>30%</span>
-                        </div>
-                        <a href="./oneProduct.html">
-                            <img src="assets/imges/PRD-AW21-006-BLACK_2_0a1aa849-5449-47ef-8104-4f7b0c52e449_720x.png"
-                                class="img-fluid ">
+                            <img [src]="prd.imgs[0]" class="img-fluid ">
                         </a>
                     </div>
                     <div class="text-center">
-                        <p>PRD-AW21-006</p>
-                        <p class="d-inline">
-                        <p style="color: red;">LE 435.00 &nbsp<del style="color:black">
-                                LE 725.00 </del></p>
-                        
-                    </div>
-                    <div>
-                        <img src="assets/imges/PRD-AW21-006-BLACK_2_0a1aa849-5449-47ef-8104-4f7b0c52e449_720x.png"
-                            class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-
-
-
-
-                    </div>
-                </div>
-                <div class="col">
-                    <div dir="rtl" class="ci">
-                        <div class=" text-center circle ">
-                            <span>30%</span>
+                        <p>{{prd.name}}</p>
+                        <div>
+                            <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency }}</span>
+                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency }}</span>
                         </div>
-                        <a href="./oneProduct.html">
-                            <img src="assets/imges/CXQ-AW21-023-BROWN_2_720x.png" class="img-fluid ">
-                        </a>
-                    </div>
-                    <div class="text-center">
-                        <p>CXQ-AW21-023</p>
-                        <p class="d-inline">
-                        <p style="color: red;">LE 468.00 &nbsp<del style="color:black">LE 725.00</del></p>
-                       
                     </div>
                     <div>
-                        <img src="assets/imges/CXQ-AW21-023-BROWN_2_720x.png"
-                            class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-                        <img src="assets/imges/CXQ-AW21-023-BLACK_2_720x.png"
-                            class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-                    </div>
-                </div>
-                <div class="col">
-                    <div dir="rtl" class="ci">
-                        <div class=" text-center circle ">
-                            <span>30%</span>
-                        </div>
-                        <a href="./oneProduct.html">
-                            <img src="assets/imges/BAY-DVTT-006-BLACK_1_720x.png" class="img-fluid ">
-                        </a>
-                    </div>
-                    <div class="text-center">
-                        <p>BAY-DVTT-006</p>
-                        <p class="d-inline">
-                        <p style="color:red;">LE 435.00 &nbsp<del style="color:black">LE 869.00</del></p>
-                        
-                    </div>
-                    <div>
-                    <img src="assets/imges/BAY-DVTT-006-BLACK_1_720x.png"
-                        class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-                    <img src="assets/imges/BAY-DVTT-006-GREEN_1_720x.png"
-                        class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-                    <img src="assets/imges/BAY-DVTT-006-TAUPE_1_720x.png"
-                        class="col-2 shadow-sm border border-1 rounded-2 m-2" alt="">
-                   </div>
-                </div>
-                
+                        <ng-container *ngFor="let img of prd.imgs ,let i=index">
 
+                            <img *ngIf="i>0&&i<=4" [src]="img" height="50px"
+                                class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                        </ng-container>
+                    </div>
+
+                </div> -->
             </div>
 
         </div>
@@ -406,7 +308,7 @@
         </div>
 
 
-   
+
 
     </section>
 
@@ -417,5 +319,3 @@
 </body>
 
 </html>
-
-
