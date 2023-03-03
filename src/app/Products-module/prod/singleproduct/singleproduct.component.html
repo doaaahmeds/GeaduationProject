@@ -1,57 +1,5 @@
 <section >
-    <article>
-      <div class=" d-none  d-md-flex   align-items-center  justify-content-evenly p-2 bg-header   ">
-
-        <p><a class="nav-link text-white " href="./policy.html">EASY RETURN POLICY</a></p>
-        <p><a class="nav-link text-white " href="./policy.html">14 DAYS EXCHANGE SERVICE</a></p>
-      </div>
-
-      <div id="text-header" class="carousel slide d-md-none " data-bs-ride="carousel">
-        <div class="carousel-inner bg-header">
-          <div class="carousel-item active">
-            <p><a class="nav-link text-white  bg-header text-center  p-3 " href="./policy.html">EASY RETURN POLICY</a>
-            </p>
-          </div>
-          <div class="carousel-item">
-            <p><a class="nav-link text-white bg-header text-center  p-3  " href="./policy.html">14 DAYS EXCHANGE
-                SERVICE</a></p>
-          </div>
-
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#text-header" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#text-header" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-
-      <div class="d-flex mt-4">
-        <a href="#" class="nav-link ms-2 ms-md-5">HOME</a>
-        <span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor"
-            class="bi bi-chevron-right m-2" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-          </svg>
-        </span>
-        <a href="#" class="nav-link text-nowrap  ">Ankle Boots</a>
-        <span>
-          <span><U></U>
-            </span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor"
-            class="bi bi-chevron-right m-2" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-          </svg>
-        </span>
-        <span>GER-DVTH-024</span>
-
-      </div>
-
-    </article>
+   <app-navbar></app-navbar>
 
     <main class=" d-block  d-md-flex  justify-content-center  ">
       <!-- slider -->
@@ -115,8 +63,11 @@
                       <div class="carousel-inner">
                           
                         <div class="carousel-item active ">
-                          <img *ngIf="product_details?.imgs"  [src]="product_details?.imgs" class="d-block w-100"
+                          <ng-container *ngIf="product_details">
+                            <img   [src]="product_details.imgs[0]" class="d-block w-100"
                             alt="...">
+                          </ng-container>
+                         
                         </div>
                         <ng-container *ngFor=" let img of product_details?.imgs">
                           <div class="carousel-item">

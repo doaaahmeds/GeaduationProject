@@ -8,7 +8,6 @@ import { EgyptPipe } from 'src/app/pipes/egypt.pipe';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SingleproductComponent } from './singleproduct/singleproduct.component';
 
-
 const routes :Routes=[
   
   {path: '', component:SecondlayoutComponent},
