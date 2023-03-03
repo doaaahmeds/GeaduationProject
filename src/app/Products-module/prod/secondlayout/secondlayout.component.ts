@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Iproduct } from 'src/app/models/iproduct';
+import { IsubCategory } from 'src/app/models/isub-category';
 import { ProductsAPIService } from 'src/app/services/products-api.service';
 
 @Component({
@@ -10,8 +11,9 @@ import { ProductsAPIService } from 'src/app/services/products-api.service';
   styleUrls: ['./secondlayout.component.scss']
 })
 
-export class SecondlayoutComponent implements OnInit , OnDestroy {
+export class SecondlayoutComponent implements OnInit   ,OnDestroy {
   products: Iproduct[] = [];
+  infoSubCat:IsubCategory= {} as IsubCategory
   subscribes: Subscription[]=[];
 
   constructor(private prodAPIService: ProductsAPIService,private router: Router, 
@@ -21,19 +23,28 @@ export class SecondlayoutComponent implements OnInit , OnDestroy {
   ngOnInit(): void {
   this.subscribes.push( this.activatedRoutServ.paramMap.subscribe((paramMap) => {
 
-      let idOfSubcategory =paramMap.get('id');
-      console.log(idOfSubcategory);
 
-     
-      
-      if (idOfSubcategory) {
-        console.log(idOfSubcategory);
+      let subCategoryId =paramMap.get('id')
 
-        this.subscribes.push( this.prodAPIService.getProductesOfSub(idOfSubcategory).subscribe({
+      if (subCategoryId) {
+        /*get Details Of Sub Category*/
+        this.subscribes.push(this.prodAPIService.getDetailsOfSubCategory(subCategoryId).subscribe((details)=>{
+          if (details.id==subCategoryId){
+             this.infoSubCat=details;
+            console.log(details);
+          }
+          else{ 
+
+
+            this.router.navigate(['**'])}
+          
+          }))   
+
+        /* get Productes Of Sub Category*/
+        this.subscribes.push( this.prodAPIService.getProductesOfSub(subCategoryId).subscribe({
           
           next:(data: Iproduct[]) => {
-            console.log(data);
-            
+            console.log(data); 
             if(data.length==0){
                this.router.navigate(['**'])
             }

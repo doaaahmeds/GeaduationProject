@@ -5,6 +5,7 @@ import { ICategory } from '../models/icategory';
 import { Iproduct } from '../models/iproduct';
 import { IsubCategory } from '../models/isub-category';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -32,6 +33,12 @@ export class ProductsAPIService {
     let subBagsRef = collection(this.db, 'subcategory');
     const q = query(subBagsRef, where("catid", "==", "vBEYRuSj9Us4ZPPUbg13"));
     return collectionData(q, { idField: 'id' }) as Observable<IsubCategory[]>
+  }
+
+  /* get Details Of SubCategory*/
+  getDetailsOfSubCategory(subCategoryId: string): Observable<IsubCategory>{
+    let subCatRef = doc(this.db, 'subcategory/' + subCategoryId);
+    return docData(subCatRef, { idField: 'id' }) as Observable<IsubCategory>
   }
 
 
