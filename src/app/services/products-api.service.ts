@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, collectionData, Firestore, query, where } from '@angular/fire/firestore';
+import { collection, collectionData, doc, docData, Firestore, query, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { ICategory } from '../models/icategory';
 import { Iproduct } from '../models/iproduct';
@@ -50,19 +50,28 @@ export class ProductsAPIService {
   //   return collectionData(q, { idField: 'id' }) as Observable<Iproduct[]>
   // }
 
-  getProductesOfSub(subId:string): Observable<Iproduct[]> {
+  getProductesOfSub(subId: string): Observable<Iproduct[]> {
     let productes = collection(this.db, 'product');
     const q = query(productes, where("subid", "==", subId));
     return collectionData(q, { idField: 'id' }) as Observable<Iproduct[]>
   }
+  getProductesOfcategory(catid: string): Observable<Iproduct[]> {
+    let productes = collection(this.db, 'product');
+    const q = query(productes, where("catid", "==", catid));
+    return collectionData(q, { idField: 'id' }) as Observable<Iproduct[]>
+  }
 
-  
+
 
   // get all products
   getAllProductes(): Observable<Iproduct[]> {
     let productes = collection(this.db, 'product');
     return collectionData(productes, { idField: 'id' }) as Observable<Iproduct[]>
 
+  }
+  getproductsbyid(id: string): Observable<Iproduct> {
+    let product = doc(this.db, 'product/'+id);
+    return docData(product,{idField:'id'}) as Observable<Iproduct>;
   }
 
 

@@ -12,8 +12,6 @@ export class EgyptPipe implements PipeTransform {
          value2= value.replace(/\$/,'LE ');
          return value2;
     }
-
-
     return value  ;
   }
 
