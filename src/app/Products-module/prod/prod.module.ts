@@ -6,6 +6,7 @@ import { SecondlayoutComponent } from './secondlayout/secondlayout.component';
 import {  RouterModule, Routes } from '@angular/router';
 import { EgyptPipe } from 'src/app/pipes/egypt.pipe';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SingleproductComponent } from './singleproduct/singleproduct.component';
 
 
 const routes :Routes=[
@@ -21,7 +22,8 @@ const routes :Routes=[
     SortComponent,
     SecondlayoutComponent,
    EgyptPipe,
-   NavbarComponent 
+   NavbarComponent,
+   SingleproductComponent 
   ],
   imports: [
     CommonModule,

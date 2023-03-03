@@ -19,12 +19,15 @@ export class SecondlayoutComponent implements OnInit , OnDestroy {
 
 
   ngOnInit(): void {
-
   this.subscribes.push( this.activatedRoutServ.paramMap.subscribe((paramMap) => {
 
-      let idOfSubcategory =paramMap.get('id')
+      let idOfSubcategory =paramMap.get('id');
+      console.log(idOfSubcategory);
 
+     
+      
       if (idOfSubcategory) {
+        console.log(idOfSubcategory);
 
         this.subscribes.push( this.prodAPIService.getProductesOfSub(idOfSubcategory).subscribe({
           
@@ -35,11 +38,13 @@ export class SecondlayoutComponent implements OnInit , OnDestroy {
                this.router.navigate(['**'])
             }
              this.products = data
-            
             } ,
           error:()=>this.router.navigate(['**'])
         }))
-      }
+      
+    }
+
+
     })) 
 
   }
