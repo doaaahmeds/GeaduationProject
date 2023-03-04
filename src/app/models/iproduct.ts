@@ -3,7 +3,7 @@ export interface Iproduct {
     catid: string,
     subid: string,
     name: string,
-    details?: string[],
+    details: string[],
     size: Map<string, number>[],
     colors: Map<string, number>[],
     imgs: string[],
