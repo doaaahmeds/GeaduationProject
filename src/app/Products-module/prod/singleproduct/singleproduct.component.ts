@@ -10,7 +10,7 @@ import { ProductsAPIService } from 'src/app/services/products-api.service';
 })
 export class SingleproductComponent implements OnInit {
  
-  product_details:Iproduct|undefined;
+  product_details:Iproduct ={} as Iproduct
   constructor(private prodAPIService:ProductsAPIService,private router:Router, 
     private activatedRoutServ:ActivatedRoute ){
 
