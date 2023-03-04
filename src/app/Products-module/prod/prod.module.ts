@@ -7,6 +7,7 @@ import {  RouterModule, Routes } from '@angular/router';
 import { EgyptPipe } from 'src/app/pipes/egypt.pipe';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SingleproductComponent } from './singleproduct/singleproduct.component';
+import { FormsModule } from '@angular/forms';
 
 const routes :Routes=[
   
@@ -26,7 +27,8 @@ const routes :Routes=[
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes), 
+    RouterModule.forChild(routes),
+    FormsModule 
    
     
   ]
