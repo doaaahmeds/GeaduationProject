@@ -40,6 +40,10 @@ export class ProductsAPIService {
     let subCatRef = doc(this.db, 'subcategory/' + subCategoryId);
     return docData(subCatRef, { idField: 'id' }) as Observable<IsubCategory>
   }
+  getDetailsOfcategory(subCategoryId: string): Observable<ICategory>{
+    let subCatRef = doc(this.db, 'category/' + subCategoryId);
+    return docData(subCatRef, { idField: 'id' }) as Observable<ICategory>
+  }
 
 
   // all sub categories of shose

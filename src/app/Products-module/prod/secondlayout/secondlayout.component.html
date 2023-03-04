@@ -4,14 +4,30 @@
     <aside>
         <div class="h1. mt-2">
             <span><a class="text-decoration-none text-dark" href="">HOME</a> &gt; </span>
-          <ng-container *ngIf="infoSubCat.name != undefined " >
-             <span >{{infoSubCat.details[0]}}</span>
-            </ng-container> 
+
+            <ng-container [ngSwitch]="locationofurl">
+            <ng-container *ngSwitchCase="2"><span  >{{(infoSubCat).details[0]}}</span>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="1"><span  >{{(infoCat).name}}</span>
+            </ng-container>
+                
+            </ng-container>
         </div>
 
         <div class=" mb-5 ">
-            <h5 class=" text-center mt-5  " *ngIf="infoSubCat.name != undefined " >
-                <span class=" border-bottom border-4 border-dark pb-2 mb-5 ">{{infoSubCat.name}}</span>
+            <h5 class=" text-center mt-5  ">
+
+                <ng-container [ngSwitch]="locationofurl">
+                    <ng-container *ngSwitchCase="2"><span class=" border-bottom border-4 border-dark pb-2 mb-5 " >{{(infoSubCat).name}}</span>
+                    </ng-container>
+        
+                    <ng-container *ngSwitchCase="1"><span class=" border-bottom border-4 border-dark pb-2 mb-5 " >{{(infoCat).name}}</span>
+                    </ng-container>
+                        
+                    </ng-container>
+
+                <!-- <span class=" border-bottom border-4 border-dark pb-2 mb-5 ">{{(infoSubCat).name}}</span> -->
             </h5>
         </div>
     </aside>
@@ -21,8 +37,17 @@
             <h6 class="d-none d-md-block">Remove Filter</h6>
         </div>
 
-        <div class="d-none d-md-block text-start ms-3" *ngIf="infoSubCat.name != undefined ">
-            <h6>{{infoSubCat.details[1]}}</h6>
+        <div class="d-none d-md-block text-start ms-3">
+            <ng-container [ngSwitch]="locationofurl">
+                <ng-container *ngSwitchCase="2"><h6  >{{(infoSubCat).details[1]}}</h6>
+                </ng-container>
+    
+                <ng-container *ngSwitchCase="1"><h6  >{{(infoCat).name}}</h6>
+                </ng-container>
+                    
+                </ng-container>
+
+            <!-- <h6>{{(infoSubCat).details[1]}}</h6> -->
         </div>
 
     </div>
