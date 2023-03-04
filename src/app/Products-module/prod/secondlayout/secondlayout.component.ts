@@ -14,8 +14,8 @@ import { ProductsAPIService } from 'src/app/services/products-api.service';
 
 export class SecondlayoutComponent implements OnInit, OnDestroy {
   products: Iproduct[] = [];
-  infoSubCat: IsubCategory = {} as IsubCategory
-  infoCat: ICategory = {} as ICategory
+  infoSubCat: IsubCategory |undefined=undefined;
+  infoCat: ICategory|undefined=undefined
   subscribes: Subscription[] = [];
   locationofurl:number=0;
   constructor(private prodAPIService: ProductsAPIService, private router: Router,
@@ -24,25 +24,51 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscribes.push(this.activatedRoutServ.paramMap.subscribe((paramMap) => {
-      let subCategoryId = paramMap.get('id')
+      let ID :string |null = paramMap.get('id')
 
-      if (subCategoryId) {
+      if (ID ) {
+        console.log(ID);
+        
         /*get Details Of  Category*/
-        if (subCategoryId == 'cgCpnqSfoejbeTYqAxQE' || subCategoryId == 'vBEYRuSj9Us4ZPPUbg13') {
-          console.log(subCategoryId);
-          this.subscribes.push(this.prodAPIService.getDetailsOfcategory(subCategoryId).subscribe((details) => {
-            if (details.id == subCategoryId) {
-              this.infoCat = details;
-              console.log(details);
+      
+        if (ID  == 'cgCpnqSfoejbeTYqAxQE' || ID  == 'vBEYRuSj9Us4ZPPUbg13' ||ID  == 'nuWveyFOC62RoDdaFbqK') {
+          // console.log(ID );
+          this.subscribes.push(this.prodAPIService.getDetailsOfcategory(ID ).subscribe((data) => {
+            if (data.id == ID ) {
+              this.infoCat = data;
+              console.log(data);
             }
             else {
               this.router.navigate(['**'])
+            
+              
             }
 
           }))
 
-          /* get Productes Of  Category*/
-          this.subscribes.push(this.prodAPIService.getProductesOfcategory(subCategoryId).subscribe({
+          /* get Productes Of  Offers*/
+            
+          if (ID == "nuWveyFOC62RoDdaFbqK"){
+            this.subscribes.push(this.prodAPIService.getProductesOfOffers().subscribe({
+              next: (data: Iproduct[]) => {
+              
+                if (data.length == 0) {
+                  this.router.navigate(['**'])
+                }
+                this.locationofurl=1;
+  
+                this.products = data;
+  
+                console.log(this.products)
+              },
+              error: (err) => { console.log(err);
+               this.router.navigate(['**'])
+            } 
+            }))
+
+          }else{
+             /* get Productes Of  Category*/
+          this.subscribes.push(this.prodAPIService.getProductesOfcategory(ID ).subscribe({
             next: (data: Iproduct[]) => {
             
               if (data.length == 0) {
@@ -52,21 +78,24 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
 
               this.products = data;
 
-              console.log(this.products)
+              // console.log(this.products)
             },
             error: () => this.router.navigate(['**'])
           }))
+          }
+
+         
         }
 
 
 
         else {
           
-          console.log(subCategoryId);
-          this.subscribes.push(this.prodAPIService.getDetailsOfSubCategory(subCategoryId).subscribe((details) => {
-            if (details.id == subCategoryId) {
+          // console.log(ID );
+          this.subscribes.push(this.prodAPIService.getDetailsOfSubCategory(ID ).subscribe((details) => {
+            if (details.id == ID ) {
               this.infoSubCat = details;
-              console.log(details);
+              // console.log(details);
             }
             else {
               this.router.navigate(['**'])
@@ -76,10 +105,10 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
 
           /* get Productes Of Sub Category*/
           this.locationofurl=2;
-          this.subscribes.push(this.prodAPIService.getProductesOfSub(subCategoryId).subscribe({
+          this.subscribes.push(this.prodAPIService.getProductesOfSub(ID ).subscribe({
 
             next: (data: Iproduct[]) => {
-              console.log(data);
+              // console.log(data);
               if (data.length == 0) {
                 this.router.navigate(['**'])
               }

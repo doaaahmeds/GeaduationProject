@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, collectionData, doc, docData, Firestore, query, where } from '@angular/fire/firestore';
+import { collection, collectionData, doc, docData, Firestore, orderBy, query, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { ICategory } from '../models/icategory';
 import { Iproduct } from '../models/iproduct';
@@ -36,13 +36,15 @@ export class ProductsAPIService {
   }
 
   /* get Details Of SubCategory*/
-  getDetailsOfSubCategory(subCategoryId: string): Observable<IsubCategory>{
+  getDetailsOfSubCategory(subCategoryId: string): Observable<IsubCategory> {
     let subCatRef = doc(this.db, 'subcategory/' + subCategoryId);
     return docData(subCatRef, { idField: 'id' }) as Observable<IsubCategory>
   }
-  getDetailsOfcategory(subCategoryId: string): Observable<ICategory>{
-    let subCatRef = doc(this.db, 'category/' + subCategoryId);
-    return docData(subCatRef, { idField: 'id' }) as Observable<ICategory>
+
+  /* get Details Of Category*/
+  getDetailsOfcategory(CategoryId: string): Observable<ICategory> {
+    let CatRef = doc(this.db, 'category/' + CategoryId);
+    return docData(CatRef, { idField: 'id' }) as Observable<ICategory>
   }
 
 
@@ -54,21 +56,30 @@ export class ProductsAPIService {
   }
 
 
-  // get all products of sub category
-  // getProductesOfSub(): Observable<Iproduct[]> {
-  //   let productes = collection(this.db, 'product');
-  //   const q = query(productes, where("subid", "==", "Mp7jz79bKhJXW0TsHjw8"));
-  //   return collectionData(q, { idField: 'id' }) as Observable<Iproduct[]>
-  // }
+  /* get all products of sub category
+   getProductesOfSub(): Observable<Iproduct[]> {
+     let productes = collection(this.db, 'product');
+     const q = query(productes, where("subid", "==", "Mp7jz79bKhJXW0TsHjw8"));
+     return collectionData(q, { idField: 'id' }) as Observable<Iproduct[]>
+   }*/
 
+  //get all products of sub category by id 
   getProductesOfSub(subId: string): Observable<Iproduct[]> {
     let productes = collection(this.db, 'product');
     const q = query(productes, where("subid", "==", subId));
     return collectionData(q, { idField: 'id' }) as Observable<Iproduct[]>
   }
+   //get all products of  category by id 
   getProductesOfcategory(catid: string): Observable<Iproduct[]> {
     let productes = collection(this.db, 'product');
     const q = query(productes, where("catid", "==", catid));
+    return collectionData(q, { idField: 'id' }) as Observable<Iproduct[]>
+  }
+
+  //get all products of  offer
+  getProductesOfOffers(): Observable<Iproduct[]> {
+    let productes = collection(this.db, 'product');
+    const q = query(productes, where("offer", "==", true),orderBy("subid"));
     return collectionData(q, { idField: 'id' }) as Observable<Iproduct[]>
   }
 
@@ -81,8 +92,8 @@ export class ProductsAPIService {
 
   }
   getproductsbyid(id: string): Observable<Iproduct> {
-    let product = doc(this.db, 'product/'+id);
-    return docData(product,{idField:'id'}) as Observable<Iproduct>;
+    let product = doc(this.db, 'product/' + id);
+    return docData(product, { idField: 'id' }) as Observable<Iproduct>;
   }
 
 
