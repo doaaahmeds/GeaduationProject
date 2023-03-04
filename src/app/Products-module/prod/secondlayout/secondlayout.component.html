@@ -4,12 +4,14 @@
     <aside>
         <div class="h1. mt-2">
             <span><a class="text-decoration-none text-dark" href="">HOME</a> &gt; </span>
-            <span  >{{(infoSubCat).details[0]}}</span>
+          <ng-container *ngIf="infoSubCat.name != undefined " >
+             <span >{{infoSubCat.details[0]}}</span>
+            </ng-container> 
         </div>
 
         <div class=" mb-5 ">
-            <h5 class=" text-center mt-5  ">
-                <span class=" border-bottom border-4 border-dark pb-2 mb-5 ">{{(infoSubCat).name}}</span>
+            <h5 class=" text-center mt-5  " *ngIf="infoSubCat.name != undefined " >
+                <span class=" border-bottom border-4 border-dark pb-2 mb-5 ">{{infoSubCat.name}}</span>
             </h5>
         </div>
     </aside>
@@ -19,8 +21,8 @@
             <h6 class="d-none d-md-block">Remove Filter</h6>
         </div>
 
-        <div class="d-none d-md-block text-start ms-3">
-            <h6>{{(infoSubCat).details[1]}}</h6>
+        <div class="d-none d-md-block text-start ms-3" *ngIf="infoSubCat.name != undefined ">
+            <h6>{{infoSubCat.details[1]}}</h6>
         </div>
 
     </div>
@@ -33,7 +35,7 @@
         <section class="row  row-cols-2  row-cols-md-3  row-cols-lg-4  gx-2  text-center">
 
             <article *ngFor="let product of products" class="col my-4  full-width">
-                <a href="" class="nav-link" [routerLink]="['/single',product.id]">
+                <a class="nav-link" [routerLink]="['/single',product.id]">
                     <div class="  col-md-11 position-relative ">
                         <span class="dis-icn badge ">{{product.discount}}%</span>
                         <img [src]="product.imgs[0]" class="d-block w-100 " height="320px">

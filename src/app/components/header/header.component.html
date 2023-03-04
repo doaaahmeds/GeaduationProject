@@ -1,97 +1,4 @@
 
-<!-- 
-<header class="sticky-top  bg-body-tertiary ">
-
-    <nav class="navbar navbar-expand-lg  bg-body-tertiary mb-1 fixd-width m-auto ">
-        <div class="container-fluid  ">
-
-            <article class="row  row-cols-3 justify-content-between col-12 align-items-lg-center  ">
-
-
-                <div class="col">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse p-1 " id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-5 m-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="">Home</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link active" href="">Offers</a>
-                            </li>
-                            <div id="drop1" class="nav-item dropdown  ">
-                                <a class="nav-link active dropdown-toggle" href="" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Shoes
-                                </a>
-                                <ul class="dropdown-menu rounded-0  ">
-                                    <li *ngFor="let subcat of subCategoryofShose" >
-                                        <a class="dropdown-item" 
-                                         >{{subcat.name}}</a>
-                                    </li>
-                           
-                                </ul>
-                            </div>
-                            <div id="drop2" class="nav-item dropdown ">
-                                <a class="nav-link active dropdown-toggle" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Bags
-                                </a>
-
-                                <ul class="dropdown-menu rounded-0 dropdown-menu-white">
-                                    <li *ngFor="let subcat of subCategoryofBags" >
-                                        <a class="dropdown-item nav-link" [routerLink]="['products', subcat.id]">{{subcat.name}}</a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </ul>
-                    </div>
-
-                </div>
-
-                <div class="head-img text-center col	">
-                    <img src="assets/images/logo.avif" style="width: 150px;height: 50px;">
-                </div>
-
-                <div class="col mt-3">
-                    <ul class="navbar-nav flex-row justify-content-end  ">
-
-                        <li class="d-none d-lg-inline ">
-                            <a class="text-dark " href="#" >
-                                <i class="fa-solid fa-magnifying-glass "></i></a>
-                        </li>
-
-                        <li class="d-none d-lg-inline mx-3">
-                            <a href="" class="text-dark ">
-                                <i class="fa-regular fa-user "></i></a>
-                        </li>
-
-                        <li>
-                            <a href="" class="text-dark me-3">
-                                <i class="fa-solid fa-cart-shopping "></i></a>
-                        </li>
-
-                        <li class="d-none d-lg-inline">LE 0.00</li>
-
-                    </ul>
-
-                </div>
-            </article>
-
-        </div>
-
-    </nav>
-
-
-</header> -->
-
-
-
-
 <header class="sticky-top  bg-body-tertiary ">
 
     <nav class="navbar navbar-expand-lg  bg-body-tertiary mb-1 fixd-width m-auto ">
@@ -112,7 +19,7 @@
                                 <a class="nav-link active" aria-current="page" href="">Home</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="">Offers</a>
+                                <a class="nav-link active"[routerLink]="['products','Offers']">Offers</a>
                             </li>
                             <div id="drop1" class="nav-item dropdown  ">
                                 <a class="nav-link active dropdown-toggle" href="" role="button"
