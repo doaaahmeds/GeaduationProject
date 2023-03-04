@@ -169,23 +169,21 @@
 
 
     <!-- side right -->
-    <aside class="p-1 col-md-6 ">
-      <div>
-        <h4 class="fw-normal  text-center text-md-start "> <span
-            class="  border-bottom border-4 border-dark pb-2 mb-3 ">{{product_details.name}}</span> </h4>
-
+    <aside class="col-md-6 mt-5">
+      <div class="mb-4">
+        <h4 class="fw-normal  text-center text-md-start mb-4"> <span
+            class=" border-bottom border-4 border-dark pb-2 mb-5 ">{{product_details.name}}</span> </h4>
       </div>
 
       <!--shwo product_details-->
-      <div>
-
+      <div >
         <ng-container *ngIf="product_details">
-          <p class="fs-5">{{product_details.details[0]}}</p>
+          <p class="fs-7">{{product_details.details[0]}}</p>
         </ng-container>
 
         <ul *ngFor="let dis of product_details.details,let i=index">
           <ng-container *ngIf="i>0&&i<=7">
-            <li class="margin-left fs-5 ">{{dis}}</li>
+            <li class="margin-left fs-7 ">{{dis}}</li>
           </ng-container>
         </ul>
 
