@@ -19,14 +19,14 @@
                                 <a class="nav-link active" aria-current="page" href="">Home</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active"[routerLink]="['products','Offers']">Offers</a>
+                                <a class="nav-link active"[routerLink]="['/products','nuWveyFOC62RoDdaFbqK']">Offers</a>
                             </li>
                             <div id="drop1" class="nav-item dropdown  ">
                                 <a class="nav-link active dropdown-toggle" href="" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Shoes
                                 </a>
-                                <ul class="dropdown-menu rounded-0  ">
+                                <ul  *ngIf="subCategoryofShose!=undefined" class="dropdown-menu rounded-0  " >
                                     <li *ngFor="let subcat of subCategoryofShose" >
                                         <a class="dropdown-item"[routerLink]="['products', subcat.id]"
                                          >{{subcat.name}}</a>
@@ -34,14 +34,14 @@
                            
                                 </ul>
                             </div>
-                            <div id="drop2" class="nav-item dropdown ">
+                            <div class="nav-item dropdown ">
                                 <a class="nav-link active dropdown-toggle" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Bags
                                 </a>
-                                <ul class="dropdown-menu rounded-0 dropdown-menu-white">
+                                <ul  *ngIf="subCategoryofBags!=undefined" class="dropdown-menu rounded-0 ">
                                     <li *ngFor="let subcat of subCategoryofBags" >
-                                        <a class="dropdown-item nav-link" [routerLink]="['products', subcat.id]">{{subcat.name}}</a>
+                                        <a class="dropdown-item " [routerLink]="['products', subcat.id]">{{subcat.name}}</a>
                                     </li>
 
                                 </ul>
