@@ -1,10 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ICategory } from 'src/app/models/icategory';
 import { Iproduct } from 'src/app/models/iproduct';
 import { IsubCategory } from 'src/app/models/isub-category';
 import { ProductsAPIService } from 'src/app/services/products-api.service';
+import { SortComponent } from '../sort/sort.component';
 
 @Component({
   selector: 'app-secondlayout',
@@ -18,6 +19,8 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
   infoCat: ICategory|undefined=undefined
   subscribes: Subscription[] = [];
   locationofurl:number=0;
+  
+
   constructor(private prodAPIService: ProductsAPIService, private router: Router,
     private activatedRoutServ: ActivatedRoute) { }
 
@@ -119,17 +122,39 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
         }
 
       }
-
-
-
-
-
-
     }))
 
   }
 
+  onrecivedSort(val:string)  {
 
+     if(val=='low') {
+      this.products= this.products.sort((a :Iproduct,b:Iproduct) =>{
+       return  b.new_price  - a.new_price})
+     }
+     if(val=='high') {
+  
+      this.products= this.products.sort((a :Iproduct,b:Iproduct) =>{
+       return  a.new_price  - b.new_price})
+     }
+     if(val=='Z-A') {
+  
+      this.products= this.products.sort((a :Iproduct,b:Iproduct) =>{
+       return  b.name.localeCompare(a.name) })
+     }
+     if(val=='A-Z') {
+  
+      this.products= this.products.sort((a :Iproduct,b:Iproduct) =>{
+       return  a.name.localeCompare(b.name) })
+     }
+
+
+  }
+
+
+  
+
+  
   ngOnDestroy(): void {
 
     for (let subscribe of this.subscribes) {

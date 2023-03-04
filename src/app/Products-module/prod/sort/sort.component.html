@@ -4,6 +4,7 @@
 <aside >
 
   <div class="accordion accordion-flush " id="accordionFlushExample">
+  
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-headingOne">
         <button class="accordion-button collapsed border border-1 shadow-sm" type="button"
@@ -18,22 +19,28 @@
             <input type="checkbox" class="form-check-input" name="" id="">
             <label for="" class="form-check-label">Featured</label>
           </div>
+   
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="" id="">
+            <input type="radio" class="form-check-input"    (change)="onSortChange($event.target)" [(ngModel)]="sort"  name="sort" value="high">
             <label for="" class="form-check-label">Price, low to high</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="" id="">
+            <input type="radio" class="form-check-input"  (change)="onSortChange($event.target)" [(ngModel)]="sort"  name="sort" value="low">
             <label for="" class="form-check-label">Price, high to low</label>
           </div>
+        
+          
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="" id="">
-            <label for="" class="form-check-label"> Alphabetically, A-Z</label>
+            <input type="radio" class="form-check-input"    (change)="onSortChange($event.target)" [(ngModel)]="sort"  name="sort" value="A-Z">
+            <label for="" class="form-check-label">Alphabetically, A-Z</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="" id="">
+            <input type="radio" class="form-check-input"  (change)="onSortChange($event.target)" [(ngModel)]="sort"  name="sort" value="Z-A">
             <label for="" class="form-check-label">Alphabetically, Z-A</label>
           </div>
+         
+        
+          
           <div class="form-check">
             <input type="checkbox" class="form-check-input" name="" id="">
             <label for="" class="form-check-label"> Date, old to new</label>
