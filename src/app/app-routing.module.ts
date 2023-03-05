@@ -9,9 +9,8 @@ const routes: Routes = [
   {path:'',redirectTo:'/home',pathMatch:'full'},
   {path:'home', component: HomeComponent },
   {path:'single/:id',component:SingleproductComponent},
-
   {
-    path:  'products/:id', 
+    path:  'products/:id',
     loadChildren: () => import('src/app/Products-module/prod/prod.module').then(m => m.ProdModule)
   },
   {path:'**',component:NotFoundComponent}

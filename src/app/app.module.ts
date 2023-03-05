@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
+import { CartComponent } from './components/cart/cart.component';
 
 
 
@@ -22,8 +23,9 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
+    CartComponent,
 
-   
+
   ],
   imports: [
     BrowserModule,
