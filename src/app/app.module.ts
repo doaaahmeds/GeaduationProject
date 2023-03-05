@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
+import { EgyptPipe } from './pipes/egypt.pipe';
 
 
 
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
+    EgyptPipe,
 
    
   ],
@@ -31,9 +33,12 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export { EgyptPipe };
+
