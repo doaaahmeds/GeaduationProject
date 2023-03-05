@@ -12,8 +12,10 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
-import { FilterPipe } from './pipes/filter.pipe';
+
 import { EgyptPipe } from './pipes/egypt.pipe';
+
+
 
 
 @NgModule({
@@ -23,8 +25,9 @@ import { EgyptPipe } from './pipes/egypt.pipe';
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
-    FilterPipe,
-    EgyptPipe
+
+    EgyptPipe,
+
 
    
   ],
@@ -34,9 +37,12 @@ import { EgyptPipe } from './pipes/egypt.pipe';
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export { EgyptPipe };
+

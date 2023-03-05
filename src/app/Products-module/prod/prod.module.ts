@@ -21,14 +21,15 @@ const routes :Routes=[
     ProductsComponent,
     SortComponent,
     SecondlayoutComponent,
-   EgyptPipe,
    NavbarComponent,
-   SingleproductComponent 
+   SingleproductComponent ,
+   EgyptPipe,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    FormsModule 
+    FormsModule,
+     
    
     
   ]
