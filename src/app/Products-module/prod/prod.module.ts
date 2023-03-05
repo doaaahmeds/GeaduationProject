@@ -27,7 +27,7 @@ const routes :Routes=[
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-    
+
   ]
 })
 export class ProdModule { }

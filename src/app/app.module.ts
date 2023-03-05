@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './pipes/filter.pipe';
 import { EGPipe } from './pipes/eg.pipe';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,9 +23,11 @@ import { EGPipe } from './pipes/eg.pipe';
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
+
     FilterPipe,
     EGPipe
    // EgyptPipe
+
 
    
   ],
@@ -33,9 +37,12 @@ import { EGPipe } from './pipes/eg.pipe';
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export { EgyptPipe };
+
