@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -13,8 +12,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './pipes/filter.pipe';
-import { EgyptPipe } from './pipes/egypt.pipe';
-
+import { EGPipe } from './pipes/eg.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +22,8 @@ import { EgyptPipe } from './pipes/egypt.pipe';
     NotFoundComponent,
     HomeComponent,
     FilterPipe,
-    EgyptPipe
+    EGPipe
+   // EgyptPipe
 
    
   ],

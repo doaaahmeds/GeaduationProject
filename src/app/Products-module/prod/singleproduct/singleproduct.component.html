@@ -228,7 +228,7 @@
             <div *ngFor="let color of  product_details.colors | keyvalue,let i=index" class="col-1 mx-2 ">
               {{color.key}}
               <img class="w-100 p-0 border" data-bs-toggle="tooltip" data-bs-placement="top"
-                data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="color.value" [alt]="color.key">
+                data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key">
             </div>
           
           </div>

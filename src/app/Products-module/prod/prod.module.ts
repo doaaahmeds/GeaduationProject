@@ -10,10 +10,8 @@ import { SingleproductComponent } from './singleproduct/singleproduct.component'
 import { FormsModule } from '@angular/forms';
 
 const routes :Routes=[
-  
   {path: '', component:SecondlayoutComponent},
   
-
 ]
 
 @NgModule({
@@ -21,15 +19,14 @@ const routes :Routes=[
     ProductsComponent,
     SortComponent,
     SecondlayoutComponent,
-   EgyptPipe,
    NavbarComponent,
-   SingleproductComponent 
+   SingleproductComponent ,
+   EgyptPipe,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    FormsModule 
-   
+    FormsModule,
     
   ]
 })
