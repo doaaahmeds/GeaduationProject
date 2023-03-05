@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -12,9 +11,8 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
-
-import { EgyptPipe } from './pipes/egypt.pipe';
-
+import { FilterPipe } from './pipes/filter.pipe';
+import { EGPipe } from './pipes/eg.pipe';
 
 
 
@@ -26,7 +24,9 @@ import { EgyptPipe } from './pipes/egypt.pipe';
     NotFoundComponent,
     HomeComponent,
 
-    EgyptPipe,
+    FilterPipe,
+    EGPipe
+   // EgyptPipe
 
 
    

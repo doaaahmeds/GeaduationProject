@@ -4,7 +4,7 @@ export interface Iproduct {
     subid: string,
     name: string,
     details: string[],
-    size: Map<string, number>[],
+    size: Map<string, number>,
     colors: Map<string, number>[],
     imgs: string[],
     offer: boolean,
