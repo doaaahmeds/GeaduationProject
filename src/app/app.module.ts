@@ -44,5 +44,5 @@ import { EGPipe } from './pipes/eg.pipe';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-export { EgyptPipe };
+
 
