@@ -64,9 +64,9 @@
         <div class="landing mb-5 pb-3">
             <div class="text-center mb-5 pb-4">
                 <h5><a href="#">New Collection</a> </h5>
-            </div>
+            </div> 
 
-            <div id="carouselExampleControls" class="carousel slide mb-4 " data-bs-ride="carousel">
+            <div id="caros" class="carousel slide mb-4" data-bs-ride="carousel">
                 <div class="carousel-inner ">
                     <div class="carousel-item active  ">
                         <div class="row content m-5">
@@ -76,21 +76,22 @@
                                         <div class=" text-center circle ">
                                             <span>{{prd.discount}}%</span>
                                         </div>
-                                        <a href="./oneProduct.html">
+                                        <a [routerLink]="['/single',prd.id]">
                                             <img [src]="prd.imgs[0]" class="img-fluid ">
                                         </a>
                                     </div>
                                     <div class="text-center">
                                         <p>{{prd.name}}</p>
                                         <div>
-                                            <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency |Egypt }}</span>
-                                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency|Egypt
+
+                                            <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency|eG}}</span>
+                                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency |eG
                                                 }}</span>
+
                                         </div>
                                     </div>
-                                    <div>
+                                    <div class="ms-4">
                                         <ng-container *ngFor="let img of prd.imgs ,let i=index">
-
                                             <img *ngIf="i>0&&i<=4" [src]="img" height="50px"
                                                 class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                         </ng-container>
@@ -101,28 +102,28 @@
                     </div>
                     <div class="carousel-item ">
                         <div class="row content m-5">
-                            <ng-container *ngFor="let prd of AllCat,let i=index" class="col ">
-                                <div *ngIf="i>=5&&i<=10" class="col ">
+                            <ng-container *ngFor="let prd of AllCat,let i=index" class="col-sm-2 col-xs-1 ">
+                                <div *ngIf="i>=5&&i<=10" class="col-md-2">
                                     <div dir="rtl" dir="rtl" class="ci">
                                         <div class=" text-center circle ">
                                             <span>{{prd.discount}}%</span>
                                         </div>
-                                        <a href="./oneProduct.html">
+                                        <a [routerLink]="['/single',prd.id]">
                                             <img [src]="prd.imgs[0]" class="img-fluid ">
                                         </a>
                                     </div>
                                     <div class="text-center">
                                         <p>{{prd.name}}</p>
                                         <div>
-                                            <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency }}</span>
-                                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency
+                                            <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency |eG}}</span>
+                                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency|eG 
                                                 }}</span>
                                         </div>
                                     </div>
-                                    <div>
+                                    <div class="ms-4">
                                         <ng-container *ngFor="let img of prd.imgs ,let i=index">
 
-                                            <img *ngIf="i>0&&i<=4" [src]="img" height="50px"
+                                            <img *ngIf="i>0&&i<=4" [src]="img" height="40px"
                                                 class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                         </ng-container>
                                     </div>
@@ -131,14 +132,14 @@
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" id="pre" type="button" data-bs-target="#carouselExampleControls"
+                <button class="carousel-control-prev " id="pre1" type="button" data-bs-target="#caros"
                     data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-prev-icon text-dark" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" id="nex" type="button" data-bs-target="#carouselExampleControls"
+                <button class="carousel-control-next" id="nex1" type="button" data-bs-target="#caros"
                     data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-next-icon text-dark" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
@@ -174,32 +175,82 @@
                 <h5><a href="#">More Items on Sale</a> </h5>
             </div>
             <div class="row content m-5">
-<!-- 
-                <div *ngFor="let prd of AllCat" class="col ">
-                    <div dir="rtl" dir="rtl" class="ci">
-                        <div class=" text-center circle ">
-                            <span>{{prd.discount}}%</span>
-                        </div>
-                        <a href="./oneProduct.html">
-                            <img [src]="prd.imgs[0]" class="img-fluid ">
-                        </a>
-                    </div>
-                    <div class="text-center">
-                        <p>{{prd.name}}</p>
-                        <div>
-                            <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency }}</span>
-                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency }}</span>
-                        </div>
-                    </div>
-                    <div>
-                        <ng-container *ngFor="let img of prd.imgs ,let i=index">
 
-                            <img *ngIf="i>0&&i<=4" [src]="img" height="50px"
-                                class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
-                        </ng-container>
+                <div id="caros1" class="carousel slide mb-4" data-bs-ride="carousel">
+                    <div class="carousel-inner ">
+                        <div class="carousel-item active  ">
+                            <div class="row content m-5">
+                                <ng-container *ngFor="let prd of AllCat,let i=index" class="col ">
+                                    <div *ngIf="i>=10&&i<=15" class="col ">
+                                        <div dir="rtl" dir="rtl" class="ci">
+                                            <div class=" text-center circle ">
+                                                <span>{{prd.discount}}%</span>
+                                            </div>
+                                            <a [routerLink]="['/single',prd.id]">
+                                                <img [src]="prd.imgs[0]" class="img-fluid ">
+                                            </a>
+                                        </div>
+                                        <div class="text-center">
+                                            <p>{{prd.name}}</p>
+                                            <div>
+                                                <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency}}</span>
+                                                <span class="text-decoration-line-through fs-14">{{prd.old_price |currency 
+                                                    }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="ms-4">
+                                            <ng-container *ngFor="let img of prd.imgs ,let i=index">
+                                                <img *ngIf="i>0&&i<=4" [src]="img" height="50px"
+                                                    class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div class="carousel-item ">
+                            <div class="row content m-5">
+                                <ng-container *ngFor="let prd of AllCat,let i=index" class="col-sm-2 col-xs-1 ">
+                                    <div *ngIf="i>15&&i<=20" class="col-md-2">
+                                        <div dir="rtl" dir="rtl" class="ci">
+                                            <div class=" text-center circle ">
+                                                <span>{{prd.discount}}%</span>
+                                            </div>
+                                            <a [routerLink]="['/single',prd.id]">
+                                                <img [src]="prd.imgs[0]" class="img-fluid ">
+                                            </a>
+                                        </div>
+                                        <div class="text-center">
+                                            <p>{{prd.name}}</p>
+                                            <div>
+                                                <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency }} </span>
+                                                <span class="text-decoration-line-through fs-14">{{prd.old_price |currency 
+                                                    }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="ms-4">
+                                            <ng-container *ngFor="let img of prd.imgs ,let i=index">
+    
+                                                <img *ngIf="i>0&&i<=4" [src]="img" height="40px"
+                                                    class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
                     </div>
-
-                </div> -->
+                    <button class="carousel-control-prev " id="pre2" type="button" data-bs-target="#caros1"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon text-dark" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" id="nex2" type="button" data-bs-target="#caros1"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon text-dark" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
 
         </div>
