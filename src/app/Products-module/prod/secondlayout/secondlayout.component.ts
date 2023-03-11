@@ -15,6 +15,9 @@ import { SortComponent } from '../sort/sort.component';
 
 export class SecondlayoutComponent implements OnInit, OnDestroy {
   products: Iproduct[] = [];
+  Orginproducts: Iproduct[] = [];
+  Filterdproducts: Iproduct[] = [];
+
 
   infoSubCat: IsubCategory | undefined = undefined;
   infoCat: ICategory | undefined = undefined
@@ -64,6 +67,7 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
                 this.locationofurl = 1;
 
                 this.products = data;
+                this.Orginproducts=data;
 
                 console.log(this.products)
               },
@@ -84,6 +88,7 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
                 this.locationofurl = 1;
 
                 this.products = data;
+                this.Orginproducts=data;
 
                 // console.log(this.products)
               },
@@ -119,7 +124,8 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
               if (data.length == 0) {
                 this.router.navigate(['**'])
               }
-              this.products = data
+              this.products = data;
+              this.Orginproducts=data;
             },
             error: () => this.router.navigate(['**'])
           }))
@@ -156,14 +162,34 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
         return a.name.localeCompare(b.name)
       })
     }
- /*   if (val == 'Black') {
     
-      this.products = this.products.filter(function(prod)
-      {
-        console.log(Object.keys(prod.colors));
-      })
-      console.log(this.products);
-    }  */
+    // OriginProduct take a copy of Products couse every time  i loop in products and it change every loop
+   if (val == 'Black'||val=='Brown'||val=='Snack'||val=='Camel'||val=='Burgundy') {
+    let imge='';
+    this.products=this.Orginproducts;
+    this.Filterdproducts=[];
+    let flg=0;
+    for(var prd of this.products){
+       imge='';
+      flg=0;
+      for(var img of prd.imgs){
+        if(img.includes(val)||img.includes(val.toUpperCase())||img.includes(val.toLowerCase())){
+          imge=img;
+          flg=1;
+          break;
+        }
+      
+      }
+      if(flg==1) {
+        prd.imgs[0]=imge; 
+        this.Filterdproducts.push(prd);
+        console.log(prd,imge); 
+        }
+    }
+    this.products=this.Filterdproducts;
+    console.log(this.Filterdproducts);
+    console.log(this.products);
+    }  
 
 
 
