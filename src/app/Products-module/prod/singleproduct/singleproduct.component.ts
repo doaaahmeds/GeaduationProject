@@ -11,6 +11,7 @@ import { ProductsAPIService } from 'src/app/services/products-api.service';
 export class SingleproductComponent implements OnInit {
  
   product_details:Iproduct ={} as Iproduct
+  imges:string[]=[];
   constructor(private prodAPIService:ProductsAPIService,private router:Router, 
     private activatedRoutServ:ActivatedRoute ){
 
@@ -23,9 +24,16 @@ export class SingleproductComponent implements OnInit {
      if(productid!=undefined){
       this.prodAPIService.getproductsbyid(productid).subscribe(data=>{
         this.product_details=data;
+        console.log(this.product_details);
+        if(this.product_details.imgs[0])this.imges.push(this.product_details.imgs[0]);
+        if(this.product_details.imgs[3])this.imges.push(this.product_details.imgs[3]);
+         if(this.product_details.imgs[5])this.imges.push(this.product_details.imgs[5]);
+         if(this.product_details.imgs[7])this.imges.push(this.product_details.imgs[7]);
+         console.log(this.imges);
        })
      }
      }))
+    
 
   }
    
