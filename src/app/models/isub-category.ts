@@ -1,6 +1,6 @@
 export interface IsubCategory {
     name:string;
-    catid:string;
+    categor:object;
     details:string[];
     id:string;
 

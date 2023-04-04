@@ -32,14 +32,7 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  // getprodSub(subCatId : string){
-
-  //   console.log("jjjjjj");
-  //   console.log(subCatId);
-    
-  //   // this.router.navigate(['products'])
-
-  // }
+ 
   
 
 
