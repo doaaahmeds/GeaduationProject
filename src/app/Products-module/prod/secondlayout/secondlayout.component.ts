@@ -6,6 +6,7 @@ import { Iproduct } from 'src/app/models/iproduct';
 import { IsubCategory } from 'src/app/models/isub-category';
 import { ProductsAPIService } from 'src/app/services/products-api.service';
 import { SortComponent } from '../sort/sort.component';
+import { SortProductsService } from 'src/app/services/sort-products.service';
 
 @Component({
   selector: 'app-secondlayout',
@@ -25,8 +26,11 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
   locationofurl: number = 0;
   S_id?: string | null;
 
-  constructor(private prodAPIService: ProductsAPIService, private router: Router,
-    private activatedRoutServ: ActivatedRoute) { }
+  constructor(
+    private prodAPIService: ProductsAPIService,
+    private sortProdsSer :SortProductsService,
+    private router: Router,
+    private activatedRoutServ: ActivatedRoute,) { }
 
 
   ngOnInit(): void {
@@ -136,16 +140,9 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
 
   }
 
+
+
   onrecivedSort(val: string) {
-
-
-
-    if (val == 'low') {
-      this.products = this.products.sort((a: Iproduct, b: Iproduct) => {
-        return b.new_price - a.new_price
-      })
-    }
-    if (val == 'high') {
 
       this.products = this.products.sort((a: Iproduct, b: Iproduct) => {
         return a.new_price - b.new_price
@@ -190,12 +187,6 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
     console.log(this.Filterdproducts);
     console.log(this.products);
     }  
-
-
-
-  }
-
-
 
 
 
