@@ -16,6 +16,9 @@ import { SortProductsService } from 'src/app/services/sort-products.service';
 
 export class SecondlayoutComponent implements OnInit, OnDestroy {
   products: Iproduct[] = [];
+  Orginproducts: Iproduct[] = [];
+  Filterdproducts: Iproduct[] = [];
+
 
   infoSubCat: IsubCategory | undefined = undefined;
   infoCat: ICategory | undefined = undefined
@@ -68,6 +71,7 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
                 this.locationofurl = 1;
 
                 this.products = data;
+                this.Orginproducts=data;
 
                 console.log(this.products)
               },
@@ -88,6 +92,7 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
                 this.locationofurl = 1;
 
                 this.products = data;
+                this.Orginproducts=data;
 
                 // console.log(this.products)
               },
@@ -123,7 +128,8 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
               if (data.length == 0) {
                 this.router.navigate(['**'])
               }
-              this.products = data
+              this.products = data;
+              this.Orginproducts=data;
             },
             error: () => this.router.navigate(['**'])
           }))
