@@ -141,12 +141,14 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
   }
 
 
+
   onrecivedSort(val: string) {
 
     this.products= this.sortProdsSer.sortOfProducts(val,this.products)
 
 
   }
+
 
 
 
