@@ -141,14 +141,41 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
   }
 
 
-
   onrecivedSort(val: string) {
 
     this.products= this.sortProdsSer.sortOfProducts(val,this.products)
 
+    // OriginProduct take a copy of Products couse every time  i loop in products and it change every loop
+   if (val == 'Black'||val=='Brown'||val=='Snack'||val=='Camel'||val=='Burgundy') {
+    let imge='';
+    this.products=this.Orginproducts;
+    this.Filterdproducts=[];
+    let flg=0;
+    for(var prd of this.products){
+       imge='';
+      flg=0;
+      for(var img of prd.imgs){
+        if(img.includes(val)||img.includes(val.toUpperCase())||img.includes(val.toLowerCase())){
+          imge=img;
+          flg=1;
+          break;
+        }
+      
+      }
+      if(flg==1) {
+        prd.imgs[0]=imge; 
+        this.Filterdproducts.push(prd);
+        console.log(prd,imge); 
+        }
+    }
+    this.products=this.Filterdproducts;
+    console.log(this.Filterdproducts);
+    console.log(this.products);
+    }  
+
+
 
   }
-
 
 
 
