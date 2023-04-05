@@ -1,11 +1,11 @@
 
-<header class="sticky-top  bg-body-tertiary ">
+<header class="sticky-top  bg-body-tertiary " [dir]="'dir'|translate">
 
-    <nav class="navbar navbar-expand-lg  bg-body-tertiary mb-1 fixd-width m-auto ">
+    <nav class="navbar navbar-expand-lg  bg-body-tertiary mb-1 fixd-width m-auto " >
         <div class="container-fluid  ">
             <article class="row  row-cols-3 justify-content-between col-12 align-items-lg-center  ">
 
-                <div class="col">
+                <div class="col-md-4">
 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -14,17 +14,17 @@
                     </button>
 
                     <div class="collapse navbar-collapse p-1 " id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-5 m-3">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-md-5 m-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="">Home</a>
+                                <a class="nav-link active" aria-current="page" href="">{{"headr.Home"|translate}}</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active"[routerLink]="['/products','nuWveyFOC62RoDdaFbqK']">Offers</a>
+                                <a class="nav-link active"[routerLink]="['/products','nuWveyFOC62RoDdaFbqK']"> {{"headr.Offers"|translate}}</a>
                             </li>
                             <div id="drop1" class="nav-item dropdown  ">
                                 <a class="nav-link active dropdown-toggle" href="" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    Shoes
+                                    {{"headr.Shoes"|translate}}
                                 </a>
                                 <ul  *ngIf="subCategoryofShose!=undefined" class="dropdown-menu rounded-0  " >
                                     <li *ngFor="let subcat of subCategoryofShose" >
@@ -37,7 +37,7 @@
                             <div class="nav-item dropdown ">
                                 <a class="nav-link active dropdown-toggle" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    Bags
+                                    {{"headr.Bags"|translate}}
                                 </a>
                                 <ul  *ngIf="subCategoryofBags!=undefined" class="dropdown-menu rounded-0 ">
                                     <li *ngFor="let subcat of subCategoryofBags" >
@@ -52,11 +52,11 @@
 
                 </div>
 
-                <div class="head-img text-center col	">
+                <div class="head-img text-center col-md-4	">
                     <img src="assets/images/logo.avif" style="width: 150px;height: 50px;">
                 </div>
 
-                <div class="col mt-3">
+                <div class="col-md-4 mt-4">
                     <ul class="navbar-nav flex-row justify-content-end  ">
 
                         <li class="d-none d-lg-inline ">
@@ -70,15 +70,28 @@
                         </li>
 
                         <li>
-                            <a href="" class="text-dark me-3">
+                            <a href="" class="text-dark me-3 ">
                                 <i class="fa-solid fa-cart-shopping "></i></a>
                         </li>
 
-                        <li class="d-none d-lg-inline">LE 0.00</li>
+                        <li class="d-none d-lg-inline">{{"headr.LE"|translate}} 0.00</li>
+                        <select name="" id="" class="d-none d-lg-inline col-md-1" >
+                            <option value="en">{{"headr.EN"|translate}}</option>
+                            <option value="ar" >{{"headr.AR"|translate}}</option>
+                          
+        
+                        </select>
 
                     </ul>
 
                 </div>
+
+               
+
+               
+                
+
+                
             </article>
 
         </div>

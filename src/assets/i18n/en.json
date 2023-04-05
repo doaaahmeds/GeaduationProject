@@ -1,0 +1,34 @@
+{
+    "headr":
+    {
+        "Home":"Home",
+        "Shoes":"Shoes",
+        "Bags":"Bags",
+        "LE":"LE",
+        "Offers":"Offers",
+        "AR":"Arabic",
+        "EN":"English"
+       
+
+    },
+    "home":{
+        "NewCollection":"New Collection",
+        "ShopLook":"Shop the Look",
+        "MoreItems":"More Items on Sale",
+        "Blog":"Blog Posts",
+        "read":"Read More",
+        "titleone":"Shoes for every occasion: Mules ",
+        "firstblog":"This year, fashion is prioritizing comfort.We combined the two to make sure you're comfortable without compromising your style. We've done this by including lots of chunky soles and heels for added height and keeping warm",
+        "titetwo":"Top Trends – Summer 2022  ",
+        "secondblog":"Time is running out, enjoy our offers while you still can! Shoes for every occasion with Dejavu: Mules edition When it comes to shoes, there are thousands of options",
+        "thblog":"After long months of cold weather clothes, it is an extremely pleasant feeling of freedom to be able to wear colorful and lightweight shoes again, and this is exactly what we have in store for you",
+        "thtitle":"Trend Alert F/W '23",
+        "fpost":"Posted on May 30,2022",
+        "spost":"Posted on Sep 26, 2022",
+        "tpost":"Posted on Jan 31, 2023",
+        "flink":"Winter 2023",
+        "slink":"Must Havessummer",
+        "tlink":"Summer"
+        
+    }
+}

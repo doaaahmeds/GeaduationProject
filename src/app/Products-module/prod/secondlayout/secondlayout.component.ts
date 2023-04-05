@@ -6,7 +6,6 @@ import { Iproduct } from 'src/app/models/iproduct';
 import { IsubCategory } from 'src/app/models/isub-category';
 import { ProductsAPIService } from 'src/app/services/products-api.service';
 import { SortComponent } from '../sort/sort.component';
-
 @Component({
   selector: 'app-secondlayout',
   templateUrl: './secondlayout.component.html',
