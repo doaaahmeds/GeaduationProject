@@ -13,7 +13,6 @@ export class HeaderComponent implements OnInit {
   subCategoryofBags : IsubCategory[] | undefined = undefined;
   subCategoryofShose : IsubCategory[] | undefined = undefined;
 
-
   constructor(private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService){}
   translatee(event:any){
     this.translateservice.use(event.target.value);

@@ -62,6 +62,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 export class AppModule { }
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
+  
 }
 
 

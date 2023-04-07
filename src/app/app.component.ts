@@ -10,7 +10,6 @@ export class AppComponent {
   constructor(private translateservice: TranslateService) {}
   translate1(event:any){
     this.translateservice.use(event.target.value);
-
   }
   
 }
