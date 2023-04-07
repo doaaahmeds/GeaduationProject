@@ -1,0 +1,148 @@
+<!-- Reactive form -->
+<section class="container-fluid mb-5">
+  <div class="row">
+    <section class="col-7 pe-5">
+      <div class="left-side">
+        <div>
+          <h1 [routerLink]="">dejavu</h1>
+        </div>
+        <section class="font-routes">
+          <span>Cart</span>
+          <span class="mx-2">></span>
+          <span>Information</span>
+          <span class="mx-2">></span>
+          <span>Shipping</span>
+          <span class="mx-2">></span>
+          <span>Payment</span>
+        </section>
+        <form [formGroup]="userForm" method="post">
+        <div class="row mt-3">
+            <div class="col-6 text">Contact information</div>
+            <div class="col-6 mt-2">Already have an account?<span class="login">Log in</span></div>
+        </div>
+        <div class="col-12">
+          <input type="email" class="form-control requiredField my-2" id="inputEmail" autofocus placeholder="Email" formControlName="email">
+          <div class="text-danger" [hidden]="email?.valid || email?.untouched">Enter an Email </div>
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input checkbox restField" type="checkbox" id="gridCheck">
+            <label class="form-check-label mt-1" for="gridCheck">
+              Email me with news and offers
+            </label>
+          </div>
+        </div>
+        <div class="text mt-5">Shipping address</div>
+        <select class="form-select my-2 restField" id="validationTooltip04">
+          <option class="select" selected disabled>Country/Region</option>
+        </select>
+        <div class="row mt-3">
+          <div class="col-6">
+            <input type="text" class="form-control requiredField" id="inputEmail4" placeholder="First-name" formControlName="firstName">
+            <div class="text-danger" [hidden]="firstName?.valid || firstName?.untouched">Enter a First Name</div>
+          </div>
+          <div class="col-6">
+            <input type="text" class="form-control requiredField" id="inputPassword4" placeholder="Last-name" formControlName="lastName">
+            <div class="text-danger" [hidden]="lastName?.valid || lastName?.untouched">Enter a Last Name</div>
+          </div>
+        </div>
+        <div class="col-12 my-3">
+          <input type="text" class="form-control requiredField" id="inputAddress" placeholder="Address" formControlName="address">
+          <div class="text-danger" [hidden]="address?.valid || address?.untouched">Enter an Address</div>
+        </div>
+        <div class="col-12 my-3">
+          <input type="text" class="form-control restField" id="inputAddress2" placeholder="Apartment, suite, etc. (option)">
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <input type="text" class="form-control requiredField" id="inputCity" placeholder="City" formControlName="city">
+            <div class="text-danger" [hidden]="city?.valid || city?.untouched">Enter a City</div>
+          </div>
+          <div class="col-4">
+            <select id="inputState" class="form-select restField">
+              <option selected>Governorate</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control restField" id="inputZip" placeholder="Postal code">
+          </div>
+          <div class="col-12 my-3">
+            <input type="text" class="form-control requiredField" id="inputAddress" placeholder="Phone" formControlName="phone"
+            [class.is-valid]="phone?.valid" [class.is-invalid]="phone?.invalid">
+            <div class="text-danger" [hidden]="phone?.valid || phone?.untouched">Enter a valid phone number</div>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input checkbox restField" type="checkbox" id="gridCheck">
+              <label class="form-check-label mt-1" for="gridCheck">
+                Save this information for next time
+              </label>
+            </div>
+          </div>
+          <div class="row mt-3">
+              <div class="col mt-3">
+                <a class="text-decoration-none">
+                  <span class="text-secondary pointer">Return to cart</span>
+                </a>
+              </div>
+              <div class="col-4">
+                <button class="btn btn-dark rounded px-3 py-3" [disabled]="userForm.invalid" (click)="GoToShipping()">Continue to Shipping</button>
+              </div>
+          </div>
+        </div>
+      </form>
+      </div>
+    </section>
+
+    <!-- right side -->
+    <section class="col">
+      <div class="right-size">
+        <div class="row pt-5 ps-5 pb-3">
+          <div class="col-2">
+            <img class="image" src="https://cdn.shopify.com/s/files/1/0499/3079/7217/products/WAH-DJTT-003-TAUPE_1_900x.jpg?v=1666519411" width="100" height="100" alt="">
+          </div>
+          <div class="col-6 pt-4">
+            <span class="prodName">WAH-DJTT-003</span>
+            <p>Taupe / 36</p>
+          </div>
+          <div class="col pt-4 prodPrice">
+            <p>E£199.00</p>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-9 ps-5">
+          <input type="text" class="form-control" name="discount" placeholder="Discount code">
+        </div>
+        <div class="col">
+          <button class="btn btn-secondary">Apply</button>
+        </div>
+        </div>
+        <div class="row pt-4 ps-4">
+          <div class="col-9 ps-4">
+            <h6>Subtotal</h6>
+          </div>
+          <div class="col ps-4">
+            <p class="prodPrice">E£199.00</p>
+          </div>
+        </div>
+        <div class="row ps-4">
+          <div class="col-9 ps-4">
+            <h6>Shipping</h6>
+          </div>
+          <div class="col ps-4">
+            <p class="prodPrice">E£25.00</p>
+          </div>
+        </div>
+        <div class="row ps-4 pt-1">
+          <div class="col-9 ps-4">
+            <h6>Total</h6>
+          </div>
+          <div class="col ps-4">
+            <h5>E£224.00</h5>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

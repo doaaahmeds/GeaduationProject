@@ -1,7 +1,6 @@
 <section>
   <app-navbar></app-navbar>
-
-  <main class=" d-block  d-md-flex  justify-content-center  ">
+  <main class=" d-block  d-md-flex  justify-content-center"  *ngIf="product_details!=undefined">
     <!-- slider -->
 
     <aside class="col-md-5  pe-4 me-3">
@@ -31,7 +30,7 @@
 
           <button type="button" id="zoom" class="btn btn-secondary rounded-circle  p-3 mt-4 " data-bs-toggle="modal"
             data-bs-target="#zoomModal">
-            <i class="bi bi-zoom-in"></i>      
+            <i class="bi bi-zoom-in"></i>
                  </button>
 
           <!-- Modal -->
@@ -57,7 +56,7 @@
                       <span class="visually-hidden">Next</span>
                     </button>
                   </div>
-
+                  <ng-container *ngIf="product_details.imgs[0]!=undefined">
                   <div id="modalSlider" class="carousel slide  ">
                     <div class="carousel-inner">
 
@@ -76,6 +75,7 @@
 
                     </div>
                   </div>
+                </ng-container>
                 </div>
               </div>
             </div>
@@ -230,7 +230,7 @@
               <img class="w-100 p-0 border" data-bs-toggle="tooltip" data-bs-placement="top"
                 data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key">
             </div>
-          
+
           </div>
 
         </div>
@@ -254,9 +254,9 @@
           <span class="up ">+</span>
         </div>
       </div>
-      <div class="my-3 mx-2">
+      <div class="my-3 mx-2" *ngIf="product_details!=undefined" >
         <button
-          class=" btn btn-warning bg-first rounded-1  col-12  col-md-10  col-lg-8 col-xl-5   py-3 text-white  btncart">
+          class=" btn btn-warning bg-first rounded-1  col-12  col-md-10  col-lg-8 col-xl-5   py-3 text-white  btncart" (click)="addtocart()">
           Add to Cart</button>
       </div>
       <div class="mx-2">
