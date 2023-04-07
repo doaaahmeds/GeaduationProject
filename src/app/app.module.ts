@@ -11,7 +11,6 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
-import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './pipes/filter.pipe';
 import { EGPipe } from './pipes/eg.pipe';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -74,7 +73,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
 
-export class AppModule { }
+
 
 
 
