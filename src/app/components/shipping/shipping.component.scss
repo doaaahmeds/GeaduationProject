@@ -1,0 +1,102 @@
+.pointer
+{
+  cursor: pointer;
+}
+
+.left-side
+{
+  margin-top: 8%;
+  margin-left: 26%;
+}
+
+.right-size
+{
+  background-color: #f7f3f3;
+  margin-left: 25px;
+  height: 100%;
+  width: 100%;
+}
+
+.font-routes
+{
+  font-size: 0.8rem;
+  color: gray;
+}
+
+.text
+{
+  font-size: 1.2rem;
+}
+
+.login
+{
+  color: gray;
+  margin-left: 0.3rem;
+}
+
+.checkbox
+{
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-right: 0.6rem;
+}
+
+.checkbox:checked
+{
+  background-color: gray;
+  border: 0;
+}
+
+select
+{
+  font-size: 0.8rem;
+}
+
+.pointer
+{
+  cursor: pointer;
+}
+
+.requiredField.ng-invalid
+{
+  border: 2px solid red;
+}
+
+.requiredField.ng-untouched, .requiredField.valid
+{
+  border: 1px solid black;
+}
+
+.restField
+{
+  border: 1px solid black;
+}
+
+.image
+{
+  border: 1px solid rgb(206, 202, 202);
+  border-radius: 25px;
+  position: relative;
+  text-align: center;
+}
+
+.count
+{
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 25px;
+  text-align: center;
+  background-color: gray;
+  color: white;
+
+}
+
+.prodName
+{
+  font-weight: 600;
+}
+
+.prodPrice
+{
+  font-size: 17px;
+}

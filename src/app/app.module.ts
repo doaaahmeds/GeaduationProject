@@ -10,10 +10,10 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { FormsModule } from '@angular/forms';
-import { FilterPipe } from './pipes/filter.pipe';
-import { EGPipe } from './pipes/eg.pipe';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ShippingComponent } from './components/shipping/shipping.component';
 
 
 @NgModule({
@@ -23,26 +23,26 @@ import { EGPipe } from './pipes/eg.pipe';
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
-
-    FilterPipe,
-    EGPipe
-   // EgyptPipe
-
-
-   
+    CartComponent,
+    CheckoutComponent,
+    ShippingComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-  
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
 
 
