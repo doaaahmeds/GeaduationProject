@@ -6,6 +6,10 @@ import { Iproduct } from 'src/app/models/iproduct';
 import { IsubCategory } from 'src/app/models/isub-category';
 import { ProductsAPIService } from 'src/app/services/products-api.service';
 import { SortComponent } from '../sort/sort.component';
+
+import { SortProductsService } from 'src/app/services/sort-products.service';
+
+
 @Component({
   selector: 'app-secondlayout',
   templateUrl: './secondlayout.component.html',
@@ -24,8 +28,11 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
   locationofurl: number = 0;
   S_id?: string | null;
 
-  constructor(private prodAPIService: ProductsAPIService, private router: Router,
-    private activatedRoutServ: ActivatedRoute) { }
+  constructor(
+    private prodAPIService: ProductsAPIService,
+    private sortProdsSer :SortProductsService,
+    private router: Router,
+    private activatedRoutServ: ActivatedRoute,) { }
 
 
   ngOnInit(): void {
@@ -135,33 +142,11 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
 
   }
 
+
   onrecivedSort(val: string) {
 
+    this.products= this.sortProdsSer.sortOfProducts(val,this.products)
 
-
-    if (val == 'low') {
-      this.products = this.products.sort((a: Iproduct, b: Iproduct) => {
-        return b.new_price - a.new_price
-      })
-    }
-    if (val == 'high') {
-
-      this.products = this.products.sort((a: Iproduct, b: Iproduct) => {
-        return a.new_price - b.new_price
-      })
-    }
-    if (val == 'Z-A') {
-
-      this.products = this.products.sort((a: Iproduct, b: Iproduct) => {
-        return b.name.localeCompare(a.name)
-      })
-    }
-    if (val == 'A-Z') {
-      this.products = this.products.sort((a: Iproduct, b: Iproduct) => {
-        return a.name.localeCompare(b.name)
-      })
-    }
-    
     // OriginProduct take a copy of Products couse every time  i loop in products and it change every loop
    if (val == 'Black'||val=='Brown'||val=='Snack'||val=='Camel'||val=='Burgundy') {
     let imge='';

@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
+
 import {TranslateService} from "@ngx-translate/core";
+
+import { CartService } from './services/cart.service';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
