@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   subCategoryofBags : IsubCategory[] | undefined = undefined;
   subCategoryofShose : IsubCategory[] | undefined = undefined;
-
+ isSearch : boolean = false;
 
   constructor(private getSubCatServ:ProductsAPIService , private router:Router){}
 
@@ -25,14 +25,18 @@ export class HeaderComponent implements OnInit {
 
     this.getSubCatServ.getAllsubCatOfshose().subscribe((data: IsubCategory[])=>{
       this.subCategoryofShose=data
-    })
-    
+    });
+
+  
  
 
   }
 
 
- 
+   showSearch(){
+    this.isSearch=!this.isSearch
+    }
+    
   
 
 
