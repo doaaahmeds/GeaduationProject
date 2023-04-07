@@ -3,7 +3,7 @@ import { Route, Router } from '@angular/router';
 import { IsubCategory } from 'src/app/models/isub-category';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsAPIService } from 'src/app/services/products-api.service';
-
+import {TranslateService} from "@ngx-translate/core";
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -15,8 +15,12 @@ export class HeaderComponent implements OnInit {
   subCategoryofShose : IsubCategory[] | undefined = undefined;
 
 
-  constructor(private getSubCatServ:ProductsAPIService , private router:Router){}
+  constructor(private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService){}
+  translatee(event:any){
+    this.translateservice.use(event.target.value);
+    console.log(event.target.value);
 
+  }
   ngOnInit(): void {
 
     this.getSubCatServ.getAllsubCatOfBags().subscribe((data: IsubCategory[])=>{

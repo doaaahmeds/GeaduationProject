@@ -6,7 +6,9 @@ import { Iproduct } from 'src/app/models/iproduct';
 import { IsubCategory } from 'src/app/models/isub-category';
 import { ProductsAPIService } from 'src/app/services/products-api.service';
 import { SortComponent } from '../sort/sort.component';
+
 import { SortProductsService } from 'src/app/services/sort-products.service';
+
 
 @Component({
   selector: 'app-secondlayout',
@@ -177,7 +179,7 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
 
   }
 
-
+ 
 
 
 
@@ -189,3 +191,4 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
   }
 
 }
+
