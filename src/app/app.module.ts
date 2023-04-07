@@ -71,6 +71,7 @@ import { ShippingComponent } from './components/shipping/shipping.component';
 export class AppModule {}
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
+  
 }
 
 

@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
       this.AllCat=data;
     })
   }
-
    AllCategory(){
 
    }
