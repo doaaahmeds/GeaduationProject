@@ -18,6 +18,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,10 +27,12 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
+
     FilterPipe,
     EGPipe,
     
    // EgyptPipe
+
 
    
   ],
@@ -49,7 +53,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -58,3 +63,5 @@ export class AppModule { }
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
+
+
