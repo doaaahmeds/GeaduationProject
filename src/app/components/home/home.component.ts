@@ -10,7 +10,6 @@ import {TranslateService} from "@ngx-translate/core";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
   links:string[]=['cgCpnqSfoejbeTYqAxQE','vBEYRuSj9Us4ZPPUbg13'];
   AllCat:Iproduct[]=[];
    constructor(private prodAPIService:ProductsAPIService,private router:Router ,private translateservice: TranslateService) {}
