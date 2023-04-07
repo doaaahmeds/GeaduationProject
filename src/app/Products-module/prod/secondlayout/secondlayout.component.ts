@@ -141,25 +141,10 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
   }
 
 
-
   onrecivedSort(val: string) {
 
-      this.products = this.products.sort((a: Iproduct, b: Iproduct) => {
-        return a.new_price - b.new_price
-      })
-    }
-    if (val == 'Z-A') {
+    this.products= this.sortProdsSer.sortOfProducts(val,this.products)
 
-      this.products = this.products.sort((a: Iproduct, b: Iproduct) => {
-        return b.name.localeCompare(a.name)
-      })
-    }
-    if (val == 'A-Z') {
-      this.products = this.products.sort((a: Iproduct, b: Iproduct) => {
-        return a.name.localeCompare(b.name)
-      })
-    }
-    
     // OriginProduct take a copy of Products couse every time  i loop in products and it change every loop
    if (val == 'Black'||val=='Brown'||val=='Snack'||val=='Camel'||val=='Burgundy') {
     let imge='';
@@ -187,6 +172,12 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
     console.log(this.Filterdproducts);
     console.log(this.products);
     }  
+
+
+
+  }
+
+
 
 
 
