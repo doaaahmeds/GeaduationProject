@@ -13,13 +13,20 @@ export class HeaderComponent implements OnInit {
 
   subCategoryofBags : IsubCategory[] | undefined = undefined;
   subCategoryofShose : IsubCategory[] | undefined = undefined;
+  isSearch : boolean = false;
+  
 
   constructor(private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService){}
   translatee(event:any){
     this.translateservice.use(event.target.value);
     console.log(event.target.value);
+  
+
 
   }
+
+  
+
   ngOnInit(): void {
 
     this.getSubCatServ.getAllsubCatOfBags().subscribe((data: IsubCategory[])=>{
@@ -33,18 +40,16 @@ export class HeaderComponent implements OnInit {
 
 
 
-
   }
-  // getprodSub(subCatId : string){
-
-  //   console.log("jjjjjj");
-  //   console.log(subCatId);
-
-  //   // this.router.navigate(['products'])
-
-  // }
 
 
+
+  
+  showSearch(){
+    this.isSearch=!this.isSearch
+    }
+    
+  
 
 
 
