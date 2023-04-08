@@ -8,6 +8,7 @@ import {  RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SingleproductComponent } from './singleproduct/singleproduct.component';
 import { FormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
 
 const routes :Routes=[
   
@@ -24,6 +25,7 @@ const routes :Routes=[
    NavbarComponent,
    SingleproductComponent ,
    EgyptPipe,
+   SearchComponent,
   ],
   imports: [
     CommonModule,

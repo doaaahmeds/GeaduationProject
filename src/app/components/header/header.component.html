@@ -1,7 +1,7 @@
 
 <header class="sticky-top  bg-body-tertiary " [dir]="'dir'|translate">
 
-    <nav class="navbar navbar-expand-lg  bg-body-tertiary mb-1 fixd-width m-auto " >
+    <nav class="navbar navbar-expand-lg  bg-body-tertiary  fixd-width m-auto border-bottom border-1  " >
         <div class="container-fluid  ">
             <article class="row  row-cols-3 justify-content-between col-12 align-items-lg-center  ">
 
@@ -13,8 +13,8 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <div class="collapse navbar-collapse p-1 " id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-md-5 m-3">
+                    <div class="collapse navbar-collapse  " id="navbarSupportedContent">
+                        <ul class="navbar-nav  mb-2 mb-lg-0 col-md-5 m-3">
                             <li class="nav-item">
                                 
                                 <a class="nav-link active" aria-current="page" href="">{{"headr.Home"|translate}}</a>
@@ -27,10 +27,10 @@
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     {{"headr.Shoes"|translate}}
                                 </a>
-                                <ul  *ngIf="subCategoryofShose!=undefined" class="dropdown-menu rounded-0  " >
-                                    <li *ngFor="let subcat of subCategoryofShose" >
-                                        <a class="dropdown-item"[routerLink]="['products', subcat.id]"
-                                         >{{subcat.name}}</a>
+                                <ul *ngIf="subCategoryofShose!=undefined" class="dropdown-menu rounded-0  ">
+                                    <li *ngFor="let subcat of subCategoryofShose">
+                                        <a class="dropdown-item"
+                                            [routerLink]="['products', subcat.id]">{{subcat.name}}</a>
                                     </li>
 
                                 </ul>
@@ -40,9 +40,10 @@
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     {{"headr.Bags"|translate}}
                                 </a>
-                                <ul  *ngIf="subCategoryofBags!=undefined" class="dropdown-menu rounded-0 ">
-                                    <li *ngFor="let subcat of subCategoryofBags" >
-                                        <a class="dropdown-item " [routerLink]="['products', subcat.id]">{{subcat.name}}</a>
+                                <ul *ngIf="subCategoryofBags!=undefined" class="dropdown-menu rounded-0 ">
+                                    <li *ngFor="let subcat of subCategoryofBags">
+                                        <a class="dropdown-item "
+                                            [routerLink]="['products', subcat.id]">{{subcat.name}}</a>
                                     </li>
 
                                 </ul>
@@ -60,9 +61,8 @@
                 <div class="col-md-4 mt-4">
                     <ul class="navbar-nav flex-row justify-content-end  ">
 
-                        <li class="d-none d-lg-inline ">
-                            <a class="text-dark " href="#" >
-                                <i class="fa-solid fa-magnifying-glass "></i></a>
+                        <li class="d-none d-lg-inline " (click)="showSearch()">
+                                <i class="fa-solid fa-magnifying-glass "></i>
                         </li>
 
                         <li class="d-none d-lg-inline mx-3">
@@ -87,21 +87,24 @@
 
                     </ul>
 
-                </div>
-
-               
-
-               
-                
-
-                
+                </div>    
             </article>
 
         </div>
 
     </nav>
+    <div class=" pt-1 pb-3 bg-body-tertiary" *ngIf="isSearch" >
+        <div class="input-group border  w-50  mx-auto border-1 border-secondary  shadow   p-1  ">
+            <input type="text" #valueOfSearch class="shadow-none form-control border-0 bg-body-tertiary rounded-0 "
+                placeholder="Search" >
+            <div class="input-group-append">
+                <button class="btn btn-dark rounded-0" type="button"
+                 (click)="goToSearch(valueOfSearch.value)"  >Search</button>
+            </div>
+        </div>
+
+
+    </div>
 
 
 </header>
-
-
