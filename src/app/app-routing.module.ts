@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SingleproductComponent } from './Products-module/prod/singleproduct/singleproduct.component';
 import { ShippingComponent } from './components/shipping/shipping.component';
+import { SearchComponent } from './Products-module/prod/search/search.component';
 
 const routes: Routes = [
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   },
   {path:'Checkout',component:CheckoutComponent},
   {path:'Shipping',component:ShippingComponent},
+  {path:'search',component:SearchComponent},
   {path:'**',component:NotFoundComponent}
 ];
 

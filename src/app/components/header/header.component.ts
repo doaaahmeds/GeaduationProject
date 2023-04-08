@@ -4,6 +4,7 @@ import { IsubCategory } from 'src/app/models/isub-category';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsAPIService } from 'src/app/services/products-api.service';
 import {TranslateService} from "@ngx-translate/core";
+import { SearchService } from 'src/app/services/search/search.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,7 +17,8 @@ export class HeaderComponent implements OnInit {
   isSearch : boolean = false;
   
 
-  constructor(private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService){}
+  constructor(private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService,
+    private searchService :SearchService){}
   translatee(event:any){
     this.translateservice.use(event.target.value);
     console.log(event.target.value);
@@ -49,7 +51,16 @@ export class HeaderComponent implements OnInit {
     this.isSearch=!this.isSearch
     }
     
-  
+    goToSearch(value : string){
+      this.searchService.setvalueOfSearch(value)
+
+      // console.log(value);
+      console.log(  this.searchService.valueOfSearch);
+      
+      this.router.navigate(['/search']);
+      this.isSearch=false;
+
+    }
 
 
 
