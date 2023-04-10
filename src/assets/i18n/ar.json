@@ -123,7 +123,15 @@
         "ContinueShipping":"واصل التسوق",
         "Apply":"تقديم",
         "Subtotal":"المجموع الفرعي",
-        "Total":"المجتوع"
+        "Total":"المجتوع",
+        "Email1":"الايميل",
+        "Change":"تغير",
+        "Shipto":"التسوق الى",
+        "Address":"العنوان",
+        "Shippingmethod":"طريقه التسوق",
+        "Standarddelivery":"التوصيل العادي خلال 3-5 أيام عمل   ",
+        "ReturnInformation":"معلومات الاسترجاع",
+        "ContinuePayment":"واصل للدقع"
 
     }
 }

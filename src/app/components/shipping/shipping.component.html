@@ -3,47 +3,47 @@
     <section class="col-7 px-5">
       <div class="left-side mx-4 ms-5">
         <div>
-          <h1 [routerLink]="">dejavu</h1>
+          <h1 [routerLink]="">{{"checkout.dejavu"|translate}}</h1>
         </div>
         <section class="font-routes">
-          <span>Cart</span>
+          <span>{{"checkout.Cart"|translate}}</span>
           <span class="mx-2">></span>
-          <span>Information</span>
+          <span>{{"checkout.Information"|translate}}</span>
           <span class="mx-2">></span>
-          <span>Shipping</span>
+          <span>{{"checkout.Shipping"|translate}}</span>
           <span class="mx-2">></span>
-          <span>Payment</span>
+          <span>{{"checkout.Payment"|translate}}</span>
         </section>
           <div class="border rounded mt-4">
             <div class="d-flex justify-content-between mx-3 mt-2">
-              <span class="text-secondary">Contact</span>
-              <span>Email</span>
-              <a class="text-secondary pointer" (click)="editEmail()">Change</a>
+              <span class="text-secondary">{{"checkout.Email1"|translate}}</span>
+              <span>{{"checkout.Email1"|translate}}</span>
+              <a class="text-secondary pointer" (click)="editEmail()">{{"checkout.Change"|translate}}</a>
             </div>
             <hr>
             <div class="d-flex justify-content-between mx-3 mb-3">
-              <span class="text-secondary">Ship to</span>
-              <span>Address</span>
-              <a class="text-secondary pointer">Change</a>
+              <span class="text-secondary">{{"checkout.Shipto"|translate}}</span>
+              <span>{{"checkout.Address"|translate}}</span>
+              <a class="text-secondary pointer">{{"checkout.Change"|translate}}</a>
             </div>
           </div>
           <div class="mt-4">
-            <h5>Shipping method</h5>
+            <h5>{{"checkout.Shippingmethod"|translate}}</h5>
           </div>
           <div class="border rounded mt-3 bg-secondary bg-gradient">
             <div class="d-flex justify-content-between mx-3">
-              <div class="p-3">Standard delivery within 3-5 working days .</div>
+              <div class="p-3">{{"checkout.Standarddelivery"|translate}}</div>
               <div class="p-3">E£25.00</div>
             </div>
           </div>
           <div class="row mt-3">
               <div class="col mt-4">
                 <a class="text-decoration-none">
-                  <span class="text-secondary pointer" (click)="BackToCheckout()">Return to Information</span>
+                  <span class="text-secondary pointer" (click)="BackToCheckout()">{{"checkout.ReturnInformation"|translate}}</span>
                 </a>
               </div>
               <div class="col-4">
-                <button class="bg-black px-4 py-3 text-white rounded">Continue to Payment</button>
+                <button class="bg-black px-4 py-3 text-white rounded">{{"checkout.ContinuePayment"|translate}}</button>
               </div>
           </div>
         </div>
@@ -67,12 +67,12 @@
           <input type="text" class="form-control" name="discount" placeholder="Discount code">
         </div>
         <div class="col">
-          <button class="btn btn-secondary">Apply</button>
+          <button class="btn btn-secondary">{{"checkout.Apply"|translate}}</button>
         </div>
         </div>
         <div class="row pt-4 ps-4">
           <div class="col-9 ps-4">
-            <h6>Subtotal</h6>
+            <h6>{{"cart.Subtotal"|translate}}</h6>
           </div>
           <div class="col ps-4">
             <p class="prodPrice">E£199.00</p>
@@ -80,7 +80,7 @@
         </div>
         <div class="row ps-4">
           <div class="col-9 ps-4">
-            <h6>Shipping</h6>
+            <h6>{{"checkout.Shipping"|translate}}</h6>
           </div>
           <div class="col ps-4">
             <p class="prodPrice">E£25.00</p>
@@ -88,7 +88,7 @@
         </div>
         <div class="row ps-4 pt-1">
           <div class="col-9 ps-4">
-            <h6>Total</h6>
+            <h6>{{"checkout.Total"|translate}}</h6>
           </div>
           <div class="col ps-4">
             <h5>E£224.00</h5>
