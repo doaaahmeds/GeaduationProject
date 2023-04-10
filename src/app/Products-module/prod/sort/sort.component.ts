@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sort',
@@ -17,7 +18,7 @@ export class SortComponent     {
 
 
 
-   constructor(){
+   constructor(private translate:TranslateService){
     this.sendsort = new EventEmitter<any>()
 
   

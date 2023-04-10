@@ -8,6 +8,9 @@ import {  RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SingleproductComponent } from './singleproduct/singleproduct.component';
 import { FormsModule } from '@angular/forms';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 const routes :Routes=[
   
@@ -29,6 +32,18 @@ const routes :Routes=[
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
+     TranslateModule.forChild({
+      defaultLanguage:'en',
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory1,
+          deps: [HttpClient]
+      }
+    }) 
+  
   ]
 })
-export class ProdModule { }
+export class ProdModule { } export function HttpLoaderFactory1(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+  
+} 

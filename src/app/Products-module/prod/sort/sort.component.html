@@ -1,7 +1,4 @@
-
-
-
-  <button class="text-white d-md-none bg-black py-2 mb-3 w-100 " >Filter</button>
+<button class="text-white d-md-none bg-black py-2 mb-3 w-100 " >{{"home.Filter"|translate}}</button>
 
 <aside class=" d-none d-md-block" >
 
@@ -12,7 +9,7 @@
         <button class="accordion-button collapsed border border-1 shadow-sm" type="button"
           data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
           aria-controls="flush-collapseOne">
-          Sort
+          {{"home.Filter"|translate}}
         </button>
       </h2>
       <div id="flush-collapseOne" class="accordion-collapse collapse " aria-labelledby="flush-headingOne">
@@ -21,21 +18,21 @@
    
           <div class="form-check">
             <input type="radio" class="form-check-input"    (change)="onSortChange($event.target)" [(ngModel)]="sort"  name="sort" value="high">
-            <label for="" class="form-check-label">Price, low to high</label>
+            <label for="" class="form-check-label">{{"home.Pricelowhigh"|translate}}</label>
           </div>
           <div class="form-check">
             <input type="radio" class="form-check-input"  (change)="onSortChange($event.target)" [(ngModel)]="sort"  name="sort" value="low">
-            <label for="" class="form-check-label">Price, high to low</label>
+            <label for="" class="form-check-label">{{"home.Pricehighlow"|translate}}</label>
           </div>
         
           
           <div class="form-check">
             <input type="radio" class="form-check-input"    (change)="onSortChange($event.target)" [(ngModel)]="sort"  name="sort" value="A-Z">
-            <label for="" class="form-check-label">Alphabetically, A-Z</label>
+            <label for="" class="form-check-label">{{"home.A_Z"|translate}}</label>
           </div>
           <div class="form-check">
             <input type="radio" class="form-check-input"  (change)="onSortChange($event.target)" [(ngModel)]="sort"  name="sort" value="Z-A">
-            <label for="" class="form-check-label">Alphabetically, Z-A</label>
+            <label for="" class="form-check-label">{{"home.Z-A"|translate}}</label>
           </div>
          
         
@@ -61,30 +58,30 @@
         <button class="accordion-button collapsed border border-1 shadow-sm" type="button"
           data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
           aria-controls="flush-collapseTwo">
-          Filter by Color
+          {{"home.FilterColor"|translate}}
         </button>
       </h2>
       <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo">
         <div class="accordion-body border border-1">
           <div class="form-check">
             <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" name="sort" value="Black">
-            <label for="" class="form-check-label"> Black</label>
+            <label for="" class="form-check-label"> {{"home.Black"|translate}}</label>
           </div>
           <div class="form-check">
             <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" name="sort" value="Brown">
-            <label for="" class="form-check-label" > Brown</label>
+            <label for="" class="form-check-label" > {{"home.Brown"|translate}}</label>
           </div>
           <div class="form-check">
             <input type="radio" class="form-check-input"  (change)="onSortChange($event.target)" [(ngModel)]="sort" name="sort" value="Burgundy">
-            <label for="" class="form-check-label"> Burgundy</label>
+            <label for="" class="form-check-label"> {{"home.Burgundy"|translate}}</label>
           </div>
           <div class="form-check">
             <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" name="sort" value="Camel">
-            <label for="" class="form-check-label"> Camel</label>
+            <label for="" class="form-check-label"> {{"home.Camel"|translate}}</label>
           </div>
           <div class="form-check">
             <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" name="sort" value="Snake">
-            <label for="" class="form-check-label"> Snake</label>
+            <label for="" class="form-check-label"> {{"home.Snake"|translate}}</label>
           </div>
 
         </div>
@@ -97,25 +94,26 @@
           <button class="accordion-button collapsed border border-1 shadow-sm" type="button"
             data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false"
             aria-controls="flush-collapseThree">
-            Categories
+            {{"home.Categories"|translate}}
+            
           </button>
         </h2>
         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree">
           <div class="accordion-body border border-1">
             <div class="form-check">
               <input type="radio" class="form-check-input" name="sort" value="Ankle boots">
-              <label for="" class="form-check-label">Ankle boots
+              <label for="" class="form-check-label">{{"home.Ankle boots"|translate}}
               </label>
             </div>
             <div class="form-check">
               <input type="radio" class="form-check-input" name="sort" value="Half Boots">
-              <label for="" class="form-check-label">  Half Boots</label>
+              <label for="" class="form-check-label">  {{"home.Half Boots"|translate}}</label>
             </div>
             <div class="form-check">
               <input type="radio" class="form-check-input" name="sort" value="High Boots">
-              <label for="" class="form-check-label"> High Boots</label>
+              <label for="" class="form-check-label"> {{"home.High Boots"|translate}}</label>
             </div>
-            <div class="form-check">
+           <!--  <div class="form-check">
               <input type="checkbox" class="form-check-input" name="" id="">
               <label for="" class="form-check-label"> Flip-Flops</label>
             </div>
@@ -134,7 +132,7 @@
             <div class="form-check">
               <input type="checkbox" class="form-check-input" name="" id="">
               <label for="" class="form-check-label">Slippers</label>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

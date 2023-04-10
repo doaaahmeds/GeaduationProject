@@ -10,14 +10,11 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-
 import { FilterPipe } from './pipes/filter.pipe';
 import { EGPipe } from './pipes/eg.pipe';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
@@ -38,13 +35,14 @@ import { ShippingComponent } from './components/shipping/shipping.component';
     CartComponent,
     CheckoutComponent,
     ShippingComponent,
+    
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-
+    TranslateModule,
     HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage:'en',
@@ -54,8 +52,6 @@ import { ShippingComponent } from './components/shipping/shipping.component';
           deps: [HttpClient]
       }
   }),
-    
-
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
