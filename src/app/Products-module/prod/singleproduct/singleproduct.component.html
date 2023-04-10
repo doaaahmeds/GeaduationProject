@@ -1,4 +1,4 @@
-<section>
+<section >
   <app-navbar></app-navbar>
   <main class=" d-block  d-md-flex  justify-content-center"  *ngIf="product_details!=undefined">
     <!-- slider -->
@@ -171,21 +171,39 @@
     <!-- side right -->
     <aside class="col-md-6 mt-5">
       <div class="mb-4">
-        <h4 class="fw-normal  text-center text-md-start mb-4"> <span
-            class=" border-bottom border-4 border-dark pb-2 mb-5 ">{{product_details.name}}</span> </h4>
+        <h4 class="fw-normal  text-center text-md-start mb-4"> 
+         
+          <span 
+            class=" border-bottom border-4 border-dark pb-2 mb-5 ">{{lang=='ar'?product_details.name_ar:product_details.name}}</span> 
+         
+            
+          </h4>
       </div>
 
       <!--shwo product_details-->
       <div >
         <ng-container *ngIf="product_details">
-          <p class="fs-7">{{product_details.details[0]}}</p>
+          <p  class="fs-7">{{lang=='ar'?product_details.details_ar[0]:product_details.details[0]}}</p>
+        
         </ng-container>
+      
 
-        <ul *ngFor="let dis of product_details.details,let i=index">
-          <ng-container *ngIf="i>0&&i<=7">
-            <li class="margin-left fs-7 ">{{dis}}</li>
-          </ng-container>
-        </ul>
+        <ng-container *ngIf="lang=='ar'" >
+          <ul *ngFor="let dis of product_details.details_ar,let i=index">
+            <ng-container *ngIf="i>0&&i<=7">
+              <li class="margin-left fs-7 ">{{dis}}</li>
+            </ng-container>
+          </ul>
+        </ng-container>
+        <ng-container *ngIf="lang=='en'" >
+          <ul *ngFor="let dis of product_details.details,let i=index">
+            <ng-container *ngIf="i>0&&i<=7">
+              <li class="margin-left fs-7 ">{{dis}}</li>
+            </ng-container>
+          </ul>
+        </ng-container>
+      
+       
 
       </div>
 
@@ -220,24 +238,44 @@
 
         <div class=" mt-3">
 
-          <h6>Color</h6>
+          <h6>{{"SmallFoor.Color"|translate}}</h6>
 
-          <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0 ">
+          <ng-container *ngIf="lang=='en'">
+            <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0 ">
 
-            <!--LOOP OF COLORS-->
-            <div *ngFor="let color of  product_details.colors | keyvalue,let i=index" class="col-1 mx-2 ">
-              {{color.key}}
-              <img class="w-100 p-0 border" data-bs-toggle="tooltip" data-bs-placement="top"
-                data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key">
+              <!--LOOP OF COLORS-->
+              <div *ngFor="let color of  product_details.colors | keyvalue,let i=index" class="col-1 mx-2 ">
+                {{color.key}}
+                <img class="w-100 p-0 border" data-bs-toggle="tooltip" data-bs-placement="top"
+                  data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key">
+              </div>
+  
             </div>
 
-          </div>
+          </ng-container>
+
+          
+          <ng-container *ngIf="lang=='ar'">
+            <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0 ">
+
+              <!--LOOP OF COLORS-->
+              <div *ngFor="let color of  product_details.colors_ar | keyvalue,let i=index" class="col-1 mx-2 ">
+                {{color.key}}
+                <img class="w-100 p-0 border" data-bs-toggle="tooltip" data-bs-placement="top"
+                  data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key">
+              </div>
+  
+            </div>
+
+          </ng-container>
+
+          
 
         </div>
 
 
         <!-- size-->
-        <h5>Size</h5>
+        <h5>{{"SmallFoor.Size"|translate}}</h5>
         <div class="d-flex justify-content-center flex-wrap p-2 justify-content-md-start p-2 ">
 
           <div *ngFor="let siz of  product_details.size | keyvalue"
@@ -248,20 +286,20 @@
         </div>
         <!-- quntity-->
         <div class=" ">
-          <h5>Quantity</h5>
+          <h5>{{"SmallFoor.Quantity"|translate}}</h5>
           <span class="downe ">-</span>
           <input min="1" type="text" name="quantity" class="product-quantity" value="1" [max]="10">
           <span class="up ">+</span>
         </div>
       </div>
-      <div class="my-3 mx-2" *ngIf="product_details!=undefined" >
+      <div class="my-3 mx-2"  >
         <button
           class=" btn btn-warning bg-first rounded-1  col-12  col-md-10  col-lg-8 col-xl-5   py-3 text-white  btncart" (click)="addtocart()">
-          Add to Cart</button>
+          {{"SmallFoor.car"|translate}}</button>
       </div>
       <div class="mx-2">
         <button  class="btn btn-dark rounded-1 col-12  col-md-10  col-lg-8 col-xl-5   py-3 text-white ">
-          Add to Cart</button>
+          {{"SmallFoor.car"|translate}}</button>
       </div>
 
     </aside>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ICategory } from '../models/icategory';
 import { Iproduct } from '../models/iproduct';
 import { IsubCategory } from '../models/isub-category';
+import { Itest } from '../models/itest';
 
 
 @Injectable({
@@ -94,6 +95,10 @@ export class ProductsAPIService {
   getproductsbyid(id: string): Observable<Iproduct> {
     let product = doc(this.db, 'product/' + id);
     return docData(product, { idField: 'id' }) as Observable<Iproduct>;
+  }
+  getproductbyid(id: string): Observable<Itest> {
+    let product = doc(this.db, 'product/' + id);
+    return docData(product, { idField: 'id' }) as Observable<Itest>;
   }
 
 

@@ -81,7 +81,7 @@
                                         </a>
                                     </div>
                                     <div class="text-center">
-                                        <p>{{prd.name}}</p>
+                                        <p >{{lang=='ar'?prd.name_ar:prd.name}}</p>
                                         <div>
 
                                             <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency|eG}}</span>
@@ -113,7 +113,7 @@
                                         </a>
                                     </div>
                                     <div class="text-center">
-                                        <p>{{prd.name}}</p>
+                                        <p>{{lang=='ar'?prd.name_ar:prd.name}}</p>
                                         <div>
                                             <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency |eG}}</span>
                                             <span class="text-decoration-line-through fs-14">{{prd.old_price |currency|eG 
@@ -123,7 +123,7 @@
                                     <div class="ms-4">
                                         <ng-container *ngFor="let img of prd.imgs ,let i=index">
 
-                                            <img *ngIf="i>0&&i<=4" [src]="img" height="40px"
+                                            <img *ngIf="i>=0&&i<=4" [src]="img" height="40px"
                                                 class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                         </ng-container>
                                     </div>

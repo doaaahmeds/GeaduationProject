@@ -4,7 +4,11 @@ import { IsubCategory } from 'src/app/models/isub-category';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsAPIService } from 'src/app/services/products-api.service';
 import {TranslateService} from "@ngx-translate/core";
+
+import { LocalstorageeService } from 'src/app/services/localstoragee.service';
+
 import { SearchService } from 'src/app/services/search/search.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -14,6 +18,13 @@ export class HeaderComponent implements OnInit {
 
   subCategoryofBags : IsubCategory[] | undefined = undefined;
   subCategoryofShose : IsubCategory[] | undefined = undefined;
+
+  lang:string='';
+
+  constructor(private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService,private localstorage:LocalstorageeService){
+    this.lang = this.localstorage.getStatus();
+  }
+  
   isSearch : boolean = false;
   
 
@@ -29,8 +40,12 @@ export class HeaderComponent implements OnInit {
 
   
 
-  ngOnInit(): void {
 
+  ngOnInit(): void {
+    this.localstorage.watchStorage().subscribe(() => {
+      this.lang = this.localstorage.getStatus();
+      console.log(this.lang+'from header');
+    })
     this.getSubCatServ.getAllsubCatOfBags().subscribe((data: IsubCategory[])=>{
       this.subCategoryofBags = data
       // console.log(data);

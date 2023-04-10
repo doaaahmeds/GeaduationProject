@@ -8,6 +8,8 @@ import { ProductsAPIService } from 'src/app/services/products-api.service';
 import { SortComponent } from '../sort/sort.component';
 
 import { SortProductsService } from 'src/app/services/sort-products.service';
+import { LocalstorageeService } from 'src/app/services/localstoragee.service';
+import { TranslateService } from 'ngx-translate-core';
 
 
 @Component({
@@ -27,16 +29,23 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
   subscribes: Subscription[] = [];
   locationofurl: number = 0;
   S_id?: string | null;
+  lang:string='';
 
   constructor(
     private prodAPIService: ProductsAPIService,
     private sortProdsSer :SortProductsService,
     private router: Router,
-    private activatedRoutServ: ActivatedRoute,) { }
+    private activatedRoutServ: ActivatedRoute,
+    private localstorage:LocalstorageeService,
+  
+    ) { 
+      this.lang=this.localstorage.getStatus();
+    }
 
 
   ngOnInit(): void {
 
+   
 
     this.subscribes.push(this.activatedRoutServ.paramMap.subscribe((paramMap) => {
       let ID: string | null = paramMap.get('id')
@@ -104,6 +113,7 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
 
 
         }
+        
 
 
 
@@ -138,6 +148,10 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
         }
 
       }
+      this.localstorage.watchStorage().subscribe(() => {
+        this.lang = this.localstorage.getStatus();
+        console.log(this.lang+'secondaray');
+      })
     }))
 
   }
@@ -191,4 +205,7 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
   }
 
 }
+
+
+
 
