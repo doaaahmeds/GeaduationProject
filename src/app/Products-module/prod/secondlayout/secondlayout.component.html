@@ -52,16 +52,13 @@
                 <h6 *ngSwitchCase="1">{{infoCat.details[1]}}</h6>
             </ng-container>
 
-
-
-            <!-- <h6>{{infoSubCat.details[1]}}</h6> -->
         </div>
 
     </div>
 
     <article class=" d-md-flex container-fluid  ">
-
-        <app-sort (sendsort)="onrecivedSort($event)"  class="col-md-4  col-xl-3  me-1"></app-sort>
+       <!-- sort -->
+        <app-sort (sendsort)="onrecivedSort($event)"  (sendSortBySubCat)="RecivedSortBySubCat($event)"  [catId]="S_id" class="col-md-4  col-xl-3  me-1"></app-sort>
 
         <!-- products -->
         <section class="row  row-cols-2  row-cols-md-3  row-cols-lg-4  gx-2  text-center">
