@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { SearchComponent } from './search/search.component';
+
 
 const routes :Routes=[
   
@@ -27,6 +29,7 @@ const routes :Routes=[
    NavbarComponent,
    SingleproductComponent ,
    EgyptPipe,
+   SearchComponent,
   ],
   imports: [
     CommonModule,
