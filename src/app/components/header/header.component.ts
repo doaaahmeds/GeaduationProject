@@ -21,15 +21,14 @@ export class HeaderComponent implements OnInit {
 
   lang:string='';
 
-  constructor(private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService,private localstorage:LocalstorageeService){
+  constructor(private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService,private localstorage:LocalstorageeService,private searchService :SearchService){
     this.lang = this.localstorage.getStatus();
   }
   
   isSearch : boolean = false;
   
 
-  constructor(private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService,
-    private searchService :SearchService){}
+ 
   translatee(event:any){
     this.translateservice.use(event.target.value);
     console.log(event.target.value);
