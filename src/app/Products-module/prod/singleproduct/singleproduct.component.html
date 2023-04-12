@@ -1,4 +1,4 @@
-<section >
+<section  >
   <app-navbar></app-navbar>
   <main class=" d-block  d-md-flex  justify-content-center"  *ngIf="product_details!=undefined">
     <!-- slider -->
@@ -170,13 +170,11 @@
 
     <!-- side right -->
     <aside class="col-md-6 mt-5">
-      <div class="mb-4">
+      <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0 mb-4">
         <h4 class="fw-normal  text-center text-md-start mb-4"> 
          
           <span 
             class=" border-bottom border-4 border-dark pb-2 mb-5 ">{{lang=='ar'?product_details.name_ar:product_details.name}}</span> 
-         
-            
           </h4>
       </div>
 
@@ -213,15 +211,15 @@
         <a href="#" class="text-black text-decoration-none">
           <div class="col-9">
             <div>
-              <span>Pay over 3 payments of</span>
+              <span>{{"SmallFoor.pay"|translate}}</span>
               <strong class="text-danger "> 174.75 EGP </strong>
-              <span>with your bank card.</span>
+              <span>{{"SmallFoor.tit"|translate}}</span>
             </div>
             <div>
-              <span class=" fw-bold">0 interest. 0 registration.</span>
-              <a href="#" class="text-black fs-7">learn more.</a>
+              <span class=" fw-bold">{{"SmallFoor.poster"|translate}}</span>
+              <a href="#" class="text-black fs-7">{{"SmallFoor.learn"|translate}}</a>
             </div>
-            <span class="fs-7">(amount may vary)</span>
+            <span class="fs-7">{{"SmallFoor.t1"|translate}}</span>
           </div>
           <div class="my-auto   p-2">
             <img class="w-20" src="assets/imges/sympl-logo.svg" alt="" srcset="">
@@ -237,11 +235,15 @@
       <div class="  text-center text-md-start">
 
         <div class=" mt-3">
+          
 
-          <h6>{{"SmallFoor.Color"|translate}}</h6>
+          
 
           <ng-container *ngIf="lang=='en'">
+           
+            <h5 class="d-flex  justify-content-center justify-content-md-start p-1 ps-md-0 ">{{"SmallFoor.Color"|translate}}</h5>
             <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0 ">
+              
 
               <!--LOOP OF COLORS-->
               <div *ngFor="let color of  product_details.colors | keyvalue,let i=index" class="col-1 mx-2 ">
@@ -256,7 +258,7 @@
 
           
           <ng-container *ngIf="lang=='ar'">
-            <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0 ">
+            <h5 class="d-flex  justify-content-center justify-content-md-start p-1 ps-md-0 ">{{"SmallFoor.Color"|translate}}</h5>            <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0 ">
 
               <!--LOOP OF COLORS-->
               <div *ngFor="let color of  product_details.colors_ar | keyvalue,let i=index" class="col-1 mx-2 ">
@@ -275,7 +277,12 @@
 
 
         <!-- size-->
-        <h5>{{"SmallFoor.Size"|translate}}</h5>
+       
+          <h5 class="d-flex  justify-content-center justify-content-md-start p-1 ps-md-0 ">{{"SmallFoor.Size"|translate}}</h5> 
+
+        
+        
+        
         <div class="d-flex justify-content-center flex-wrap p-2 justify-content-md-start p-2 ">
 
           <div *ngFor="let siz of  product_details.size | keyvalue"
@@ -285,11 +292,13 @@
           </div>
         </div>
         <!-- quntity-->
-        <div class=" ">
-          <h5>{{"SmallFoor.Quantity"|translate}}</h5>
-          <span class="downe ">-</span>
+        <h5 class="d-flex  justify-content-center justify-content-md-start p-1 ps-md-0 ">{{"SmallFoor.Quantity"|translate}}</h5> 
+
+        <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0">
+
+          <span class="downe">-</span>
           <input min="1" type="text" name="quantity" class="product-quantity" value="1" [max]="10">
-          <span class="up ">+</span>
+          <span class="up">+</span>
         </div>
       </div>
       <div class="my-3 mx-2"  >

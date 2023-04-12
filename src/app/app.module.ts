@@ -46,9 +46,11 @@ import { ShippingComponent } from './components/shipping/shipping.component';
     HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage:'en',
+      
       loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
+          
           deps: [HttpClient]
       }
   }),

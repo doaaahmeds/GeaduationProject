@@ -14,15 +14,20 @@ import { LocalstorageeService } from './services/localstoragee.service';
 export class AppComponent {
   title = 'dejavu';
   lang:string='';
+  
   constructor(private translateservice: TranslateService,private local:LocalstorageeService) {
     this.lang=this.local.getStatus();
   }
   
   translate(event:any){   
-    this.local.setStatus(event.target.value);
-     this.lang= this.local.getStatus();
-    this.translateservice.use(this.lang!);
-   console.log(this.lang,'modeul');
+    if(event.target.value=='ar'||event.target.value=='en'){
+      this.local.setStatus(event.target.value);
+      this.lang= this.local.getStatus();
+     this.translateservice.use(this.lang!);
+    console.log(this.lang,'modeul');
+
+    }
+   
    
   }
   
