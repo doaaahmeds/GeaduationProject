@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 
 import { CartService } from './services/cart.service';
+import { LocalstorageeService } from './services/localstoragee.service';
 
 
 @Component({
@@ -12,9 +13,17 @@ import { CartService } from './services/cart.service';
 })
 export class AppComponent {
   title = 'dejavu';
-  constructor(private translateservice: TranslateService) {}
-  translate1(event:any){
-    this.translateservice.use(event.target.value);
+  lang:string='';
+  constructor(private translateservice: TranslateService,private local:LocalstorageeService) {
+    this.lang=this.local.getStatus();
+  }
+  
+  translate(event:any){   
+    this.local.setStatus(event.target.value);
+     this.lang= this.local.getStatus();
+    this.translateservice.use(this.lang!);
+   console.log(this.lang,'modeul');
+   
   }
   
 }

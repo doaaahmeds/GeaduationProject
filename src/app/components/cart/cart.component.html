@@ -1,7 +1,7 @@
 <ng-container>
   <div class="row my-3">
-    <p class="col text-start fs-6 fw-normal">My Cart</p>
-    <p class="col-2 fs-6 fw-normal pointer">Close</p>
+    <p class="col text-start fs-6 fw-normal">{{"cart.My Cart"|translate}}</p>
+    <p class="col-2 fs-6 fw-normal pointer">{{"cart.Close"|translate}}</p>
   </div>
   <hr>
   <div class="row">
@@ -19,22 +19,22 @@
   </div>
   <hr>
   <div class="row mt-4">
-    <p class="col">Order Special Instructions</p>
+    <p class="col">{{"cart.Order"|translate}}</p>
     <p class="col-1 pointer" (click)="setOrderSpecial()">+</p>
     <textarea class="form-control mx-2" id="floatingTextarea" style="height: 200px" *ngIf="isOpen"></textarea>
   </div>
   <hr>
   <div class="pt-3">
     <div class="row">
-      <p class="col">Subtotal</p>
+      <p class="col">{{"cart.Subtotal"|translate}}</p>
       <p class="col-3">LE 649.00</p>
     </div>
     <div class="row">
-      <p class="col">Shipping</p>
-      <p class="col-6 ps-4">Calculated at checkout</p>
+      <p class="col">{{"cart.Shipping"|translate}}</p>
+      <p class="col-6 ps-4">{{"cart.Calculated"|translate}}</p>
     </div>
     <div class="row mt-3">
-      <p class="col fs-5">Total</p>
+      <p class="col fs-5">{{"cart.Total"|translate}}</p>
       <p class="col-3 fs-6 pe-2">LE 649.00</p>
     </div>
       <button class="btn w-100 mb-3 px-3 py-2 checkout" (click)="GoToCheckout()">Check Out → </button>
@@ -46,11 +46,11 @@
 <ng-container *ngIf="false">
   <section>
     <div class="row my-3">
-      <p class="col text-start fs-6 fw-normal">My Cart</p>
-      <p class="col-2 fs-6 fw-normal">Close</p>
+      <p class="col text-start fs-6 fw-normal">{{"cart.My Cart"|translate}}</p>
+      <p class="col-2 fs-6 fw-normal">{{"cart.Close"|translate}}</p>
     </div>
     <hr>
-    <div class="m-2">Your cart is currently empty.</div>
+    <div class="m-2">{{"cart.Yourcart"|translate}}</div>
   </section>
 </ng-container>
 

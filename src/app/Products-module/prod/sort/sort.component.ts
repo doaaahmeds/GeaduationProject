@@ -1,7 +1,8 @@
+
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { IsubCategory } from 'src/app/models/isub-category';
 import { ProductsAPIService } from 'src/app/services/products-api.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sort',
@@ -16,7 +17,9 @@ export class SortComponent  implements OnChanges     {
    @Output() sendsort: EventEmitter<any>;
    @Output() sendSortBySubCat: EventEmitter<any>;
 
-   constructor(private prodAPIServ :ProductsAPIService ){
+
+
+   constructor(private prodAPIServ :ProductsAPIService ,private translate:TranslateService){
     this.sendsort = new EventEmitter<any>()
     this.sendSortBySubCat = new EventEmitter<any>()
   
@@ -39,6 +42,7 @@ export class SortComponent  implements OnChanges     {
     if(data.length>1){
       this.SubCategories=data;
 
+
     }else if(this.catId=="nuWveyFOC62RoDdaFbqK") {
 
       this.prodAPIServ.getAllSubCat().subscribe(
@@ -48,12 +52,9 @@ export class SortComponent  implements OnChanges     {
          error:err=>console.log(err), 
         })
     }
-  
-
     
   })
   
   }
-
 
 }

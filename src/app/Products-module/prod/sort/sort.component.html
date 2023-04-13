@@ -1,13 +1,14 @@
-<button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightOfSort"
-  aria-controls="offcanvasRightOfSort" class="text-white d-md-none bg-black py-2 mb-3 w-100 ">Filter</button>
 
-<div class="offcanvas offcanvas-end w-75 d-md-none" tabindex="-1" id="offcanvasRightOfSort"
+<button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightOfSort"
+  aria-controls="offcanvasRightOfSort" class="text-white d-md-none bg-black py-2 mb-3 w-100 ">{{"home.Filter"|translate}}</button>
+
+ <div class="offcanvas offcanvas-end w-75 d-md-none" tabindex="-1" id="offcanvasRightOfSort"
   aria-labelledby="offcanvasRightLabel">
   
   <div class="offcanvas-header  "> 
       <h6 id="offcanvasRightLabel" class="h6 m-auto">Refine</h6>
     <button type="button" class="btn-close text-reset d-block" data-bs-dismiss="offcanvas" aria-label="Close"></button>
- 
+
 
 
   </div>
@@ -20,7 +21,7 @@
         <h2 class="accordion-header" id="flush-headingOne">
           <button class="accordion-button collapsed border border-1 shadow-sm" type="button" data-bs-toggle="collapse"
             data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-            Sort
+            {{"home.Filter"|translate}}
           </button>
         </h2>
         <div id="flush-collapseOne" class="accordion-collapse collapse " aria-labelledby="flush-headingOne">
@@ -30,24 +31,24 @@
             <div class="form-check">
               <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
                 name="sort" value="high">
-              <label for="" class="form-check-label">Price, low to high</label>
+              <label for="" class="form-check-label">{{"home.Pricelowhigh"|translate}}</label>
             </div>
             <div class="form-check">
               <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
                 name="sort" value="low">
-              <label for="" class="form-check-label">Price, high to low</label>
+              <label for="" class="form-check-label">{{"home.Pricehighlow"|translate}}</label>
             </div>
 
 
             <div class="form-check">
               <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
                 name="sort" value="A-Z">
-              <label for="" class="form-check-label">Alphabetically, A-Z</label>
+              <label for="" class="form-check-label">{{"home.A_Z"|translate}}</label>
             </div>
             <div class="form-check">
               <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
                 name="sort" value="Z-A">
-              <label for="" class="form-check-label">Alphabetically, Z-A</label>
+              <label for="" class="form-check-label">{{"home.Z-A"|translate}}</label>
             </div>
           </div>
         </div>
@@ -57,7 +58,7 @@
         <h2 class="accordion-header" id="flush-headingTwo">
           <button class="accordion-button collapsed border border-1 shadow-sm" type="button" data-bs-toggle="collapse"
             data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-            Filter by Color
+            {{"home.FilterColor"|translate}}
           </button>
         </h2>
         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo">
@@ -65,27 +66,27 @@
             <div class="form-check">
               <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
                 name="sort" value="Black">
-              <label for="" class="form-check-label"> Black</label>
+              <label for="" class="form-check-label"> {{"home.Black"|translate}}</label>
             </div>
             <div class="form-check">
               <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
                 name="sort" value="Brown">
-              <label for="" class="form-check-label"> Brown</label>
+              <label for="" class="form-check-label"> {{"home.Brown"|translate}}</label>
             </div>
             <div class="form-check">
               <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
                 name="sort" value="Burgundy">
-              <label for="" class="form-check-label"> Burgundy</label>
+              <label for="" class="form-check-label">  {{"home.Burgundy"|translate}}</label>
             </div>
             <div class="form-check">
               <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
                 name="sort" value="Camel">
-              <label for="" class="form-check-label"> Camel</label>
+              <label for="" class="form-check-label"> {{"home.Camel"|translate}}</label>
             </div>
             <div class="form-check">
               <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
                 name="sort" value="Snake">
-              <label for="" class="form-check-label"> Snake</label>
+              <label for="" class="form-check-label"> {{"home.Snake"|translate}}</label>
             </div>
 
           </div>
@@ -97,7 +98,7 @@
         <h2 class="accordion-header" id="flush-headingThree" *ngIf="SubCategories.length>1" >
           <button class="accordion-button collapsed border border-1 shadow-sm" type="button" data-bs-toggle="collapse"
             data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-            Categories
+            {{"home.Categories"|translate}}  
           </button>
         </h2>
         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree">
@@ -112,10 +113,11 @@
                 [value]="subCat.id">
               <label for="" class="form-check-label">{{subCat.name}}</label>
             </div>
-          </div>
+ </div>
         </div>
       </div>
     </div>
+
 
 
   </div>
@@ -230,3 +232,4 @@
   </div>
 
 </aside>
+

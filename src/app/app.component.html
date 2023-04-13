@@ -1,7 +1,8 @@
 
-<section >
-    <div >
-      <app-header  (change)="translate1($event)"></app-header>
+
+<section class="container-fluid row"  (change)="translate($event)" [dir]="'dir'|translate">
+    <div class="col">
+      <app-header ></app-header>
       <router-outlet></router-outlet>
       <app-footer></app-footer>
     </div>
