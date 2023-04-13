@@ -156,6 +156,17 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
 
   }
 
+  RecivedSortBySubCat(  val: string) {
+
+    console.log(val);
+    if(val=="Remove"){
+      this.products=this.Orginproducts
+    }else{
+       this.products=this.Orginproducts.filter(product =>product.subid==val);
+    }
+   
+  }
+
 
   onrecivedSort(val: string) {
 

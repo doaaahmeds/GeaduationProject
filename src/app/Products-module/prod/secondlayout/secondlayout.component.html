@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<section class="mx-5  pe-md-2 px-xl-5 fixd-width mx-auto ">
+<section class="mx-5  pe-md-2 px-xl-5 fixd-width mx-auto min-vh-100 ">
 
     <aside>
         <div class="h1. mt-2">
@@ -39,7 +39,7 @@
 
     <div class="d-flex container-fluid ">
         <div class="col-md-4  col-xl-3  ">
-            <h6 class="d-none d-md-block">{{lang=='ar'?'ازاله الترتيب':'Remove Filter'}}</h6>
+            <!-- <h6 class="d-none d-md-block">{{lang=='ar'?'ازاله الترتيب':'Remove Filter'}}</h6> -->
         </div>
 
         <div [ngSwitch]="locationofurl" class="d-none d-md-block text-start ms-3">
@@ -52,16 +52,13 @@
                 <h6 *ngSwitchCase="1">{{lang=='ar'?infoCat.details_ar[0]:infoCat.details[1]}}</h6>
             </ng-container>
 
-
-
-            <!-- <h6>{{infoSubCat.details[1]}}</h6> -->
         </div>
 
     </div>
 
     <article class=" d-md-flex container-fluid  ">
-
-        <app-sort (sendsort)="onrecivedSort($event)"  class="col-md-4  col-xl-3  me-1"></app-sort>
+       <!-- sort -->
+        <app-sort (sendsort)="onrecivedSort($event)"  (sendSortBySubCat)="RecivedSortBySubCat($event)"  [catId]="S_id" [lang]="lang" [ngClass]="{'ms-3':lang=='ar'}" class="col-md-4  col-xl-3  me-1"  ></app-sort>
 
         <!-- products -->
         <section class="row  row-cols-2  row-cols-md-3  row-cols-lg-4  gx-2  text-center">
