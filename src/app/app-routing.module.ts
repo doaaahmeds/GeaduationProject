@@ -6,6 +6,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SingleproductComponent } from './Products-module/prod/singleproduct/singleproduct.component';
 import { ShippingComponent } from './components/shipping/shipping.component';
 import { SearchComponent } from './Products-module/prod/search/search.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 const routes: Routes = [
 
@@ -18,8 +20,11 @@ const routes: Routes = [
   },
   {path:'Checkout',component:CheckoutComponent},
   {path:'Shipping',component:ShippingComponent},
-  {path:'search',component:SearchComponent},
-  {path:'**',component:NotFoundComponent}
+  {path:'search',component:SearchComponent}, 
+  {path:'login', component:LoginComponent},
+  {path:'signup', component:SignUpComponent},
+  {path:'**',component:NotFoundComponent},
+ 
 ];
 
 @NgModule({
