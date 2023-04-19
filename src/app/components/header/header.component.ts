@@ -8,6 +8,7 @@ import {TranslateService} from "@ngx-translate/core";
 import { LocalstorageeService } from 'src/app/services/localstoragee.service';
 
 import { SearchService } from 'src/app/services/search/search.service';
+import { AuthenticationService } from 'src/app/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,7 @@ export class HeaderComponent implements OnInit {
 
   lang:string='';
 
-  constructor(private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService,private localstorage:LocalstorageeService,private searchService :SearchService){
+  constructor(public authService : AuthenticationService, private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService,private localstorage:LocalstorageeService,private searchService :SearchService){
     this.lang = this.localstorage.getStatus();
   }
   
@@ -57,7 +58,11 @@ export class HeaderComponent implements OnInit {
 
 
   }
-
+  logout(){
+    this.authService.logout().then(()=>{
+      this.router.navigate(['login'])
+    })
+  }
 
 
   

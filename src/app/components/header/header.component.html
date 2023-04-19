@@ -68,11 +68,15 @@
                                 <i class="fa-solid fa-magnifying-glass "></i>
                         </li>
 
+                        <li class="d-none d-lg-inline mx-3" *ngIf ="authService.currentuser$ | async as user; ngIfElse loginBut">
+                            <a [routerLink]="['login']" routerLinkActive="active" class="text-dark"  (click)="logout()">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            </a>
+                        </li>
                         <li class="d-none d-lg-inline mx-3">
-                            <a href="" class="text-dark ">
+                            <a  [routerLink]="['login']" routerLinkActive="active" class="text-dark ">
                                 <i class="fa-regular fa-user "></i></a>
                         </li>
-
                         <li>
 
                             <a href="" class="text-dark me-3 ">
