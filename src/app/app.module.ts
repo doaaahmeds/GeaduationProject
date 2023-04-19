@@ -19,8 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ShippingComponent } from './components/shipping/shipping.component';
-import { LoginComponent } from './components/login/login.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
+
 
 
 @NgModule({
@@ -32,13 +31,11 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     HomeComponent,
     FilterPipe,
     EGPipe,
- 
    // EgyptPipe
     CartComponent,
     CheckoutComponent,
     ShippingComponent,
-    SignUpComponent,
-    LoginComponent
+    
 
   ],
   imports: [
@@ -47,7 +44,6 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     FormsModule,
     TranslateModule,
     HttpClientModule,
-    
     TranslateModule.forRoot({
       defaultLanguage:'en',
       
