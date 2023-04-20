@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { IsubCategory } from 'src/app/models/isub-category';
 import { CartService } from 'src/app/services/cart.service';
@@ -13,9 +13,12 @@ export class HeaderComponent implements OnInit {
 
   subCategoryofBags : IsubCategory[] | undefined = undefined;
   subCategoryofShose : IsubCategory[] | undefined = undefined;
+  isOpen:boolean = false;
+  @Output() openCart:EventEmitter<boolean>;
 
-
-  constructor(private getSubCatServ:ProductsAPIService , private router:Router){}
+  constructor(private getSubCatServ:ProductsAPIService , private router:Router){
+    this.openCart = new EventEmitter<boolean>();
+  }
 
   ngOnInit(): void {
 
@@ -40,6 +43,11 @@ export class HeaderComponent implements OnInit {
 
   // }
 
+  OpenCartFun()
+  {
+    this.isOpen = !this.isOpen;
+    this.openCart.emit(this.isOpen);
+  }
 
 
 

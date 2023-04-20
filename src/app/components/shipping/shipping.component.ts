@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-shipping',
@@ -7,7 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./shipping.component.scss']
 })
 export class ShippingComponent {
-  constructor(private router:Router){}
+  products = this.cartService.getProducts();
+  constructor(private router:Router,private cartService:CartService){}
 
   editEmail()
   {

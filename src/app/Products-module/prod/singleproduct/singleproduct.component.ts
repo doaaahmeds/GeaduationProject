@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Icart } from 'src/app/models/icart';
 import { Iproduct } from 'src/app/models/iproduct';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsAPIService } from 'src/app/services/products-api.service';
@@ -13,9 +12,8 @@ import { ProductsAPIService } from 'src/app/services/products-api.service';
 export class SingleproductComponent implements OnInit {
 
   product_details:Iproduct | undefined = undefined;
-  cart:Iproduct[] = [];
   imges:string[]=[];
-  constructor(private prodAPIService:ProductsAPIService,private activatedRoutServ:ActivatedRoute){}
+  constructor(private prodAPIService:ProductsAPIService,private activatedRoutServ:ActivatedRoute,private cartService:CartService){}
   ngOnInit(): void {
   let productid:string;
     this.activatedRoutServ.paramMap.subscribe((paramMap=>{
@@ -60,8 +58,9 @@ export class SingleproductComponent implements OnInit {
   //   localStorage.setItem('cartItems',JSON.stringify(this.cart));
   // }
 
-  addtocart(){
-
+  addtocart(product:Iproduct)
+  {
+    this.cartService.addtoCart(product);
   }
 
 }

@@ -8,4 +8,15 @@ import { CartService } from './services/cart.service';
 })
 export class AppComponent {
   title = 'dejavu';
+  receivedOpenCart:boolean = false;
+
+  onOpenCart(isopenCart:boolean)
+  {
+    this.receivedOpenCart = isopenCart;
+  }
+
+  onCloseCart(isCloseCart:boolean)
+  {
+    this.receivedOpenCart = isCloseCart;
+  }
 }
