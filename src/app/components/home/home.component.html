@@ -1,4 +1,4 @@
-<section>
+<section [dir]="'dir'|translate ">
     <div id="carouselExampleControls" class="carousel slide mb-4 " data-bs-ride="carousel">
         <div class="carousel-inner ">
             <div class="carousel-item active  ">
@@ -40,7 +40,7 @@
                         <div class="containerimg">
                             <a [routerLink]="['/products',links[0]]"> <img src="assets/imges/Dejavu-Shoes.png"
                                     (click)="AllCategory()" class="w-100 "></a>
-                            <div class="centered">Shoes</div>
+                            <div class="centered"> {{"headr.Shoes"|translate}}</div>
                         </div>
 
 
@@ -51,7 +51,7 @@
                         <div class="containerimg">
                             <a [routerLink]="['/products', links[1]]"><img src="assets/imges/Dejavu-Bags.png"
                                     class="w-100" (click)="AllCategory()"></a>
-                            <div class="centered">Bags</div>
+                            <div class="centered">{{"headr.Bags"|translate}}</div>
                             <!-- <span class="dv2">Bags</span> -->
                         </div>
 
@@ -63,8 +63,8 @@
         </div>
         <div class="landing mb-5 pb-3">
             <div class="text-center mb-5 pb-4">
-                <h5><a href="#">New Collection</a> </h5>
-            </div>
+                <h5><a href="#">{{"home.NewCollection"|translate}}</a> </h5>
+            </div> 
 
             <div id="caros" class="carousel slide mb-4" data-bs-ride="carousel">
                 <div class="carousel-inner ">
@@ -81,11 +81,11 @@
                                         </a>
                                     </div>
                                     <div class="text-center">
-                                        <p>{{prd.name}}</p>
+                                        <p >{{lang=='ar'?prd.name_ar:prd.name}}</p>
                                         <div>
 
-                                            <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency}}</span>
-                                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency
+                                            <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency|eG}}</span>
+                                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency |eG
                                                 }}</span>
 
                                         </div>
@@ -113,17 +113,17 @@
                                         </a>
                                     </div>
                                     <div class="text-center">
-                                        <p>{{prd.name}}</p>
+                                        <p>{{lang=='ar'?prd.name_ar:prd.name}}</p>
                                         <div>
-                                            <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency }}</span>
-                                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency
+                                            <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency |eG}}</span>
+                                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency|eG 
                                                 }}</span>
                                         </div>
                                     </div>
                                     <div class="ms-4">
                                         <ng-container *ngFor="let img of prd.imgs ,let i=index">
 
-                                            <img *ngIf="i>0&&i<=4" [src]="img" height="40px"
+                                            <img *ngIf="i>=0&&i<=4" [src]="img" height="40px"
                                                 class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                         </ng-container>
                                     </div>
@@ -148,7 +148,7 @@
         <div class="shop mb-5 pb-3">
             <div class="row">
                 <div class="text-center mb-3 pb-4">
-                    <h5><a href="#">Shop the Look</a> </h5>
+                    <h5><a href="#">{{"home.ShopLook" |translate}}</a> </h5>
                 </div>
                 <div class="col-sm-12 col-md col-lg">
                     <a href="#">
@@ -172,7 +172,7 @@
 
         <div class="shoes mb-5 pb-3">
             <div class="text-center mb-5 pb-4">
-                <h5><a href="#">More Items on Sale</a> </h5>
+                <h5><a href="#">{{"home.MoreItems"|translate}}</a> </h5>
             </div>
             <div class="row content m-5">
 
@@ -194,7 +194,7 @@
                                             <p>{{prd.name}}</p>
                                             <div>
                                                 <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency}}</span>
-                                                <span class="text-decoration-line-through fs-14">{{prd.old_price |currency
+                                                <span class="text-decoration-line-through fs-14">{{prd.old_price |currency 
                                                     }}</span>
                                             </div>
                                         </div>
@@ -224,13 +224,13 @@
                                             <p>{{prd.name}}</p>
                                             <div>
                                                 <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency }} </span>
-                                                <span class="text-decoration-line-through fs-14">{{prd.old_price |currency
+                                                <span class="text-decoration-line-through fs-14">{{prd.old_price |currency 
                                                     }}</span>
                                             </div>
                                         </div>
                                         <div class="ms-4">
                                             <ng-container *ngFor="let img of prd.imgs ,let i=index">
-
+    
                                                 <img *ngIf="i>0&&i<=4" [src]="img" height="40px"
                                                     class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                             </ng-container>
@@ -258,7 +258,7 @@
 
         <div class="blogs mb-3 pb-2">
             <div class="text-center mb-5 pb-4">
-                <h5><a href="#">Blog Posts</a> </h5>
+                <h5><a href="#">{{"home.Blog"|translate}}</a> </h5>
             </div>
 
             <div class="row content m-5">
@@ -269,17 +269,13 @@
                         </a>
                     </div>
                     <div class="text-center">
-                        <h5>Trend Alert F/W '23</h5>
-                        <p>This year, fashion is prioritizing comfort.We combined the two to make sure you're
-                            comfortable
-                            without compromising your style. We've done this by including lots of chunky soles and heels
-                            for
-                            added height and keeping warm...<a href="#">Read More</a></p>
+                        <h5>{{'home.thtitle'|translate}}</h5>
+                        <p>{{'home.firstblog'|translate}}...<a href="#">{{"home.read"|translate}}</a></p>
                     </div>
                     <hr>
                     <div class="text-center">
-                        <p>Posted on Jan 31, 2023</p>
-                        <a href="#">Winter 2023</a>
+                        <p>{{'home.fpost'|translate}}</p>
+                        <a href="#">{{'home.flink'|translate}}</a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg">
@@ -289,18 +285,15 @@
                         </a>
                     </div>
                     <div class="text-center">
-                        <h5>Shoes for every occasion: Mules</h5>
-                        <p>Time is running out, enjoy our offers while you still can! Shoes for every occasion with
-                            Dejavu:
-                            Mules edition When it comes to shoes, there are thousands of options... <a href="#">Read
-                                More</a>
+                        <h5>{{'home.titleone'|translate}}</h5>
+                        <p>{{'home.secondblog'|translate}}... <a href="#">{{'home.read'|translate}}</a>
                         </p>
                     </div>
                     <hr>
                     <div class="text-center">
-                        <p>Posted on Sep 26, 2022</p>
-                        <a href="#">Must Haves</a> <a href="#">summer
-                        </a>
+                        <p>{{'home.spost'|translate}}</p>
+                        <a href="#">{{'home.slink'|translate}}</a>
+                      
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg">
@@ -314,18 +307,13 @@
                         </a>
                     </div>
                     <div class="text-center">
-                        <h5>Top Trends – Summer 2022</h5>
-                        <p>After long months of cold weather clothes, it is an extremely pleasant feeling of freedom to
-                            be
-                            able to wear colorful and lightweight shoes again, and this is exactly what we have in store
-                            for
-                            you</p>
+                        <h5>{{'home.titetwo'|translate}}</h5>
+                        <p>{{'home.thblog'|translate}}</p>
                     </div>
                     <hr>
                     <div class="text-center">
-                        <p>Posted on May 30,2022</p>
-                        <a href="#">Bags</a> <a href="#"> Shoes</a><a href="#"> Spring</a><a href="#">summer</a>
-
+                        <p>{{'home.tpost'|translate}}</p>
+                        <a href="#">{{"headr.Bags"|translate}}</a> <a href="#"> {{"headr.Shoes"|translate}}</a><a href="#"> {{"home.tlink"|translate}}</a>
                     </div>
 
                 </div>

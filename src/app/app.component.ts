@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
+
+import {TranslateService} from "@ngx-translate/core";
+
 import { CartService } from './services/cart.service';
+import { LocalstorageeService } from './services/localstoragee.service';
+
 
 @Component({
   selector: 'app-root',
@@ -9,6 +14,21 @@ import { CartService } from './services/cart.service';
 export class AppComponent {
   title = 'dejavu';
   receivedOpenCart:boolean = false;
+  lang:string='';
+
+  constructor(private translateservice: TranslateService,private local:LocalstorageeService) {
+    this.lang=this.local.getStatus();
+  }
+
+  translate(event:any){
+    if(event.target.value=='ar'||event.target.value=='en'){
+      this.local.setStatus(event.target.value);
+      this.lang= this.local.getStatus();
+      this.translateservice.use(this.lang!);
+      console.log(this.lang,'modeul');
+    }
+  }
+
 
   onOpenCart(isopenCart:boolean)
   {

@@ -1,7 +1,7 @@
 <section *ngIf="products.length>0">
   <div class="row my-3">
-    <p class="col text-start fs-6 fw-normal">My Cart</p>
-    <p class="col-2 fs-6 fw-normal pointer" (click)="CloseCartFun()">Close</p>
+    <p class="col text-start fs-6 fw-normal">{{"cart.My Cart"|translate}}</p>
+    <p class="col-2 fs-6 fw-normal pointer" (click)="CloseCartFun()">{{"cart.Close"|translate}}</p>
   </div>
   <hr>
 <ng-container *ngFor="let product of products">
@@ -21,25 +21,24 @@
 </ng-container>
   <hr>
   <div class="row mt-4">
-    <p class="col">Order Special Instructions</p>
+    <p class="col">{{"cart.Order"|translate}}</p>
     <p class="col-1 pointer" (click)="setOrderSpecial()">+</p>
     <textarea class="form-control mx-2" id="floatingTextarea" style="height: 200px" *ngIf="isOpen"></textarea>
   </div>
   <hr>
   <div class="pt-3">
     <div class="row">
-      <p class="col">Subtotal</p>
+      <p class="col">{{"cart.Subtotal"|translate}}</p>
       <p class="col-3">LE {{totalPrice*count}}.00</p>
     </div>
     <div class="row">
-      <p class="col">Shipping</p>
-      <p class="col-6 ps-4">Calculated at checkout</p>
+      <p class="col">{{"cart.Shipping"|translate}}</p>
+      <p class="col-6 ps-4">{{"cart.Calculated"|translate}}</p>
     </div>
     <div class="row mt-3">
-      <p class="col fs-5">Total</p>
-      <!-- <ng-container *ngFor="let product of products"> -->
+
+      <p class="col fs-5">{{"cart.Total"|translate}}</p>
       <p class="col-3 fs-6 pe-2">LE {{totalPrice*count}}.00</p>
-    <!-- </ng-container> -->
     </div>
     <ng-container>
       <button class="btn w-100 mb-3 px-3 py-2 checkout" (click)="GoToCheckout()">Check Out → </button>
@@ -52,11 +51,11 @@
 <section *ngIf="products.length==0">
   <section>
     <div class="row my-3">
-      <p class="col text-start fs-6 fw-normal">My Cart</p>
-      <p class="col-2 fs-6 fw-normal pointer" (click)="CloseCartFun()">Close</p>
+      <p class="col text-start fs-6 fw-normal">{{"cart.My Cart"|translate}}</p>
+      <p class="col-2 fs-6 fw-normal pointer" (click)="CloseCartFun()">{{"cart.Close"|translate}}</p>
     </div>
     <hr>
-    <div class="m-2">Your cart is currently empty.</div>
+    <div class="m-2">{{"Your cart is currently empty."|translate}}</div>
   </section>
 </section>
 

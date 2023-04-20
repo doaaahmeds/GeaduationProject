@@ -1,0 +1,138 @@
+{
+    "dir":"ltr",
+    "headr":
+    {
+        "Home":"Home",
+        "Shoes":"Shoes",
+        "Bags":"Bags",
+        "LE":"LE",
+        "Offers":"Offers",
+        "AR":"Arabic",
+        "EN":"English"
+       
+
+    },
+    "home":{
+        "NewCollection":"New Collection",
+        "ShopLook":"Shop the Look",
+        "MoreItems":"More Items on Sale",
+        "Blog":"Blog Posts",
+        "read":"Read More",
+        "titleone":"Shoes for every occasion: Mules ",
+        "firstblog":"This year, fashion is prioritizing comfort.We combined the two to make sure you're comfortable without compromising your style. We've done this by including lots of chunky soles and heels for added height and keeping warm",
+        "titetwo":"Top Trends – Summer 2022  ",
+        "secondblog":"Time is running out, enjoy our offers while you still can! Shoes for every occasion with Dejavu: Mules edition When it comes to shoes, there are thousands of options",
+        "thblog":"After long months of cold weather clothes, it is an extremely pleasant feeling of freedom to be able to wear colorful and lightweight shoes again, and this is exactly what we have in store for you",
+        "thtitle":"Trend Alert F/W '23",
+        "fpost":"Posted on May 30,2022",
+        "spost":"Posted on Sep 26, 2022",
+        "tpost":"Posted on Jan 31, 2023",
+        "flink":"Winter 2023",
+        "slink":"Must Havessummer",
+        "tlink":"Summer",
+        "Filter":"Filter",
+        "Pricelowhigh":"Price, low to high",
+        "Pricehighlow":"Price, high to low",
+        "A_Z":"Alphabetically, A-Z" ,
+        "Z-A":"Alphabetically, Z-A" ,
+        "Sort":"Sort",
+        "FilterColor":"Filter by Color",
+        "Black":"Black",
+        "Brown":"Brown",
+         "Burgundy":"Burgundy",
+         "Camel":"Camel",
+         "Snake":"Snake",
+         "Categories":"Categories",
+         "Ankle boots":"Ankle boots",
+         "Half Boots":"Half Boots",
+         "High Boots":"High Boots",
+         "cart":"Add to cart",
+         "Refine" :"Refine" 
+         
+    },
+    "Fotter":{
+        "POLICY":"POLICY",
+        "Delivery":"Delivery Information",
+        "Privacy":"Privacy Policy",
+        "Terms":"Terms of Service",
+        "Refund":"Refund Policy",
+        "ABOUT":"ABOUT US",
+        "FAQ":"FAQ",
+        "Locations":"Store Locations",
+        "Search":"Search",
+        "Contact":"Contact Us",
+        "CONNECTUS":"CONNECT WITH US",
+        "title":"Enter your email to sign up to our newsletter:",
+        "btn":"Join",
+        "placce":"join our mailing list",
+        "Dejavu":"Dejavu"
+
+    },
+    "SmallFoor":{
+        "Pay":"Pay over 3 payments of",
+        "tit":"with your bank card.",
+        "poster":"0 interest. 0 registration.",
+        "learn":"learn more",
+        "t1":"(amount may vary)",
+        "Quantity":"Quantity",
+        "Size":"Size",
+        "Color":"Color",
+        "car":"Add To cart"
+
+    },
+    "policy":{
+        "p1":"EASY RETURN POLICY",
+        "p2":"14 DAYS EXCHANGE SERVICE",
+        "p3":"EASY RETURN POLICY",
+        "p4":"14 DAYS EXCHANGE SERVICE"
+
+    },
+    "cart":{
+        "My Cart":"My Cart",
+        "Close":"Close",
+        "Order":"Order Special Instructions",
+        "Subtotal":"Subtotal",
+        "Shipping":"Shipping",
+        "Calculated":"Calculated at checkout",
+        "Total":"Total",
+        "Check ":"Check Out → ",
+        "Yourcart ":"Your cart is currently empty"
+    },
+    "checkout":{
+        "dejavu":"dejavu",
+        "Cart":"Cart",
+        "Information":"Information",
+        "Shipping":"Shipping",
+        "Payment":"Payment",
+        "Contact":"Contact information",
+        "Already":"Already have an account",
+        "Log":"Log in",
+        "Enter":"Enter an Email ",
+        "Email":" Email me with news and offers",
+        "Shippingaddress":"Shipping address",
+        "Country/Region":"Country/Region",
+        "EnterFirst":"Enter a First Name",
+        "EnterLast":"Enter a Last Name",
+        "EnterAddress":"Enter an Address",
+        "EnterCity":"Enter a City",
+        "Governorate":"Governorate",
+        "Entervalidphon":"Enter a valid phone number",
+        "Savetime":"Save this information for next time",
+        "Returncart":"Return to cart",
+        "ContinueShipping":"Continue to Shipping",
+        "Apply":"Apply",
+        "Subtotal":"Subtotal",
+        "Total":"Total",
+        "Email1":"Email",
+        "Change":"Change",
+        "Shipto":"Ship to",
+        "Address":"Address",
+        "Shippingmethod":"Shipping method",
+        "Standarddelivery":"Standard delivery within 3-5 working days ",
+        "ReturnInformation":"Return to Information",
+        "ContinuePayment":"Continue to Payment"
+
+
+
+    }
+}

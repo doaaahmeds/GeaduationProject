@@ -11,6 +11,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CheckoutComponent {
   products = this.cartService.getProducts();
+  totalPrice = this.cartService.getTotalPrice();
   userForm: FormGroup;
   constructor(private formBuilder:FormBuilder,private router:Router,private cartService:CartService){
     this.userForm = this.formBuilder.group({

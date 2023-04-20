@@ -1,5 +1,4 @@
-
-<section class="container-fluid row">
+<section class="row" (change)="translate($event)" [dir]="'dir'|translate" >
     <div class="col">
       <app-header (openCart)="onOpenCart($event)"></app-header>
       <router-outlet></router-outlet>
@@ -9,3 +8,4 @@
       <app-cart (CloseCart)="onCloseCart($event)"></app-cart>
     </div>
 </section>
+

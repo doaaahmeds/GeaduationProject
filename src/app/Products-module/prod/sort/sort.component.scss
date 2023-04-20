@@ -1,0 +1,9 @@
+
+.arrowOfAccordion{
+    display: flex;
+    justify-content: space-between;
+}
+.arrowOfAccordion::after{
+    margin-left:0;
+
+}

@@ -4,51 +4,51 @@
     <section class="col-7 pe-5">
       <div class="left-side">
         <div>
-          <h1 [routerLink]="">dejavu</h1>
+          <h1 [routerLink]="">{{"checkout.dejavu"|translate}}</h1>
         </div>
         <section class="font-routes">
-          <span>Cart</span>
+          <span>{{"checkout.Cart"|translate}}</span>
           <span class="mx-2">></span>
-          <span>Information</span>
+          <span>{{"checkout.Information"|translate}}</span>
           <span class="mx-2">></span>
-          <span>Shipping</span>
+          <span>{{"checkout.Shipping"|translate}}</span>
           <span class="mx-2">></span>
-          <span>Payment</span>
+          <span>{{"checkout.Payment"|translate}}</span>
         </section>
         <form [formGroup]="userForm" method="post">
         <div class="row mt-3">
-            <div class="col-6 text">Contact information</div>
-            <div class="col-6 mt-2">Already have an account?<span class="login">Log in</span></div>
+            <div class="col-6 text">{{"checkout.Contact"|translate}}</div>
+            <div class="col-6 mt-2">{{"checkout.Already"|translate}}<span class="login">{{"checkout.Log"|translate}}</span></div>
         </div>
         <div class="col-12">
           <input type="email" class="form-control requiredField my-2" id="inputEmail" autofocus placeholder="Email" formControlName="email">
-          <div class="text-danger" [hidden]="email?.valid || email?.untouched">Enter an Email </div>
+          <div class="text-danger" [hidden]="email?.valid || email?.untouched">{{"checkout.Enter"|translate}} </div>
         </div>
         <div class="col-12">
           <div class="form-check">
             <input class="form-check-input checkbox restField" type="checkbox" id="gridCheck">
             <label class="form-check-label mt-1" for="gridCheck">
-              Email me with news and offers
+              {{"checkout.Email"|translate}}
             </label>
           </div>
         </div>
-        <div class="text mt-5">Shipping address</div>
+        <div class="text mt-5">{{"checkout.Shippingaddress"|translate}}</div>
         <select class="form-select my-2 restField" id="validationTooltip04">
-          <option class="select" selected disabled>Country/Region</option>
+          <option class="select" selected disabled>{{"checkout.Country/Region"|translate}}</option>
         </select>
         <div class="row mt-3">
           <div class="col-6">
             <input type="text" class="form-control requiredField" id="inputEmail4" placeholder="First-name" formControlName="firstName">
-            <div class="text-danger" [hidden]="firstName?.valid || firstName?.untouched">Enter a First Name</div>
+            <div class="text-danger" [hidden]="firstName?.valid || firstName?.untouched">{{"checkout.EnterFirst"|translate}}</div>
           </div>
           <div class="col-6">
             <input type="text" class="form-control requiredField" id="inputPassword4" placeholder="Last-name" formControlName="lastName">
-            <div class="text-danger" [hidden]="lastName?.valid || lastName?.untouched">Enter a Last Name</div>
+            <div class="text-danger" [hidden]="lastName?.valid || lastName?.untouched">{{"checkout.EnterLast"|translate}}</div>
           </div>
         </div>
         <div class="col-12 my-3">
           <input type="text" class="form-control requiredField" id="inputAddress" placeholder="Address" formControlName="address">
-          <div class="text-danger" [hidden]="address?.valid || address?.untouched">Enter an Address</div>
+          <div class="text-danger" [hidden]="address?.valid || address?.untouched">{{"checkout.EnterAddress"|translate}}</div>
         </div>
         <div class="col-12 my-3">
           <input type="text" class="form-control restField" id="inputAddress2" placeholder="Apartment, suite, etc. (option)">
@@ -56,11 +56,11 @@
         <div class="row">
           <div class="col-4">
             <input type="text" class="form-control requiredField" id="inputCity" placeholder="City" formControlName="city">
-            <div class="text-danger" [hidden]="city?.valid || city?.untouched">Enter a City</div>
+            <div class="text-danger" [hidden]="city?.valid || city?.untouched">{{"checkout.EnterCity"|translate}}</div>
           </div>
           <div class="col-4">
             <select id="inputState" class="form-select restField">
-              <option selected>Governorate</option>
+              <option selected>{{"checkout.Governorate"|translate}}</option>
               <option>...</option>
             </select>
           </div>
@@ -70,24 +70,24 @@
           <div class="col-12 my-3">
             <input type="text" class="form-control requiredField" id="inputAddress" placeholder="Phone" formControlName="phone"
             [class.is-valid]="phone?.valid" [class.is-invalid]="phone?.invalid">
-            <div class="text-danger" [hidden]="phone?.valid || phone?.untouched">Enter a valid phone number</div>
+            <div class="text-danger" [hidden]="phone?.valid || phone?.untouched">{{"checkout.Entervalidphon"|translate}}</div>
           </div>
           <div class="col-12">
             <div class="form-check">
               <input class="form-check-input checkbox restField" type="checkbox" id="gridCheck">
               <label class="form-check-label mt-1" for="gridCheck">
-                Save this information for next time
+                {{"checkout.Savetime"|translate}}
               </label>
             </div>
           </div>
           <div class="row mt-3">
               <div class="col mt-3">
                 <a class="text-decoration-none">
-                  <span class="text-secondary pointer">Return to cart</span>
+                  <span class="text-secondary pointer">  {{"checkout.Returncart"|translate}}</span>
                 </a>
               </div>
               <div class="col-4">
-                <button class="btn btn-dark rounded px-3 py-3" [disabled]="userForm.invalid" (click)="GoToShipping()">Continue to Shipping</button>
+                <button class="btn btn-dark rounded px-3 py-3" [disabled]="userForm.invalid" (click)="GoToShipping()">{{"checkout.ContinueShipping"|translate}}</button>
               </div>
           </div>
         </div>
@@ -117,20 +117,20 @@
           <input type="text" class="form-control" name="discount" placeholder="Discount code">
         </div>
         <div class="col">
-          <button class="btn btn-secondary">Apply</button>
+          <button class="btn btn-secondary">{{"checkout.Apply"|translate}}</button>
         </div>
         </div>
         <div class="row pt-4 ps-4">
           <div class="col-9 ps-4">
-            <h6>Subtotal</h6>
+            <h6>{{"checkout.Subtotal"|translate}}</h6>
           </div>
           <div class="col ps-4">
-            <p class="prodPrice">E£.00</p>
+            <p class="prodPrice">E£{{totalPrice}}.00</p>
           </div>
         </div>
         <div class="row ps-4">
           <div class="col-9 ps-4">
-            <h6>Shipping</h6>
+            <h6>{{"checkout.Total"|translate}}</h6>
           </div>
           <div class="col ps-4">
             <p class="prodPrice">E£25.00</p>
@@ -138,10 +138,10 @@
         </div>
         <div class="row ps-4 pt-1">
           <div class="col-9 ps-4">
-            <h6>Total</h6>
+            <h6>{{"checkout.Total"|translate}}</h6>
           </div>
           <div class="col ps-4">
-            <h5>E£.00</h5>
+            <h5>E£{{totalPrice+25}}.00</h5>
           </div>
         </div>
       </div>

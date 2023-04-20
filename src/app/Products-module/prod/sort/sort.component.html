@@ -1,143 +1,236 @@
 
+<button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightOfSort"
+  aria-controls="offcanvasRightOfSort" class="text-white d-md-none bg-black py-2 mb-3 w-100 ">{{"home.Filter"|translate}}</button>
 
-
-  <button class="text-white d-md-none bg-black py-2 mb-3 w-100 " >Filter</button>
-
-<aside class=" d-none d-md-block" >
-
-  <div class="accordion accordion-flush " id="accordionFlushExample">
+ <div class="offcanvas offcanvas-end w-75 d-md-none" tabindex="-1" id="offcanvasRightOfSort"
+  aria-labelledby="offcanvasRightLabel">
   
+  <div class="offcanvas-header  "> 
+      <h6 id="offcanvasRightLabel" class="h6 m-auto">{{"home.Refine"|translate}}</h6>
+    <button type="button" class="btn-close text-reset d-block" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
+
+
+  </div>
+  <hr>
+  <div class="offcanvas-body">
+
+    <div class="accordion accordion-flush " id="accordionFlushExample1">
+
+      <div class="accordion-item  ">
+        <h2 class="accordion-header" id="flush-headingOne">
+          <button class="accordion-button collapsed border border-1 shadow-sm arrowOfAccordion" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            {{"home.Filter"|translate}}
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse " aria-labelledby="flush-headingOne">
+          <div class="accordion-body border border-1">
+
+
+            <div class="form-check">
+              <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" data-bs-dismiss="offcanvas" 
+                name="sort" value="high">
+              <label for="" class="form-check-label">{{"home.Pricelowhigh"|translate}}</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" data-bs-dismiss="offcanvas" 
+                name="sort" value="low">
+              <label for="" class="form-check-label">{{"home.Pricehighlow"|translate}}</label>
+            </div>
+
+
+            <div class="form-check">
+              <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" data-bs-dismiss="offcanvas" 
+                name="sort" value="A-Z">
+              <label for="" class="form-check-label">{{"home.A_Z"|translate}}</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" data-bs-dismiss="offcanvas" 
+                name="sort" value="Z-A">
+              <label for="" class="form-check-label">{{"home.Z-A"|translate}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button class="accordion-button collapsed border border-1 shadow-sm arrowOfAccordion" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            {{"home.FilterColor"|translate}}
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo">
+          <div class="accordion-body border border-1">
+            <div class="form-check">
+              <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" data-bs-dismiss="offcanvas" 
+                name="sort" value="Black">
+              <label for="" class="form-check-label"> {{"home.Black"|translate}}</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" data-bs-dismiss="offcanvas"  
+                name="sort" value="Brown">
+              <label for="" class="form-check-label"> {{"home.Brown"|translate}}</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" data-bs-dismiss="offcanvas" 
+                name="sort" value="Burgundy">
+              <label for="" class="form-check-label">  {{"home.Burgundy"|translate}}</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" data-bs-dismiss="offcanvas" 
+                name="sort" value="Camel">
+              <label for="" class="form-check-label"> {{"home.Camel"|translate}}</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" data-bs-dismiss="offcanvas"  
+                name="sort" value="Snake">
+              <label for="" class="form-check-label"> {{"home.Snake"|translate}}</label>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingThree" *ngIf="SubCategories.length>1" >
+          <button class="accordion-button collapsed border border-1 shadow-sm arrowOfAccordion" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+            {{"home.Categories"|translate}}  
+          </button>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree">
+          <div class="accordion-body border border-1">
+            <div class="form-check">
+              <input type="radio" class="form-check-input" (click)="onSubCatChange($event.target)" name="subCat"
+                value="Remove">
+              <label for="" class="form-check-label">{{lang=='ar'?'ازاله الترتيب':'Remove Filter'}}</label>
+            </div>
+            <div *ngFor="let subCat of SubCategories" class="form-check">
+              <input type="radio" class="form-check-input" (click)="onSubCatChange($event.target)" name="subCat" data-bs-dismiss="offcanvas" 
+                [value]="subCat.id">
+              <label for="" class="form-check-label">{{(lang=='ar')?subCat.name_ar:subCat.name}}</label>
+            </div>
+ </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+<aside class=" d-none d-md-block" [dir]="'dir'|translate" >
+
+  <div class="accordion accordion-flush " id="accordionFlushExample2" >
+
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-headingOne">
-        <button class="accordion-button collapsed border border-1 shadow-sm" type="button"
-          data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
-          aria-controls="flush-collapseOne">
-          Sort
+        <button   class="accordion-button collapsed border border-1 shadow-sm arrowOfAccordion " type="button" data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"> {{"home.Filter"|translate}}
+
+        
         </button>
       </h2>
-      <div id="flush-collapseOne" class="accordion-collapse collapse " aria-labelledby="flush-headingOne">
+      <div  id="flush-collapseOne" class="accordion-collapse collapse "  
+      aria-labelledby="flush-headingOne">
         <div class="accordion-body border border-1">
-         
-   
-          <div class="form-check">
-            <input type="radio" class="form-check-input"    (change)="onSortChange($event.target)" [(ngModel)]="sort"  name="sort" value="high">
-            <label for="" class="form-check-label">Price, low to high</label>
+
+
+          <div class="form-check" >
+            <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" 
+              name="sort" value="high">
+            <label for="" class="form-check-label">{{"home.Pricelowhigh"|translate}}</label>
           </div>
           <div class="form-check">
-            <input type="radio" class="form-check-input"  (change)="onSortChange($event.target)" [(ngModel)]="sort"  name="sort" value="low">
-            <label for="" class="form-check-label">Price, high to low</label>
+            <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
+              name="sort" value="low">
+            <label for="" class="form-check-label">{{"home.Pricehighlow"|translate}}</label>
           </div>
-        
-          
+
+
           <div class="form-check">
-            <input type="radio" class="form-check-input"    (change)="onSortChange($event.target)" [(ngModel)]="sort"  name="sort" value="A-Z">
-            <label for="" class="form-check-label">Alphabetically, A-Z</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input"  (change)="onSortChange($event.target)" [(ngModel)]="sort"  name="sort" value="Z-A">
-            <label for="" class="form-check-label">Alphabetically, Z-A</label>
-          </div>
-         
-        
-          
-         <!--  <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="" id="">
-            <label for="" class="form-check-label"> Date, old to new</label>
+            <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
+              name="sort" value="A-Z">
+            <label for="" class="form-check-label">{{"home.A_Z"|translate}}</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="" id="">
-            <label for="" class="form-check-label">Date, new to old</label>
+            <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
+              name="sort" value="Z-A">
+            <label for="" class="form-check-label">{{"home.Z-A"|translate}}</label>
           </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="" id="">
-            <label for="" class="form-check-label">Best Selling</label>
-          </div> -->
         </div>
       </div>
     </div>
 
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-headingTwo">
-        <button class="accordion-button collapsed border border-1 shadow-sm" type="button"
-          data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
-          aria-controls="flush-collapseTwo">
-          Filter by Color
+        <button class="accordion-button collapsed border border-1 shadow-sm arrowOfAccordion " type="button" data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+          {{"home.FilterColor"|translate}}
         </button>
       </h2>
-      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo">
+      <div id="flush-collapseTwo" class="accordion-collapse collapse"   
+      aria-labelledby="flush-headingTwo">
         <div class="accordion-body border border-1">
           <div class="form-check">
-            <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" name="sort" value="Black">
-            <label for="" class="form-check-label"> Black</label>
+            <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
+              name="sort" value="Black">
+            <label for="" class="form-check-label"> {{"home.Black"|translate}}</label>
           </div>
           <div class="form-check">
-            <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" name="sort" value="Brown">
-            <label for="" class="form-check-label" > Brown</label>
+            <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
+              name="sort" value="Brown">
+            <label for="" class="form-check-label"> {{"home.Brown"|translate}}</label>
           </div>
           <div class="form-check">
-            <input type="radio" class="form-check-input"  (change)="onSortChange($event.target)" [(ngModel)]="sort" name="sort" value="Burgundy">
-            <label for="" class="form-check-label"> Burgundy</label>
+            <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
+              name="sort" value="Burgundy">
+            <label for="" class="form-check-label">  {{"home.Burgundy"|translate}}</label>
           </div>
           <div class="form-check">
-            <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" name="sort" value="Camel">
-            <label for="" class="form-check-label"> Camel</label>
+            <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
+              name="sort" value="Camel">
+            <label for="" class="form-check-label">  {{"home.Camel"|translate}}</label>
           </div>
           <div class="form-check">
-            <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort" name="sort" value="Snake">
-            <label for="" class="form-check-label"> Snake</label>
+            <input type="radio" class="form-check-input" (change)="onSortChange($event.target)" [(ngModel)]="sort"
+              name="sort" value="Snake">
+            <label for="" class="form-check-label">  {{"home.Snake"|translate}}</label>
           </div>
 
         </div>
       </div>
     </div>
-      
 
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingThree">
-          <button class="accordion-button collapsed border border-1 shadow-sm" type="button"
-            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false"
-            aria-controls="flush-collapseThree">
-            Categories
-          </button>
-        </h2>
-        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree">
-          <div class="accordion-body border border-1">
-            <div class="form-check">
-              <input type="radio" class="form-check-input" name="sort" value="Ankle boots">
-              <label for="" class="form-check-label">Ankle boots
-              </label>
-            </div>
-            <div class="form-check">
-              <input type="radio" class="form-check-input" name="sort" value="Half Boots">
-              <label for="" class="form-check-label">  Half Boots</label>
-            </div>
-            <div class="form-check">
-              <input type="radio" class="form-check-input" name="sort" value="High Boots">
-              <label for="" class="form-check-label"> High Boots</label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" name="" id="">
-              <label for="" class="form-check-label"> Flip-Flops</label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" name="" id="">
-              <label for="" class="form-check-label"> Sneakers</label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" name="" id="">
-              <label for="" class="form-check-label"> Espadrilles</label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" name="" id="">
-              <label for="" class="form-check-label">Mules</label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" name="" id="">
-              <label for="" class="form-check-label">Slippers</label>
-            </div>
+
+    <div class="accordion-item"  *ngIf="SubCategories.length>1" >
+      <h2 class="accordion-header" id="flush-headingThree">
+        <button class="accordion-button collapsed border border-1 shadow-sm arrowOfAccordion " type="button" data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+          {{"home.Categories"|translate}}  
+        </button>
+      </h2>
+      <div id="flush-collapseThree" class="accordion-collapse collapse"  
+      aria-labelledby="flush-headingThree">
+        <div class="accordion-body border border-1 ">
+          <div class="form-check" >
+            <input type="radio" class="form-check-input" (click)="onSubCatChange($event.target)" name="subCat"
+              value="Remove">
+            <label for="subCat" class="form-check-label">{{lang=='ar'?'ازاله الترتيب':'Remove Filter'}}</label>
+          </div>
+          <div *ngFor="let subCat of SubCategories" class="form-check">
+            <input type="radio" class="form-check-input" (click)="onSubCatChange($event.target)" name="subCat"
+              [value]="subCat.id">
+            <label for="" class="form-check-label">{{(lang=='ar')?subCat.name_ar:subCat.name}}</label>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
 </aside>
+

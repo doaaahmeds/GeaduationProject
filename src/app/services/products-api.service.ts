@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ICategory } from '../models/icategory';
 import { Iproduct } from '../models/iproduct';
 import { IsubCategory } from '../models/isub-category';
+import { Itest } from '../models/itest';
 
 
 @Injectable({
@@ -46,11 +47,22 @@ export class ProductsAPIService {
     let CatRef = doc(this.db, 'category/' + CategoryId);
     return docData(CatRef, { idField: 'id' }) as Observable<ICategory>
   }
+  // all sub categories by category id
+  getAllsubCatByCatId(catId :string ): Observable<IsubCategory[]> {
+    let subcategoryRef = collection(this.db, 'subcategory');
+    const q = query(subcategoryRef, where("category.catid", "==",catId));
+    return collectionData(q, { idField: 'id' }) as Observable<IsubCategory[]>
+  }
 
+   // all sub categories 
+   getAllSubCat(): Observable<IsubCategory[]> {
+    let subcategoryRef = collection(this.db, 'subcategory');
+    return collectionData(subcategoryRef,{ idField: 'id' }) as Observable<IsubCategory[]>
+  }
 
   // all sub categories of shose
   getAllsubCatOfshose(): Observable<IsubCategory[]> {
-    let subshoseRef = collection(this.db, 'subcategory');
+    let subshoseRef = collection(this.db,'subcategory');
     const q = query(subshoseRef, where("category.catid", "==", "cgCpnqSfoejbeTYqAxQE"));
     return collectionData(q, { idField: 'id' }) as Observable<IsubCategory[]>
   }
@@ -94,6 +106,10 @@ export class ProductsAPIService {
   getproductsbyid(id: string): Observable<Iproduct> {
     let product = doc(this.db, 'product/' + id);
     return docData(product, { idField: 'id' }) as Observable<Iproduct>;
+  }
+  getproductbyid(id: string): Observable<Itest> {
+    let product = doc(this.db, 'product/' + id);
+    return docData(product, { idField: 'id' }) as Observable<Itest>;
   }
 
 
