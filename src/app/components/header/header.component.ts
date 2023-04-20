@@ -33,6 +33,7 @@ export class HeaderComponent implements OnInit {
 
 
 
+
   }
   // getprodSub(subCatId : string){
 
@@ -48,6 +49,7 @@ export class HeaderComponent implements OnInit {
     this.isOpen = !this.isOpen;
     this.openCart.emit(this.isOpen);
   }
+
 
 
 

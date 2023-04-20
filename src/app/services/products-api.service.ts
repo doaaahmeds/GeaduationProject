@@ -31,7 +31,7 @@ export class ProductsAPIService {
   // all sub categories of Bags
   getAllsubCatOfBags(): Observable<IsubCategory[]> {
     let subBagsRef = collection(this.db, 'subcategory');
-    const q = query(subBagsRef, where("catid", "==", "vBEYRuSj9Us4ZPPUbg13"));
+    const q = query(subBagsRef, where("category.catid", "==", "vBEYRuSj9Us4ZPPUbg13"));
     return collectionData(q, { idField: 'id' }) as Observable<IsubCategory[]>
   }
 
@@ -51,7 +51,7 @@ export class ProductsAPIService {
   // all sub categories of shose
   getAllsubCatOfshose(): Observable<IsubCategory[]> {
     let subshoseRef = collection(this.db, 'subcategory');
-    const q = query(subshoseRef, where("catid", "==", "cgCpnqSfoejbeTYqAxQE"));
+    const q = query(subshoseRef, where("category.catid", "==", "cgCpnqSfoejbeTYqAxQE"));
     return collectionData(q, { idField: 'id' }) as Observable<IsubCategory[]>
   }
 
