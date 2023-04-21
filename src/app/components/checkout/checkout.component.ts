@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Iproduct } from 'src/app/models/iproduct';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-checkout',
@@ -9,9 +10,10 @@ import { Iproduct } from 'src/app/models/iproduct';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent {
-[x: string]: any;
+  products = this.cartService.getProducts();
+  totalPrice = this.cartService.getTotalPrice();
   userForm: FormGroup;
-  constructor(private formBuilder:FormBuilder,private router:Router){
+  constructor(private formBuilder:FormBuilder,private router:Router,private cartService:CartService){
     this.userForm = this.formBuilder.group({
       firstName: ['',[Validators.required]],
       lastName: ['',[Validators.required]],
