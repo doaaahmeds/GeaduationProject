@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { Routes, Router } from '@angular/router';
+import { user } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -40,8 +41,8 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
   submit() {
-    if (!this.loginForm.valid) {
-      return;
+    if (!this.loginForm.valid ) {
+      alert("Wrong Password Or Email");
     }
     const { email , password } = this.loginForm.value;
     this.authService.login(email, password).then(() => {
