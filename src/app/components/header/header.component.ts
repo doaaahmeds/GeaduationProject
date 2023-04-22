@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { IsubCategory } from 'src/app/models/isub-category';
 import { CartService } from 'src/app/services/cart.service';
@@ -19,13 +19,20 @@ export class HeaderComponent implements OnInit {
 
   subCategoryofBags : IsubCategory[] | undefined = undefined;
   subCategoryofShose : IsubCategory[] | undefined = undefined;
+  isOpen:boolean = false;
+  @Output() openCart:EventEmitter<boolean>;
 
   lang:string='';
 
-  constructor(public authService : AuthenticationService, private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService,private localstorage:LocalstorageeService,private searchService :SearchService){
+  constructor(public authService : AuthenticationService,
+     private getSubCatServ:ProductsAPIService ,
+      private router:Router ,
+      private translateservice: TranslateService,private localstorage:LocalstorageeService,private searchService :SearchService){
     this.lang = this.localstorage.getStatus();
+    this.openCart = new EventEmitter<boolean>();
   }
   
+
   isSearch : boolean = false;
   
 
@@ -38,7 +45,7 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  
+
 
 
   ngOnInit(): void {
@@ -58,15 +65,21 @@ export class HeaderComponent implements OnInit {
 
 
   }
+
   logout(){
     this.authService.logout().then(()=>{
       this.router.navigate(['login'])
     })
   }
 
+  OpenCartFun()
+  {
+    this.isOpen = !this.isOpen;
+    this.openCart.emit(this.isOpen);
+  }
 
   
-  showSearch(){
+showSearch(){
     this.isSearch=!this.isSearch
     }
     
@@ -74,12 +87,11 @@ export class HeaderComponent implements OnInit {
       this.searchService.setvalueOfSearch(value)
 
       // console.log(value);
-      console.log(  this.searchService.valueOfSearch);
+      // console.log(  this.searchService.valueOfSearch);
       
       this.router.navigate(['/search']);
       this.isSearch=false;
-
-    }
+  }
 
 
 

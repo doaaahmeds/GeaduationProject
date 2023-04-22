@@ -2,12 +2,12 @@
 
 <section   (change)="translate($event)" [dir]="'dir'|translate">
     <div class="col">
-      <app-header ></app-header>
+      <app-header (openCart)="onOpenCart($event)"></app-header>
       <router-outlet></router-outlet>
       <app-footer></app-footer>
     </div>
-    <div class="col-3" *ngIf="false">
-      <app-cart></app-cart>
+    <div class="col-3 cart" *ngIf="receivedOpenCart">
+      <app-cart (CloseCart)="onCloseCart($event)"></app-cart>
     </div>
 </section>
 

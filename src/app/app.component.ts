@@ -31,4 +31,15 @@ export class AppComponent {
    
   }
   
+  receivedOpenCart:boolean = false;
+
+  onOpenCart(isopenCart:boolean)
+  {
+    this.receivedOpenCart = isopenCart;
+  }
+
+  onCloseCart(isCloseCart:boolean)
+  {
+    this.receivedOpenCart = isCloseCart;
+  }
 }

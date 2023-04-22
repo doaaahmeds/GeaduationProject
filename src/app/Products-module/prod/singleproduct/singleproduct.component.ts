@@ -1,6 +1,5 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Icart } from 'src/app/models/icart';
 import { Iproduct } from 'src/app/models/iproduct';
 import { Itest } from 'src/app/models/itest';
 import { CartService } from 'src/app/services/cart.service';
@@ -23,7 +22,9 @@ export class SingleproductComponent implements OnInit  {
   imges:string[]=[];
   lang:string='';
   cnt:number=-1;
-  constructor(private prodAPIService:ProductsAPIService,private activatedRoutServ:ActivatedRoute,private localstorage:LocalstorageeService){
+  constructor(private prodAPIService:ProductsAPIService,
+    private activatedRoutServ:ActivatedRoute,
+    private localstorage:LocalstorageeService,private cartService:CartService){
     this.lang=this.localstorage.getStatus();
    
     }
@@ -83,8 +84,9 @@ export class SingleproductComponent implements OnInit  {
   //   localStorage.setItem('cartItems',JSON.stringify(this.cart));
   // }
 
-  addtocart(){
-
+  addtocart(product:Iproduct)
+  {
+    this.cartService.addtoCart(product);
   }
 
 }
