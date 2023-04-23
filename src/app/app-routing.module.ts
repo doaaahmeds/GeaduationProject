@@ -8,6 +8,7 @@ import { ShippingComponent } from './components/shipping/shipping.component';
 import { SearchComponent } from './Products-module/prod/search/search.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 const routes: Routes = [
 
@@ -29,6 +30,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule,],
+ 
 })
 export class AppRoutingModule { }

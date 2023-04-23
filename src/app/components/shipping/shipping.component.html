@@ -42,8 +42,10 @@
                   <span class="text-secondary pointer" (click)="BackToCheckout()">{{"checkout.ReturnInformation"|translate}}</span>
                 </a>
               </div>
-              <div class="col-4">
-                <button class="bg-black px-4 py-3 text-white rounded">{{"checkout.ContinuePayment"|translate}}</button>
+              <div class="col-4 ">
+                <!-- <button class="bg-black px-4 py-3 text-white rounded">{{"checkout.ContinuePayment"|translate}}</button> -->
+                <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                
               </div>
           </div>
         </div>
