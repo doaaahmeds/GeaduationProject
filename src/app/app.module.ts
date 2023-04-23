@@ -21,6 +21,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ShippingComponent } from './components/shipping/shipping.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     FormsModule,
     TranslateModule,
     HttpClientModule,
+    NgxPayPalModule,
     
     TranslateModule.forRoot({
       defaultLanguage:'en',

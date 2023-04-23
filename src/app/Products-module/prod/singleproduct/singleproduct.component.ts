@@ -26,7 +26,6 @@ export class SingleproductComponent implements OnInit  {
     this.lang=this.localstorage.getStatus();
 
     }
-
   ngOnInit(): void {
 
     let productid:string;
