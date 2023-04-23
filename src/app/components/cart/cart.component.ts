@@ -24,6 +24,7 @@ export class CartComponent
   setOrderSpecial()
   {
     this.isOpen =! this.isOpen;
+    console.log(this.totalPrice);
   }
 
   count:number=1

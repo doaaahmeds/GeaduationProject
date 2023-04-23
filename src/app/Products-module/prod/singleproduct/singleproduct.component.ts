@@ -22,19 +22,17 @@ export class SingleproductComponent implements OnInit  {
   imges:string[]=[];
   lang:string='';
   cnt:number=-1;
-  constructor(private prodAPIService:ProductsAPIService,
-    private activatedRoutServ:ActivatedRoute,
-    private localstorage:LocalstorageeService,private cartService:CartService){
+  constructor(private prodAPIService:ProductsAPIService,private activatedRoutServ:ActivatedRoute,private localstorage:LocalstorageeService,private cartService:CartService){
     this.lang=this.localstorage.getStatus();
-   
+
     }
-    
   ngOnInit(): void {
-    
+
     let productid:string;
+
       this.activatedRoutServ.paramMap.subscribe((paramMap=>{
         productid=(paramMap.get('id'))?String(this.activatedRoutServ.snapshot.paramMap.get('id')):'';
-  
+
        if(productid!=undefined){
         this.prodAPIService.getproductsbyid(productid).subscribe(data=>{
           this.product_details=data;
@@ -45,28 +43,17 @@ export class SingleproductComponent implements OnInit  {
           if(this.product_details.imgs[7])this.imges.push(this.product_details.imgs[7]);
           //console.log(this.imges);
         })
-        } 
-     
+        }
+
         }))
         this.localstorage.watchStorage().subscribe(() => {
           this.lang = this.localstorage.getStatus();
           console.log(this.lang+'single');
         })
-        
-       
+
+
     }
-  
-  
 
-
-
-  // addtocart(product:Iproduct)
-  // {
-  //   for (const key in product.size) {
-
-  //     console.log(key);
-
-  //     }
 
 
   //   const itemSize = product.size.keys();

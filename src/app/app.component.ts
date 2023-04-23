@@ -13,25 +13,21 @@ import { LocalstorageeService } from './services/localstoragee.service';
 })
 export class AppComponent {
   title = 'dejavu';
+  receivedOpenCart:boolean = false;
   lang:string='';
-  
+
   constructor(private translateservice: TranslateService,private local:LocalstorageeService) {
     this.lang=this.local.getStatus();
   }
-  
-  translate(event:any){   
+
+  translate(event:any){
     if(event.target.value=='ar'||event.target.value=='en'){
       this.local.setStatus(event.target.value);
       this.lang= this.local.getStatus();
-     this.translateservice.use(this.lang!);
-    console.log(this.lang,'modeul');
-
+      this.translateservice.use(this.lang!);
+      console.log(this.lang,'modeul');
     }
-   
-   
   }
-  
-  receivedOpenCart:boolean = false;
 
   onOpenCart(isopenCart:boolean)
   {
