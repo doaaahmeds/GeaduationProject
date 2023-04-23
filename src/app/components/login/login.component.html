@@ -75,11 +75,13 @@
           class="btn btn-warning w-100"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
+                    [routerLink]="['/signup']"
+          routerLinkActive="active"
         >
         {{"signin.CreateAccount"|translate}}</button
         ><br /><br />
 
-        <div
+<!--         <div
           class="modal fade h-30"
           id="exampleModal"
           tabindex="-1"
@@ -167,7 +169,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </form>
       <div class="contactbtn">
         <button id="btnface" type="button" class="btn btn-primary">
