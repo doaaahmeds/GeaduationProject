@@ -2,7 +2,7 @@ export interface Iproduct {
     id:string,
     catid: string,
     subid: string,
-    name: string, 
+    name: string,
     name_ar:string,
     details: string[],
     details_ar: string[],

@@ -1,4 +1,4 @@
-<section class="row" (change)="translate($event)" [dir]="'dir'|translate" >
+<section (change)="translate($event)" [dir]="'dir'|translate" >
     <div class="col">
       <app-header (openCart)="onOpenCart($event)"></app-header>
       <router-outlet></router-outlet>

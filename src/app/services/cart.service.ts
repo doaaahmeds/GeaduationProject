@@ -13,6 +13,7 @@ export class CartService
 
   addtoCart(product : Iproduct){
     this.cartItemList.push(product);
+    this.getTotalPrice();
   }
 
   getProducts()
