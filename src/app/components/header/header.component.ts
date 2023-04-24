@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
 
   subCategoryofBags : IsubCategory[] | undefined = undefined;
   subCategoryofShose : IsubCategory[] | undefined = undefined;
+  isSearch : boolean = false;
   totalPrice = this.cartService.getTotalPrice();
   products = this.cartService.getProducts();
   grandTotal !: number;
@@ -27,14 +28,11 @@ export class HeaderComponent implements OnInit {
   lang:string='';
 
   constructor(public authService : AuthenticationService, private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService,
-    private localstorage:LocalstorageeService,private searchService :SearchService,public cartService:CartService){
+    private localstorage:LocalstorageeService,private searchService :SearchService, public cartService:CartService){
     this.openCart = new EventEmitter<boolean>();
     this.lang = this.localstorage.getStatus();
+    this.openCart = new EventEmitter<boolean>();
   }
-
-  isSearch : boolean = false;
-
-
 
   translatee(event:any){
     this.translateservice.use(event.target.value);
@@ -62,6 +60,7 @@ export class HeaderComponent implements OnInit {
 
 
   }
+
   logout(){
 
     this.authService.logout().then(()=>{
@@ -75,11 +74,7 @@ export class HeaderComponent implements OnInit {
     this.openCart.emit(this.isOpen);
   }
 
-
-
-
   showSearch(){
-
     this.isSearch=!this.isSearch
     }
 
@@ -95,6 +90,7 @@ export class HeaderComponent implements OnInit {
 
 
     }
+
 
 
 

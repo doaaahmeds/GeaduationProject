@@ -69,7 +69,7 @@
                                 <i class="fa-solid fa-magnifying-glass "></i>
                         </li>
 
-                        <li class="d-none d-lg-inline mx-3" *ngIf ="authService.currentuser$ | async as user; ngIfElse loginBut">
+                        <li class="d-none d-lg-inline mx-3" *ngIf ="authService.currentuser$ | async as user">
                             <a [routerLink]="['login']" routerLinkActive="active" class="text-dark"  (click)="logout()">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             </a>
@@ -79,8 +79,9 @@
                                 <i class="fa-regular fa-user "></i></a>
                         </li>
                         <li>
-                            <a class="text-dark">
-                                <i class="fa-solid fa-cart-shopping" (click)="OpenCartFun()"></i></a>
+                            <a class="text-dark ">
+                                <i class="fa-solid fa-cart-shopping" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" (click)="OpenCartFun()"></i>
+                            </a>
                         </li>
 
                         <li class="d-none d-lg-inline px-2">{{cartService.getProducts().length}}</li>

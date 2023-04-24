@@ -6,4 +6,6 @@ export const environment = {
     apiKey: 'AIzaSyCWGJcIQWQ86GxANkx_QvkFJknOnHShPXM',
     authDomain: 'dejavu-65fe7.firebaseapp.com',
     messagingSenderId: '766943688283',
-  },};
+  },
+  clientId:'AT-DPLdQtvkIIjSS71lIqhCB4bE01cXXN2OaFCX07OHYNF4payxXUzJ_TVxtb-GoPilx0Cp3ahC9Ak3A'
+};

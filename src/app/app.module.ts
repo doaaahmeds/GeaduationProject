@@ -21,6 +21,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ShippingComponent } from './components/shipping/shipping.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     HomeComponent,
     FilterPipe,
     EGPipe,
- 
+
    // EgyptPipe
     CartComponent,
     CheckoutComponent,
@@ -47,14 +48,15 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     FormsModule,
     TranslateModule,
     HttpClientModule,
-    
+    NgxPayPalModule,
+
     TranslateModule.forRoot({
       defaultLanguage:'en',
-      
+
       loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
-          
+
           deps: [HttpClient]
       }
   }),
@@ -62,7 +64,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-  
+
 
 
   ],
@@ -73,7 +75,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 export class AppModule {}
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
-  
+
 }
 
 

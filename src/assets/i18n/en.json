@@ -132,6 +132,28 @@
         "ReturnInformation":"Return to Information",
         "ContinuePayment":"Continue to Payment"
 
+    },
+    "signin":{
+    "Home":"HOME ",
+    "ACCOUNT":"ACCOUNT",
+    "Login":"Login",
+    "Email":"Email",
+    "required":"Email is required ",
+    "correct":"Please enter correct email ",
+    "Password":"Password",
+    "Forgotpassword":"Forgot your password ",
+    "Passwordrequired":"Password is required ",
+    "Sign":"Sign in",
+    "CreateAccount":"Create Account",
+    "Firstname":"First name",
+    "Lastname":"Last name",
+    "FacebookLogin":" Facebook Login",
+    "GoogleLogin ":"Google Login ",
+    "topic":"By clicking any of the social login buttons you agree to the terms of privacy policy described",
+    "here":"here",
+    "firsrreq":"Firstname is required ",
+    "lastsrreq":"Lastname is required "
+    
 
 
     }
