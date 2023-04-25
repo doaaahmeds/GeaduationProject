@@ -45,7 +45,7 @@
               <div class="col-4 ">
                 <!-- <button class="bg-black px-4 py-3 text-white rounded">{{"checkout.ContinuePayment"|translate}}</button> -->
                 <ngx-paypal [config]="payPalConfig"></ngx-paypal>
-                
+
               </div>
           </div>
         </div>
@@ -79,7 +79,7 @@
             <h6>{{"cart.Subtotal"|translate}}</h6>
           </div>
           <div class="col ps-4">
-            <p class="prodPrice">E£.00</p>
+            <p class="prodPrice">E£{{cartService.getTotalPrice()}}.00</p>
           </div>
         </div>
         <div class="row ps-4">
@@ -95,7 +95,7 @@
             <h6>{{"checkout.Total"|translate}}</h6>
           </div>
           <div class="col ps-4">
-            <h5>E£.00</h5>
+            <h5>E£{{cartService.getTotalPrice()}}.00</h5>
           </div>
         </div>
       </div>

@@ -19,6 +19,8 @@ export class HeaderComponent implements OnInit {
   subCategoryofShose : IsubCategory[] | undefined = undefined;
   isSearch : boolean = false;
   totalPrice = this.cartService.getTotalPrice();
+  products = this.cartService.getProducts();
+  grandTotal !: number;
   isOpen:boolean = false;
 
   @Output() openCart:EventEmitter<boolean>;
@@ -26,13 +28,11 @@ export class HeaderComponent implements OnInit {
   lang:string='';
 
   constructor(public authService : AuthenticationService, private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService,
-    private localstorage:LocalstorageeService,private searchService :SearchService,private cartService:CartService){
-
+    private localstorage:LocalstorageeService,private searchService :SearchService, public cartService:CartService){
     this.openCart = new EventEmitter<boolean>();
     this.lang = this.localstorage.getStatus();
     this.openCart = new EventEmitter<boolean>();
   }
-  
 
   translatee(event:any){
     this.translateservice.use(event.target.value);
@@ -41,9 +41,6 @@ export class HeaderComponent implements OnInit {
 
 
   }
-
-
-
 
   ngOnInit(): void {
     this.localstorage.watchStorage().subscribe(() => {
@@ -59,6 +56,7 @@ export class HeaderComponent implements OnInit {
       this.subCategoryofShose=data
     })
 
+  this.grandTotal = this.cartService.getTotalPrice();
 
 
   }

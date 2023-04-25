@@ -79,12 +79,14 @@
                                 <i class="fa-regular fa-user "></i></a>
                         </li>
                         <li>
-                            <a class="text-dark me-3 ">
-                                <i class="fa-solid fa-cart-shopping" (click)="OpenCartFun()"></i>
+                            <a class="text-dark ">
+                                <i class="fa-solid fa-cart-shopping" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" (click)="OpenCartFun()"></i>
                             </a>
                         </li>
 
-                        <li class="d-none d-lg-inline px-2">{{"headr.LE"|translate}} {{totalPrice}}.00 </li>
+                        <li class="d-none d-lg-inline px-2">{{cartService.getProducts().length}}</li>
+
+                        <li class="d-none d-lg-inline px-2">{{"headr.LE"|translate}} {{cartService.getTotalPrice()}}.00 </li>
                         <select name="" id="" class="d-none d-lg-inline col-md-1" >
                             <option value="en">....</option>
                             <option value="en">{{"headr.EN"|translate}}</option>

@@ -16,7 +16,7 @@ export class ShippingComponent implements OnInit {
     showSuccess: boolean = false;
     showError: boolean = false;
 
-    constructor(private router: Router, private cartService: CartService) { }
+    constructor(private router: Router, public cartService: CartService) { }
 
 
     ngOnInit(): void {
@@ -49,7 +49,7 @@ export class ShippingComponent implements OnInit {
                                 unit_amount: {
                                     currency_code: 'USD',
                                     value: '100',
-                                   
+
                                 },
                             }
                         ]

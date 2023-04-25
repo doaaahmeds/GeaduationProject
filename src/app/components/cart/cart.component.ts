@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Iproduct } from 'src/app/models/iproduct';
 import { CartService } from 'src/app/services/cart.service';
@@ -11,12 +11,11 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent
 {
   products = this.cartService.getProducts();
-  totalPrice = this.cartService.getTotalPrice();
   iCartDetail:Iproduct | undefined = undefined;
   isCloseCart:boolean = true;
   @Output() CloseCart:EventEmitter<boolean>;
 
-  constructor(private router:Router, private cartService:CartService){
+  constructor(private router:Router, public cartService:CartService){
     this.CloseCart = new EventEmitter<boolean>();
   }
 
@@ -24,7 +23,6 @@ export class CartComponent
   setOrderSpecial()
   {
     this.isOpen =! this.isOpen;
-    console.log(this.totalPrice);
   }
 
   count:number=1
