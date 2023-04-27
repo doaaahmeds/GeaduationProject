@@ -22,8 +22,10 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.prodSer.getAllProductes().subscribe((data)=>{
       this.products=data
+      this.getDataOfSearch(this.searchService.valueOfSearch)
     })
-    this.getDataOfSearch(this.searchService.valueOfSearch)
+    
+  
   }
 
 
@@ -40,6 +42,10 @@ export class SearchComponent implements OnInit {
 
   getDataOfSearch(valueOfSearch: string) {
     this.wordOfSearch=valueOfSearch
+    if(valueOfSearch.length>0){
+  
+      
+   
     this.lang=this.localstorage.getStatus();
     if(this.lang=='en'){
     this.productsOfSearch=this.products.filter(product => product.name.toLowerCase().includes(valueOfSearch.toLowerCase()))
@@ -48,7 +54,11 @@ export class SearchComponent implements OnInit {
         .toLowerCase().includes(valueOfSearch.toLowerCase()))
     }
 
-   
+    }else{
+      console.log('isEmpty');
+      
+      this.productsOfSearch=[];
+    }
   }
 
 
