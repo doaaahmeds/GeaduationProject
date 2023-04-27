@@ -1,25 +1,25 @@
 <app-navbar></app-navbar>
 <section class="mx-5 pe-md-2 px-xl-5 fixd-width mx-auto">
     <div class=" mt-2   ">
-        <span><a class="  text-decoration-none text-dark me-1" href="">HOME</a> &gt;
+        <span><a class="  text-decoration-none text-dark me-1" href="">{{"Search.Home"|translate}}</a> &gt;
         </span>
-        <span> SEARCH: {{productsOfSearch.length}} RESULTS FOUND FOR "{{wordOfSearch}}"</span>
+        <span>  {{productsOfSearch.length}} {{"Search.RESULTSFOUNDFOR"|translate}} "{{wordOfSearch}}"</span>
     </div>
     <div class=" text-center my-4 ">
-        <span class=" border-bottom border-3 border-dark pb-2 px-2 h5 ">Search
+        <span class=" border-bottom border-3 border-dark pb-2 px-2 h5 ">{{"Search.Search"|translate}}
         </span>
      </div>
         <div class=" pt-1 pb-3 text-center ">
             <div class="input-group border  w-50 mx-auto shadow-sm mb-2 p-1  ">
                 <input type="text" #valueOfSearch class="shadow-none form-control text-center ps-5 ms-4 border-0  rounded-0 "
-                    placeholder="SEARCH">
+                    placeholder='{{"Search.Search"|translate}}'>
                 <div class="input-group-append">
                     <button class="btn btn-dark rounded-0" type="button"
-                        (click)="getDataOfSearch(valueOfSearch.value)">Search</button>
+                        (click)="getDataOfSearch(valueOfSearch.value)">{{"Search.Search"|translate}}</button>
                 </div>
             </div>
-            <small class=" my-5" *ngIf="productsOfSearch.length<1;else revealedOfSearch" >Your search for "{{wordOfSearch}}" did not yield any results.</small>
-            <ng-template  #revealedOfSearch >Your search for "{{wordOfSearch}}" revealed the following:</ng-template>
+            <small class=" my-5" *ngIf="productsOfSearch.length<1;else revealedOfSearch" >{{"Search.YourSearchFor"|translate}}"{{wordOfSearch}}"{{"Search.didNotYieldAnyResults"|translate}}</small>
+            <ng-template  #revealedOfSearch >{{"Search.YourSearchFor"|translate}}"{{wordOfSearch}}" {{"Search.RevealedTheFollowing"|translate}}</ng-template>
            
         </div>
         <main class="min-vh-100 row  row-cols-2  row-cols-md-3  row-cols-lg-4  gx-2  text-center" >
