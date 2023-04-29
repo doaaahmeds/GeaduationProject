@@ -64,7 +64,7 @@
         <div class="landing mb-5 pb-3">
             <div class="text-center mb-5 pb-4">
                 <h5><a href="#">{{"home.NewCollection"|translate}}</a> </h5>
-            </div> 
+            </div>
 
             <div id="caros" class="carousel slide mb-4" data-bs-ride="carousel">
                 <div class="carousel-inner ">
@@ -116,7 +116,7 @@
                                         <p>{{lang=='ar'?prd.name_ar:prd.name}}</p>
                                         <div>
                                             <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency |eG}}</span>
-                                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency|eG 
+                                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency|eG
                                                 }}</span>
                                         </div>
                                     </div>
@@ -194,7 +194,7 @@
                                             <p>{{prd.name}}</p>
                                             <div>
                                                 <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency}}</span>
-                                                <span class="text-decoration-line-through fs-14">{{prd.old_price |currency 
+                                                <span class="text-decoration-line-through fs-14">{{prd.old_price |currency
                                                     }}</span>
                                             </div>
                                         </div>
@@ -224,13 +224,13 @@
                                             <p>{{prd.name}}</p>
                                             <div>
                                                 <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency }} </span>
-                                                <span class="text-decoration-line-through fs-14">{{prd.old_price |currency 
+                                                <span class="text-decoration-line-through fs-14">{{prd.old_price |currency
                                                     }}</span>
                                             </div>
                                         </div>
                                         <div class="ms-4">
                                             <ng-container *ngFor="let img of prd.imgs ,let i=index">
-    
+
                                                 <img *ngIf="i>0&&i<=4" [src]="img" height="40px"
                                                     class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                             </ng-container>
@@ -293,7 +293,7 @@
                     <div class="text-center">
                         <p>{{'home.spost'|translate}}</p>
                         <a href="#">{{'home.slink'|translate}}</a>
-                      
+
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg">

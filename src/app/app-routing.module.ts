@@ -21,16 +21,15 @@ const routes: Routes = [
   },
   {path:'Checkout',component:CheckoutComponent},
   {path:'Shipping',component:ShippingComponent},
-  {path:'search',component:SearchComponent}, 
+  {path:'search',component:SearchComponent},
   {path:'login', component:LoginComponent},
   {path:'signup', component:SignUpComponent},
   {path:'**',component:NotFoundComponent},
- 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule,],
- 
+
 })
 export class AppRoutingModule { }

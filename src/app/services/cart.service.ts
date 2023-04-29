@@ -12,12 +12,14 @@ export class CartService
   constructor() { }
 
   addtoCart(product : Iproduct){
+    localStorage.setItem('product',JSON.stringify(product));
     this.cartItemList.push(product);
     this.getTotalPrice();
   }
 
   getProducts()
   {
+    localStorage.getItem('product');
     return this.cartItemList;
   }
 
