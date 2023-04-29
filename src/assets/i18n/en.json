@@ -156,5 +156,15 @@
     
 
 
+    },
+
+    "Search":{
+        "Home":"HOME ",
+        "Search":"SEARCH",
+        "RESULTSFOUNDFOR":"RESULTS FOUND FOR",
+        "YourSearchFor":"Your search for",
+        "didNotYieldAnyResults":"did not yield any results. ",
+        "RevealedTheFollowing":"revealed the following: "  
     }
+
 }

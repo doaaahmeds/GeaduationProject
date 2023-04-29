@@ -90,5 +90,62 @@ body{
     transform: translate(-50%, -50%);
   }
 
+  .img-fluid:hover + .hide {
+    display: block;
+    color: white;
+    text-align:center;
+    padding: 16px 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
 
+  .hide {
+    display: none;
+  }
+
+  .hide{
+    background-color:black;
+    width:50%;
+    }
+    .prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.col-2 shadow-sm border border-1 rounded-2 ms-1:hover{
+    -webkit-box-shadow: 0 10px 12px -7px rgba(171, 171, 171, 1);
+            box-shadow: 0 10px 12px -7px rgba(171, 171, 171, 1);
+            -webkit-transition: background-color 0.5s ease-out;
+            -o-transition: background-color 0.5s ease-out;
+            transition: background-color 0.5s ease-out;
+            overflow: hidden;
+
+            opacity: 1;
+            z-index: 0;
+
+
+
+
+}
+.fa -spinner {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
+    max-height: 14px;
+}
   

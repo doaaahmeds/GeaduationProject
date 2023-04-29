@@ -72,13 +72,20 @@
                         <div class="row content m-5">
                             <ng-container *ngFor="let prd of AllCat,let i=index" class="col ">
                                 <div *ngIf="i>=0&&i<5" class="col ">
+
                                     <div dir="rtl" dir="rtl" class="ci">
                                         <div class=" text-center circle ">
+
+
                                             <span>{{prd.discount}}%</span>
+
                                         </div>
                                         <a [routerLink]="['/single',prd.id]">
                                             <img [src]="prd.imgs[0]" class="img-fluid ">
+                                            <div class="hide">Quick View</div>
                                         </a>
+
+
                                     </div>
                                     <div class="text-center">
                                         <p >{{lang=='ar'?prd.name_ar:prd.name}}</p>
@@ -110,6 +117,7 @@
                                         </div>
                                         <a [routerLink]="['/single',prd.id]">
                                             <img [src]="prd.imgs[0]" class="img-fluid ">
+                                            <div class="hide">Quick View</div>
                                         </a>
                                     </div>
                                     <div class="text-center">
@@ -153,9 +161,13 @@
                 <div class="col-sm-12 col-md col-lg">
                     <a href="#">
                         <img src="assets/imges/ShopTheLook-SUN-AW21-009_1200x.png" class="img-fluid ">
+
                     </a>
+
+
                 </div>
                 <div class="col-sm-12 col-md col-lg">
+
                     <a href="#">
                         <img src="assets/imges/ShopTheLook-GER12-LID60_1200x.png" class="img-fluid ">
                     </a>
@@ -163,6 +175,7 @@
                 <div class="col-sm-12 col-md col-lg">
                     <a href="#">
                         <img src="assets/imges/ShopTheLook-PRD-AW21-016_1200x.png" class="img-fluid ">
+                        <i class="fa fa-spinner fa-spin fa-fw"></i>
                     </a>
                 </div>
 
@@ -188,6 +201,7 @@
                                             </div>
                                             <a [routerLink]="['/single',prd.id]">
                                                 <img [src]="prd.imgs[0]" class="img-fluid ">
+                                                <div class="hide">Quick View</div>
                                             </a>
                                         </div>
                                         <div class="text-center">
@@ -202,7 +216,9 @@
                                             <ng-container *ngFor="let img of prd.imgs ,let i=index">
                                                 <img *ngIf="i>0&&i<=4" [src]="img" height="50px"
                                                     class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+
                                             </ng-container>
+
                                         </div>
                                     </div>
                                 </ng-container>
@@ -218,6 +234,7 @@
                                             </div>
                                             <a [routerLink]="['/single',prd.id]">
                                                 <img [src]="prd.imgs[0]" class="img-fluid ">
+                                                <div class="hide">Quick View</div>
                                             </a>
                                         </div>
                                         <div class="text-center">
