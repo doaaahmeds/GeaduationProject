@@ -21,7 +21,6 @@ export class CartService
     localStorage.getItem('product');
     return this.cartItemList;
   }
-
   getTotalPrice() : number
   {
     let grandTotal = 0;
