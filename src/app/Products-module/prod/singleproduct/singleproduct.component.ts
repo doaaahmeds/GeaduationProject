@@ -15,7 +15,7 @@ const Language_STORAGE_KEY = 'en';
   styleUrls: ['./singleproduct.component.scss']
 })
 export class SingleproductComponent implements OnInit  {
-
+isAdded : boolean = true
   product_details:Iproduct | undefined = undefined;
 
   cart:Iproduct[] = [];
@@ -74,6 +74,9 @@ export class SingleproductComponent implements OnInit  {
   addtocart(product:Iproduct)
   {
     this.cartService.addtoCart(product);
+    if(this.isAdded){
+      alert("Product Added")
+    }
   }
 
 }

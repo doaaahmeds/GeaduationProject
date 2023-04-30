@@ -26,6 +26,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { NgxPayPalModule } from 'ngx-paypal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,7 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     AngularFirestoreModule,
     AngularFireModule,
     AngularFireStorageModule,
-    
+    NgxPayPalModule,
     TranslateModule.forRoot({
       defaultLanguage:'en',
       
