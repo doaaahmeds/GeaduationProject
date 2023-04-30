@@ -16,7 +16,6 @@ export class CartService
     this.cartItemList.push(product);
     this.getTotalPrice();
   }
-
   getProducts()
   {
     localStorage.getItem('product');
