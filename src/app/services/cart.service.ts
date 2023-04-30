@@ -20,7 +20,6 @@ export class CartService
      this.cartItemList.push(product);
     return this.fireStore.collection(`users/${this.authService.userId}/Cart`).add(product) 
   }
-
   getProducts()
   {
     return this.cartItemList;
