@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators  } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/authentication.service';
+
+import { User } from 'src/app/models/iuser';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -17,7 +20,7 @@ export class SignUpComponent {
     password: new FormControl('', [Validators.required]),
   });
 
-  constructor(private authService : AuthenticationService , private router  : Router){}
+  constructor(private authService : AuthenticationService , private router  : Router, private userService : UserService ){}
   ngOnInit(): void{} 
   get firstname() {
     return this.signUpForm.get('firstname');
@@ -39,5 +42,21 @@ export class SignUpComponent {
     }
     const {firstname , lastname , email , password}= this.signUpForm.value
     this.authService.signUp(firstname,lastname,email,password)
+  }
+
+  // Making signup method with properties to add it to users collection :
+  signUp(signUpForm:any){
+    let data : User = signUpForm.value
+    this.authService.signUp(data.firstname , data.lastname , data.email , data.password).subscribe((res)=>{
+      this.userService.addNewUser(res.user.uid , data.firstname! , data.lastname! , data.email!)
+
+      if(this.signUpForm.valid){
+        alert("Registeration Successful")
+        this.router.navigate(['/home'])
+      }
+      else{
+        alert("Please fill the correct data")
+      }
+    })
   }
 }

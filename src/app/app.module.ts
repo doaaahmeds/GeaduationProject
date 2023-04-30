@@ -21,18 +21,21 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ShippingComponent } from './components/shipping/shipping.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-
-
+import { AngularFirestoreModule} from'@angular/fire/compat/firestore'
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { Router } from '@angular/router';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+ HeaderComponent,
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
     FilterPipe,
     EGPipe,
- 
+    
    // EgyptPipe
     CartComponent,
     CheckoutComponent,
@@ -47,6 +50,9 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     FormsModule,
     TranslateModule,
     HttpClientModule,
+    AngularFirestoreModule,
+    AngularFireModule,
+    AngularFireStorageModule,
     
     TranslateModule.forRoot({
       defaultLanguage:'en',
@@ -66,7 +72,9 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 
   ],
-  providers: [],
+  providers: [
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
+  ],
   bootstrap: [AppComponent]
 })
 
