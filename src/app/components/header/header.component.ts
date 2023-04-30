@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
     private translateservice: TranslateService,
     private localstorage: LocalstorageeService,
     private searchService: SearchService,
-    private cartService: CartService
+    public cartService: CartService
   ) {
     this.openCart = new EventEmitter<boolean>();
     this.lang = this.localstorage.getStatus();
