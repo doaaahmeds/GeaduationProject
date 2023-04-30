@@ -85,7 +85,7 @@
 
 <div id="signup" class="col-sm-2">
   
-  <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+  <form [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm)">
     <h3>{{"signin.CreateAccount"|translate}}</h3>
       <div class=" mb-3  p-4 mb-3">
           <div class="mb-3 p-1">

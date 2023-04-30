@@ -2,96 +2,97 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { IsubCategory } from 'src/app/models/isub-category';
 import { ProductsAPIService } from 'src/app/services/products-api.service';
-import {TranslateService} from "@ngx-translate/core";
+import { TranslateService } from '@ngx-translate/core';
 import { LocalstorageeService } from 'src/app/services/localstoragee.service';
 import { SearchService } from 'src/app/services/search/search.service';
-import { AuthenticationService } from 'src/app/authentication.service';
+
 import { CartService } from 'src/app/services/cart.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
-  subCategoryofBags : IsubCategory[] | undefined = undefined;
-  subCategoryofShose : IsubCategory[] | undefined = undefined;
-  isSearch : boolean = false;
+  subCategoryofBags: IsubCategory[] | undefined = undefined;
+  subCategoryofShose: IsubCategory[] | undefined = undefined;
   totalPrice = this.cartService.getTotalPrice();
-  products = this.cartService.getProducts();
-  grandTotal !: number;
-  isOpen:boolean = false;
+  isOpen: boolean = false;
 
-  @Output() openCart:EventEmitter<boolean>;
+  @Output() openCart: EventEmitter<boolean>;
 
-  lang:string='';
-
-  constructor(public authService : AuthenticationService, private getSubCatServ:ProductsAPIService , private router:Router ,private translateservice: TranslateService,
-    private localstorage:LocalstorageeService,private searchService :SearchService, public cartService:CartService){
+  lang: string = '';
+ isUser : boolean = true;
+  constructor(
+    public authService: AuthenticationService,
+    private getSubCatServ: ProductsAPIService,
+    private router: Router,
+    private translateservice: TranslateService,
+    private localstorage: LocalstorageeService,
+    private searchService: SearchService,
+    private cartService: CartService
+  ) {
     this.openCart = new EventEmitter<boolean>();
     this.lang = this.localstorage.getStatus();
-    this.openCart = new EventEmitter<boolean>();
   }
 
-  translatee(event:any){
+  isSearch: boolean = false;
+
+  translatee(event: any) {
     this.translateservice.use(event.target.value);
     console.log(event.target.value);
-
-
-
   }
 
   ngOnInit(): void {
     this.localstorage.watchStorage().subscribe(() => {
       this.lang = this.localstorage.getStatus();
-      console.log(this.lang+'from header');
-    })
-    this.getSubCatServ.getAllsubCatOfBags().subscribe((data: IsubCategory[])=>{
-      this.subCategoryofBags = data
-      // console.log(data);
-    })
+      console.log(this.lang + 'from header');
+    });
+    this.getSubCatServ
+      .getAllsubCatOfBags()
+      .subscribe((data: IsubCategory[]) => {
+        this.subCategoryofBags = data;
+        // console.log(data);
+      });
 
-    this.getSubCatServ.getAllsubCatOfshose().subscribe((data: IsubCategory[])=>{
-      this.subCategoryofShose=data
-    })
+      this.authService.user.subscribe(user=>{
+        if(user){
+          this.isUser = true
+          this.authService.userId = user.uid
+        } 
+        else this.isUser = false  
+      })
 
-  this.grandTotal = this.cartService.getTotalPrice();
 
-
+    this.getSubCatServ
+      .getAllsubCatOfshose()
+      .subscribe((data: IsubCategory[]) => {
+        this.subCategoryofShose = data;
+      });
+  }
+  logout() {
+    this.authService.logout().then(() => {
+      this.router.navigate(['login']);
+    });
   }
 
-  logout(){
-
-    this.authService.logout().then(()=>{
-      this.router.navigate(['login'])
-    })
-  }
-
-  OpenCartFun()
-  {
+  OpenCartFun() {
     this.isOpen = !this.isOpen;
     this.openCart.emit(this.isOpen);
   }
 
-  showSearch(){
-    this.isSearch=!this.isSearch
-    }
+  showSearch() {
+    this.isSearch = !this.isSearch;
+  }
 
-    goToSearch(value : string){
+  goToSearch(value: string) {
+    this.searchService.setvalueOfSearch(value);
 
-      this.searchService.setvalueOfSearch(value)
+    // console.log(value);
+    console.log(this.searchService.valueOfSearch);
 
-      // console.log(value);
-      console.log(  this.searchService.valueOfSearch);
-
-      this.router.navigate(['/search']);
-      this.isSearch=false;
-
-
-    }
-
-
-
-
+    this.router.navigate(['/search']);
+    this.isSearch = false;
+  }
 }

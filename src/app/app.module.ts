@@ -21,19 +21,21 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ShippingComponent } from './components/shipping/shipping.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { NgxPayPalModule } from 'ngx-paypal';
-
-
+import { AngularFirestoreModule} from'@angular/fire/compat/firestore'
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { Router } from '@angular/router';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+ HeaderComponent,
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
     FilterPipe,
     EGPipe,
-
+    
    // EgyptPipe
     CartComponent,
     CheckoutComponent,
@@ -48,15 +50,17 @@ import { NgxPayPalModule } from 'ngx-paypal';
     FormsModule,
     TranslateModule,
     HttpClientModule,
-    NgxPayPalModule,
-
+    AngularFirestoreModule,
+    AngularFireModule,
+    AngularFireStorageModule,
+    
     TranslateModule.forRoot({
       defaultLanguage:'en',
-
+      
       loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
-
+          
           deps: [HttpClient]
       }
   }),
@@ -64,18 +68,20 @@ import { NgxPayPalModule } from 'ngx-paypal';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-
+  
 
 
   ],
-  providers: [],
+  providers: [
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
+  ],
   bootstrap: [AppComponent]
 })
 
 export class AppModule {}
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
-
+  
 }
 
 
