@@ -24,7 +24,6 @@ export class CartService
   {
     return this.cartItemList;
   }
-
   getTotalPrice() : number
   {
     let grandTotal = 0;

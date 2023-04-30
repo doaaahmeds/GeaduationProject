@@ -15,7 +15,6 @@ export class AppComponent {
   title = 'dejavu';
   receivedOpenCart:boolean = false;
   lang:string='';
-
   constructor(private translateservice: TranslateService,private local:LocalstorageeService) {
     this.lang=this.local.getStatus();
   }

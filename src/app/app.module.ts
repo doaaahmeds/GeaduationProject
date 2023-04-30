@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FilterPipe } from './pipes/filter.pipe';
 import { EGPipe } from './pipes/eg.pipe';
