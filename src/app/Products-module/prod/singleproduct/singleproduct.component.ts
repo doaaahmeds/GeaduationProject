@@ -16,6 +16,7 @@ const Language_STORAGE_KEY = 'en';
 })
 export class SingleproductComponent implements OnInit  {
 isAdded : boolean = true
+
   product_details:Iproduct | undefined = undefined;
 
   cart:Iproduct[] = [];
