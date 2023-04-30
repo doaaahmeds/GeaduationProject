@@ -64,7 +64,7 @@
         <div class="landing mb-5 pb-3">
             <div class="text-center mb-5 pb-4">
                 <h5><a href="#">{{"home.NewCollection"|translate}}</a> </h5>
-            </div> 
+            </div>
 
             <div id="caros" class="carousel slide mb-4" data-bs-ride="carousel">
                 <div class="carousel-inner ">
@@ -72,13 +72,20 @@
                         <div class="row content m-5">
                             <ng-container *ngFor="let prd of AllCat,let i=index" class="col ">
                                 <div *ngIf="i>=0&&i<5" class="col ">
+
                                     <div dir="rtl" dir="rtl" class="ci">
                                         <div class=" text-center circle ">
+
+
                                             <span>{{prd.discount}}%</span>
+
                                         </div>
                                         <a [routerLink]="['/single',prd.id]">
                                             <img [src]="prd.imgs[0]" class="img-fluid ">
+                                            <div class="hide">Quick View</div>
                                         </a>
+
+
                                     </div>
                                     <div class="text-center">
                                         <p >{{lang=='ar'?prd.name_ar:prd.name}}</p>
@@ -110,13 +117,14 @@
                                         </div>
                                         <a [routerLink]="['/single',prd.id]">
                                             <img [src]="prd.imgs[0]" class="img-fluid ">
+                                            <div class="hide">Quick View</div>
                                         </a>
                                     </div>
                                     <div class="text-center">
                                         <p>{{lang=='ar'?prd.name_ar:prd.name}}</p>
                                         <div>
                                             <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency |eG}}</span>
-                                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency|eG 
+                                            <span class="text-decoration-line-through fs-14">{{prd.old_price |currency|eG
                                                 }}</span>
                                         </div>
                                     </div>
@@ -153,9 +161,13 @@
                 <div class="col-sm-12 col-md col-lg">
                     <a href="#">
                         <img src="assets/imges/ShopTheLook-SUN-AW21-009_1200x.png" class="img-fluid ">
+
                     </a>
+
+
                 </div>
                 <div class="col-sm-12 col-md col-lg">
+
                     <a href="#">
                         <img src="assets/imges/ShopTheLook-GER12-LID60_1200x.png" class="img-fluid ">
                     </a>
@@ -163,6 +175,7 @@
                 <div class="col-sm-12 col-md col-lg">
                     <a href="#">
                         <img src="assets/imges/ShopTheLook-PRD-AW21-016_1200x.png" class="img-fluid ">
+                        <i class="fa fa-spinner fa-spin fa-fw"></i>
                     </a>
                 </div>
 
@@ -188,13 +201,14 @@
                                             </div>
                                             <a [routerLink]="['/single',prd.id]">
                                                 <img [src]="prd.imgs[0]" class="img-fluid ">
+                                                <div class="hide">Quick View</div>
                                             </a>
                                         </div>
                                         <div class="text-center">
                                             <p>{{prd.name}}</p>
                                             <div>
                                                 <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency}}</span>
-                                                <span class="text-decoration-line-through fs-14">{{prd.old_price |currency 
+                                                <span class="text-decoration-line-through fs-14">{{prd.old_price |currency
                                                     }}</span>
                                             </div>
                                         </div>
@@ -202,7 +216,9 @@
                                             <ng-container *ngFor="let img of prd.imgs ,let i=index">
                                                 <img *ngIf="i>0&&i<=4" [src]="img" height="50px"
                                                     class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+
                                             </ng-container>
+
                                         </div>
                                     </div>
                                 </ng-container>
@@ -218,19 +234,20 @@
                                             </div>
                                             <a [routerLink]="['/single',prd.id]">
                                                 <img [src]="prd.imgs[0]" class="img-fluid ">
+                                                <div class="hide">Quick View</div>
                                             </a>
                                         </div>
                                         <div class="text-center">
                                             <p>{{prd.name}}</p>
                                             <div>
                                                 <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency }} </span>
-                                                <span class="text-decoration-line-through fs-14">{{prd.old_price |currency 
+                                                <span class="text-decoration-line-through fs-14">{{prd.old_price |currency
                                                     }}</span>
                                             </div>
                                         </div>
                                         <div class="ms-4">
                                             <ng-container *ngFor="let img of prd.imgs ,let i=index">
-    
+
                                                 <img *ngIf="i>0&&i<=4" [src]="img" height="40px"
                                                     class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                             </ng-container>
@@ -293,7 +310,7 @@
                     <div class="text-center">
                         <p>{{'home.spost'|translate}}</p>
                         <a href="#">{{'home.slink'|translate}}</a>
-                      
+
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg">

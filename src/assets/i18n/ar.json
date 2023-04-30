@@ -155,5 +155,13 @@
     "here":"هنا",
     "firsrreq":"الاسم الأول مطلوب    ",
     "lastsrreq":"إسم العائلة مطلوب  "
+    },
+    "Search":{
+        "Home":"الرئيسيه",
+        "Search":"بحث",
+        "RESULTSFOUNDFOR":"النتائج التي تم العثور عليها لـ:",
+        "YourSearchFor":"بحثك عن",
+        "didNotYieldAnyResults":"لم تسفر عن أي نتائج. ",
+        "RevealedTheFollowing":"كشف الآتي: "  
     }
 }

@@ -29,7 +29,6 @@ export class AppComponent {
     }
   }
 
-
   onOpenCart(isopenCart:boolean)
   {
     this.receivedOpenCart = isopenCart;
