@@ -1,11 +1,15 @@
 <section (change)="translate($event)" [dir]="'dir'|translate" >
-    <div class="col">
-      <app-header (openCart)="onOpenCart($event)"></app-header>
-      <router-outlet></router-outlet>
-      <app-footer></app-footer>
+    <app-header (openCart)="onOpenCart($event)"></app-header>
+    <div class="position-relative">
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+      <div class="col-3 mt-5 me-2 p-2 position-absolute top-0 end-0 cart" *ngIf="receivedOpenCart">
+        <app-cart (CloseCart)="onCloseCart($event)"></app-cart>
+      </div>
     </div>
-    <div class="col-3 cart" *ngIf="receivedOpenCart">
-      <app-cart (CloseCart)="onCloseCart($event)"></app-cart>
+    <div>
+      <app-footer></app-footer>
     </div>
 </section>
 
