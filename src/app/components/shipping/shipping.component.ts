@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
+import { IPayPalConfig, ICreateOrderRequest, ITransactionItem } from 'ngx-paypal';
 import { CartService } from 'src/app/services/cart.service';
 import { environment } from 'src/environments/environment.development';
 
@@ -11,37 +11,76 @@ import { environment } from 'src/environments/environment.development';
 })
 export class ShippingComponent implements OnInit {
     products = this.cartService.getProducts();
+    totalPrice: number = this.cartService.getTotalPrice();
+
+
     public payPalConfig?: IPayPalConfig;
     showCancel: boolean = false;
     showSuccess: boolean = false;
     showError: boolean = false;
 
+    itemsOfCart: ITransactionItem[] = [
+        {
+            name: 'Enterprise Subscription',
+            quantity: '2',
+            category: 'PHYSICAL_GOODS',
+            unit_amount: {
+                currency_code: 'USD',
+                value: '100',
+            }
+        },{
+            name: 'Enterprise Subscription',
+            quantity: '2',
+            category: 'PHYSICAL_GOODS',
+            unit_amount: {
+                currency_code: 'USD',
+                value: '100',
+            }
+        },
+
+    ];
     constructor(private router: Router, public cartService: CartService) { }
 
 
     ngOnInit(): void {
+        console.log(this.products);
         this.initConfig();
     }
 
+    // getItemOfCart(): ITransactionItem {
+
+    //     return item= this.itemsOfCart.map((prod) => {
+    //         return {
+    //             name: 'Enterprise Subscription',
+    //             quantity: '2',
+    //             category: 'PHYSICAL_GOODS',
+    //             unit_amount: {
+    //                 currency_code: 'USD',
+    //                 value: '100',
+    //             },
+    //         }
+    //     })
+
+    // }
     private initConfig(): void {
         this.payPalConfig = {
             currency: 'USD',
-            clientId:environment.clientId ,
+            clientId: environment.clientId,
             createOrderOnClient: (data) => <ICreateOrderRequest>{
                 intent: 'CAPTURE',
                 purchase_units: [
                     {
                         amount: {
                             currency_code: 'USD',
-                            value: '200',
+                            value: `${this.totalPrice}`,
                             breakdown: {
                                 item_total: {
                                     currency_code: 'USD',
-                                    value: '200'
+                                    value: `${this.totalPrice}`,
                                 }
                             }
                         },
-                        items: [
+                        items: [... this.itemsOfCart,
                             {
                                 name: 'Enterprise Subscription',
                                 quantity: '2',
@@ -65,7 +104,7 @@ export class ShippingComponent implements OnInit {
             },
             onApprove: (data, actions) => {
                 console.log('onApprove - transaction was approved, but not authorized', data, actions);
-                actions.order.get().then((details : any) => {
+                actions.order.get().then((details: any) => {
                     console.log('onApprove - you can get full order details inside onApprove: ', details);
                 });
             },
