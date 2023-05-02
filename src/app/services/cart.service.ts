@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Iproduct } from '../models/iproduct';
 import { CookieService } from 'ngx-cookie-service';
+import { Icart } from '../models/icart';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class CartService
   cartItemList:Iproduct[] = [];
   cartData = new EventEmitter<Iproduct[] | []>();
 
-  constructor(private cookie:CookieService) { }
+  constructor() { }
 
-  addtoCart(product : Iproduct)
+  addtoCart(product : Icart)
   {
     let cartData = [];
     let localCart = localStorage.getItem('products');
@@ -24,6 +25,7 @@ export class CartService
     else
     {
       cartData = JSON.parse(localCart);
+      // for loop
       cartData.push(product)
       localStorage.setItem('products',JSON.stringify(cartData));
     }

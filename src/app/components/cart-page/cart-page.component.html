@@ -18,17 +18,17 @@
       <button class="px-3 py-2 position-absolute top-0 end-0 bg-white fs-6">x</button>
     </div>
     <div class="col-3">
-      <img class="ms-2 mb-3" src="{{product.imgs[0]}}" width="150" height="150">
+      <img class="ms-2 mb-3" src="{{product.img}}" width="150" height="150">
     </div>
     <div class="col-3 mt-5">
       <div class="pb-2">
-        <h5>{{product.name}}</h5>
+        <h5>Name</h5>
       </div>
       <div class="pb-2">
-        <h5>Color: Black</h5>
+        <h5>Color: {{product.color}}</h5>
       </div>
       <div>
-        <h5>Size: 36</h5>
+        <h5>Size: {{product.size}}</h5>
       </div>
     </div>
     <div class="col-2 mt-5 fs-6 font-weight-bold">
@@ -36,7 +36,7 @@
         <p>Price</p>
       </div>
       <div class="pb-2">
-        <p>LE {{product.new_price}}.00</p>
+        <p>LE price.00</p>
       </div>
     </div>
     <div class="col-2 mt-5 fs-6 font-weight-bold">
@@ -52,7 +52,7 @@
         <p>Total</p>
       </div>
       <div class="pb-2">
-        <p class="text-danger">LE {{product.quantity*product.new_price}}.00</p>
+        <p class="text-danger">LE total.00</p>
       </div>
     </div>
   </div>

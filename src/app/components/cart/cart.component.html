@@ -6,11 +6,11 @@
   <hr>
 <ng-container *ngFor="let product of iCartDetail">
   <div class="row mb-3">
-    <img class="col-3" src="{{product.imgs[0]}}" alt=""  width="150" height="150">
+    <img class="col-3" src="{{product.img}}" alt=""  width="150" height="150">
     <div class="col text-center">
-      <p>{{product.name}}</p>
-      <p>BEIGE</p>
-      <p>LE {{product.new_price}}.00</p>
+      <p>{{product_details?.name}}</p>
+      <p>{{product.color}}</p>
+      <p>LE {{product_details?.new_price}}.00</p>
       <div class="btn-group col-6" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-white border border-dark" (click)="handleQuantity('min')">-</button>
         <input type="text" class="bg-white text-center border-1 w-25" value="{{product.quantity}}">

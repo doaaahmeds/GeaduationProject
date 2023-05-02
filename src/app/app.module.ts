@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CookieService } from 'ngx-cookie-service'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -10,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FilterPipe } from './pipes/filter.pipe';
 import { EGPipe } from './pipes/eg.pipe';
@@ -22,14 +22,21 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ShippingComponent } from './components/shipping/shipping.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { AngularFirestoreModule} from'@angular/fire/compat/firestore'
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { Router } from '@angular/router';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+ HeaderComponent,
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
@@ -51,15 +58,15 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
     FormsModule,
     TranslateModule,
     HttpClientModule,
+    AngularFirestoreModule,
+    AngularFireModule,
+    AngularFireStorageModule,
     NgxPayPalModule,
-
     TranslateModule.forRoot({
       defaultLanguage:'en',
-
       loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
-
           deps: [HttpClient]
       }
   }),
@@ -69,16 +76,16 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
     provideFirestore(() => getFirestore()),
 
 
-
   ],
-  providers: [CookieService],
+  providers: [
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
+  ],
   bootstrap: [AppComponent]
 })
 
 export class AppModule {}
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
-
 }
 
 

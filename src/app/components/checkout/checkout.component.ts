@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Icart } from 'src/app/models/icart';
 import { Iproduct } from 'src/app/models/iproduct';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -12,7 +13,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class CheckoutComponent implements OnInit
 {
   userForm: FormGroup;
-  productsOfCheckout : Iproduct[] | undefined = undefined;
+  productsOfCheckout : Icart[] | undefined = undefined;
   constructor(private formBuilder:FormBuilder,private router:Router,public cartService:CartService){
     this.userForm = this.formBuilder.group({
       firstName: ['',[Validators.required]],

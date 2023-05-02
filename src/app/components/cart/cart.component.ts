@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Icart } from 'src/app/models/icart';
 import { Iproduct } from 'src/app/models/iproduct';
 import { CartService } from 'src/app/services/cart.service';
+import { ProductsAPIService } from 'src/app/services/products-api.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,15 +13,21 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent implements OnInit
 {
   productQuantity=0;
-  iCartDetail:Iproduct[] | undefined = undefined;
+  iCartDetail:Icart[] | undefined = undefined;
+  product_details:Iproduct | undefined = undefined;
   isCloseCart:boolean = true;
   @Output() CloseCart:EventEmitter<boolean>;
 
-  constructor(private router:Router, public cartService:CartService){
+  constructor(private router:Router, public cartService:CartService,private prodAPIService:ProductsAPIService){
     this.CloseCart = new EventEmitter<boolean>();
   }
   ngOnInit(): void {
-    this.iCartDetail = this.cartService.getProducts()
+    this.iCartDetail = this.cartService.getProducts();
+    this.iCartDetail?.map((prod)=>{
+      this.prodAPIService.getproductsbyid(prod.id).subscribe(data=>{
+        this.product_details=data;
+      })
+    })
   }
 
   isOpen:boolean=false;
