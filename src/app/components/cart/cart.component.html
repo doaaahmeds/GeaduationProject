@@ -1,4 +1,5 @@
-<section *ngIf="true" class="bg-white p-3">
+<ng-container *ngIf="iCartDetail!=undefined">
+<section *ngIf="iCartDetail.length>0" class="bg-white p-3">
   <div class="row my-3">
     <p class="col text-start fs-6 fw-normal">{{"cart.My Cart"|translate}}</p>
     <p class="col-2 fs-6 fw-normal pointer" (click)="CloseCartFun()">{{"cart.Close"|translate}}</p>
@@ -46,9 +47,10 @@
       <hr>
   </div>
 </section>
+</ng-container>
 
 
-<section *ngIf="false">
+<section *ngIf="iCartDetail?.length==0">
   <section>
     <div class="row my-3">
       <p class="col text-start fs-6 fw-normal">{{"cart.My Cart"|translate}}</p>
