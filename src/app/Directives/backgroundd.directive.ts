@@ -10,11 +10,9 @@ export class BackgrounddDirective {
   }
   @HostListener('click') bgcolor(){
     this.elm.nativeElement.style.backgroundColor='black';
+    this.elm.nativeElement.style.color='white';
   }
-  @HostListener('mouseover') mousein(){
-    // this.elm.nativeElement.style.shadow='10px 10px red';
-     this.elm.nativeElement.style.border='2px dotted green';
-
-    }
+ 
+   
 
 }

@@ -11,6 +11,7 @@ import { LocalstorageeService } from 'src/app/services/localstoragee.service';
 import { IproductCart } from 'src/app/models/iproductcart';
 import { Icart } from 'src/app/models/icart';
 import { MapType } from '@angular/compiler';
+import { RouterTestingHarness } from '@angular/router/testing';
 const Language_STORAGE_KEY = 'en';
 @Component({
   selector: 'app-singleproduct',
@@ -19,6 +20,10 @@ const Language_STORAGE_KEY = 'en';
 })
 export class SingleproductComponent implements OnInit  {
 isAdded : boolean = true
+selectedimg:string='';
+selectsize:string='';
+selectcolor:string='';
+selectdiv:string='';
   product_details:Iproduct | undefined = undefined;
   product_added:Icart={
     id:'',
@@ -56,6 +61,7 @@ isAdded : boolean = true
           this.product_added.id=this.product_details?.id;
           this.product_added.name=this.product_details?.name;
           this.product_added.img=this.product_details.imgs[0];
+          this.selectedimg=this.product_details.imgs[0];
           
          
           //console.log(this.product_details);
@@ -113,7 +119,8 @@ isAdded : boolean = true
  
     if(this.product_added?.size!=undefined){
 
-      this.product_added.size=event.target.innerText, 20
+      this.product_added.size=event.target.innerText, 
+      this.selectsize=event.target.innerText;
       
   }
     console.log(this.product_added);
@@ -126,10 +133,16 @@ isAdded : boolean = true
       this.product_added.color=color;
      
       this.product_added.img=this.imges[i];
+      this.selectcolor=color;
       
   }
+  
    // console.log(this.product_added);
     //console.log(this.product_details);
+  }
+  changeime(img:string){
+    this.selectedimg=img;   
+    console.log(img);
   }
 
   addtocart()
@@ -148,6 +161,11 @@ isAdded : boolean = true
         this.cartService.addtoCart(this.ProductOfCart);
         console.log(this.ProductOfCart);
       }
+  }
+  showingimg(img:string){
+    this.selectedimg=img;
+    this.selectdiv=img;
+    console.log(img);
   }
 
 }

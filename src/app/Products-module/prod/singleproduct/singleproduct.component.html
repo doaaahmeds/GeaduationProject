@@ -91,7 +91,7 @@
 
         <div class="carousel-inner">
           <div class="carousel-item active ">
-            <img id="imgSlider" [src]="product_details.imgs[0]" class="d-block mw-100" alt="...">
+            <img id="imgSlider" [src]="selectedimg" class="d-block mw-100" alt="...">
           </div>
           <!--Edit-->
           <div *ngFor="let img of product_details.imgs" class="carousel-item">
@@ -107,9 +107,13 @@
 
       <article class="  d-none  d-lg-flex  mx-5 me-3 overflow-hidden ">
 
-        <div  *ngFor="let img of product_details.imgs" class="col-2">
-          <img class="w-100 p-2" [src]="img" onclick="showimg(event)" alt="">
-        </div>
+        <ng-container  *ngFor="let img of product_details.imgs" >
+          <div [ngStyle]="{'border':(selectdiv==img)?'2px solid orange':''}"
+            class="col-2">
+            <img class="w-100 p-2" [src]="img" (click)="showingimg(img)" alt="">
+          </div>
+        </ng-container>
+      
 <!-- edit
         <div class="col-2">
           <img class="w-100 p-2" src="./image/GER-DVTH-024-BLACK_2_900x.webp" onclick="showimg(event)" alt="">
@@ -245,10 +249,10 @@
             <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0 ">
               <!--LOOP OF COLORS-->
               <ng-container *ngFor="let color of  product_details.colors | keyvalue,let i=index">
-                <div  class="col-1 mx-2 "  (click)="selectedcolor(color.key,i)">
+                <div   class="col-1 mx-2 "  (click)="selectedcolor(color.key,i)">
                   {{color.key}}
                   <img class="w-100 p-0 border" data-bs-toggle="tooltip" data-bs-placement="top"
-                    data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key">
+                    data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key" (click)="changeime(imges[i])" >
                 </div>
 
               </ng-container>
@@ -291,8 +295,8 @@
 
           <ng-container  *ngFor="let siz of  product_details.size | keyvalue">
             
-            <div
-            class="border shadow-sm  m-1 ms-0  px-3 py-2 position-relative" (click)="selectedsize($event)">
+            <div [ngStyle]="{'background-color':(selectsize==siz.key)?'black':'','color':(selectsize==siz.key)?'white':''}"
+            class="border shadow-sm  m-1 ms-0  px-3 py-2 position-relative" (click)="selectedsize($event)" >
             {{siz.key}}
             <!-- <img class="position-absolute top-0 start-0" src="./image/soldout.webp " width="83%"> -->
           </div>
@@ -316,7 +320,7 @@
         {{"SmallFoor.car"|translate}}</button>
 
       </div>
-      <div class="mx-2" >
+      <div  class="mx-2" >
         <button  class="btn btn-dark rounded-1 col-12  col-md-10  col-lg-8 col-xl-5   py-3 text-white " >
           {{"SmallFoor.car"|translate}}</button>
       </div>

@@ -13,7 +13,7 @@ export class BgcolorDirective {
   }
   @HostListener('mouseover') mousein(){
     // this.elm.nativeElement.style.shadow='10px 10px red';
-     this.elm.nativeElement.style.border='2px dotted green';
+     this.elm.nativeElement.style.border='2px dotted orange';
 
     }
 }

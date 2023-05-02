@@ -33,6 +33,7 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,13 +43,15 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
     HomeComponent,
     FilterPipe,
     EGPipe,
+
    // EgyptPipe
     CartComponent,
     CheckoutComponent,
     ShippingComponent,
     SignUpComponent,
     LoginComponent,
-    CartPageComponent
+    CartPageComponent,
+   
 
   ],
   imports: [

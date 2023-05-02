@@ -13,7 +13,6 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { SearchComponent } from './search/search.component';
 
-
 const routes :Routes=[
   
   {path: '', component:SecondlayoutComponent},
@@ -30,6 +29,7 @@ const routes :Routes=[
    SingleproductComponent ,
    EgyptPipe,
    SearchComponent,
+   
   ],
   imports: [
     CommonModule,
