@@ -28,6 +28,11 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,13 +42,14 @@ import { NgxPayPalModule } from 'ngx-paypal';
     HomeComponent,
     FilterPipe,
     EGPipe,
-    
+
    // EgyptPipe
     CartComponent,
     CheckoutComponent,
     ShippingComponent,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    CartPageComponent
 
   ],
   imports: [
@@ -58,11 +64,9 @@ import { NgxPayPalModule } from 'ngx-paypal';
     NgxPayPalModule,
     TranslateModule.forRoot({
       defaultLanguage:'en',
-      
       loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
-          
           deps: [HttpClient]
       }
   }),
@@ -70,7 +74,6 @@ import { NgxPayPalModule } from 'ngx-paypal';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-  
 
 
   ],
@@ -83,7 +86,6 @@ import { NgxPayPalModule } from 'ngx-paypal';
 export class AppModule {}
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
-  
 }
 
 

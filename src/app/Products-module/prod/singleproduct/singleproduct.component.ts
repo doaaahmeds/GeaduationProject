@@ -8,6 +8,7 @@ import { Observable, Subject } from 'rxjs';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Inject, Injectable } from '@angular/core';
 import { LocalstorageeService } from 'src/app/services/localstoragee.service';
+import { Icart } from 'src/app/models/icart';
 const Language_STORAGE_KEY = 'en';
 @Component({
   selector: 'app-singleproduct',
@@ -18,6 +19,8 @@ export class SingleproductComponent implements OnInit  {
 isAdded : boolean = true
 
   product_details:Iproduct | undefined = undefined;
+  ProductOfCart : Icart | undefined = undefined;
+  productQuantity:number = 1;
 
   cart:Iproduct[] = [];
   imges:string[]=[];
@@ -55,7 +58,17 @@ isAdded : boolean = true
 
     }
 
-
+    handleQuantity(val:string)
+    {
+        if(this.productQuantity<10 && val==='plus')
+        {
+          this.productQuantity+=1;
+        }
+        else if(this.productQuantity>1 && val === 'min')
+        {
+          this.productQuantity-=1;
+        }
+    }
 
   //   const itemSize = product.size.keys();
   //   // const itemCart:Icart = {
@@ -72,12 +85,20 @@ isAdded : boolean = true
   //   localStorage.setItem('cartItems',JSON.stringify(this.cart));
   // }
 
-  addtocart(product:Iproduct)
+  addtocart()
   {
-    this.cartService.addtoCart(product);
-    if(this.isAdded){
-      alert("Product Added")
-    }
+      if(this.product_details)
+      {
+        this.ProductOfCart = {
+          id : this.product_details.id,
+          color : [ ...Object.keys(this.product_details.colors)][0],
+          color_ar : [ ...Object.keys(this.product_details.colors_ar)][0],
+          size : [ ...Object.keys(this.product_details.size)][0],
+          quantity : this.productQuantity,
+          img : this.product_details.imgs[0]
+        }
+        this.cartService.addtoCart(this.ProductOfCart);
+      }
   }
 
 }
