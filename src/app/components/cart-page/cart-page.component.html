@@ -12,10 +12,13 @@
     <div class="col-2">{{this.cartService.getProducts().length}} Item(s)</div>
   </div>
   <hr class="mx-5">
+  <div>
+    <button class="btn btn-danger ms-5 mb-2" (click)="clearAllProducts()">Clear All</button>
+  </div>
   <ng-container *ngFor="let product of cartDetails">
   <div class="row mx-5 border border-secondary position-relative mb-2 p-3">
     <div>
-      <button class="px-3 py-2 position-absolute top-0 end-0 bg-white fs-6">x</button>
+      <button class="px-3 py-2 position-absolute top-0 end-0 bg-white fs-6" (click)="deleteProdouct(product.id)">x</button>
     </div>
     <div class="col-3">
       <img class="ms-2 mb-3" src="{{product.img}}" width="150" height="150">

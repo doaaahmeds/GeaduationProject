@@ -28,6 +28,19 @@ export class CartPageComponent implements OnInit
     this.isOpen =! this.isOpen;
   }
 
+  deleteProdouct(prod:string)
+  {
+    console.log(prod)
+    this.cartService.deleteProductById(prod);
+    console.log(this.cartService.deleteProductById(prod))
+  }
+
+  clearAllProducts()
+  {
+    this.cartService.clearAllProducts();
+    this.router.navigate(['home'])
+  }
+
   GoToCheckout()
   {
     this.CloseCart.emit(this.isOpen)

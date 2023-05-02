@@ -51,4 +51,14 @@ export class CartService
     })
     return grandTotal;
   }
+
+  deleteProductById(prodId:string)
+  {
+    localStorage.removeItem(prodId);
+  }
+
+  clearAllProducts()
+  {
+    localStorage.clear()
+  }
 }
