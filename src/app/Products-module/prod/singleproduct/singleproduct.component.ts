@@ -8,7 +8,9 @@ import { Observable, Subject } from 'rxjs';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Inject, Injectable } from '@angular/core';
 import { LocalstorageeService } from 'src/app/services/localstoragee.service';
+import { IproductCart } from 'src/app/models/iproductcart';
 import { Icart } from 'src/app/models/icart';
+import { MapType } from '@angular/compiler';
 const Language_STORAGE_KEY = 'en';
 @Component({
   selector: 'app-singleproduct',
@@ -17,8 +19,32 @@ const Language_STORAGE_KEY = 'en';
 })
 export class SingleproductComponent implements OnInit  {
 isAdded : boolean = true
-
   product_details:Iproduct | undefined = undefined;
+  product_added:Iproduct={
+    id:'',
+    catid: '',
+    subid: '',
+    name: '',
+    name_ar:'',
+    details: [''],
+    details_ar: [''],
+    size:new Map([
+      ['', 20],
+    ]),
+    colors:new Map([
+      ['', 20],
+    ]),
+    colors_ar:  new Map([
+      ['', 20],
+    ]),
+    imgs: [''],
+    offer: false,
+    quantity:30,
+    old_price: 220,
+    new_price: 330,
+    discount: 20,
+  }
+  apidata:Iproduct | undefined = undefined;
   ProductOfCart : Icart | undefined = undefined;
   productQuantity:number = 1;
 
@@ -28,7 +54,7 @@ isAdded : boolean = true
   cnt:number=-1;
   constructor(private prodAPIService:ProductsAPIService,private activatedRoutServ:ActivatedRoute,private localstorage:LocalstorageeService,private cartService:CartService){
     this.lang=this.localstorage.getStatus();
-
+   
     }
   ngOnInit(): void {
 
@@ -38,8 +64,16 @@ isAdded : boolean = true
         productid=(paramMap.get('id'))?String(this.activatedRoutServ.snapshot.paramMap.get('id')):'';
 
        if(productid!=undefined){
+      
         this.prodAPIService.getproductsbyid(productid).subscribe(data=>{
           this.product_details=data;
+          this.product_added.catid=this.product_details?.catid;
+          this.product_added.id=this.product_details?.id;
+          this.product_added.name=this.product_details?.name;
+          this.product_added.size=this.product_details.size;
+          this.product_added.colors=this.product_details.colors;
+          this.product_added.imgs[0]=this.product_details.imgs[0];
+             
           //console.log(this.product_details);
           if(this.product_details.imgs[0])this.imges.push(this.product_details.imgs[0]);
           if(this.product_details.imgs[3])this.imges.push(this.product_details.imgs[3]);
@@ -48,15 +82,18 @@ isAdded : boolean = true
           //console.log(this.imges);
         })
         }
-
+       
         }))
         this.localstorage.watchStorage().subscribe(() => {
           this.lang = this.localstorage.getStatus();
           console.log(this.lang+'single');
         })
+ 
 
 
     }
+  
+
 
     handleQuantity(val:string)
     {
@@ -85,17 +122,47 @@ isAdded : boolean = true
   //   localStorage.setItem('cartItems',JSON.stringify(this.cart));
   // }
 
+  selectedsize(event:any){
+ 
+    console.log(event.target.innerText);
+   
+ 
+    if(this.product_added?.size!=undefined){
+
+      this.product_added.size=new Map([
+        [event.target.innerText, 20],
+      ]);
+  }
+    console.log(this.product_added);
+
+  }
+  selectedcolor(color:any,img:any){
+
+   
+    if(this.product_added?.colors!=undefined&&this.product_added?.imgs!=undefined){
+      this.product_added.colors=new Map([
+        [color, 20],
+      ]);;
+      this.product_added.imgs[0]=img;
+      
+  }
+    console.log(this.product_added);
+    console.log(this.product_details);
+
+  }
+
   addtocart()
   {
-      if(this.product_details)
+      if(this.product_added)
       {
         this.ProductOfCart = {
-          id : this.product_details.id,
-          color : [ ...Object.keys(this.product_details.colors)][0],
-          color_ar : [ ...Object.keys(this.product_details.colors_ar)][0],
-          size : [ ...Object.keys(this.product_details.size)][0],
+          id : this.product_added.id,
+          color : [ ...Object.keys(this.product_added.colors)][0],
+          color_ar : [ ...Object.keys(this.product_added.colors_ar)][0],
+          size : [ ...Object.keys(this.product_added.size)][0],
           quantity : this.productQuantity,
-          img : this.product_details.imgs[0]
+          img : this.product_added.imgs[0],
+          name:this.product_added.name
         }
         this.cartService.addtoCart(this.ProductOfCart);
       }

@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Icart } from 'src/app/models/icart';
 import { Iproduct } from 'src/app/models/iproduct';
+import { IproductCart } from 'src/app/models/iproductcart';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsAPIService } from 'src/app/services/products-api.service';
 

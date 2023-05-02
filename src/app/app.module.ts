@@ -42,7 +42,6 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
     HomeComponent,
     FilterPipe,
     EGPipe,
-
    // EgyptPipe
     CartComponent,
     CheckoutComponent,
@@ -87,7 +86,6 @@ export class AppModule {}
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
-
 
 
 
