@@ -20,29 +20,14 @@ const Language_STORAGE_KEY = 'en';
 export class SingleproductComponent implements OnInit  {
 isAdded : boolean = true
   product_details:Iproduct | undefined = undefined;
-  product_added:Iproduct={
+  product_added:Icart={
     id:'',
-    catid: '',
-    subid: '',
-    name: '',
-    name_ar:'',
-    details: [''],
-    details_ar: [''],
-    size:new Map([
-      ['', 20],
-    ]),
-    colors:new Map([
-      ['', 20],
-    ]),
-    colors_ar:  new Map([
-      ['', 20],
-    ]),
-    imgs: [''],
-    offer: false,
-    quantity:30,
-    old_price: 220,
-    new_price: 330,
-    discount: 20,
+  size: '',
+  color: '',
+  color_ar: '',
+  img:'',
+  quantity:1,
+  name:''
   }
   apidata:Iproduct | undefined = undefined;
   ProductOfCart : Icart | undefined = undefined;
@@ -67,13 +52,12 @@ isAdded : boolean = true
       
         this.prodAPIService.getproductsbyid(productid).subscribe(data=>{
           this.product_details=data;
-          this.product_added.catid=this.product_details?.catid;
+      
           this.product_added.id=this.product_details?.id;
           this.product_added.name=this.product_details?.name;
-          this.product_added.size=this.product_details.size;
-          this.product_added.colors=this.product_details.colors;
-          this.product_added.imgs[0]=this.product_details.imgs[0];
-             
+          this.product_added.img=this.product_details.imgs[0];
+          
+         
           //console.log(this.product_details);
           if(this.product_details.imgs[0])this.imges.push(this.product_details.imgs[0]);
           if(this.product_details.imgs[3])this.imges.push(this.product_details.imgs[3]);
@@ -129,26 +113,23 @@ isAdded : boolean = true
  
     if(this.product_added?.size!=undefined){
 
-      this.product_added.size=new Map([
-        [event.target.innerText, 20],
-      ]);
-  }
-    console.log(this.product_added);
-
-  }
-  selectedcolor(color:any,img:any){
-
-   
-    if(this.product_added?.colors!=undefined&&this.product_added?.imgs!=undefined){
-      this.product_added.colors=new Map([
-        [color, 20],
-      ]);;
-      this.product_added.imgs[0]=img;
+      this.product_added.size=event.target.innerText, 20
       
   }
     console.log(this.product_added);
-    console.log(this.product_details);
 
+  }
+  selectedcolor(color:string,i:any){
+
+   
+    if(this.product_added?.color!=undefined&&this.product_added?.img!=undefined){
+      this.product_added.color=color;
+     
+      this.product_added.img=this.imges[i];
+      
+  }
+   // console.log(this.product_added);
+    //console.log(this.product_details);
   }
 
   addtocart()
@@ -157,14 +138,15 @@ isAdded : boolean = true
       {
         this.ProductOfCart = {
           id : this.product_added.id,
-          color : [ ...Object.keys(this.product_added.colors)][0],
-          color_ar : [ ...Object.keys(this.product_added.colors_ar)][0],
-          size : [ ...Object.keys(this.product_added.size)][0],
+          color : this.product_added.color,
+          color_ar : this.product_added.color_ar,
+          size : this.product_added.size,
           quantity : this.productQuantity,
-          img : this.product_added.imgs[0],
+          img : this.product_added.img,
           name:this.product_added.name
         }
         this.cartService.addtoCart(this.ProductOfCart);
+        console.log(this.ProductOfCart);
       }
   }
 
