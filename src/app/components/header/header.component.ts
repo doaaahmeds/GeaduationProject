@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   subCategoryofBags: IsubCategory[] | undefined = undefined;
   subCategoryofShose: IsubCategory[] | undefined = undefined;
   totalPrice = this.cartService.getTotalPrice();
+  cartItems = 0;
   isOpen: boolean = false;
 
   @Output() openCart: EventEmitter<boolean>;
@@ -60,10 +61,20 @@ export class HeaderComponent implements OnInit {
         if(user){
           this.isUser = true
           this.authService.userId = user.uid
-        } 
-        else this.isUser = false  
+        }
+        else this.isUser = false
       })
 
+      let cartData = localStorage.getItem('products');
+      if(cartData)
+      {
+        this.cartItems = JSON.parse(cartData).length;
+      }
+
+
+  this.cartService.cartData.subscribe((items:any) => {
+    this.cartItems = items.length;
+  })
 
     this.getSubCatServ
       .getAllsubCatOfshose()

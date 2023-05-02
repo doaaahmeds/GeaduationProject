@@ -9,6 +9,7 @@ import { SearchComponent } from './Products-module/prod/search/search.component'
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 const routes: Routes = [
 
@@ -19,6 +20,7 @@ const routes: Routes = [
     path:  'products/:id',
     loadChildren: () => import('src/app/Products-module/prod/prod.module').then(m => m.ProdModule)
   },
+  {path:'Cart',component:CartPageComponent},
   {path:'Checkout',component:CheckoutComponent},
   {path:'Shipping',component:ShippingComponent},
   {path:'search',component:SearchComponent},

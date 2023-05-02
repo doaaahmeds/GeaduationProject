@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FilterPipe } from './pipes/filter.pipe';
 import { EGPipe } from './pipes/eg.pipe';
@@ -27,8 +28,11 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { NgxPayPalModule } from 'ngx-paypal';
-import { BackgrounddDirective } from './Directives/backgroundd.directive';
-import { BgcolorDirective } from './Products-module/dir/bgcolor.directive';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,8 +48,7 @@ import { BgcolorDirective } from './Products-module/dir/bgcolor.directive';
     ShippingComponent,
     SignUpComponent,
     LoginComponent,
-    BackgrounddDirective,
-    BgcolorDirective
+    CartPageComponent
 
   ],
   imports: [
@@ -60,11 +63,9 @@ import { BgcolorDirective } from './Products-module/dir/bgcolor.directive';
     NgxPayPalModule,
     TranslateModule.forRoot({
       defaultLanguage:'en',
-      
       loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
-          
           deps: [HttpClient]
       }
   }),
@@ -72,7 +73,6 @@ import { BgcolorDirective } from './Products-module/dir/bgcolor.directive';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-  
 
 
   ],
@@ -85,9 +85,7 @@ import { BgcolorDirective } from './Products-module/dir/bgcolor.directive';
 export class AppModule {}
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
-  
 }
-
 
 
 

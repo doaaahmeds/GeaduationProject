@@ -11,6 +11,7 @@ export interface Iproduct {
     colors_ar: Map<string, number>,
     imgs: string[],
     offer: boolean,
+    quantity:number,
     old_price: number,
     new_price: number,
     discount: number,

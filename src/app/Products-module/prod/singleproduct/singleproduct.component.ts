@@ -9,6 +9,8 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Inject, Injectable } from '@angular/core';
 import { LocalstorageeService } from 'src/app/services/localstoragee.service';
 import { IproductCart } from 'src/app/models/iproductcart';
+import { Icart } from 'src/app/models/icart';
+import { MapType } from '@angular/compiler';
 const Language_STORAGE_KEY = 'en';
 @Component({
   selector: 'app-singleproduct',
@@ -37,11 +39,15 @@ isAdded : boolean = true
     ]),
     imgs: [''],
     offer: false,
+    quantity:30,
     old_price: 220,
     new_price: 330,
     discount: 20,
   }
   apidata:Iproduct | undefined = undefined;
+  ProductOfCart : Icart | undefined = undefined;
+  productQuantity:number = 1;
+
   cart:Iproduct[] = [];
   imges:string[]=[];
   lang:string='';
@@ -64,9 +70,10 @@ isAdded : boolean = true
           this.product_added.catid=this.product_details?.catid;
           this.product_added.id=this.product_details?.id;
           this.product_added.name=this.product_details?.name;
-          this.apidata=data;
-      
-          
+          this.product_added.size=this.product_details.size;
+          this.product_added.colors=this.product_details.colors;
+          this.product_added.imgs[0]=this.product_details.imgs[0];
+             
           //console.log(this.product_details);
           if(this.product_details.imgs[0])this.imges.push(this.product_details.imgs[0]);
           if(this.product_details.imgs[3])this.imges.push(this.product_details.imgs[3]);
@@ -87,6 +94,18 @@ isAdded : boolean = true
     }
   
 
+
+    handleQuantity(val:string)
+    {
+        if(this.productQuantity<10 && val==='plus')
+        {
+          this.productQuantity+=1;
+        }
+        else if(this.productQuantity>1 && val === 'min')
+        {
+          this.productQuantity-=1;
+        }
+    }
 
   //   const itemSize = product.size.keys();
   //   // const itemCart:Icart = {
@@ -110,7 +129,9 @@ isAdded : boolean = true
  
     if(this.product_added?.size!=undefined){
 
-      this.product_added.size=event.target.innerText;
+      this.product_added.size=new Map([
+        [event.target.innerText, 20],
+      ]);
   }
     console.log(this.product_added);
 
@@ -119,8 +140,10 @@ isAdded : boolean = true
 
    
     if(this.product_added?.colors!=undefined&&this.product_added?.imgs!=undefined){
-      this.product_added.colors=color;
-      this.product_added.imgs=img;
+      this.product_added.colors=new Map([
+        [color, 20],
+      ]);;
+      this.product_added.imgs[0]=img;
       
   }
     console.log(this.product_added);
@@ -128,12 +151,21 @@ isAdded : boolean = true
 
   }
 
-  addtocart(product:Iproduct)
+  addtocart()
   {
-    this.cartService.addtoCart(product);
-    if(this.isAdded){
-      alert("Product Added")
-    }
+      if(this.product_added)
+      {
+        this.ProductOfCart = {
+          id : this.product_added.id,
+          color : [ ...Object.keys(this.product_added.colors)][0],
+          color_ar : [ ...Object.keys(this.product_added.colors_ar)][0],
+          size : [ ...Object.keys(this.product_added.size)][0],
+          quantity : this.productQuantity,
+          img : this.product_added.imgs[0],
+          name:this.product_added.name
+        }
+        this.cartService.addtoCart(this.ProductOfCart);
+      }
   }
 
 }

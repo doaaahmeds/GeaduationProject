@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
+import { Icart } from 'src/app/models/icart';
+import { Iproduct } from 'src/app/models/iproduct';
 import { CartService } from 'src/app/services/cart.service';
 import { environment } from 'src/environments/environment.development';
 
@@ -10,7 +12,7 @@ import { environment } from 'src/environments/environment.development';
     styleUrls: ['./shipping.component.scss']
 })
 export class ShippingComponent implements OnInit {
-    products = this.cartService.getProducts();
+    productsOfShipping : Icart[] | undefined = undefined;
     public payPalConfig?: IPayPalConfig;
     showCancel: boolean = false;
     showSuccess: boolean = false;
@@ -21,7 +23,19 @@ export class ShippingComponent implements OnInit {
 
     ngOnInit(): void {
         this.initConfig();
+        this.productsOfShipping = this.cartService.getProducts();
+
     }
+
+    GoToCart()
+    {
+      this.router.navigate(['Cart'])
+    }
+
+    GoToCheckout()
+  {
+    this.router.navigate(['Checkout']);
+  }
 
     private initConfig(): void {
         this.payPalConfig = {
