@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Iproduct } from 'src/app/models/iproduct';
+import { IproductCart } from 'src/app/models/iproductcart';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent
 {
   products = this.cartService.getProducts();
-  iCartDetail:Iproduct | undefined = undefined;
+  iCartDetail:IproductCart | undefined = undefined;
   isCloseCart:boolean = true;
   @Output() CloseCart:EventEmitter<boolean>;
 

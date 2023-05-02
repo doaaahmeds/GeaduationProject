@@ -9,7 +9,6 @@ import { HomeComponent } from './components/home/home.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
-
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FilterPipe } from './pipes/filter.pipe';
 import { EGPipe } from './pipes/eg.pipe';
@@ -28,6 +27,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { BackgrounddDirective } from './Directives/backgroundd.directive';
+import { BgcolorDirective } from './Products-module/dir/bgcolor.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,13 +38,14 @@ import { NgxPayPalModule } from 'ngx-paypal';
     HomeComponent,
     FilterPipe,
     EGPipe,
-    
    // EgyptPipe
     CartComponent,
     CheckoutComponent,
     ShippingComponent,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    BackgrounddDirective,
+    BgcolorDirective
 
   ],
   imports: [
