@@ -297,15 +297,15 @@
 
         <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0">
 
-          <span class="downe">-</span>
-          <input min="1" type="text" name="quantity" class="product-quantity" value="1" [max]="10">
-          <span class="up">+</span>
+          <button class="px-3 bg-white" (click)="handleQuantity('min')">-</button>
+          <input min="1" type="text" name="quantity" class="product-quantity" value="{{productQuantity}}" [max]="10">
+          <button class="px-3 bg-white" (click)="handleQuantity('plus')">+</button>
         </div>
       </div>
       <div class="my-3 mx-2"  >
 
         <button
-        class=" btn btn-warning bg-first rounded-1  col-12  col-md-10  col-lg-8 col-xl-5   py-3 text-white  btncart" (click)="addtocart(product_details)">
+        class=" btn btn-warning bg-first rounded-1  col-12  col-md-10  col-lg-8 col-xl-5   py-3 text-white  btncart" (click)="addtocart()">
         {{"SmallFoor.car"|translate}}</button>
 
       </div>

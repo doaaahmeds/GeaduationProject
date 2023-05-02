@@ -17,6 +17,7 @@ const Language_STORAGE_KEY = 'en';
 export class SingleproductComponent implements OnInit  {
 
   product_details:Iproduct | undefined = undefined;
+  productQuantity:number = 1;
 
   cart:Iproduct[] = [];
   imges:string[]=[];
@@ -54,7 +55,17 @@ export class SingleproductComponent implements OnInit  {
 
     }
 
-
+    handleQuantity(val:string)
+    {
+        if(this.productQuantity<10 && val==='plus')
+        {
+          this.productQuantity+=1;
+        }
+        else if(this.productQuantity>1 && val === 'min')
+        {
+          this.productQuantity-=1;
+        }
+    }
 
   //   const itemSize = product.size.keys();
   //   // const itemCart:Icart = {
@@ -71,9 +82,15 @@ export class SingleproductComponent implements OnInit  {
   //   localStorage.setItem('cartItems',JSON.stringify(this.cart));
   // }
 
-  addtocart(product:Iproduct)
+  addtocart()
   {
-    this.cartService.addtoCart(product);
+      if(this.product_details)
+      {
+        this.product_details.quantity = this.productQuantity;
+        console.log(this.product_details)
+        this.cartService.addtoCart(this.product_details);
+      }
+      console.log(localStorage.getItem('products'));
   }
 
 }

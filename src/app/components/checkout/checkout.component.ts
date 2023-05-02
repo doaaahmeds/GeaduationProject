@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Iproduct } from 'src/app/models/iproduct';
@@ -9,9 +9,10 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss']
 })
-export class CheckoutComponent {
-  products = this.cartService.getProducts();
+export class CheckoutComponent implements OnInit
+{
   userForm: FormGroup;
+  productsOfCheckout : Iproduct[] | undefined = undefined;
   constructor(private formBuilder:FormBuilder,private router:Router,public cartService:CartService){
     this.userForm = this.formBuilder.group({
       firstName: ['',[Validators.required]],
@@ -21,6 +22,9 @@ export class CheckoutComponent {
       city: ['',[Validators.required]],
       phone: ['',[Validators.required]]
     })
+  }
+  ngOnInit(): void {
+    this.productsOfCheckout = this.cartService.getProducts();
   }
 
   // convert to property
@@ -47,6 +51,11 @@ export class CheckoutComponent {
   get phone(){
     return this.userForm.get('phone');
   }
+
+  GoToCart()
+    {
+      this.router.navigate(['Cart'])
+    }
 
 
     GoToShipping()

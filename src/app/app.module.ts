@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CookieService } from 'ngx-cookie-service'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -22,6 +23,7 @@ import { ShippingComponent } from './components/shipping/shipping.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
     CheckoutComponent,
     ShippingComponent,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    CartPageComponent
 
   ],
   imports: [
@@ -68,7 +71,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 
 
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 

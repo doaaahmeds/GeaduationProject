@@ -8,15 +8,18 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent
+export class CartComponent implements OnInit
 {
-  products = this.cartService.getProducts();
-  iCartDetail:Iproduct | undefined = undefined;
+  productQuantity=0;
+  iCartDetail:Iproduct[] | undefined = undefined;
   isCloseCart:boolean = true;
   @Output() CloseCart:EventEmitter<boolean>;
 
   constructor(private router:Router, public cartService:CartService){
     this.CloseCart = new EventEmitter<boolean>();
+  }
+  ngOnInit(): void {
+    this.iCartDetail = this.cartService.getProducts()
   }
 
   isOpen:boolean=false;
@@ -25,15 +28,16 @@ export class CartComponent
     this.isOpen =! this.isOpen;
   }
 
-  count:number=1
-  increaseCount()
+  handleQuantity(val:string)
   {
-    this.count ++;
-  }
-
-  decreaseCount()
-  {
-    this.count -- ;
+      if(this.productQuantity<10 && val==='plus')
+      {
+        this.productQuantity+=1;
+      }
+      else if(this.productQuantity>1 && val === 'min')
+      {
+        this.productQuantity-=1;
+      }
   }
 
   CloseCartFun()
