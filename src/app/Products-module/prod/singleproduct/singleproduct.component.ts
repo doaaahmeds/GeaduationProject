@@ -133,14 +133,7 @@ selectdiv:string='';
 
 
 
-  addtocart(product : Iproduct )
-  {
-    let mycart : Cart = product
-    
-    this.cartService.addtoCart(mycart.id! , mycart.name!  , mycart.imgs!  ,  mycart.new_price!  );
-    if(this.isAdded){
-      alert("Product Added")
-    }
+ 
 
 
     if(this.product_added?.color!=undefined&&this.product_added?.img!=undefined){

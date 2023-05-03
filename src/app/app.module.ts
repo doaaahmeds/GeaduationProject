@@ -60,7 +60,7 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
 
     VerifyComponent,
     ForgotPasswordComponent,
-    UserProfileComponent
+    UserProfileComponent,
 
     CartPageComponent,
    
