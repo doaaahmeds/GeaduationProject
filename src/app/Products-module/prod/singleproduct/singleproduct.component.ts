@@ -127,12 +127,13 @@ selectdiv:string='';
       this.selectsize=event.target.innerText;
       
   }
-    console.log(this.product_added);
+   
 
   }
   selectedcolor(color:string,i:any){
 
    
+    
     if(this.product_added?.color!=undefined&&this.product_added?.img!=undefined){
       this.product_added.color=color;
      
@@ -141,8 +142,7 @@ selectdiv:string='';
       
   }
   
-   // console.log(this.product_added);
-    //console.log(this.product_details);
+   
   }
   changeime(img:string){
     this.selectedimg=img;   
