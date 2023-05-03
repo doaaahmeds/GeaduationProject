@@ -1,4 +1,5 @@
-<section class="container-fluid my-3">
+<ng-container *ngIf="cartDetails!=undefined">
+<section class="container-fluid my-3" *ngIf="cartDetails.length>0">
   <div class="row">
 <!-- left side -->
 <div class="col-8">
@@ -12,10 +13,13 @@
     <div class="col-2">{{this.cartService.getProducts().length}} Item(s)</div>
   </div>
   <hr class="mx-5">
+  <div>
+    <button class="btn btn-danger ms-5 mb-2" (click)="clearAllProducts()">Clear All</button>
+  </div>
   <ng-container *ngFor="let product of cartDetails">
   <div class="row mx-5 border border-secondary position-relative mb-2 p-3">
     <div>
-      <button class="px-3 py-2 position-absolute top-0 end-0 bg-white fs-6">x</button>
+      <button class="px-3 py-2 position-absolute top-0 end-0 bg-white fs-6" (click)="deleteProdouct(product.id)">x</button>
     </div>
     <div class="col-3">
       <img class="ms-2 mb-3" src="{{product.img}}" width="150" height="150">
@@ -89,3 +93,20 @@
 </div>
 </div>
 </section>
+</ng-container>
+
+<ng-container *ngIf="cartDetails?.length==0">
+  <div class="fs-6 mt-4">
+    <span class="ms-5">Home</span>
+    <span class="mx-2"><</span>
+    <span> Your Shopping Cart</span>
+  </div>
+  <div class="ms-5 fs-4 mt-3 font-weight-bold">
+    <div>My Cart</div>
+  </div>
+  <hr class="mx-5 mb-3">
+  <div class="mx-5 fs-6 mt-4">
+    Your cart is currently empty.
+  </div>
+  <div class="mb-5 p-5"></div>
+</ng-container>
