@@ -1,25 +1,31 @@
+
+
+<main class="offcanvas-body"> 
 <ng-container *ngIf="iCartDetail!=undefined">
 <section *ngIf="iCartDetail.length>0" class="bg-white p-3">
   <div class="row my-3">
     <p class="col text-start fs-6 fw-normal">{{"cart.My Cart"|translate}}</p>
-    <p class="col-2 fs-6 fw-normal pointer" (click)="CloseCartFun()">{{"cart.Close"|translate}}</p>
+    <!-- <p class="col-2 fs-6 fw-normal pointer" (click)="CloseCartFun()">{{"cart.Close"|translate}}</p> -->
+    <p class="col-2 fs-6 fw-normal pointer" data-bs-dismiss="offcanvas">{{"cart.Close"|translate}}</p>
+
   </div>
   <hr>
-<ng-container *ngFor="let product of iCartDetail">
-  <div class="row mb-3">
-    <img class="col-3" src="{{product.img}}" alt=""  width="150" height="150">
-    <div class="col text-center">
-      <p>{{product_details?.name}}</p>
-      <p>{{product.color}}</p>
-      <p>LE {{product_details?.new_price}}.00</p>
-      <div class="btn-group col-6" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-white border border-dark" (click)="handleQuantity('min')">-</button>
-        <input type="text" class="bg-white text-center border-1 w-25" value="{{product.quantity}}">
-        <button type="button" class="btn btn-white border border-dark" (click)="handleQuantity('plus')">+</button>
+
+  <ng-container *ngFor="let product of iCartDetail">
+    <div class="row mb-3">
+      <img class="col-3" src="{{product.img}}" alt="" width="150" height="150">
+      <div class="col text-center">
+        <p>{{product_details?.name}}</p>
+        <p>{{product.color}}</p>
+        <p>LE {{product_details?.new_price}}.00</p>
+        <div class="btn-group col-6" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-white border border-dark" (click)="handleQuantity('min')">-</button>
+          <input type="text" class="bg-white text-center border-1 w-25" value="{{product.quantity}}">
+          <button type="button" class="btn btn-white border border-dark" (click)="handleQuantity('plus')">+</button>
+        </div>
       </div>
     </div>
-  </div>
-</ng-container>
+  </ng-container>
   <hr>
   <div class="row mt-4">
     <p class="col">{{"cart.Order"|translate}}</p>
@@ -44,7 +50,7 @@
     <ng-container>
       <button class="btn w-100 mb-3 px-3 py-2 checkout" (click)="GoToCheckout()">{{"cart.Check"|translate}}</button>
     </ng-container>
-      <hr>
+    <hr>
   </div>
 </section>
 </ng-container>
@@ -54,10 +60,11 @@
   <section>
     <div class="row my-3">
       <p class="col text-start fs-6 fw-normal">{{"cart.My Cart"|translate}}</p>
-      <p class="col-2 fs-6 fw-normal pointer" (click)="CloseCartFun()">{{"cart.Close"|translate}}</p>
+      <!-- <p class="col-2 fs-6 fw-normal pointer" (click)="CloseCartFun()">{{"cart.Close"|translate}}</p> -->
+      <p class="col-2 fs-6 fw-normal pointer" data-bs-dismiss="offcanvas">{{"cart.Close"|translate}}</p>
     </div>
     <hr>
     <div class="m-2">{{"Your cart is currently empty."|translate}}</div>
   </section>
 </section>
-
+</main>

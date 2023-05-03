@@ -21,7 +21,9 @@ export class HomeComponent implements OnInit {
     
    }
 
- 
+   changeImage( elem :any , image:string){
+    elem.src=image
+  }
    
    
  /*  translateh(event:any){

@@ -60,12 +60,16 @@ selectdiv:string='';
         this.prodAPIService.getproductsbyid(productid).subscribe(data=>{
           this.product_details=data;
       
-          this.product_added.id=this.product_details?.id;
-          this.product_added.name=this.product_details?.name;
-          this.product_added.img=this.product_details.imgs[0];
-          this.product_added.price=this.product_details.new_price;
-          this.product_added.name_ar=this.product_details.name_ar;
-          this.selectedimg=this.product_details.imgs[0];
+          this.product_added.id=data.id;
+          this.product_added.price=data.new_price;
+          this.product_added.name=data.name;
+          this.product_added.img=data.imgs[0];
+          this.product_added.size=[...Object.keys(data.size)][0];
+          this.product_added.color=[...Object.keys(data.colors)][0];
+          this.product_added.color_ar=[...Object.keys(data.colors_ar)][0];
+          this.product_added.price=data.new_price;
+          this.product_added.name_ar=data.name_ar;
+          this.selectedimg=data.imgs[0];
           
          
           //console.log(this.product_details);
@@ -101,20 +105,7 @@ selectdiv:string='';
         }
     }
 
-  //   const itemSize = product.size.keys();
-  //   // const itemCart:Icart = {
-  //   //   id : product.id,
-  //   //   name : product.name,
-  //   //   size : itemSize.next().value,
-  //   //   color :product.colors.keys().next().value,
-  //   //   img:product.imgs[0],
-  //   //   new_price:product.new_price,
-  //   // }
-  //   console.log(itemSize.next().value);
 
-  //   this.cart.push(product);
-  //   localStorage.setItem('cartItems',JSON.stringify(this.cart));
-  // }
 
   selectedsize(event:any){
  
@@ -160,8 +151,9 @@ selectdiv:string='';
           size : this.product_added.size,
           quantity : this.productQuantity,
           img : this.product_added.img,
-          name:this.product_added.name,
+         name:this.product_added.name,
           price:this.product_added.price,
+          totalPrice: (this.productQuantity * (this.product_added.price??1)),
           name_ar:this.product_added.name_ar
         }
         this.cartService.addtoCart(this.ProductOfCart);
