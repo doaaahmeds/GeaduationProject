@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
 
  isUser : boolean = false;
 
-  isUser : boolean = true;
+ 
 
   constructor(
     public authService: AuthenticationService,

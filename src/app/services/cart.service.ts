@@ -33,13 +33,13 @@ export class CartService
   //  private itemsOfITransactionItem = new Subject<ITransactionItem[]>();
 
   constructor(private prodAPIService: ProductsAPIService,
-    private db: Firestore) {
+    private db: Firestore , private firestore : AngularFirestore, private authService : AuthenticationService) {
     // this.newItems  = new BehaviorSubject<Icart[]>([])
   }
 
 
 
-  constructor(private firestore : AngularFirestore, private authService : AuthenticationService) { }
+
 
   // Making Add to Cart that records the id of user and products : 
   
@@ -47,14 +47,14 @@ export class CartService
   //    this.cartItemList.push(product);
   //   return this.firestore.collection(`users/${this.authService.userId}/cart`).add(product) 
   // }
-  addtoCart(id : string , name : string , imgs : string[] ,  new_price : number ){
-  return  this.firestore.collection(`users/${this.authService.userId}/cart` ).add({
-      prod_name  : name,
-      imgs : imgs,
-      price : new_price
+  // addtoCart(id : string , name : string , imgs : string[] ,  new_price : number ){
+  // return  this.firestore.collection(`users/${this.authService.userId}/cart` ).add({
+  //     prod_name  : name,
+  //     imgs : imgs,
+  //     price : new_price
      
-    })
-
+  //   })
+  // }
 
   addtoCart(product: Icart) {
     let cartData = [];
