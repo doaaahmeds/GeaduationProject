@@ -14,50 +14,77 @@
           <span class="mx-2">></span>
           <span>{{"checkout.Payment"|translate}}</span>
         </section>
-          <div class="border rounded mt-4">
-            <div class="d-flex justify-content-between mx-3 mt-2">
-              <span class="text-secondary">{{"checkout.Email1"|translate}}</span>
-              <span>{{"checkout.Email1"|translate}}</span>
-              <a class="text-secondary pointer" (click)="editEmail()">{{"checkout.Change"|translate}}</a>
-            </div>
-            <hr>
-            <div class="d-flex justify-content-between mx-3 mb-3">
-              <span class="text-secondary">{{"checkout.Shipto"|translate}}</span>
-              <span>{{"checkout.Address"|translate}}</span>
-              <a class="text-secondary pointer">{{"checkout.Change"|translate}}</a>
-            </div>
+        <div class="border rounded mt-4">
+          <div class="d-flex justify-content-between mx-3 mt-2">
+            <span class="text-secondary">{{"checkout.Email1"|translate}}</span>
+            <span>{{"checkout.Email1"|translate}}</span>
+            <a class="text-secondary pointer" (click)="editEmail()">{{"checkout.Change"|translate}}</a>
           </div>
-          <div class="mt-4">
-            <h5>{{"checkout.Shippingmethod"|translate}}</h5>
-          </div>
-          <div class="border rounded mt-3 bg-secondary bg-gradient">
-            <div class="d-flex justify-content-between mx-3">
-              <div class="p-3">{{"checkout.Standarddelivery"|translate}}</div>
-              <div class="p-3">E£25.00</div>
-            </div>
-          </div>
-          <div class="row mt-3">
-              <div class="col mt-4">
-                <a class="text-decoration-none">
-                  <span class="text-secondary pointer" (click)="BackToCheckout()">{{"checkout.ReturnInformation"|translate}}</span>
-                </a>
-              </div>
-              <div class="col-4 ">
-                <!-- <button class="bg-black px-4 py-3 text-white rounded">{{"checkout.ContinuePayment"|translate}}</button> -->
-                <ngx-paypal [config]="payPalConfig"></ngx-paypal>
-
-              </div>
+          <hr>
+          <div class="d-flex justify-content-between mx-3 mb-3">
+            <span class="text-secondary">{{"checkout.Shipto"|translate}}</span>
+            <span>{{"checkout.Address"|translate}}</span>
+            <a class="text-secondary pointer">{{"checkout.Change"|translate}}</a>
           </div>
         </div>
+        <div class="mt-4">
+          <h5>{{"checkout.Shippingmethod"|translate}}</h5>
+        </div>
+        <div class="border rounded mt-3 bg-secondary bg-gradient">
+          <div class="d-flex justify-content-between mx-3">
+            <div class="p-3">{{"checkout.Standarddelivery"|translate}}</div>
+            <div class="p-3">E£25.00</div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col mt-4">
+            <a class="text-decoration-none">
+              <span class="text-secondary pointer"
+                (click)="BackToCheckout()">{{"checkout.ReturnInformation"|translate}}</span>
+            </a>
+          </div>
+
+          <div class="col-4 ">
+            <!-- <button class="bg-black px-4 py-3 text-white rounded">{{"checkout.ContinuePayment"|translate}}</button> -->
+            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+          </div>
+          <div *ngIf="showSuccess" >
+            <div>
+              <div class="alert alert-success" role="alert">
+                {{"checkout.PurchaseWasCompleted"|translate}}
+
+              </div>
+              <a role="button" [routerLink]="['/']"> {{"headr.Home"|translate}} </a>
+            </div>
+          </div>
+          <div *ngIf="showError" >
+            <div>
+              <div class="alert alert-danger" role="alert">
+                Something went wrong...
+
+              </div>
+              <a role="button" [routerLink]="['/']"> {{"headr.Home"|translate}} </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     <section class="col">
       <div class="right-size">
         <ng-container *ngFor="let product of productsOfShipping">
-        <div class="row pt-5 ps-5 pb-3">
-          <div class="col-2 position-relative">
-            <img class="image" src="{{product.img}}" width="100" height="100" alt="">
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              {{product.quantity}}</span>
+          <div class="row pt-5 ps-5 pb-3">
+            <div class="col-2 position-relative">
+              <img class="image" src="{{product.img}}" width="100" height="100" alt="">
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {{product.quantity}}</span>
+            </div>
+            <div class="col-6 pt-4">
+              <span class="prodName">Name</span>
+              <p>{{product.color}} / {{product.size}}</p>
+            </div>
+            <div class="col pt-4 prodPrice">
+              <p>E£ total.00</p>
+            </div>
           </div>
           <div class="col-6 pt-4">
             <span class="prodName">{{product.name}}</span>
@@ -66,15 +93,15 @@
           <div class="col pt-4 prodPrice">
             <p>E£ {{product.totalPrice}}.00</p>
           </div>
-        </div>
+
       </ng-container>
         <div class="row">
-        <div class="col-9 ps-5">
-          <input type="text" class="form-control" name="discount" placeholder="Discount code">
-        </div>
-        <div class="col">
-          <button class="btn btn-secondary">{{"checkout.Apply"|translate}}</button>
-        </div>
+          <div class="col-9 ps-5">
+            <input type="text" class="form-control" name="discount" placeholder="Discount code">
+          </div>
+          <div class="col">
+            <button class="btn btn-secondary">{{"checkout.Apply"|translate}}</button>
+          </div>
         </div>
         <div class="row pt-4 ps-4">
           <div class="col-9 ps-4">
@@ -104,6 +131,3 @@
     </section>
   </div>
 </section>
-
-
-

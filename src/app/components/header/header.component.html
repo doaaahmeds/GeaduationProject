@@ -79,16 +79,18 @@
                                 <i class="fa-regular fa-user "></i></a>
                         </li>
                         <li>
-                            <a class="text-dark ">
-                                <i class="fa-solid fa-cart-shopping" (click)="OpenCartFun()"></i>
-                            </a>
+                              <i role="button" class="fa-solid fa-cart-shopping" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_cart" aria-controls="offcanvasRight" ></i>
+
+                            <!-- <a class="text-dark ">
+                                <i class="fa-solid fa-cart-shopping" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" (click)="OpenCartFun()"></i>
+                            </a> -->
                         </li>
 
                         <li class="d-none d-lg-inline px-2">{{cartItems}}</li>
 
                         <li class="d-none d-lg-inline px-2">{{"headr.LE"|translate}} {{cartService.getTotalPrice()}}.00 </li>
                         <select name="" id="" class="d-none d-lg-inline col-md-1" >
-                            <option value="en">....</option>
+                            
                             <option value="en">{{"headr.EN"|translate}}</option>
                             <option value="ar" >{{"headr.AR"|translate}}</option>
 
@@ -121,3 +123,4 @@
 
 </header>
 
+<app-cart  class="offcanvas offcanvas-end" data-bs-scroll="true"  id="offcanvas_cart" > </app-cart>

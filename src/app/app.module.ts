@@ -33,6 +33,7 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
     ShippingComponent,
     SignUpComponent,
     LoginComponent,
-    CartPageComponent
+    CartPageComponent,
+   
 
   ],
   imports: [
@@ -63,7 +65,10 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
     AngularFireStorageModule,
     NgxPayPalModule,
     TranslateModule.forRoot({
-      defaultLanguage:'en',
+     
+      defaultLanguage:`${localStorage
+        .getItem('Language')
+        ?.replaceAll('"', '')}`,
       loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
@@ -87,7 +92,6 @@ export class AppModule {}
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
-
 
 
 
