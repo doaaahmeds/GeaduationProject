@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Icart } from 'src/app/models/icart';
 import { Iproduct } from 'src/app/models/iproduct';
 import { CartService } from 'src/app/services/cart.service';
+import { LocalstorageeService } from 'src/app/services/localstoragee.service';
 
 @Component({
   selector: 'app-cart-page',
@@ -13,10 +14,13 @@ export class CartPageComponent implements OnInit
 {
   isCloseCart:boolean = true;
   cartDetails:Icart[] | undefined = undefined;
+  lang:string='';
   @Output() CloseCart:EventEmitter<boolean>;
 
-  constructor(private router:Router,public cartService:CartService){
+  constructor(private router:Router,public cartService:CartService,private localstorage:LocalstorageeService){
     this.CloseCart = new EventEmitter<boolean>();
+    this.lang=this.localstorage.getStatus();
+    console.log(this.lang);
   }
   ngOnInit(): void {
     this.cartDetails = this.cartService.getProducts()
@@ -26,6 +30,19 @@ export class CartPageComponent implements OnInit
   setOrderSpecial()
   {
     this.isOpen =! this.isOpen;
+  }
+
+  deleteProdouct(prod:string)
+  {
+    console.log(prod)
+    this.cartService.deleteProductById(prod);
+    console.log(this.cartService.deleteProductById(prod))
+  }
+
+  clearAllProducts()
+  {
+    this.cartService.clearAllProducts();
+    this.router.navigate(['home'])
   }
 
   GoToCheckout()

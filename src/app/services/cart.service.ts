@@ -60,6 +60,7 @@ export class CartService {
   }
 
 
+  
 
 
   // async  convertToIcart(): Promise<Observable<Icart[]>> {
@@ -203,4 +204,13 @@ export class CartService {
     
         
 //     }
+  deleteProductById(prodId:string)
+  {
+    localStorage.removeItem(prodId);
+  }
+
+  clearAllProducts()
+  {
+    localStorage.clear()
+  }
 }

@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   links:string[]=['cgCpnqSfoejbeTYqAxQE','vBEYRuSj9Us4ZPPUbg13'];
   AllCat:Iproduct[]=[];
   lang:string='';
-  selectomg:string='';
+  selectimg:string='';
    constructor(private prodAPIService:ProductsAPIService,private router:Router /* ,private translateservice: TranslateService */,private localstorage:LocalstorageeService) {
     this.lang = this.localstorage.getStatus();
     
@@ -54,6 +54,6 @@ export class HomeComponent implements OnInit {
 
    }
    changeime(img:string){
-    
+    this.selectimg=img;
    }
 }

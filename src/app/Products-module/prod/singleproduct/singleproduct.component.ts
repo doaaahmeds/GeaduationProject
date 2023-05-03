@@ -32,7 +32,9 @@ selectdiv:string='';
   color_ar: '',
   img:'',
   quantity:1,
-  name:''
+  name:'',
+  price:0,
+  name_ar:''
   }
   apidata:Iproduct | undefined = undefined;
   ProductOfCart : Icart | undefined = undefined;
@@ -62,6 +64,8 @@ selectdiv:string='';
           this.product_added.price=this.product_details?.new_price;
           this.product_added.name=this.product_details?.name;
           this.product_added.img=this.product_details.imgs[0];
+          this.product_added.price=this.product_details.new_price;
+          this.product_added.name_ar=this.product_details.name_ar;
           this.selectedimg=this.product_details.imgs[0];
           
          
@@ -111,12 +115,13 @@ selectdiv:string='';
       this.selectsize=event.target.innerText;
       
   }
-    console.log(this.product_added);
+   
 
   }
   selectedcolor(color:string,i:any){
 
    
+    
     if(this.product_added?.color!=undefined&&this.product_added?.img!=undefined){
       this.product_added.color=color;
      
@@ -125,8 +130,7 @@ selectdiv:string='';
       
   }
   
-   // console.log(this.product_added);
-    //console.log(this.product_details);
+   
   }
   changeime(img:string){
     this.selectedimg=img;   
@@ -144,9 +148,10 @@ selectdiv:string='';
           size : this.product_added.size,
           quantity : this.productQuantity,
           img : this.product_added.img,
-          name:this.product_added.name,
+         name:this.product_added.name,
           price:this.product_added.price,
-          totalPrice: (this.productQuantity * (this.product_added.price??1))
+          totalPrice: (this.productQuantity * (this.product_added.price??1)),
+          name_ar:this.product_added.name_ar
         }
         this.cartService.addtoCart(this.ProductOfCart);
         console.log(this.ProductOfCart);

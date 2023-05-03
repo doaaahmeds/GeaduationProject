@@ -29,8 +29,8 @@
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Arrow_up_font_awesome.svg/1200px-Arrow_up_font_awesome.svg.png"
                     alt="arrow up"
                     style="width: 30px; height: 30px; position: fixed; left: 98%; top: 90%; z-index: 1; border-radius: 15px; padding: 5px; transition: .2s; opacity: .5;"
-                    onmouseover="this.style.scale=1.2; this.style.opacity=.7"
-                    onmouseleave="this.style.scale=1; this.style.opacity=.8"></a>
+                    mouseover="this.style.scale=1.2; this.style.opacity=.7"
+                    mouseleave="this.style.scale=1; this.style.opacity=.8"></a>
         </div>
 
         <div class="gridlock-fluid mb-5 dv1">
@@ -38,7 +38,7 @@
                 <div class="col ">
                     <div class="transimg ">
                         <div class="containerimg">
-                            <a [routerLink]="['/products',links[0]]"> <img src="assets/imges/Dejavu-Shoes.png"
+                            <a [routerLink]="['/products',links[0]]"> <img src="https://cdn.shopify.com/s/files/1/0499/3079/7217/files/Dejavu-Button-Shoes-Summer-2023-2_daf583a8-d78b-403d-a51d-6b054d3b963a_720x.jpg?v=1680000158"
                                     (click)="AllCategory()" class="w-100 "></a>
                             <div class="centered"> {{"headr.Shoes"|translate}}</div>
                         </div>
@@ -49,7 +49,7 @@
                 <div class="col">
                     <div class="transimg ">
                         <div class="containerimg">
-                            <a [routerLink]="['/products', links[1]]"><img src="assets/imges/Dejavu-Bags.png"
+                            <a [routerLink]="['/products', links[1]]"><img src="https://cdn.shopify.com/s/files/1/0499/3079/7217/files/Dejavu-Button-Bags-Summer-2023-2_9e20f2ae-0e36-4ed4-aea5-050a84c2a675_720x.jpg?v=1680000171"
                                     class="w-100" (click)="AllCategory()"></a>
                             <div class="centered" >{{"headr.Bags"|translate}}</div>
                             <!-- <span class="dv2">Bags</span> -->
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="landing mb-5 pb-3">
-            <div class="text-center mb-5 pb-4">
+            <div class="s1 text-center mb-3 pb-4">
                 <h5><a href="#">{{"home.NewCollection"|translate}}</a> </h5>
             </div>
 
@@ -75,16 +75,12 @@
 
                                     <div dir="rtl" dir="rtl" class="ci">
                                         <div class=" text-center circle ">
-
-
                                             <span>{{prd.discount}}%</span>
-
                                         </div>
                                         <a [routerLink]="['/single',prd.id]">
                                             <img [src]="prd.imgs[0]" class="img-fluid ">
-                                            <div class="hide">Quick View</div>
+                                            <div class="hide">{{"headr.Quick"|translate}}</div>
                                         </a>
-
 
                                     </div>
                                     <div class="text-center">
@@ -98,10 +94,16 @@
                                         </div>
                                     </div>
                                     <div class="ms-4">
-                                        <ng-container *ngFor="let img of prd.imgs ,let i=index">
-                                            <img *ngIf="i>0&&i<=4" [src]="img" height="50px"
+                                        <div>
+                                            <img *ngIf="prd.imgs[0]" [src]="prd.imgs[0]" height="50px"
                                                 class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
-                                        </ng-container>
+                                            <img *ngIf="prd.imgs[3]" [src]="prd.imgs[3]" height="50px"
+                                                class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                            <img *ngIf="prd.imgs[6]" [src]="prd.imgs[6]" height="50px"
+                                                class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                            <img *ngIf="prd.imgs[9]" [src]="prd.imgs[9]" height="50px"
+                                                class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                        </div>
                                     </div>
                                 </div>
                             </ng-container>
@@ -117,7 +119,7 @@
                                         </div>
                                         <a [routerLink]="['/single',prd.id]">
                                             <img [src]="prd.imgs[0]" #imgParent class="img-fluid ">
-                                            <div class="hide">Quick View</div>
+                            
                                         </a>
                                     </div>
                                     <div class="text-center">
@@ -130,12 +132,16 @@
                                     </div>
                                     <div class="ms-4">
                                         <ng-container *ngFor="let img of prd.imgs ,let i=index">
-
-                                            <img *ngIf="i>=0&&i<=4" [src]="img" 
-                                            height="40px"
+                                            <img *ngIf="prd.imgs[0]" [src]="prd.imgs[0]" height="50px"
                                             (mouseover)="changeImage(imgParent,img)"(mouseout)="changeImage(imgParent,prd.imgs[0])"
                                                 class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
-                                        </ng-container>
+                                            <img *ngIf="prd.imgs[3]" [src]="prd.imgs[3]" height="50px"
+                                                class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                            <img *ngIf="prd.imgs[6]" [src]="prd.imgs[6]" height="50px"
+                                                class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                            <img *ngIf="prd.imgs[9]" [src]="prd.imgs[9]" height="50px"
+                                                class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                        </div>
                                     </div>
                                 </div>
                             </ng-container>
@@ -157,12 +163,12 @@
 
         <div class="shop mb-5 pb-3">
             <div class="row">
-                <div class="text-center mb-3 pb-4">
-                    <h5><a href="#" >{{"home.ShopLook" |translate}}</a> </h5>
+                <div class="s1 text-center mb-3 pb-4">
+                    <h5><a  >{{"home.ShopLook" |translate}}</a> </h5>
                 </div>
                 <div class="col-sm-12 col-md col-lg">
-                    <a href="#">
-                        <img src="assets/imges/ShopTheLook-SUN-AW21-009_1200x.png" class="img-fluid ">
+                    <a >
+                        <img src="https://cdn.shopify.com/s/files/1/0499/3079/7217/files/ShopTheLook-LID-DJTT-054_62b895ae-ea0f-424a-9319-c4bf2bf89199_1200x.jpg?v=1678803538" class="img-fluid ">
 
                     </a>
 
@@ -170,13 +176,13 @@
                 </div>
                 <div class="col-sm-12 col-md col-lg">
 
-                    <a href="#">
-                        <img src="assets/imges/ShopTheLook-GER12-LID60_1200x.png" class="img-fluid ">
+                    <a >
+                        <img src="https://cdn.shopify.com/s/files/1/0499/3079/7217/files/ShopTheLook-XKK-DVTH-001_1200x.jpg?v=1678803437" class="img-fluid ">
                     </a>
                 </div>
                 <div class="col-sm-12 col-md col-lg">
-                    <a href="#">
-                        <img src="assets/imges/ShopTheLook-PRD-AW21-016_1200x.png" class="img-fluid ">
+                    <a >
+                        <img src="https://cdn.shopify.com/s/files/1/0499/3079/7217/files/ShopTheLook-KND4-LID37_1200x.jpg?v=1678804477" class="img-fluid ">
                         <i class="fa fa-spinner fa-spin fa-fw"></i>
                     </a>
                 </div>
@@ -186,8 +192,8 @@
         </div>
 
         <div class="shoes mb-5 pb-3">
-            <div class="text-center mb-5 pb-4">
-                <h5><a href="#">{{"home.MoreItems"|translate}}</a> </h5>
+            <div class="s1 text-center mb-5 pb-4">
+                <h5><a >{{"home.MoreItems"|translate}}</a> </h5>
             </div>
             <div class="row content m-5">
 
@@ -202,12 +208,12 @@
                                                 <span>{{prd.discount}}%</span>
                                             </div>
                                             <a [routerLink]="['/single',prd.id]">
-                                                <img [src]="prd.imgs[0]" #imgParent class="img-fluid ">
-                                                <div class="hide">Quick View</div>
+                                            <img [src]="prd.imgs[0]" #imgParent class="img-fluid ">
+                                                
                                             </a>
                                         </div>
                                         <div class="text-center">
-                                            <p>{{prd.name}}</p>
+                                            <p>{{lang=='ar'?prd.name_ar:prd.name}}</p>
                                             <div>
                                                 <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency}}</span>
                                                 <span class="text-decoration-line-through fs-14">{{prd.old_price |currency
@@ -215,12 +221,20 @@
                                             </div>
                                         </div>
                                         <div class="ms-4">
-                                            <ng-container *ngFor="let img of prd.imgs ,let i=index">
-                                                <img *ngIf="i>0&&i<=4" [src]="img" height="50px"
-                                                (mouseover)="changeImage(imgParent,img)"(mouseout)="changeImage(imgParent,prd.imgs[0])"
-                                                    class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
-
-                                            </ng-container>
+                                            <div>
+                                                <div>
+                                                    
+                                                    <img *ngIf="prd.imgs[0]" [src]="prd.imgs[0]" height="50px"(mouseover)="changeImage(imgParent,img)"(mouseout)="changeImage(imgParent,prd.imgs[0])"
+                                                        class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                                    <img *ngIf="prd.imgs[3]" [src]="prd.imgs[3]" height="50px"
+                                                        class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                                    <img *ngIf="prd.imgs[6]" [src]="prd.imgs[6]" height="50px"
+                                                        class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                                    <img *ngIf="prd.imgs[9]" [src]="prd.imgs[9]" height="50px"
+                                                        class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                                </div>
+                            
+                                            </div>
 
                                         </div>
                                     </div>
@@ -236,12 +250,12 @@
                                                 <span>{{prd.discount}}%</span>
                                             </div>
                                             <a [routerLink]="['/single',prd.id]">
-                                                <img [src]="prd.imgs[0]" #imgParent class="img-fluid ">
-                                                <div class="hide">Quick View</div>
+                                            <img [src]="prd.imgs[0]" #imgParent class="img-fluid ">
+                                                
                                             </a>
                                         </div>
                                         <div class="text-center">
-                                            <p>{{prd.name}}</p>
+                                            <p>{{lang=='ar'?prd.name_ar:prd.name}}</p>
                                             <div>
                                                 <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency }} </span>
                                                 <span class="text-decoration-line-through fs-14">{{prd.old_price |currency
@@ -249,12 +263,20 @@
                                             </div>
                                         </div>
                                         <div class="ms-4">
-                                            <ng-container *ngFor="let img of prd.imgs ,let i=index">
-
-                                                <img *ngIf="i>0&&i<=4" [src]="img" height="40px"
-                                                (mouseover)="changeImage(imgParent,img)"(mouseout)="changeImage(imgParent,prd.imgs[0])"
+                                        <div>
+                                                <img *ngIf="prd.imgs[0]" [src]="prd.imgs[0]" height="50px"
+                                                (mouseover)="changeImage(imgParent,prd.imgs[0])"(mouseout)="changeImage(imgParent,prd.imgs[0])"
                                                     class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
-                                            </ng-container>
+                                                <img *ngIf="prd.imgs[3]" [src]="prd.imgs[3]" height="50px"
+                                                (mouseover)="changeImage(imgParent,prd.imgs[3])"(mouseout)="changeImage(imgParent,prd.imgs[0])"
+                                                    class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                                <img *ngIf="prd.imgs[6]" [src]="prd.imgs[6]" height="50px"
+                                                (mouseover)="changeImage(imgParent,prd.imgs[6])"(mouseout)="changeImage(imgParent,prd.imgs[0])"
+                                                    class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                                <img *ngIf="prd.imgs[9]" [src]="prd.imgs[9]" height="50px"
+                                                (mouseover)="changeImage(imgParent,prd.imgs[9])"(mouseout)="changeImage(imgParent,prd.imgs[0])"
+                                                    class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
+                                            </div>
                                         </div>
                                     </div>
                                 </ng-container>
@@ -278,14 +300,14 @@
 
 
         <div class="blogs mb-3 pb-2">
-            <div class="text-center mb-5 pb-4">
-                <h5><a href="#">{{"home.Blog"|translate}}</a> </h5>
+            <div class="s1 text-center mb-5 pb-4">
+                <h5><a >{{"home.Blog"|translate}}</a> </h5>
             </div>
 
             <div class="row content m-5">
                 <div class="col-sm-12 col-md-3 col-lg ">
                     <div class="mb-3 bogtrans">
-                        <a href="./oneProduct.html">
+                        <a >
                             <img src="assets/imges/SH_DEJAVU_1_22234_PRD17-LID77_540x.png" height="300px" width="100%">
                         </a>
                     </div>
@@ -296,12 +318,12 @@
                     <hr>
                     <div class="text-center">
                         <p>{{'home.fpost'|translate}}</p>
-                        <a href="#">{{'home.flink'|translate}}</a>
+                        <a>{{'home.flink'|translate}}</a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg">
                     <div class="mb-3 bogtrans">
-                        <a href="#">
+                        <a >
                             <img src="assets/imges/STILL_LIFE_DEJAVU1662_540x.png" height="300px" width="100%">
                         </a>
                     </div>
@@ -313,13 +335,13 @@
                     <hr>
                     <div class="text-center">
                         <p>{{'home.spost'|translate}}</p>
-                        <a href="#">{{'home.slink'|translate}}</a>
+                        <a>{{'home.slink'|translate}}</a>
 
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg">
                     <div class="mb-3 bogtrans">
-                        <a href="#">
+                        <a >
                             <div>
                                 <img src="assets/imges/Summer-Trends-Shoes-Bags-Women_12503ea9-9361-4ba1-bab1-a5a2c0127c40_540x.png"
                                     height="300px" width="100%">
@@ -334,7 +356,7 @@
                     <hr>
                     <div class="text-center">
                         <p>{{'home.tpost'|translate}}</p>
-                        <a href="#">{{"headr.Bags"|translate}}</a> <a href="#"> {{"headr.Shoes"|translate}}</a><a href="#"> {{"home.tlink"|translate}}</a>
+                        <a>{{"headr.Bags"|translate}}</a> <a href="#"> {{"headr.Shoes"|translate}}</a><a href="#"> {{"home.tlink"|translate}}</a>
                     </div>
 
                 </div>

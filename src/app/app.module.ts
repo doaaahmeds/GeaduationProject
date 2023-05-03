@@ -65,7 +65,10 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
     AngularFireStorageModule,
     NgxPayPalModule,
     TranslateModule.forRoot({
-      defaultLanguage:'en',
+     
+      defaultLanguage:`${localStorage
+        .getItem('Language')
+        ?.replaceAll('"', '')}`,
       loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,

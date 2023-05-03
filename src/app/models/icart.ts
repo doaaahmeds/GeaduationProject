@@ -6,7 +6,9 @@ export interface Icart
   color_ar: string
   img: string,
   quantity:number,
+  price:number,
   totalPrice?:number,
-  price?:number,
-  name:string
+  name:string,
+  name_ar:string,
+ 
 }
