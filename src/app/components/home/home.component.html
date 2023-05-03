@@ -118,8 +118,8 @@
                                             <span>{{prd.discount}}%</span>
                                         </div>
                                         <a [routerLink]="['/single',prd.id]">
-                                            <img [src]="prd.imgs[0]" #imgParent class="img-fluid ">
-                            
+                                            <img [src]="prd.imgs[0]" class="img-fluid ">
+                                            <div class="hide">{{"headr.Quick"|translate}}</div>
                                         </a>
                                     </div>
                                     <div class="text-center">
@@ -131,9 +131,8 @@
                                         </div>
                                     </div>
                                     <div class="ms-4">
-                                        <ng-container *ngFor="let img of prd.imgs ,let i=index">
+                                        <div>
                                             <img *ngIf="prd.imgs[0]" [src]="prd.imgs[0]" height="50px"
-                                            (mouseover)="changeImage(imgParent,img)"(mouseout)="changeImage(imgParent,prd.imgs[0])"
                                                 class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                             <img *ngIf="prd.imgs[3]" [src]="prd.imgs[3]" height="50px"
                                                 class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
@@ -208,8 +207,8 @@
                                                 <span>{{prd.discount}}%</span>
                                             </div>
                                             <a [routerLink]="['/single',prd.id]">
-                                            <img [src]="prd.imgs[0]" #imgParent class="img-fluid ">
-                                                
+                                                <img [src]="prd.imgs[0]" class="img-fluid ">
+                                                <div class="hide">{{"headr.Quick"|translate}}</div>
                                             </a>
                                         </div>
                                         <div class="text-center">
@@ -223,8 +222,7 @@
                                         <div class="ms-4">
                                             <div>
                                                 <div>
-                                                    
-                                                    <img *ngIf="prd.imgs[0]" [src]="prd.imgs[0]" height="50px"(mouseover)="changeImage(imgParent,img)"(mouseout)="changeImage(imgParent,prd.imgs[0])"
+                                                    <img *ngIf="prd.imgs[0]" [src]="prd.imgs[0]" height="50px"
                                                         class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                                     <img *ngIf="prd.imgs[3]" [src]="prd.imgs[3]" height="50px"
                                                         class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
@@ -250,8 +248,8 @@
                                                 <span>{{prd.discount}}%</span>
                                             </div>
                                             <a [routerLink]="['/single',prd.id]">
-                                            <img [src]="prd.imgs[0]" #imgParent class="img-fluid ">
-                                                
+                                                <img [src]="prd.imgs[0]" class="img-fluid ">
+                                                <div class="hide">{{"headr.Quick"|translate}}</div>
                                             </a>
                                         </div>
                                         <div class="text-center">
@@ -263,18 +261,14 @@
                                             </div>
                                         </div>
                                         <div class="ms-4">
-                                        <div>
+                                            <div>
                                                 <img *ngIf="prd.imgs[0]" [src]="prd.imgs[0]" height="50px"
-                                                (mouseover)="changeImage(imgParent,prd.imgs[0])"(mouseout)="changeImage(imgParent,prd.imgs[0])"
                                                     class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                                 <img *ngIf="prd.imgs[3]" [src]="prd.imgs[3]" height="50px"
-                                                (mouseover)="changeImage(imgParent,prd.imgs[3])"(mouseout)="changeImage(imgParent,prd.imgs[0])"
                                                     class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                                 <img *ngIf="prd.imgs[6]" [src]="prd.imgs[6]" height="50px"
-                                                (mouseover)="changeImage(imgParent,prd.imgs[6])"(mouseout)="changeImage(imgParent,prd.imgs[0])"
                                                     class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                                 <img *ngIf="prd.imgs[9]" [src]="prd.imgs[9]" height="50px"
-                                                (mouseover)="changeImage(imgParent,prd.imgs[9])"(mouseout)="changeImage(imgParent,prd.imgs[0])"
                                                     class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                             </div>
                                         </div>

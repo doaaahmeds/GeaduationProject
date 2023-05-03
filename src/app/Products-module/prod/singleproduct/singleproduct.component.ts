@@ -60,13 +60,16 @@ selectdiv:string='';
         this.prodAPIService.getproductsbyid(productid).subscribe(data=>{
           this.product_details=data;
       
-          this.product_added.id=this.product_details?.id;
-          this.product_added.price=this.product_details?.new_price;
-          this.product_added.name=this.product_details?.name;
-          this.product_added.img=this.product_details.imgs[0];
-          this.product_added.price=this.product_details.new_price;
-          this.product_added.name_ar=this.product_details.name_ar;
-          this.selectedimg=this.product_details.imgs[0];
+          this.product_added.id=data.id;
+          this.product_added.price=data.new_price;
+          this.product_added.name=data.name;
+          this.product_added.img=data.imgs[0];
+          this.product_added.size=[...Object.keys(data.size)][0];
+          this.product_added.color=[...Object.keys(data.colors)][0];
+          this.product_added.color_ar=[...Object.keys(data.colors_ar)][0];
+          this.product_added.price=data.new_price;
+          this.product_added.name_ar=data.name_ar;
+          this.selectedimg=data.imgs[0];
           
          
           //console.log(this.product_details);
