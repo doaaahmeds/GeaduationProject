@@ -7,7 +7,7 @@
           <h1 [routerLink]="">{{"checkout.dejavu"|translate}}</h1>
         </div>
         <section class="font-routes">
-          <span>{{"checkout.Cart"|translate}}</span>
+          <span class="pointer" (click)="GoToCart()">{{"checkout.Cart"|translate}}</span>
           <span class="mx-2">></span>
           <span>{{"checkout.Information"|translate}}</span>
           <span class="mx-2">></span>
@@ -98,17 +98,19 @@
     <!-- right side -->
     <section class="col">
       <div class="right-size">
-        <ng-container *ngFor="let product of products">
+        <ng-container *ngFor="let product of productsOfCheckout">
         <div class="row pt-5 ps-5 pb-3">
-          <div class="col-2">
-            <img class="image" src="{{product.imgs[0]}}" width="100" height="100" alt="">
+          <div class="col-2 position-relative">
+            <img class="image" src="{{product.img}}" width="100" height="100" alt="">
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {{product.quantity}}</span>
           </div>
           <div class="col-6 pt-4">
             <span class="prodName">{{product.name}}</span>
-            <p>Taupe / 36</p>
+            <p>{{product.color}} / {{product.size}}</p>
           </div>
           <div class="col pt-4 prodPrice">
-            <p>E£{{product.new_price}}.00</p>
+            <p>E£ {{product.totalPrice}}.00</p>
           </div>
         </div>
       </ng-container>

@@ -91,7 +91,7 @@
 
         <div class="carousel-inner">
           <div class="carousel-item active ">
-            <img id="imgSlider" [src]="product_details.imgs[0]" class="d-block mw-100" alt="...">
+            <img id="imgSlider" [src]="selectedimg" class="d-block mw-100" alt="...">
           </div>
           <!--Edit-->
           <div *ngFor="let img of product_details.imgs" class="carousel-item">
@@ -107,60 +107,14 @@
 
       <article class="  d-none  d-lg-flex  mx-5 me-3 overflow-hidden ">
 
-        <div  *ngFor="let img of product_details.imgs" class="col-2">
-          <img class="w-100 p-2" [src]="img" onclick="showimg(event)" alt="">
-        </div>
-<!-- edit
-        <div class="col-2">
-          <img class="w-100 p-2" src="./image/GER-DVTH-024-BLACK_2_900x.webp" onclick="showimg(event)" alt="">
-        </div>
-
-        <div class="col-2">
-          <img class="w-100 p-2" src="./image/GER-DVTH-024-BLACK_3_900x.webp" onclick="showimg(event)" alt="">
-        </div>
-
-        <div class="col-2">
-          <img class="w-100 p-2" src="./image/GER-DVTH-024-BLACK_4_900x.webp" onclick="showimg(event)" alt="">
-        </div>
-
-        <div class="col-2">
-          <img class="w-100 p-2" src="./image/GER-DVTH-024-BROWN_1_900x.webp" onclick="showimg(event)" alt="">
-        </div>
-
-        <div class="col-2">
-          <img class="w-100 p-2" src="./image/GER-DVTH-024-BROWN_2_900x.webp" onclick="showimg(event)" alt="">
-        </div>
-
-        <div class="col-2">
-          <img class="w-100 p-2" src="./image/GER-DVTH-024-BROWN_3_900x.webp" onclick="showimg(event)" alt="">
-        </div>
-
-        <div class="col-2">
-          <img class="w-100 p-2" src="./image/GER-DVTH-024-BROWN_4_900x.webp" onclick="showimg(event)" alt="">
-        </div> -->
-
-
-        <!-- <div id="carouselExample" class="carousel slide">
-                    <div class="carousel-inner">
-                      <div class="carousel-item active w-25">
-                        <img src="./image/GER-DVTH-024-BLACK_1_900x.webp" class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item  w-25">
-                        <img src="./image/GER-DVTH-024-BROWN_1_900x.webp" class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item   w-25">
-                        <img src="/image/GER-DVTH-024-BLACK_3_900x.webp" class="d-block w-100" alt="...">
-                      </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon bg-black " aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                      <span class="carousel-control-next-icon bg-black" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
-                  </div> -->
+        <ng-container  *ngFor="let img of product_details.imgs" >
+          <div [ngStyle]="{'border':(selectdiv==img)?'2px solid orange':''}"
+            class="col-2">
+            <img class="w-100 p-2" [src]="img" (click)="showingimg(img)" alt="">
+          </div>
+        </ng-container>
+      
+       
 
       </article>
 
@@ -190,7 +144,7 @@
 
           <ul *ngFor="let dis of product_details.details_ar,let i=index">
             <ng-container *ngIf="i>0&&i<=7">
-              <li class="margin-left fs-7 ">{{dis}}</li>
+              <li class="margin-left fs-7 " >{{dis}}</li>
             </ng-container>
           </ul>
         </ng-container>
@@ -243,14 +197,16 @@
           <ng-container *ngIf="lang=='en'">
             <h5 class="d-flex  justify-content-center justify-content-md-start p-1 ps-md-0 ">{{"SmallFoor.Color"|translate}}</h5>
             <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0 ">
-
-
               <!--LOOP OF COLORS-->
-              <div *ngFor="let color of  product_details.colors | keyvalue,let i=index" class="col-1 mx-2 ">
-                {{color.key}}
-                <img class="w-100 p-0 border" data-bs-toggle="tooltip" data-bs-placement="top"
-                  data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key">
-              </div>
+              <ng-container *ngFor="let color of  product_details.colors | keyvalue,let i=index">
+                <div   class="col-1 mx-2 "  (click)="selectedcolor(color.key,i)">
+                  {{color.key}}
+                  <img class="w-100 p-0 border" data-bs-toggle="tooltip" data-bs-placement="top"
+                    data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key" (click)="changeime(imges[i])" >
+                </div>
+
+              </ng-container>
+              
 
             </div>
 
@@ -258,14 +214,18 @@
 
 
           <ng-container *ngIf="lang=='ar'">
-            <h5 class="d-flex  justify-content-center justify-content-md-start p-1 ps-md-0 ">{{"SmallFoor.Color"|translate}}</h5>            <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0 ">
+            <h5 class="d-flex  justify-content-center justify-content-md-start p-1 ps-md-0 ">{{"SmallFoor.Color"|translate}}</h5>            
+            <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0 ">
 
               <!--LOOP OF COLORS-->
-              <div *ngFor="let color of  product_details.colors_ar | keyvalue,let i=index" class="col-1 mx-2 ">
-                {{color.key}}
-                <img class="w-100 p-0 border" data-bs-toggle="tooltip" data-bs-placement="top"
-                  data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key">
-              </div>
+              <ng-container *ngFor="let color of  product_details.colors_ar| keyvalue,let i=index">
+                <div  class="col-1 mx-2" (click)="selectedcolor(color.key,i)">
+                  {{color.key}}
+                  <img class="w-100 p-0 border" data-bs-toggle="tooltip" data-bs-placement="top"
+                    data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key"  (click)="changeime(imges[i])">
+                </div>
+              </ng-container>
+              
 
             </div>
 
@@ -284,34 +244,38 @@
 
 
 
-        <div class="d-flex justify-content-center flex-wrap p-2 justify-content-md-start p-2 ">
+        <div class="d-flex justify-content-center flex-wrap p-2 justify-content-md-start p-2 " >
 
-          <div *ngFor="let siz of  product_details.size | keyvalue"
-            class="border shadow-sm  m-1 ms-0   px-3 py-2 position-relative  ">
+          <ng-container  *ngFor="let siz of  product_details.size | keyvalue">
+            
+            <div [ngStyle]="{'background-color':(selectsize==siz.key)?'black':'','color':(selectsize==siz.key)?'white':''}"
+            class="border shadow-sm  m-1 ms-0  px-3 py-2 position-relative" (click)="selectedsize($event)" >
             {{siz.key}}
             <!-- <img class="position-absolute top-0 start-0" src="./image/soldout.webp " width="83%"> -->
           </div>
+          </ng-container>
+          
         </div>
         <!-- quntity-->
         <h5 class="d-flex  justify-content-center justify-content-md-start p-1 ps-md-0 ">{{"SmallFoor.Quantity"|translate}} </h5>
 
         <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0">
 
-          <span class="downe">-</span>
-          <input min="1" type="text" name="quantity" class="product-quantity" value="1" [max]="10">
-          <span class="up">+</span>
+          <button class="px-3 bg-white" (click)="handleQuantity('min')">-</button>
+          <input min="1" type="text" name="quantity" class="product-quantity" value="{{productQuantity}}" [max]="10">
+          <button class="px-3 bg-white" (click)="handleQuantity('plus')">+</button>
         </div>
       </div>
       <div class="my-3 mx-2"  >
 
         <button
-        class=" btn btn-warning bg-first rounded-1  col-12  col-md-10  col-lg-8 col-xl-5   py-3 text-white  btncart" (click)="addtocart(product_details)">
+        class=" btn btn-warning bg-first rounded-1  col-12  col-md-10  col-lg-8 col-xl-5   py-3 text-white  btncart" (click)="addtocart()">
         {{"SmallFoor.car"|translate}}</button>
 
       </div>
-      <div class="mx-2">
-        <button  class="btn btn-dark rounded-1 col-12  col-md-10  col-lg-8 col-xl-5   py-3 text-white ">
-          {{"SmallFoor.car"|translate}}</button>
+      <div  class="mx-2" >
+        <button  class="btn btn-dark rounded-1 col-12  col-md-10  col-lg-8 col-xl-5   py-3 text-white " [routerLink]="['/Checkout']">
+          {{"cart.buyit"|translate}}</button>
       </div>
 
     </aside>

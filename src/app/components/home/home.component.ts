@@ -15,12 +15,15 @@ export class HomeComponent implements OnInit {
   links:string[]=['cgCpnqSfoejbeTYqAxQE','vBEYRuSj9Us4ZPPUbg13'];
   AllCat:Iproduct[]=[];
   lang:string='';
+  selectimg:string='';
    constructor(private prodAPIService:ProductsAPIService,private router:Router /* ,private translateservice: TranslateService */,private localstorage:LocalstorageeService) {
     this.lang = this.localstorage.getStatus();
     
    }
 
- 
+   changeImage( elem :any , image:string){
+    elem.src=image
+  }
    
    
  /*  translateh(event:any){
@@ -49,5 +52,8 @@ export class HomeComponent implements OnInit {
   }
    AllCategory(){
 
+   }
+   changeime(img:string){
+    this.selectimg=img;
    }
 }

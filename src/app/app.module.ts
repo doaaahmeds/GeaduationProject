@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { firebaseApp$, initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FilterPipe } from './pipes/filter.pipe';
 import { EGPipe } from './pipes/eg.pipe';
@@ -27,10 +28,19 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { NgxPayPalModule } from 'ngx-paypal';
+
 import { VerifyComponent } from './components/verify/verify.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FirebaseApp} from'@angular/fire/compat'
+
+import { CartPageComponent } from './components/cart-page/cart-page.component';
+
+
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,16 +50,21 @@ import { FirebaseApp} from'@angular/fire/compat'
     HomeComponent,
     FilterPipe,
     EGPipe,
-    
+
    // EgyptPipe
     CartComponent,
     CheckoutComponent,
     ShippingComponent,
     SignUpComponent,
     LoginComponent,
+
     VerifyComponent,
     ForgotPasswordComponent,
     UserProfileComponent
+
+    CartPageComponent,
+   
+
 
   ],
   imports: [
@@ -65,12 +80,13 @@ import { FirebaseApp} from'@angular/fire/compat'
     NgxPayPalModule,
     
     TranslateModule.forRoot({
-      defaultLanguage:'en',
-      
+     
+      defaultLanguage:`${localStorage
+        .getItem('Language')
+        ?.replaceAll('"', '')}`,
       loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
-          
           deps: [HttpClient]
       }
   }),
@@ -78,7 +94,6 @@ import { FirebaseApp} from'@angular/fire/compat'
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-  
 
 
   ],
@@ -91,9 +106,7 @@ import { FirebaseApp} from'@angular/fire/compat'
 export class AppModule {}
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
-  
 }
-
 
 
 

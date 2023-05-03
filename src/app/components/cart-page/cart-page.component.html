@@ -1,0 +1,112 @@
+<ng-container *ngIf="cartDetails!=undefined">
+<section class="container-fluid my-3" *ngIf="cartDetails.length>0">
+  <div class="row">
+<!-- left side -->
+<div class="col-8">
+  <div class="fs-5">
+    <span class="ms-5">{{"headr.Home"|translate}}</span>
+    <span class="mx-2"><</span>
+    <span> {{"cart.yourcart1"|translate}}</span>
+  </div>
+  <div class="row ms-5 fs-4 mt-3 font-weight-bold">
+    <div class="col">{{"cart.My Cart"|translate}}</div>
+    <div class="col-2">{{this.cartService.getProducts().length}} {{"cart.Item"|translate}}</div>
+  </div>
+  <hr class="mx-5">
+  <div>
+    <button class="btn btn-danger ms-5 mb-2" (click)="clearAllProducts()">{{"cart.Clear"|translate}}</button>
+  </div>
+  <ng-container *ngFor="let product of cartDetails">
+  <div class="row mx-5 border border-secondary position-relative mb-2 p-3">
+    <div>
+      <button class="px-3 py-2 position-absolute top-0 end-0 bg-white fs-6" (click)="deleteProduct(product.id)">x</button>
+    </div>
+    <div class="col-3">
+      <img class="ms-2 mb-3" src="{{product.img}}" width="150" height="150">
+    </div>
+    <div class="col-3 mt-5">
+      <div class="pb-2">
+        <h5>{{"cart.name"|translate}}:{{lang=="en"?product.name:product.name_ar}}</h5>
+      </div>
+      <div class="pb-2">
+        <h5>{{"cart.color"|translate}}: {{lang=="en"?product.color:product.color_ar}}</h5>
+      </div>
+      <div>
+        <h5>{{"cart.size"|translate}}: {{product.size}}</h5>
+      </div>
+    </div>
+    <div class="col-2 mt-5 fs-6 font-weight-bold">
+      <div class="pb-2">
+        <p>{{"cart.price"|translate}}</p>
+      </div>
+      <div class="pb-2">
+        <p>LE {{product.price}}</p>
+      </div>
+    </div>
+    <div class="col-2 mt-5 fs-6 font-weight-bold">
+      <div class="pb-2">
+        <p>{{"cart.quntity"|translate}}</p>
+      </div>
+      <div class="pb-2 text-center w-50">
+        <input class="w-100 text-center" type="number" value="{{product.quantity}}">
+      </div>
+    </div>
+    <div class="col-2 mt-5 fs-6 font-weight-bold">
+      <div class="pb-2">
+        <p>{{"cart.total"|translate}}</p>
+      </div>
+      <div class="pb-2">
+        <p class="text-danger">LE {{product.totalPrice}}.00</p>
+      </div>
+    </div>
+  </div>
+</ng-container>
+</div>
+<!-- right side -->
+<div class="col-3">
+  <div class="fs-6 font-weight-bold text-center mt-5 pt-3">{{"cart.sum"|translate}}</div>
+  <hr>
+  <div class="pt-3 fs-6 font-weight-bold">
+    <div class="row">
+      <p class="col">{{"cart.Subtotal"|translate}}</p>
+      <p class="col-3 fs-6 pe-2">LE {{this.cartService.getTotalPrice()}}.00</p>
+    </div>
+    <div class="row">
+      <p class="col">{{"cart.Shipping"|translate}}</p>
+      <p class="col-7 ps-4">{{"cart.Calculated"|translate}}</p>
+    </div>
+    <div class="row mt-3">
+      <p class="col fs-5">{{"cart.Total"|translate}}</p>
+      <!-- <p class="col-3 fs-6 pe-2">LE {{this.cartService.getTotalPrice()}}.00</p> -->
+    </div>
+  </div>
+  <div>
+    <div class="row mt-4">
+      <p class="col">{{"cart.Order"|translate}}</p>
+      <p class="col-1 pointer" (click)="setOrderSpecial()">+</p>
+      <textarea class="form-control mx-2" id="floatingTextarea" style="height: 200px" *ngIf="isOpen"></textarea>
+    </div>
+  </div>
+  <ng-container>
+    <button class="btn w-100 mb-3 mt-2 px-3 py-2 checkout" (click)="GoToCheckout()">{{"cart.check"|translate}}</button>
+  </ng-container>
+</div>
+</div>
+</section>
+</ng-container>
+
+<ng-container *ngIf="cartDetails?.length==0">
+  <div class="fs-6 mt-4">
+    <span class="ms-5">{{"headr.Home"|translate}}</span>
+    <span class="mx-2">></span>
+    <span>{{"cart.yourcart1"|translate}}</span>
+  </div>
+  <div class="ms-5 fs-4 mt-3 font-weight-bold">
+    <div>{{"cart.My Cart"|translate}}</div>
+  </div>
+  <hr class="mx-5 mb-3">
+  <div class="mx-5 fs-6 mt-4">
+    {{"cart.Yourcart"|translate}}
+  </div>
+  <div class="mb-5 p-5"></div>
+</ng-container>

@@ -42,6 +42,10 @@ export class SecondlayoutComponent implements OnInit, OnDestroy {
       this.lang=this.localstorage.getStatus();
     }
 
+    changeImage( elem :any , image:string){
+      elem.src=image
+    }
+
 
   ngOnInit(): void {
 

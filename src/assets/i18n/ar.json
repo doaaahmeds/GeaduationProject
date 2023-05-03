@@ -9,7 +9,8 @@
         "LE":"جنيه",
         "Offers":"عروض",
         "AR":"عربى",
-        "EN":"انجليزى"
+        "EN":"انجليزى",
+        "Quick":"القى نظره"
        
 
 
@@ -97,8 +98,19 @@
         "Shipping":"شحن        ",
         "Calculated":"حساب الكل",
         "Total":"المجتوع",
-        "Check ":"تحقق",
-        "Yourcart ":"عربة التسوق فارغة حاليا "
+        "check":"تحقق",
+        "Yourcart ":"عربة التسوق فارغة حاليا ",
+        "Clear":"مسح المنتجات",
+        "name":"الاسم",
+        "color":"اللون",
+        "total":"الاجمالى",
+        "size":"المقاس",
+        "price":"السعر",
+        "quntity":"الكميه",
+        "sum":"إجمالى العربه",
+        "yourcart1":"عربتك",
+        "Item":",المنتجات",
+        "buyit":"اشترى الان"
     },
     "checkout":{
         "dejavu":"ديجافو",
@@ -132,7 +144,9 @@
         "Shippingmethod":"طريقه التسوق",
         "Standarddelivery":"التوصيل العادي خلال 3-5 أيام عمل   ",
         "ReturnInformation":"معلومات الاسترجاع",
-        "ContinuePayment":"واصل للدقع"
+        "ContinuePayment":"واصل للدقع",
+        "PurchaseWasCompleted":"تمت عملية الشراء بنجاح شكرا لك"
+
 
     },
     "signin":{
