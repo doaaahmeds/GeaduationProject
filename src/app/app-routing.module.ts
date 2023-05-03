@@ -9,6 +9,9 @@ import { SearchComponent } from './Products-module/prod/search/search.component'
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { VerifyComponent } from './components/verify/verify.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
 
@@ -24,6 +27,9 @@ const routes: Routes = [
   {path:'search',component:SearchComponent},
   {path:'login', component:LoginComponent},
   {path:'signup', component:SignUpComponent},
+  {path:'verify', component:VerifyComponent},
+  {path:'forgotpass', component:ForgotPasswordComponent},
+  {path:'user', component:UserProfileComponent},
   {path:'**',component:NotFoundComponent},
 ];
 

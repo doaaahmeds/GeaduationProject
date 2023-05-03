@@ -69,15 +69,16 @@
                                 <i class="fa-solid fa-magnifying-glass "></i>
                         </li>
 
-                        <li class="d-none d-lg-inline mx-3" *ngIf ="authService.currentuser$ | async as user">
-                            <a [routerLink]="['login']" routerLinkActive="active" class="text-dark"  (click)="logout()">
+                        <li class="d-none d-lg-inline mx-3" *ngIf ="authService.currentuser$  | async as user">
+                            <a [routerLink]="['login']" routerLinkActive="active" class="text-dark"  (click)="logout()">Logout
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             </a>
                         </li>
-                        <li class="d-none d-lg-inline mx-3">
+                        <li class="d-none d-lg-inline mx-3" *ngIf="!isUser">
                             <a  [routerLink]="['login']" routerLinkActive="active" class="text-dark ">
                                 <i class="fa-regular fa-user "></i></a>
                         </li>
+                       
                         <li>
                             <a class="text-dark ">
                                 <i class="fa-solid fa-cart-shopping" (click)="OpenCartFun()"></i>

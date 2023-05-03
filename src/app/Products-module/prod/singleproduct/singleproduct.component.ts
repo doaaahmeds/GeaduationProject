@@ -8,6 +8,7 @@ import { Observable, Subject } from 'rxjs';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Inject, Injectable } from '@angular/core';
 import { LocalstorageeService } from 'src/app/services/localstoragee.service';
+import { Cart } from 'src/app/models/icart';
 const Language_STORAGE_KEY = 'en';
 @Component({
   selector: 'app-singleproduct',
@@ -23,7 +24,11 @@ isAdded : boolean = true
   imges:string[]=[];
   lang:string='';
   cnt:number=-1;
-  constructor(private prodAPIService:ProductsAPIService,private activatedRoutServ:ActivatedRoute,private localstorage:LocalstorageeService,private cartService:CartService){
+
+  constructor(private prodAPIService:ProductsAPIService,private activatedRoutServ:ActivatedRoute,
+    private localstorage:LocalstorageeService,private cartService:CartService , 
+ 
+    ){
     this.lang=this.localstorage.getStatus();
 
     }
@@ -72,9 +77,11 @@ isAdded : boolean = true
   //   localStorage.setItem('cartItems',JSON.stringify(this.cart));
   // }
 
-  addtocart(product:Iproduct)
+  addtocart(product : Iproduct )
   {
-    this.cartService.addtoCart(product);
+    let mycart : Cart = product
+    
+    this.cartService.addtoCart(mycart.id! , mycart.name!  , mycart.imgs!  ,  mycart.new_price!  );
     if(this.isAdded){
       alert("Product Added")
     }
