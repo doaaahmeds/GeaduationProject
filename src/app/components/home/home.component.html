@@ -29,8 +29,8 @@
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Arrow_up_font_awesome.svg/1200px-Arrow_up_font_awesome.svg.png"
                     alt="arrow up"
                     style="width: 30px; height: 30px; position: fixed; left: 98%; top: 90%; z-index: 1; border-radius: 15px; padding: 5px; transition: .2s; opacity: .5;"
-                    onmouseover="this.style.scale=1.2; this.style.opacity=.7"
-                    onmouseleave="this.style.scale=1; this.style.opacity=.8"></a>
+                    mouseover="this.style.scale=1.2; this.style.opacity=.7"
+                    mouseleave="this.style.scale=1; this.style.opacity=.8"></a>
         </div>
 
         <div class="gridlock-fluid mb-5 dv1">
@@ -82,7 +82,7 @@
                                         </div>
                                         <a [routerLink]="['/single',prd.id]">
                                             <img [src]="prd.imgs[0]" class="img-fluid ">
-                                            <div class="hide">Quick View</div>
+                                            <div class="hide">{{"headr.Quick"|translate}}</div>
                                         </a>
 
 
@@ -117,7 +117,7 @@
                                         </div>
                                         <a [routerLink]="['/single',prd.id]">
                                             <img [src]="prd.imgs[0]" class="img-fluid ">
-                                            <div class="hide">Quick View</div>
+                                            <div class="hide">{{"headr.Quick"|translate}}</div>
                                         </a>
                                     </div>
                                     <div class="text-center">
@@ -201,11 +201,11 @@
                                             </div>
                                             <a [routerLink]="['/single',prd.id]">
                                                 <img [src]="prd.imgs[0]" class="img-fluid ">
-                                                <div class="hide">Quick View</div>
+                                                <div class="hide">{{"headr.Quick"|translate}}</div>
                                             </a>
                                         </div>
                                         <div class="text-center">
-                                            <p>{{prd.name}}</p>
+                                            <p>{{lang=='ar'?prd.name_ar:prd.name}}</p>
                                             <div>
                                                 <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency}}</span>
                                                 <span class="text-decoration-line-through fs-14">{{prd.old_price |currency
@@ -234,11 +234,11 @@
                                             </div>
                                             <a [routerLink]="['/single',prd.id]">
                                                 <img [src]="prd.imgs[0]" class="img-fluid ">
-                                                <div class="hide">Quick View</div>
+                                                <div class="hide">{{"headr.Quick"|translate}}</div>
                                             </a>
                                         </div>
                                         <div class="text-center">
-                                            <p>{{prd.name}}</p>
+                                            <p>{{lang=='ar'?prd.name_ar:prd.name}}</p>
                                             <div>
                                                 <span class="text-danger fs-14 me-1 ">{{prd.new_price|currency }} </span>
                                                 <span class="text-decoration-line-through fs-14">{{prd.old_price |currency

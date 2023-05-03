@@ -268,11 +268,14 @@
             <div class="d-flex  justify-content-center justify-content-md-start p-3 ps-md-0 ">
 
               <!--LOOP OF COLORS-->
-              <div *ngFor="let color of  product_details.colors_ar | keyvalue,let i=index" class="col-1 mx-2 " >
-                {{color.key}}
-                <img class="w-100 p-0 border" data-bs-toggle="tooltip" data-bs-placement="top"
-                  data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key">
-              </div>
+              <ng-container *ngFor="let color of  product_details.colors_ar| keyvalue,let i=index">
+                <div  class="col-1 mx-2" (click)="selectedcolor(color.key,i)">
+                  {{color.key}}
+                  <img class="w-100 p-0 border" data-bs-toggle="tooltip" data-bs-placement="top"
+                    data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key">
+                </div>
+              </ng-container>
+              
 
             </div>
 
