@@ -23,11 +23,11 @@ export class CartComponent implements OnInit
   }
   ngOnInit(): void {
     this.iCartDetail = this.cartService.getProducts();
-    this.iCartDetail?.map((prod)=>{
-      this.prodAPIService.getproductsbyid(prod.id).subscribe(data=>{
-        this.product_details=data;
-      })
-    })
+    // this.iCartDetail?.map((prod)=>{
+    //   this.prodAPIService.getproductsbyid(prod.id).subscribe(data=>{
+    //     this.product_details=data;
+    //   })
+    // })
   }
 
   isOpen:boolean=false;

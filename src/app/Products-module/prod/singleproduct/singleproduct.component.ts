@@ -91,10 +91,13 @@ isAdded : boolean = true
       {
         this.ProductOfCart = {
           id : this.product_details.id,
+          name: this.product_details.name,
           color : [ ...Object.keys(this.product_details.colors)][0],
           color_ar : [ ...Object.keys(this.product_details.colors_ar)][0],
           size : [ ...Object.keys(this.product_details.size)][0],
           quantity : this.productQuantity,
+          new_price : this.product_details.new_price,
+          totalPrice: this.productQuantity*this.product_details.new_price,
           img : this.product_details.imgs[0]
         }
         this.cartService.addtoCart(this.ProductOfCart);

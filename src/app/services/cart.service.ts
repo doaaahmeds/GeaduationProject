@@ -9,7 +9,7 @@ import { Icart } from '../models/icart';
 
 export class CartService
 {
-  cartItemList:Iproduct[] = [];
+  iCartDetail = [];
   cartData = new EventEmitter<Iproduct[] | []>();
 
   constructor() { }
@@ -34,27 +34,35 @@ export class CartService
 
   getProducts()
   {
-    let iCartDetail = [];
     let localCart = localStorage.getItem('products')
     if(localCart)
     {
-      iCartDetail = JSON.parse(localCart)
+      this.iCartDetail = JSON.parse(localCart)
     }
-    return iCartDetail;
+    return this.iCartDetail;
   }
 
   getTotalPrice() : number
   {
     let grandTotal = 0;
-    this.cartItemList.map((a:any)=>{
-      grandTotal += a.new_price;
+    this.iCartDetail.map((a:any)=>{
+      grandTotal += Number(a.totalPrice);
     })
     return grandTotal;
   }
 
   deleteProductById(prodId:string)
   {
-    localStorage.removeItem(prodId);
+    let index = this.iCartDetail.find((prod:any)=>{
+      prod.id === prodId;
+    })
+    console.log(index)
+    if(index)
+    {
+      if (index > -1) {
+      this.iCartDetail.splice(index, 1);
+      }
+    }
   }
 
   clearAllProducts()

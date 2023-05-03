@@ -60,11 +60,11 @@
               {{product.quantity}}</span>
           </div>
           <div class="col-6 pt-4">
-            <span class="prodName">Name</span>
+            <span class="prodName">{{product.name}}</span>
             <p>{{product.color}} / {{product.size}}</p>
           </div>
           <div class="col pt-4 prodPrice">
-            <p>E£ total.00</p>
+            <p>E£ {{product.totalPrice}}.00</p>
           </div>
         </div>
       </ng-container>
@@ -81,7 +81,7 @@
             <h6>{{"cart.Subtotal"|translate}}</h6>
           </div>
           <div class="col ps-4">
-            <p class="prodPrice">E£.00</p>
+            <p class="prodPrice">E£{{cartService.getTotalPrice()}}.00</p>
           </div>
         </div>
         <div class="row ps-4">
