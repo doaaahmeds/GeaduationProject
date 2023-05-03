@@ -6,18 +6,18 @@
     
   </div>
   <hr>
-  <ng-container *ngFor="let product of products">
-    <div class="row mb-3" [hidden]="count<1">
-      <img class="col-3" src="{{product.imgs[0]}}" alt="" width="150" height="150">
-      <div class="col text-center">
-        <p>{{product.name}}</p>
-        <p>BEIGE</p>
-        <p>LE {{product.new_price}}.00</p>
-        <div class="btn-group col-6" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-white border border-dark" (click)="decreaseCount()">-</button>
-          <input type="text" class="bg-white text-center border-1 w-25" value={{count}}>
-          <button type="button" class="btn btn-white border border-dark" (click)="increaseCount()">+</button>
-        </div>
+
+  <ng-container *ngFor="let product of iCartDetail">
+  <div class="row mb-3">
+    <img class="col-3" src="{{product.img}}" alt=""  width="150" height="150">
+    <div class="col text-center">
+      <p>{{product_details?.name}}</p>
+      <p>{{product.color}}</p>
+      <p>LE {{product_details?.new_price}}.00</p>
+      <div class="btn-group col-6" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-white border border-dark" (click)="handleQuantity('min')">-</button>
+        <input type="text" class="bg-white text-center border-1 w-25" value="{{product.quantity}}">
+        <button type="button" class="btn btn-white border border-dark" (click)="handleQuantity('plus')">+</button>
       </div>
     </div>
   </ng-container>
@@ -31,7 +31,7 @@
   <div class="pt-3">
     <div class="row">
       <p class="col">{{"cart.Subtotal"|translate}}</p>
-      <p class="col-3">LE {{cartService.getTotalPrice()*count}}.00</p>
+      <p class="col-3">LE {{cartService.getTotalPrice()}}.00</p>
     </div>
     <div class="row">
       <p class="col">{{"cart.Shipping"|translate}}</p>
@@ -40,7 +40,7 @@
     <div class="row mt-3">
 
       <p class="col fs-5">{{"cart.Total"|translate}}</p>
-      <p class="col-3 fs-6 pe-2">LE {{cartService.getTotalPrice()*count}}.00</p>
+      <p class="col-3 fs-6 pe-2">LE {{cartService.getTotalPrice()*productQuantity}}.00</p>
     </div>
     <ng-container>
       <button class="btn w-100 mb-3 px-3 py-2 checkout" (click)="GoToCheckout()">Check Out → </button>

@@ -5,9 +5,10 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { AuthenticationService } from 'src/app/authentication.service';
+
 import { Routes, Router } from '@angular/router';
 import { user } from '@angular/fire/auth';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -42,7 +43,7 @@ export class LoginComponent {
   }
   submit() {
     if (!this.loginForm.valid ) {
-      alert("Wrong Password Or Email");
+      alert("Please fill correct data !!");
     }
     const { email , password } = this.loginForm.value;
     this.authService.login(email, password).then(() => {

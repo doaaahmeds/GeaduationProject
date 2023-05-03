@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IPayPalConfig, ICreateOrderRequest, ITransactionItem } from 'ngx-paypal';
+import { Icart } from 'src/app/models/icart';
+import { Iproduct } from 'src/app/models/iproduct';
+
 import { CartService } from 'src/app/services/cart.service';
 import { environment } from 'src/environments/environment.development';
 
@@ -14,6 +17,7 @@ export class ShippingComponent implements OnInit {
     totalPrice: number = this.cartService.getTotalPrice();
 
 
+    productsOfShipping : Icart[] | undefined = undefined;
     public payPalConfig?: IPayPalConfig;
     showCancel: boolean = false;
     showSuccess: boolean = false;
@@ -42,9 +46,13 @@ export class ShippingComponent implements OnInit {
     constructor(private router: Router, public cartService: CartService) { }
 
 
-    ngOnInit(): void {
+   
+    ngOnInit(): void {        
         console.log(this.products);
-        this.initConfig();
+        this.initConfig(); 
+
+        this.productsOfShipping = this.cartService.getProducts();
+
     }
 
     // getItemOfCart(): ITransactionItem {
@@ -62,7 +70,18 @@ export class ShippingComponent implements OnInit {
     //     })
 
     // }
-    private initConfig(): void {
+    GoToCart()
+    {
+      this.router.navigate(['Cart'])
+    }
+
+    GoToCheckout()
+  {
+    this.router.navigate(['Checkout']);
+  }
+
+    
+  private initConfig(): void {
         this.payPalConfig = {
             currency: 'USD',
             clientId: environment.clientId,
