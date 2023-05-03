@@ -11,7 +11,9 @@ import { Firestore, addDoc, collection, doc, updateDoc } from '@angular/fire/fir
   providedIn: 'root'
 })
 
-export class CartService {
+export class CartService
+{
+  iCartDetail = [];
 
   cartItemList: Iproduct[] = [];
   totalPrice: number = 0;
@@ -42,25 +44,26 @@ export class CartService {
     this.cartData.emit(cartData);
   }
 
-  getProducts(): Icart[] {
-    let iCartDetail = [];
+  getProducts()
+  {
     let localCart = localStorage.getItem('products')
-    if (localCart) {
-      iCartDetail = JSON.parse(localCart)
+    if(localCart)
+    {
+      this.iCartDetail = JSON.parse(localCart)
     }
-    return iCartDetail;
+    return this.iCartDetail;
   }
 
   getTotalPrice(): number {
     let grandTotal = 0;
-    this.cartItemList.map((a: any) => {
-      grandTotal += a.new_price;
+    this.iCartDetail.map((a:any)=>{
+      grandTotal += Number(a.totalPrice);
     })
     return grandTotal;
   }
 
 
-  
+
 
 
   // async  convertToIcart(): Promise<Observable<Icart[]>> {
@@ -83,7 +86,7 @@ export class CartService {
   //         totalPrice: (data.new_price * item.quantity),
 
   //       })
-  //       this.newItems.next([...newItems]) 
+  //       this.newItems.next([...newItems])
   //       // console.log( this.newItems);
   //     });
   //   })
@@ -171,7 +174,7 @@ export class CartService {
 
   }
 // async upadteProduct(product: Icart)  {
-       
+
 //         this.prodAPIService.getproductsbyid(product.id).subscribe(data => {
 
 //           const docRef = doc(this.db, "product", product.id);
@@ -201,12 +204,21 @@ export class CartService {
 //               console.log(error);
 //           })
 //         })
-    
-        
+
+
 //     }
   deleteProductById(prodId:string)
   {
-    localStorage.removeItem(prodId);
+    let index = this.iCartDetail.find((prod:any)=>{
+      prod.id === prodId;
+    })
+    console.log(index)
+    if(index)
+    {
+      if (index > -1) {
+      this.iCartDetail.splice(index, 1);
+      }
+    }
   }
 
   clearAllProducts()

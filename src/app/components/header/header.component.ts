@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   @Output() openCart: EventEmitter<boolean>;
 
   lang: string = '';
- isUser : boolean = true;
+  isUser : boolean = true;
   constructor(
     public authService: AuthenticationService,
     private getSubCatServ: ProductsAPIService,

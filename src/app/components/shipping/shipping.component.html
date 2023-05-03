@@ -86,7 +86,15 @@
               <p>E£ total.00</p>
             </div>
           </div>
-        </ng-container>
+          <div class="col-6 pt-4">
+            <span class="prodName">{{product.name}}</span>
+            <p>{{product.color}} / {{product.size}}</p>
+          </div>
+          <div class="col pt-4 prodPrice">
+            <p>E£ {{product.totalPrice}}.00</p>
+          </div>
+
+      </ng-container>
         <div class="row">
           <div class="col-9 ps-5">
             <input type="text" class="form-control" name="discount" placeholder="Discount code">
@@ -100,7 +108,7 @@
             <h6>{{"cart.Subtotal"|translate}}</h6>
           </div>
           <div class="col ps-4">
-            <p class="prodPrice">E£.00</p>
+            <p class="prodPrice">E£{{cartService.getTotalPrice()}}.00</p>
           </div>
         </div>
         <div class="row ps-4">

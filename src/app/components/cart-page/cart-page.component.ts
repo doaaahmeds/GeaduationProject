@@ -32,11 +32,11 @@ export class CartPageComponent implements OnInit
     this.isOpen =! this.isOpen;
   }
 
-  deleteProdouct(prod:string)
+  deleteProduct(prod:any)
   {
-    console.log(prod)
+    //console.log(prod)
     this.cartService.deleteProductById(prod);
-    console.log(this.cartService.deleteProductById(prod))
+    //console.log(this.cartService.deleteProductById(prod))
   }
 
   clearAllProducts()

@@ -46,7 +46,7 @@ selectdiv:string='';
   cnt:number=-1;
   constructor(private prodAPIService:ProductsAPIService,private activatedRoutServ:ActivatedRoute,private localstorage:LocalstorageeService,private cartService:CartService){
     this.lang=this.localstorage.getStatus();
-   
+
     }
   ngOnInit(): void {
 
@@ -56,10 +56,10 @@ selectdiv:string='';
         productid=(paramMap.get('id'))?String(this.activatedRoutServ.snapshot.paramMap.get('id')):'';
 
        if(productid!=undefined){
-      
+
         this.prodAPIService.getproductsbyid(productid).subscribe(data=>{
           this.product_details=data;
-      
+
           this.product_added.id=data.id;
           this.product_added.price=data.new_price;
           this.product_added.name=data.name;
@@ -70,8 +70,8 @@ selectdiv:string='';
           this.product_added.price=data.new_price;
           this.product_added.name_ar=data.name_ar;
           this.selectedimg=data.imgs[0];
-          
-         
+
+
           //console.log(this.product_details);
           if(this.product_details.imgs[0])this.imges.push(this.product_details.imgs[0]);
           if(this.product_details.imgs[3])this.imges.push(this.product_details.imgs[3]);
@@ -80,17 +80,17 @@ selectdiv:string='';
           //console.log(this.imges);
         })
         }
-       
+
         }))
         this.localstorage.watchStorage().subscribe(() => {
           this.lang = this.localstorage.getStatus();
           console.log(this.lang+'single');
         })
- 
+
 
 
     }
-  
+
 
 
     handleQuantity(val:string)
@@ -108,35 +108,35 @@ selectdiv:string='';
 
 
   selectedsize(event:any){
- 
+
     console.log(event.target.innerText);
-   
- 
+
+
     if(this.product_added?.size!=undefined){
 
-      this.product_added.size=event.target.innerText, 
+      this.product_added.size=event.target.innerText,
       this.selectsize=event.target.innerText;
-      
+
   }
-   
+
 
   }
   selectedcolor(color:string,i:any){
 
-   
-    
+
+
     if(this.product_added?.color!=undefined&&this.product_added?.img!=undefined){
       this.product_added.color=color;
-     
+
       this.product_added.img=this.imges[i];
       this.selectcolor=color;
-      
+
   }
-  
-   
+
+
   }
   changeime(img:string){
-    this.selectedimg=img;   
+    this.selectedimg=img;
     console.log(img);
   }
 

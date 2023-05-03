@@ -1,6 +1,7 @@
 export interface Icart
 {
   id:string,
+  name:string,
   size: string,
   color: string,
   color_ar: string
@@ -8,7 +9,5 @@ export interface Icart
   quantity:number,
   price:number,
   totalPrice?:number,
-  name:string,
   name_ar:string,
- 
 }
