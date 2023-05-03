@@ -32,7 +32,9 @@ selectdiv:string='';
   color_ar: '',
   img:'',
   quantity:1,
-  name:''
+  name:'',
+  price:0,
+  name_ar:''
   }
   apidata:Iproduct | undefined = undefined;
   ProductOfCart : Icart | undefined = undefined;
@@ -61,6 +63,8 @@ selectdiv:string='';
           this.product_added.id=this.product_details?.id;
           this.product_added.name=this.product_details?.name;
           this.product_added.img=this.product_details.imgs[0];
+          this.product_added.price=this.product_details.new_price;
+          this.product_added.name_ar=this.product_details.name_ar;
           this.selectedimg=this.product_details.imgs[0];
           
          
@@ -156,7 +160,9 @@ selectdiv:string='';
           size : this.product_added.size,
           quantity : this.productQuantity,
           img : this.product_added.img,
-          name:this.product_added.name
+          name:this.product_added.name,
+          price:this.product_added.price,
+          name_ar:this.product_added.name_ar
         }
         this.cartService.addtoCart(this.ProductOfCart);
         console.log(this.ProductOfCart);

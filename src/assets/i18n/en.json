@@ -95,8 +95,18 @@
         "Shipping":"Shipping",
         "Calculated":"Calculated at checkout",
         "Total":"Total",
-        "Check ":"Check Out → ",
-        "Yourcart ":"Your cart is currently empty"
+        "check":"Check Out → ",
+        "Yourcart ":"Your cart is currently empty",
+        "Clear":"Clear All",
+        "name":"Name",
+        "color":"Color",
+        "total":"Total",
+        "size":"Size",
+        "price":"Price",
+        "quntity":"Quntity",
+        "sum":"Cart Summary",
+        "yourcart1":"Your Shopping Cart",
+        "Item":"Item(s)"
     },
     "checkout":{
         "dejavu":"dejavu",
