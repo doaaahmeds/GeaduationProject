@@ -1,4 +1,4 @@
-form{
+.loginform{
    width: 40vw;
    margin-left: 400px;
    padding: 30px;
@@ -7,16 +7,16 @@ form{
 #create{
     color: white;
     background-color: #c8ad54;
-    border-radius: 3px;
-    height: 10vh;
+    border-radius: 0;
+    height: 7vh;
 }
 #create:hover{
     color: white;
     background-color: black;
 }
 #sign{
-    border-radius: 3px;
-    height: 10vh; 
+    border-radius: 0;
+    height: 7vh; 
 }
 .contactbtn{
     display: flex;

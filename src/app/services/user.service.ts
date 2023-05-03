@@ -13,7 +13,9 @@ export class UserService {
     this.fireStore.doc('users/' +id).set({
       firstname : firstname,
       lastname : lastname,
-      id: id
+      id: id,
+      email : email
+      
     })
   }
 }
