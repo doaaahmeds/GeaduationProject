@@ -15,7 +15,7 @@
     <div class="col text-center">
       <p>{{product.name}}</p>
       <p>{{product.color}}</p>
-      <p>LE {{product.new_price}}.00</p>
+      <p>LE {{product.price}}.00</p>
       <div class="btn-group col-6" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-white border border-dark" (click)="handleQuantity('min')">-</button>
         <input type="text" class="bg-white text-center border-1 w-25" value="{{product.quantity}}">
@@ -46,7 +46,7 @@
       <p class="col-4 fs-6 pe-2">LE {{cartService.getTotalPrice()}}.00</p>
     </div>
     <ng-container>
-      <button class="btn w-100 mb-3 px-3 py-2 checkout" (click)="GoToCheckout()">{{"cart.Check"|translate}}</button>
+      <button class="btn w-100 mb-3 px-3 py-2 checkout" (click)="GoToCheckout()">{{"cart.check"|translate}}</button>
     </ng-container>
     <hr>
   </div>
