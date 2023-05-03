@@ -116,7 +116,7 @@
                                             <span>{{prd.discount}}%</span>
                                         </div>
                                         <a [routerLink]="['/single',prd.id]">
-                                            <img [src]="prd.imgs[0]" class="img-fluid ">
+                                            <img [src]="prd.imgs[0]" #imgParent class="img-fluid ">
                                             <div class="hide">Quick View</div>
                                         </a>
                                     </div>
@@ -131,7 +131,9 @@
                                     <div class="ms-4">
                                         <ng-container *ngFor="let img of prd.imgs ,let i=index">
 
-                                            <img *ngIf="i>=0&&i<=4" [src]="img" height="40px"
+                                            <img *ngIf="i>=0&&i<=4" [src]="img" 
+                                            height="40px"
+                                            (mouseover)="changeImage(imgParent,img)"(mouseout)="changeImage(imgParent,prd.imgs[0])"
                                                 class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                         </ng-container>
                                     </div>
@@ -200,7 +202,7 @@
                                                 <span>{{prd.discount}}%</span>
                                             </div>
                                             <a [routerLink]="['/single',prd.id]">
-                                                <img [src]="prd.imgs[0]" class="img-fluid ">
+                                                <img [src]="prd.imgs[0]" #imgParent class="img-fluid ">
                                                 <div class="hide">Quick View</div>
                                             </a>
                                         </div>
@@ -215,6 +217,7 @@
                                         <div class="ms-4">
                                             <ng-container *ngFor="let img of prd.imgs ,let i=index">
                                                 <img *ngIf="i>0&&i<=4" [src]="img" height="50px"
+                                                (mouseover)="changeImage(imgParent,img)"(mouseout)="changeImage(imgParent,prd.imgs[0])"
                                                     class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
 
                                             </ng-container>
@@ -233,7 +236,7 @@
                                                 <span>{{prd.discount}}%</span>
                                             </div>
                                             <a [routerLink]="['/single',prd.id]">
-                                                <img [src]="prd.imgs[0]" class="img-fluid ">
+                                                <img [src]="prd.imgs[0]" #imgParent class="img-fluid ">
                                                 <div class="hide">Quick View</div>
                                             </a>
                                         </div>
@@ -249,6 +252,7 @@
                                             <ng-container *ngFor="let img of prd.imgs ,let i=index">
 
                                                 <img *ngIf="i>0&&i<=4" [src]="img" height="40px"
+                                                (mouseover)="changeImage(imgParent,img)"(mouseout)="changeImage(imgParent,prd.imgs[0])"
                                                     class="col-2 shadow-sm border border-1 rounded-2 ms-1" alt="">
                                             </ng-container>
                                         </div>

@@ -132,7 +132,9 @@
         "Shippingmethod":"طريقه التسوق",
         "Standarddelivery":"التوصيل العادي خلال 3-5 أيام عمل   ",
         "ReturnInformation":"معلومات الاسترجاع",
-        "ContinuePayment":"واصل للدقع"
+        "ContinuePayment":"واصل للدقع",
+        "PurchaseWasCompleted":"تمت عملية الشراء بنجاح شكرا لك"
+
 
     },
     "signin":{

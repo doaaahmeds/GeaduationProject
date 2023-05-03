@@ -7,5 +7,6 @@ export interface Icart
   img: string,
   quantity:number,
   totalPrice?:number,
+  price?:number,
   name:string
 }
