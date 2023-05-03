@@ -272,7 +272,7 @@
                 <div  class="col-1 mx-2" (click)="selectedcolor(color.key,i)">
                   {{color.key}}
                   <img class="w-100 p-0 border" data-bs-toggle="tooltip" data-bs-placement="top"
-                    data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key">
+                    data-bs-custom-class="custom-tooltip" [title]="color.key" [src]="imges[i]" [alt]="color.key"  (click)="changeime(imges[i])">
                 </div>
               </ng-container>
               
@@ -324,8 +324,8 @@
 
       </div>
       <div  class="mx-2" >
-        <button  class="btn btn-dark rounded-1 col-12  col-md-10  col-lg-8 col-xl-5   py-3 text-white " >
-          {{"SmallFoor.car"|translate}}</button>
+        <button  class="btn btn-dark rounded-1 col-12  col-md-10  col-lg-8 col-xl-5   py-3 text-white " [routerLink]="['/Checkout']">
+          {{"cart.buyit"|translate}}</button>
       </div>
 
     </aside>

@@ -14,7 +14,7 @@
 
     },
     "home":{
-        "NewCollection":"New Collection",
+        "NewCollection":"New Arrivals",
         "ShopLook":"Shop the Look",
         "MoreItems":"More Items on Sale",
         "Blog":"Blog Posts",
@@ -107,7 +107,8 @@
         "quntity":"Quntity",
         "sum":"Cart Summary",
         "yourcart1":"Your Shopping Cart",
-        "Item":"Item(s)"
+        "Item":"Item(s)",
+        "buyit":"Buy it now"
     },
     "checkout":{
         "dejavu":"dejavu",
