@@ -48,7 +48,7 @@
             <!-- <button class="bg-black px-4 py-3 text-white rounded">{{"checkout.ContinuePayment"|translate}}</button> -->
             <ngx-paypal [config]="payPalConfig"></ngx-paypal>
           </div>
-          <div *ngIf="showSuccess" >
+          <div *ngIf="showSuccess">
             <div>
               <div class="alert alert-success" role="alert">
                 {{"checkout.PurchaseWasCompleted"|translate}}
@@ -57,7 +57,7 @@
               <a role="button" [routerLink]="['/']"> {{"headr.Home"|translate}} </a>
             </div>
           </div>
-          <div *ngIf="showError" >
+          <div *ngIf="showError">
             <div>
               <div class="alert alert-danger" role="alert">
                 Something went wrong...
@@ -69,8 +69,10 @@
         </div>
       </div>
     </section>
+
     <section class="col">
       <div class="right-size">
+        <div *ngIf="!showSuccess">
         <ng-container *ngFor="let product of productsOfShipping">
           <div class="row pt-5 ps-5 pb-3">
             <div class="col-2 position-relative">
@@ -79,22 +81,16 @@
                 {{product.quantity}}</span>
             </div>
             <div class="col-6 pt-4">
-              <span class="prodName">Name</span>
+              <span class="prodName">{{product.name}}</span>
               <p>{{product.color}} / {{product.size}}</p>
             </div>
             <div class="col pt-4 prodPrice">
-              <p>E£ total.00</p>
+              <p>E£{{product.totalPrice}}.00</p>
             </div>
           </div>
-          <div class="col-6 pt-4">
-            <span class="prodName">{{product.name}}</span>
-            <p>{{product.color}} / {{product.size}}</p>
-          </div>
-          <div class="col pt-4 prodPrice">
-            <p>E£ {{product.totalPrice}}.00</p>
-          </div>
 
-      </ng-container>
+        </ng-container>
+      </div>
         <div class="row">
           <div class="col-9 ps-5">
             <input type="text" class="form-control" name="discount" placeholder="Discount code">
