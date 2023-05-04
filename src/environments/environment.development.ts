@@ -8,12 +8,14 @@ export const environment = {
   //   messagingSenderId: '766943688283',
   // },
   firebase :{
+    projectId: "dejavu3-790da",
+    appId: "1:377906409090:web:d08efaece03dd8b0950e9b",
+    storageBucket: "dejavu3-790da.appspot.com",
     apiKey: "AIzaSyDUvM7vagsT0TiQAmLZd2gESS7j7AtSzjo",
     authDomain: "dejavu3-790da.firebaseapp.com",
-    projectId: "dejavu3-790da",
-    storageBucket: "dejavu3-790da.appspot.com",
     messagingSenderId: "377906409090",
-    appId: "1:377906409090:web:d08efaece03dd8b0950e9b"
+   
   },
+  
   clientId:'AT-DPLdQtvkIIjSS71lIqhCB4bE01cXXN2OaFCX07OHYNF4payxXUzJ_TVxtb-GoPilx0Cp3ahC9Ak3A'
 };
