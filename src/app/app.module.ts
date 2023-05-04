@@ -88,6 +88,7 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
   bootstrap: [AppComponent]
 })
 
+
 export class AppModule {}
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
