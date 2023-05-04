@@ -14,10 +14,10 @@ import { UserService } from 'src/app/services/user.service';
 export class SignUpComponent {
 cart : string[] = []
   signUpForm = new FormGroup({
-    firstname: new FormControl('',[Validators.required]),
-    lastname: new FormControl('',[Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
+    firstname: new FormControl('',[Validators.required , Validators.minLength(8)]),
+    lastname: new FormControl('',[Validators.required, Validators.minLength(8) ]),
+    email: new FormControl('', [Validators.required, Validators.email , Validators.pattern("^[a-z0-9._%+-]+[a-z0-9.-]+.[a-z]{2,4}$")]),
+    password: new FormControl('', [Validators.required , Validators.pattern("^[a-z0-9._%+-]+[a-z0-9.-]+.[a-z]{2,4}$") , Validators.minLength(7)]),
     
   });
 
