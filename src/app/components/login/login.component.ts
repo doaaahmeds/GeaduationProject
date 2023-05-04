@@ -19,6 +19,7 @@ export class LoginComponent {
 passwordResetEmail : string = ''
 
 // code : string =''
+   loginFormValid :boolean = false
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
@@ -28,7 +29,10 @@ passwordResetEmail : string = ''
     private router: Router,
     
   ) { }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  console.log('login');
+  }
   
 
 
@@ -45,11 +49,10 @@ passwordResetEmail : string = ''
   }
   submit() {
     if (!this.loginForm.valid ) {
-      alert("Please fill correct data !!");
+      this.loginFormValid=true
     }
     const { email , password } = this.loginForm.value;
     this.authService.login(email, password).then((res) => { 
-      localStorage.setItem("userConnect" , res.user.uid)
       this.router.navigate(['/home']);
     });
   }
@@ -58,10 +61,5 @@ passwordResetEmail : string = ''
       this.router.navigate(['/login'])
     })
   }
-
-  
-  forgotPassword(){   
-    this.authService.forgotPassword( this.passwordResetEmail)
-    this.passwordResetEmail = ''
-  }
+ 
 }

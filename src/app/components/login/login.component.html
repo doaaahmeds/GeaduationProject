@@ -35,9 +35,7 @@
           <label for="inputPassword" class="col-sm-2 col-form-label"
             >{{"signin.Password"|translate}}</label
           >
-          <a href="#" style="margin-left: 50%; color: black; font-size: smaller" data-bs-toggle="modal"
-          data-bs-target="#resetPasswordModal"
-            >{{"signin.Forgotpassword"|translate}} ?</a>
+          
   
 <div class="modal fade" id="resetPasswordModal" tabindex="-1" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -56,10 +54,6 @@
           </div>
           </div>
         </form>
-      </div>
-      <div class="modal-footer">
-       
-        <button href="/verify" id="sign" type="button" class="btn btn-dark w-100"  style="background-color: black" (click)="forgotPassword()">Reset Password</button>
       </div>
     </div>
   </div>
@@ -83,6 +77,10 @@
             </small>
           </div>
           <br /><br />
+          <!-- <div class="alert alert-danger" role="alert" *ngIf="this.loginFormValid">
+              Please fill correct data !!
+          </div> -->
+          
 
           <button
             id="sign"

@@ -22,7 +22,10 @@ cart : string[] = []
   });
 
   constructor(private authService : AuthenticationService , private router  : Router, private userService : UserService ){}
-  ngOnInit(): void{} 
+  ngOnInit(): void{
+    console.log("signUpForm");
+    
+  } 
   get firstname() {
     return this.signUpForm.get('firstname');
   }
@@ -54,11 +57,11 @@ cart : string[] = []
       
 
       if(this.signUpForm.valid){
-        alert("Registeration Successful")
+        // alert("Registeration Successful")
         this.router.navigate(['/home'])
       }
       else{
-        alert("Please fill the correct data")
+        // alert("Please fill the correct data")
       }
     })
   }
