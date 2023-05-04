@@ -42,7 +42,7 @@ user : Observable<firebase.User | any>
         this.router.navigate(['/home'])
       })
       .catch((error) => {
-        alert("Something went wrong");
+      //  alert("Something went wrong");
       });
   }
   FacebookAuth(){
