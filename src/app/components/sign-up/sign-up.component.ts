@@ -50,7 +50,7 @@ cart : string[] = []
     let data : User = signUpForm.value
     this.authService.signUp(data.firstname , data.lastname , data.email , data.password ,data.cart).subscribe((res)=>{
       this.userService.addNewUser(res.user.uid , data.firstname! , data.lastname! , data.email! )
-      localStorage.setItem("userConnect" , res.user.uid)
+     
       
 
       if(this.signUpForm.valid){
