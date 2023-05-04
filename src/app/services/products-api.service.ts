@@ -91,7 +91,7 @@ export class ProductsAPIService {
   //get all products of  offer
   getProductesOfOffers(): Observable<Iproduct[]> {
     let productes = collection(this.db, 'product');
-    const q = query(productes, where("offer", "==", true),orderBy("subid"));
+    const q = query(productes, where("offer", "==", true));
     return collectionData(q, { idField: 'id' }) as Observable<Iproduct[]>
   }
 
