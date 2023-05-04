@@ -8,6 +8,7 @@ export const environment = {
   //   messagingSenderId: '766943688283',
   // },
   firebase :{
+
     projectId: "dejavu3-790da",
     appId: "1:377906409090:web:d08efaece03dd8b0950e9b",
     storageBucket: "dejavu3-790da.appspot.com",
