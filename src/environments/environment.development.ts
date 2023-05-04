@@ -15,5 +15,13 @@ export const environment = {
     messagingSenderId: "377906409090",
     appId: "1:377906409090:web:d08efaece03dd8b0950e9b"
   },
+  // firebase: {
+  //   projectId: "dejavu1-c6625",
+  //   appId: "1:189380682158:web:866cfb30c4325d0208a83f",
+  //   storageBucket: "dejavu1-c6625.appspot.com",
+  //   apiKey: "AIzaSyAgHnePKMwNjLTgiTvCBE7rvhqGqi9LYM0",
+  //   authDomain: "dejavu1-c6625.firebaseapp.com",
+  //   messagingSenderId: "189380682158", 
+  // },
   clientId:'AT-DPLdQtvkIIjSS71lIqhCB4bE01cXXN2OaFCX07OHYNF4payxXUzJ_TVxtb-GoPilx0Cp3ahC9Ak3A'
 };

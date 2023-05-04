@@ -12,12 +12,13 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent {
-
+cart : string[] = []
   signUpForm = new FormGroup({
-    firstname: new FormControl('',[Validators.required]),
-    lastname: new FormControl('',[Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
+    firstname: new FormControl('',[Validators.required , Validators.minLength(8)]),
+    lastname: new FormControl('',[Validators.required, Validators.minLength(8) ]),
+    email: new FormControl('', [Validators.required, Validators.email , Validators.pattern("^[a-z0-9._%+-]+[a-z0-9.-]+.[a-z]{2,4}$")]),
+    password: new FormControl('', [Validators.required , Validators.pattern("^[a-z0-9._%+-]+[a-z0-9.-]+.[a-z]{2,4}$") , Validators.minLength(7)]),
+    
   });
 
   constructor(private authService : AuthenticationService , private router  : Router, private userService : UserService ){}
@@ -40,15 +41,17 @@ export class SignUpComponent {
       this.router.navigate(['/home']);
       
     }
-    const {firstname , lastname , email , password}= this.signUpForm.value
-    this.authService.signUp(firstname,lastname,email,password)
+    // const {firstname , lastname , email , password  }= this.signUpForm.value
+    // this.authService.signUp(firstname,lastname,email,password,cart)
   }
 
   // Making signup method with properties to add it to users collection :
   signUp(signUpForm:any){
     let data : User = signUpForm.value
-    this.authService.signUp(data.firstname , data.lastname , data.email , data.password).subscribe((res)=>{
-      this.userService.addNewUser(res.user.uid , data.firstname! , data.lastname! , data.email!)
+    this.authService.signUp(data.firstname , data.lastname , data.email , data.password ,data.cart).subscribe((res)=>{
+      this.userService.addNewUser(res.user.uid , data.firstname! , data.lastname! , data.email! )
+     
+      
 
       if(this.signUpForm.valid){
         alert("Registeration Successful")

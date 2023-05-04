@@ -24,7 +24,11 @@ export class HeaderComponent implements OnInit {
   @Output() openCart: EventEmitter<boolean>;
 
   lang: string = '';
-  isUser : boolean = true;
+
+ isUser : boolean = false;
+
+ 
+
   constructor(
     public authService: AuthenticationService,
     private getSubCatServ: ProductsAPIService,
@@ -105,5 +109,8 @@ export class HeaderComponent implements OnInit {
 
     this.router.navigate(['/search']);
     this.isSearch = false;
+  }
+  toggleHeader(){
+  this.isOpen = !this.isOpen
   }
 }

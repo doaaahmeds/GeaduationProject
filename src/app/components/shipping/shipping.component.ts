@@ -76,7 +76,7 @@ export class ShippingComponent implements OnInit {
         // });
 
 
-        // this.productsOfShipping = this.cartService.getProducts();
+         this.productsOfShipping = this.cartService.getProducts();
         //      this.cartService.convertToIcart().subscribe(data=>{
         //         console.log(data);
 
@@ -154,6 +154,8 @@ export class ShippingComponent implements OnInit {
                 console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
                 this.showSuccess = true;
                 localStorage.removeItem('products');
+                this.productsOfShipping =[];
+                // this.router.navigate(['/']); 
                 this.productsOfStorage.forEach((product:Icart) => {
                     this.cartService.addOrder(product).then((response)=>{
                         console.log(response);

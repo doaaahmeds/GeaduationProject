@@ -8,10 +8,14 @@ import { Observable, Subject } from 'rxjs';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Inject, Injectable } from '@angular/core';
 import { LocalstorageeService } from 'src/app/services/localstoragee.service';
+
+import { Cart } from 'src/app/models/icart';
+
 import { IproductCart } from 'src/app/models/iproductcart';
 import { Icart } from 'src/app/models/icart';
 import { MapType } from '@angular/compiler';
 import { RouterTestingHarness } from '@angular/router/testing';
+
 const Language_STORAGE_KEY = 'en';
 @Component({
   selector: 'app-singleproduct',
@@ -44,7 +48,11 @@ selectdiv:string='';
   imges:string[]=[];
   lang:string='';
   cnt:number=-1;
-  constructor(private prodAPIService:ProductsAPIService,private activatedRoutServ:ActivatedRoute,private localstorage:LocalstorageeService,private cartService:CartService){
+
+  constructor(private prodAPIService:ProductsAPIService,private activatedRoutServ:ActivatedRoute,
+    private localstorage:LocalstorageeService,private cartService:CartService , 
+ 
+    ){
     this.lang=this.localstorage.getStatus();
 
     }
@@ -125,6 +133,9 @@ selectdiv:string='';
 
 
 
+ 
+
+
     if(this.product_added?.color!=undefined&&this.product_added?.img!=undefined){
       this.product_added.color=color;
 
@@ -164,6 +175,7 @@ selectdiv:string='';
     this.selectedimg=img;
     this.selectdiv=img;
     console.log(img);
+
   }
 
 }

@@ -9,7 +9,7 @@
     <div id="log" class="col-lg-4">
       <h3>{{"signin.Login"|translate}}</h3>
       <br />
-      <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <form class="loginform" [formGroup]="loginForm" (ngSubmit)="submit()">
         <div class="mb-3">
           <label for="exampleFormControlInput0" class="form-label">{{"signin.Email"|translate}}</label>
           <input
@@ -35,9 +35,38 @@
           <label for="inputPassword" class="col-sm-2 col-form-label"
             >{{"signin.Password"|translate}}</label
           >
-          <a href="#" style="margin-left: 50%; color: black; font-size: smaller"
-            >{{"signin.Forgotpassword"|translate}} ?</a
-          >
+          <a href="#" style="margin-left: 50%; color: black; font-size: smaller" data-bs-toggle="modal"
+          data-bs-target="#resetPasswordModal"
+            >{{"signin.Forgotpassword"|translate}} ?</a>
+  
+<div class="modal fade" id="resetPasswordModal" tabindex="-1" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="resetPasswordModalLabel">Reset Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form >
+          <div class="mb-3 w-100 p-4 mb-3">
+          <div class="mb-3 p-1 ">
+            <label for="resetPasswordEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="resetPasswordEmail" aria-describedby="resetPasswordEmailHelp" >
+            <div id="resetPasswordEmailHelp" class="form-text">We'll send you an email with instructions on how to reset your password.</div>
+          </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+       
+        <button href="/verify" id="sign" type="button" class="btn btn-dark w-100"  style="background-color: black" (click)="forgotPassword()">Reset Password</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
           <input
             formControlName="password"
             type="password"
@@ -172,10 +201,10 @@
         </div> -->
       </form>
       <div class="contactbtn">
-        <button id="btnface" type="button" class="btn btn-primary">
-          {{"signin.FacebookLogin "|translate}} <i class="fa-brands fa-square-facebook"></i>
+        <button id="btnface" type="button" class="btn btn-primary" (click)="authService.FacebookAuth()">
+          {{"signin.FacebookLogin"|translate}} <i class="fa-brands fa-square-facebook" ></i>
         </button>
-        <button id="btngoogle" type="button" class="btn btn-danger">
+        <button id="btngoogle" type="button" class="btn btn-danger" (click)="authService.GoogleAuth()">
           {{"signin.GoogleLogin"|translate}} <i class="fa-brands fa-google"></i>
         </button>
       </div>
