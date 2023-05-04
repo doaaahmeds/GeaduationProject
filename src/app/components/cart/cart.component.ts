@@ -24,11 +24,12 @@ export class CartComponent implements OnInit
   }
   ngOnInit(): void {
     this.iCartDetail = this.cartService.getProducts();
-    // this.iCartDetail?.map((prod)=>{
-    //   this.prodAPIService.getproductsbyid(prod.id).subscribe(data=>{
-    //     this.product_details=data;
-    //   })
-    // })
+    this.iCartDetail?.map((prod)=>{
+      this.prodAPIService.getproductsbyid(prod.id).subscribe((data :Iproduct) =>{console.log(data);
+      
+        this.product_details=data;
+      })
+    })
   }
 
   isOpen:boolean=false;
@@ -49,11 +50,11 @@ export class CartComponent implements OnInit
       }
   }
 
-  // CloseCartFun()
-  // {
-  //   this.isOpen = false;
-  //   this.CloseCart.emit(this.isOpen);
-  // }
+  CloseCartFun()
+  {
+    this.isOpen = false;
+    this.CloseCart.emit(this.isOpen);
+  }
 
   GoToCheckout()
   {
