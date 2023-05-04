@@ -16,6 +16,7 @@ export const environment = {
     messagingSenderId: "377906409090",
    
   },
+  //2
   // firebase: {
   //   projectId: "dejavu1-c6625",
   //   appId: "1:189380682158:web:866cfb30c4325d0208a83f",

@@ -201,7 +201,7 @@
                         <div class="carousel-item active  ">
                             <div class="row content m-5">
                                 <ng-container *ngFor="let prd of AllCat,let i=index" class="col ">
-                                    <div *ngIf="i>=10&&i<=15" class="col ">
+                                    <div *ngIf="i>=10&&i<15" class="col ">
                                         <div dir="rtl" dir="rtl" class="ci">
                                             <div class=" text-center circle ">
                                                 <span>{{prd.discount}}%</span>
@@ -242,7 +242,7 @@
                         <div class="carousel-item ">
                             <div class="row content m-5">
                                 <ng-container *ngFor="let prd of AllCat,let i=index" class="col-sm-2 col-xs-1 ">
-                                    <div *ngIf="i>15&&i<=20" class="col-md-2">
+                                    <div *ngIf="i>4&&i<=9" class="col-md-2">
                                         <div dir="rtl" dir="rtl" class="ci">
                                             <div class=" text-center circle ">
                                                 <span>{{prd.discount}}%</span>
@@ -370,8 +370,4 @@
 
     </section>
 
-    <script src="./js/main.js"> </script>
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/all.min.js"></script>
 </section>
