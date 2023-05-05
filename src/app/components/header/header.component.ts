@@ -8,6 +8,8 @@ import { SearchService } from 'src/app/services/search/search.service';
 
 import { CartService } from 'src/app/services/cart.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Icart } from 'src/app/models/icart';
+import { CartServService } from 'src/app/services/cart/cart-serv.service';
 
 @Component({
   selector: 'app-header',
@@ -18,16 +20,19 @@ export class HeaderComponent implements OnInit {
   subCategoryofBags: IsubCategory[] | undefined = undefined;
   subCategoryofShose: IsubCategory[] | undefined = undefined;
   totalPrice = this.cartService.getTotalPrice();
-  cartItems = 0;
+  cartItems: number ;
+
   isOpen: boolean = false;
 
   @Output() openCart: EventEmitter<boolean>;
 
   lang: string = '';
 
- isUser : boolean = false;
+  isUser: boolean = false;
 
- 
+
+  numberOfCart:number = 0;
+  totalPriceOfCart:number=0;
 
   constructor(
     public authService: AuthenticationService,
@@ -36,10 +41,13 @@ export class HeaderComponent implements OnInit {
     private translateservice: TranslateService,
     private localstorage: LocalstorageeService,
     private searchService: SearchService,
-    public cartService: CartService
+    public cartService: CartService,
+    private cartServ :CartServService,
   ) {
     this.openCart = new EventEmitter<boolean>();
     this.lang = this.localstorage.getStatus();
+     this.cartItems=this.cartService.getProducts().length;
+     this.totalPrice =this.cartService.getTotalPrice();
   }
 
   isSearch: boolean = false;
@@ -50,6 +58,14 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.cartServ.getCountOfCartBS().subscribe((count)=>{
+    this.numberOfCart=count;
+    });
+ this.cartServ.getTotalPriceBS().subscribe((total)=>{
+this.totalPriceOfCart=total;
+ });
+
     this.localstorage.watchStorage().subscribe(() => {
       this.lang = this.localstorage.getStatus();
       console.log(this.lang + 'from header');
@@ -61,24 +77,25 @@ export class HeaderComponent implements OnInit {
         // console.log(data);
       });
 
-      this.authService.user.subscribe(user=>{
-        if(user){
-          this.isUser = true
-          this.authService.userId = user.uid
-        }
-        else this.isUser = false
-      })
-
-      let cartData = localStorage.getItem('products');
-      if(cartData)
-      {
-        this.cartItems = JSON.parse(cartData).length;
+    this.authService.user.subscribe(user => {
+      if (user) {
+        this.isUser = true
+        this.authService.userId = user.uid
       }
+      else this.isUser = false
+    })
 
+    this.cartService.cartData.subscribe((items: Icart[]) => {
+       
+      items.map((item) =>{
+        this.totalPrice +=item.totalPrice??0
+      })
+      console.log( this.totalPrice);
 
-  this.cartService.cartData.subscribe((items:any) => {
-    this.cartItems = items.length;
-  })
+      this.cartItems = items.length;
+      console.log(items.length);
+      
+    })
 
     this.getSubCatServ
       .getAllsubCatOfshose()
@@ -110,7 +127,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/search']);
     this.isSearch = false;
   }
-  toggleHeader(){
-  this.isOpen = !this.isOpen
+  toggleHeader() {
+    this.isOpen = !this.isOpen
   }
 }

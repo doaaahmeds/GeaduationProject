@@ -6,6 +6,7 @@ import { Iproduct } from 'src/app/models/iproduct';
 import { User } from 'src/app/models/iuser';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CartService } from 'src/app/services/cart.service';
+import { CartServService } from 'src/app/services/cart/cart-serv.service';
 import { doc, updateDoc } from "firebase/firestore";
 
 @Component({
@@ -16,9 +17,14 @@ import { doc, updateDoc } from "firebase/firestore";
 export class CheckoutComponent implements OnInit
 {
   userForm: FormGroup;
-  user:User={};
+  totalPriceOfCart:number=0;
   productsOfCheckout : Icart[] | undefined = undefined;
-  constructor(private formBuilder:FormBuilder,private router:Router,public cartService:CartService,private authserv:AuthenticationService){
+  
+  user:User={};
+
+  constructor(private formBuilder:FormBuilder,private router:Router,public cartService:CartService,
+    private cartServ :CartServService,private authserv:AuthenticationService
+    ){
     this.userForm = this.formBuilder.group({
       firstName: ['',[Validators.required]],
       lastName: ['',[Validators.required]],
@@ -30,6 +36,12 @@ export class CheckoutComponent implements OnInit
   }
   ngOnInit(): void {
     this.productsOfCheckout = this.cartService.getProducts();
+    this.cartServ.getTotalPriceBS().subscribe((total)=>{
+      this.totalPriceOfCart=total;
+       });
+       this.cartServ.getDataObservable().subscribe(data => {
+        this.productsOfCheckout=data;
+      })
   }
 
   // convert to property
