@@ -14,6 +14,7 @@
 <div id="signup" class="col-sm-2">
   
   <form [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm)">
+
     <h3>{{"signin.CreateAccount"|translate}}</h3>
       <div class=" mb-3  p-4 mb-3">
           <div class="mb-3 p-1">
@@ -25,7 +26,7 @@
               type="firstname"
               class="form-control"
               id="exampleFormControlInput"
-              minlength="8"
+              
             />
             <div class="alert alert-danger"
             [hidden]="firstname?.valid || firstname?.untouched"
@@ -39,9 +40,9 @@
           [hidden]="firstname?.valid || firstname?.untouched">
           At least 8 characters
           </div> -->
-          <small *ngIf="firstname?.errors?.['minlength']"
+          <!-- <small *ngIf="firstname?.errors?.['minlength']"
           > At least 8 characters{{"signin.firsrreq"|translate}}! 
-        </small> 
+        </small>  -->
        
           </div>
           
@@ -65,9 +66,9 @@
                     <small *ngIf="lastname?.errors?.['required']"
                       >{{"signin.lastsrreq"|translate}}!
                     </small>
-                    <small *ngIf="lastname?.errors?.['minlength']"
+                    <!-- <small *ngIf="lastname?.errors?.['minlength']"
                     > At least 8 characters {{"signin.lastsrreq"|translate}}!
-                  </small>
+                  </small> -->
        
           </div>
   
@@ -126,6 +127,7 @@
           </div>
      
           </div>
+      
           <button
          
             id="create1"
@@ -155,7 +157,7 @@
 </div>
 
       </div>
-      
+      <button ></button>
       
       
       
