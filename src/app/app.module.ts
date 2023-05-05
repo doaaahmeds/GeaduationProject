@@ -28,12 +28,12 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { NgxPayPalModule } from 'ngx-paypal';
-
+import { ToastrModule } from 'ngx-toastr';
 import { VerifyComponent } from './components/verify/verify.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FirebaseApp} from'@angular/fire/compat'
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 
@@ -68,6 +68,8 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
 
   ],
   imports: [
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({positionClass:'toast-top-center'}),
     BrowserModule,
     AppRoutingModule,
     FormsModule,

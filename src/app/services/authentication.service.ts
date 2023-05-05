@@ -5,6 +5,8 @@ import { Observable, from, switchMap } from 'rxjs';
 import * as firebase from 'firebase/auth'
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {  Router } from '@angular/router';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { User } from '../models/iuser';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +17,7 @@ user : Observable<firebase.User | any>
 
 
   currentuser$ = authState(this.auth)
-  constructor(private auth : Auth , private afAuth : AngularFireAuth , private router : Router) {
+  constructor(private auth : Auth , private afAuth : AngularFireAuth , private router : Router , private db: Firestore) {
     this.user = afAuth.user
    }
   
@@ -24,7 +26,7 @@ user : Observable<firebase.User | any>
     return (signInWithEmailAndPassword(this.auth, username , password));
     
   }
-  signUp(firstname:any , lastname:any , email : any , password:any , cart :any ){
+  signUp(firstname:any , lastname:any , email : any , password:any  ){
   
   return from (createUserWithEmailAndPassword(this.auth , email ,password))
   
@@ -57,7 +59,11 @@ user : Observable<firebase.User | any>
       alert("Something went wrong");
     });
   }
-
+  getAllUsers(): Observable<User[]> {
+    let userRef = collection(this.db, 'users');
+    // return collectionData(catRef, { idField: 'id' }) as Observable<ICategory[]>
+    return collectionData(userRef, { idField: 'id' }) as Observable<User[]>
+  }
   logout(){
     return (this.auth.signOut())
   }

@@ -9,7 +9,7 @@
     <div id="log" class="col-lg-4">
       <h3>{{"signin.Login"|translate}}</h3>
       <br />
-      <form class="loginform" [formGroup]="loginForm" (ngSubmit)="submit()">
+      <form class="loginform" [formGroup]="loginForm" (ngSubmit)="submit(email1.value)">
         <div class="mb-3">
           <label for="exampleFormControlInput0" class="form-label">{{"signin.Email"|translate}}</label>
           <input
@@ -18,6 +18,7 @@
             class="form-control"
             id="exampleFormControlInput0"
             required
+            #email1
           />
           <div
             class="alert alert-danger"
@@ -26,9 +27,10 @@
             <small *ngIf="email?.errors?.['required']"
               >{{"signin.required"|translate}}
             </small>
-            <small *ngIf="email?.errors?.['email']"
-              >{{"signin.correct"|translate}}
-            </small>
+         
+            <small *ngIf="email?.errors?.['pattern']"
+            >Use letters , numbers , @ , and Symbols 
+          </small>
           </div>
         </div>
         <div class="mb-3">
@@ -75,11 +77,12 @@
             <small *ngIf="password?.errors?.['required']"
               >{{"signin.Passwordrequired"|translate}} !
             </small>
+            <small *ngIf="password?.errors?.['pattern']"
+            >Use letters , numbers and Symbols
+          </small>
           </div>
           <br /><br />
-          <!-- <div class="alert alert-danger" role="alert" *ngIf="this.loginFormValid">
-              Please fill correct data !!
-          </div> -->
+     
           
 
           <button
@@ -199,9 +202,9 @@
         </div> -->
       </form>
       <div class="contactbtn">
-        <button id="btnface" type="button" class="btn btn-primary" (click)="authService.FacebookAuth()">
+        <!-- <button id="btnface" type="button" class="btn btn-primary" (click)="authService.FacebookAuth()">
           {{"signin.FacebookLogin"|translate}} <i class="fa-brands fa-square-facebook" ></i>
-        </button>
+        </button> -->
         <button id="btngoogle" type="button" class="btn btn-danger" (click)="authService.GoogleAuth()">
           {{"signin.GoogleLogin"|translate}} <i class="fa-brands fa-google"></i>
         </button>
