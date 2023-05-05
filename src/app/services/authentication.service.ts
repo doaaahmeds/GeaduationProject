@@ -5,7 +5,7 @@ import { Observable, from, switchMap } from 'rxjs';
 import * as firebase from 'firebase/auth'
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {  Router } from '@angular/router';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, docData, setDoc, updateDoc } from '@angular/fire/firestore';
 import { User } from '../models/iuser';
 @Injectable({
   providedIn: 'root'
@@ -23,11 +23,12 @@ user : Observable<firebase.User | any>
   
   login(username : any , password: any){
    
+   
     return (signInWithEmailAndPassword(this.auth, username , password));
     
   }
   signUp(firstname:any , lastname:any , email : any , password:any  ){
-  
+    
   return from (createUserWithEmailAndPassword(this.auth , email ,password))
   
    
@@ -64,6 +65,18 @@ user : Observable<firebase.User | any>
     // return collectionData(catRef, { idField: 'id' }) as Observable<ICategory[]>
     return collectionData(userRef, { idField: 'id' }) as Observable<User[]>
   }
+  getuserbyid(id: string): Observable<User> {
+    let user = doc(this.db, 'users/' + id);
+    return docData(user, { idField: 'id' }) as Observable<User>;
+  }
+   updateuser(id: string,data:User){
+
+    let userRef = doc(this.db, "users/", id);
+    return setDoc(userRef, data);
+   
+  }
+ 
+ 
   logout(){
     return (this.auth.signOut())
   }
