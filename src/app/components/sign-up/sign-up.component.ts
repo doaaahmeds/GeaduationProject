@@ -64,6 +64,7 @@ isUser : boolean = false
     let data : User = signUpForm.value
     this.authService.signUp(data.firstname , data.lastname , data.email , data.password ).subscribe((res)=>{
       this.userService.addNewUser(res.user.uid , data.firstname! , data.lastname! , data.email! )
+      localStorage.setItem('userid',res.user.uid);
    
     })
     if(this.signUpForm.invalid){
