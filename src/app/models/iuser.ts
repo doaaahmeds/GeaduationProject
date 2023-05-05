@@ -4,5 +4,9 @@ export interface User{
     lastname? : string,
     email? : string,
     password? : string,
-    cart? : string[]
+    city?:string,
+    address?: string
+
+
+  
 }

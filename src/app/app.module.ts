@@ -33,12 +33,9 @@ import { VerifyComponent } from './components/verify/verify.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FirebaseApp} from'@angular/fire/compat'
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
-
-
-
-
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -68,7 +65,10 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
 
   ],
   imports: [
+    
+    ToastrModule.forRoot({positionClass:'toast-top-center'}),
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     TranslateModule,
@@ -76,9 +76,8 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
     AngularFirestoreModule,
     AngularFireModule,
     AngularFireStorageModule,
-    
-    NgxPayPalModule,
-    
+   
+    NgxPayPalModule,    
     TranslateModule.forRoot({
      
       defaultLanguage:`${localStorage
