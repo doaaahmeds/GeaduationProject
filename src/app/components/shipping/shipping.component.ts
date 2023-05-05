@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { IPayPalConfig, ICreateOrderRequest, ITransactionItem } from 'ngx-paypal';
 import { Icart } from 'src/app/models/icart';
 import { CartService } from 'src/app/services/cart.service';
+import { CartServService } from 'src/app/services/cart/cart-serv.service';
 import { environment } from 'src/environments/environment.development';
 
 @Component({
@@ -47,6 +48,7 @@ export class ShippingComponent implements OnInit {
 
     constructor(private router: Router,
         public cartService: CartService,
+         private cartServ :CartServService,
 
     ) {
 
@@ -154,6 +156,7 @@ export class ShippingComponent implements OnInit {
                 console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
                 this.showSuccess = true;
                 localStorage.removeItem('products');
+                this.cartServ.removeAllCartBS();
                 this.productsOfShipping =[];
                 // this.router.navigate(['/']); 
                 this.productsOfStorage.forEach((product:Icart) => {

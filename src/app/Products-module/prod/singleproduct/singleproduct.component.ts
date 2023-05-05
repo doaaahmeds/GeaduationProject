@@ -9,12 +9,8 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Inject, Injectable } from '@angular/core';
 import { LocalstorageeService } from 'src/app/services/localstoragee.service';
 
-import { Cart } from 'src/app/models/icart';
-
-import { IproductCart } from 'src/app/models/iproductcart';
 import { Icart } from 'src/app/models/icart';
-import { MapType } from '@angular/compiler';
-import { RouterTestingHarness } from '@angular/router/testing';
+import { CartServService } from 'src/app/services/cart/cart-serv.service';
 
 const Language_STORAGE_KEY = 'en';
 @Component({
@@ -49,8 +45,12 @@ selectdiv:string='';
   lang:string='';
   cnt:number=-1;
 
-  constructor(private prodAPIService:ProductsAPIService,private activatedRoutServ:ActivatedRoute,
-    private localstorage:LocalstorageeService,private cartService:CartService , 
+  constructor(
+    private prodAPIService:ProductsAPIService,
+    private activatedRoutServ:ActivatedRoute,
+    private localstorage:LocalstorageeService,
+    private cartService:CartService , 
+    private cartServ :CartServService,
  
     ){
     this.lang=this.localstorage.getStatus();
@@ -120,12 +120,12 @@ selectdiv:string='';
     console.log(event.target.innerText);
 
 
-    if(this.product_added?.size!=undefined){
+    // if(this.product_added?.size!=undefined){
 
       this.product_added.size=event.target.innerText,
       this.selectsize=event.target.innerText;
 
-  }
+  // }
 
 
   }
@@ -167,8 +167,9 @@ selectdiv:string='';
           totalPrice: (this.productQuantity * (this.product_added.price??1)),
           name_ar:this.product_added.name_ar
         }
-        this.cartService.addtoCart(this.ProductOfCart);
         console.log(this.ProductOfCart);
+        // this.cartService.addtoCart(this.ProductOfCart);
+        this.cartServ.addProductToCart(this.ProductOfCart)
       }
   }
   showingimg(img:string){
