@@ -65,28 +65,41 @@ export class CartServService {
 
     if (localCart) {
 
-      let products: Icart[] = this.getProductsFromLocalToIcart()
-      // console.log(products);
-      this.productOfFind = products.find(item => item.id == product.id)
 
-      if (this.productOfFind) {
+      this.ListProductsOfCart = this.getProductsFromLocalToIcart()
+      let index = this.ListProductsOfCart.findIndex(item => item.id == product.id)
 
-        // this.productOfFind.quantity++;
-        // console.log(products);
+      if (index != -1) {
 
+        if (this.ListProductsOfCart[index].quantity == product.quantity) {
+          this.ListProductsOfCart[index].quantity++;
+        } else if (product.quantity <=1 && this.ListProductsOfCart[index].quantity==1) {
+          console.log('delet');
 
-        // localStorage.setItem('products',
-        //  JSON.stringify([...products, { }]));
-        // this.storageBS.next([...products])
+          this.ListProductsOfCart.splice(index, 1);
+        } else if (this.ListProductsOfCart[index].quantity ==
+          (product.quantity + 1)) {
+          this.ListProductsOfCart[index].quantity--;
+        }
+        else {
+          this.ListProductsOfCart[index].quantity = product.quantity
+        }
 
+        this.ListProductsOfCart[index].totalPrice = (this.ListProductsOfCart[index].quantity) * (this.ListProductsOfCart[index].price)
+        console.log(this.ListProductsOfCart);
+        console.log('if');
 
-
+        localStorage.setItem('products', JSON.stringify([... this.ListProductsOfCart]));
+        this.storageBS.next([... this.ListProductsOfCart])
       } else {
-
-        localStorage.setItem('products', JSON.stringify([...products, product]));
-        this.storageBS.next([...products, product])
-
+        console.log('else not exist in');
+        console.log(this.ListProductsOfCart);
+        localStorage.setItem('products', JSON.stringify([... this.ListProductsOfCart, product]));
+        this.storageBS.next([... this.ListProductsOfCart, product])
       }
+
+
+
 
     } else {
       localStorage.setItem('products', JSON.stringify([product]));
@@ -97,6 +110,8 @@ export class CartServService {
     this.itemsOfCartBS.next(this.getNumberItemOfCart())
 
   }
+
+
 
 
 
@@ -140,12 +155,12 @@ export class CartServService {
     //we use it in heeader
   }
 
-  removeAllCartBS(){
+  removeAllCartBS() {
     this.storageBS.next([])
     this.itemsOfCartBS.next(0)
     this.totalPriceBS.next(0)
     localStorage.removeItem('products');
-   
+
 
   }
 

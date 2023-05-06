@@ -12,71 +12,85 @@ import { ProductsAPIService } from 'src/app/services/products-api.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit
-{
-  totalPriceOfCart:number=0;
-  productQuantity=0;
-  iCartDetail:Icart[] | undefined = undefined;
-  product_details:Iproduct | undefined = undefined;
-  isCloseCart:boolean = true;
-  @Output() CloseCart:EventEmitter<boolean>;
+export class CartComponent implements OnInit {
+  totalPriceOfCart: number = 0;
+  productQuantity = 0;
+  iCartDetail: Icart[] | undefined = undefined;
+  product_details: Iproduct | undefined = undefined;
+  isCloseCart: boolean = true;
+  @Output() CloseCart: EventEmitter<boolean>;
 
-  constructor(private router:Router,
-     public cartService:CartService,
-     private prodAPIService:ProductsAPIService,
-     private cartServ :CartServService,){
+  constructor(private router: Router,
+    public cartService: CartService,
+    private prodAPIService: ProductsAPIService,
+    private cartServ: CartServService,) {
     this.CloseCart = new EventEmitter<boolean>();
   }
 
   ngOnInit(): void {
 
-    this.cartServ.getTotalPriceBS().subscribe((total)=>{
-      this.totalPriceOfCart=total;
-       });
+    this.cartServ.getTotalPriceBS().subscribe((total) => {
+      this.totalPriceOfCart = total;
+    });
     this.cartServ.getDataObservable().subscribe(data => {
-      this.iCartDetail=data;
+      this.iCartDetail = data;
     })
 
     this.iCartDetail = this.cartService.getProducts();
-    this.iCartDetail?.map((prod)=>{
-      this.prodAPIService.getproductsbyid(prod.id).subscribe((data :Iproduct) =>{console.log(data);
-      
-        this.product_details=data;
+    this.iCartDetail?.map((prod) => {
+      this.prodAPIService.getproductsbyid(prod.id).subscribe((data: Iproduct) => {
+        console.log(data);
+
+        this.product_details = data;
       })
     })
   }
 
+  creaseProduct(index: number, id: string) {
+    if (this.iCartDetail != undefined ) {
+      console.log('creaseProduct');
 
-
-
-
-
-  isOpen:boolean=false;
-  setOrderSpecial()
-  {
-    this.isOpen =! this.isOpen;
+      this.cartServ.addProductToCart(this.iCartDetail[index]);
+    }
   }
 
-  handleQuantity(val:string)
-  {
-      if(this.productQuantity<10 && val==='plus')
-      {
-        this.productQuantity+=1;
-      }
-      else if(this.productQuantity>1 && val === 'min')
-      {
-        this.productQuantity-=1;
-      }
+  decreaseProduct(index: number, id: string) {
+    if (this.iCartDetail != undefined) {
+      console.log('decreaseProduct');
+      this.iCartDetail.forEach((prod) => {
+        if (prod.id == id) {
+          prod.quantity--;
+        }
+
+
+      })
+
+      this.cartServ.addProductToCart(this.iCartDetail[index]);
+    }
   }
 
-  CloseCartFun()
-  {
+
+
+  isOpen: boolean = false;
+  setOrderSpecial() {
+    this.isOpen = !this.isOpen;
+  }
+
+  handleQuantity(val: string) {
+    if (this.productQuantity < 10 && val === 'plus') {
+      this.productQuantity += 1;
+    }
+    else if (this.productQuantity > 1 && val === 'min') {
+      this.productQuantity -= 1;
+    }
+  }
+
+  CloseCartFun() {
     this.isOpen = false;
     this.CloseCart.emit(this.isOpen);
   }
 
-  GoToCheckout()
-  {
+  GoToCheckout() {
     this.CloseCart.emit(this.isOpen)
     this.router.navigate(['Checkout']);
   }
