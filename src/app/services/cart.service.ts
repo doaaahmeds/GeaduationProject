@@ -27,6 +27,8 @@ export class CartService {
   cartItemList: Iproduct[] = [];
   totalPrice: number = 0;
   cartData: EventEmitter<Icart[]>;
+userid:string='';
+username:string='';
 
   //  private newItems:Subject <Icart[]>  ;
   //  private itemsOfITransactionItem = new Subject<ITransactionItem[]>();
@@ -296,7 +298,8 @@ export class CartService {
   async addOrder(order: Icart) {
     let datetimeNow = new Date();
     const docRef = await addDoc(collection(this.db, "Orders"), {
-      customer: "hassan",
+      customer: this.username,
+      uid:this.userid,
       img: order.img,
       productName: order.name,
       paid: "Yes",
