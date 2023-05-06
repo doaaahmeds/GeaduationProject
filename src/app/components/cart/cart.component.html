@@ -28,16 +28,16 @@
     </div>
   </ng-container>
   <hr>
-  <div class="row mt-4">
+    <!--<div class="row mt-4">
     <p class="col">{{"cart.Order"|translate}}</p>
     <p class="col-1 pointer" (click)="setOrderSpecial()">+</p>
-    <textarea class="form-control mx-2" id="floatingTextarea" style="height: 200px" *ngIf="isOpen"></textarea>
-  </div>
-  <hr>
+   <textarea class="form-control mx-2" id="floatingTextarea" style="height: 200px" *ngIf="isOpen"></textarea>
+  </div> 
+  <hr>-->
   <div class="pt-3">
     <div class="row">
       <p class="col">{{"cart.Subtotal"|translate}}</p>
-      <p class="col-3">LE {{cartService.getTotalPrice()}}.00</p>
+      <p class="col-3">LE {{totalPriceOfCart}}.00</p>
     </div>
     <div class="row">
       <p class="col">{{"cart.Shipping"|translate}}</p>

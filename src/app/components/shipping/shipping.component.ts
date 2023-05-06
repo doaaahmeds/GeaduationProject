@@ -48,7 +48,7 @@ export class ShippingComponent implements OnInit {
 
     constructor(private router: Router,
         public cartService: CartService,
-         private cartServ :CartServService,
+        private cartServ: CartServService,
 
     ) {
 
@@ -57,6 +57,14 @@ export class ShippingComponent implements OnInit {
 
 
     ngOnInit(): void {
+
+        this.cartServ.getTotalPriceBS().subscribe((total) => {
+            this.totalPrice = total;
+        });
+        this.cartServ.getDataObservable().subscribe(data => {
+            this.productsOfShipping = data;
+            this.productsOfStorage = data
+        })
         this.initConfig();
         // this.cartService.convertToIcart().then((data) => {
 
@@ -78,7 +86,7 @@ export class ShippingComponent implements OnInit {
         // });
 
 
-         this.productsOfShipping = this.cartService.getProducts();
+        this.productsOfShipping = this.cartService.getProducts();
         //      this.cartService.convertToIcart().subscribe(data=>{
         //         console.log(data);
 
@@ -124,7 +132,7 @@ export class ShippingComponent implements OnInit {
                             }
                         },
                         items: [
-                            ...this.productsOfITransactionItem ,
+                            ...this.productsOfITransactionItem,
                             // {
                             //     name: 'Enterprise Subscription',
                             //     quantity: '2',
@@ -157,19 +165,19 @@ export class ShippingComponent implements OnInit {
                 this.showSuccess = true;
                 localStorage.removeItem('products');
                 this.cartServ.removeAllCartBS();
-                this.productsOfShipping =[];
+                this.productsOfShipping = [];
                 // this.router.navigate(['/']); 
-                this.productsOfStorage.forEach((product:Icart) => {
-                    this.cartService.addOrder(product).then((response)=>{
+                this.productsOfStorage.forEach((product: Icart) => {
+                    this.cartService.addOrder(product).then((response) => {
                         console.log(response);
-                        
-                    }).catch((err)=>{
+
+                    }).catch((err) => {
                         console.log(err);
-                        
+
                     })
                 })
 
-               
+
             },
             onCancel: (data, actions) => {
                 console.log('OnCancel', data, actions);
