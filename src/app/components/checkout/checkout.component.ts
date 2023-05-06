@@ -19,8 +19,9 @@ export class CheckoutComponent implements OnInit
   userForm: FormGroup;
   totalPriceOfCart:number=0;
   productsOfCheckout : Icart[] | undefined = undefined;
+  AllUser:User[]=[];
   
-  user:User={};
+  user:User={} as User;
 
   constructor(private formBuilder:FormBuilder,private router:Router,public cartService:CartService,
     private cartServ :CartServService,private authserv:AuthenticationService
@@ -33,6 +34,10 @@ export class CheckoutComponent implements OnInit
       city: ['',[Validators.required]],
       phone: ['',[Validators.required]]
     })
+    this.authserv.getAllUsers().subscribe(data=>{
+      this.AllUser=data;
+    })
+
   }
   ngOnInit(): void {
     this.productsOfCheckout = this.cartService.getProducts();
@@ -79,29 +84,32 @@ export class CheckoutComponent implements OnInit
     {
       let id=localStorage.getItem('userid')!;
       console.log(id);
-   /*    if(id!=null){
-        this.authserv.getuserbyid(id).subscribe(data=>{
+      let x=0;
+      if(id!=null){
+        this.user=this.AllUser.find(item=>item.id==id)!;
+        
+      /*    this.authserv.getuserbyid(id).subscribe(data=>{
           this.user=data;
+          x=1;
           console.log(data);
+        })  */
          
           if(city1&&address1){
              this.user.city=city1;
              this.user.address=address1;
           }
-          this.authserv.updateuser(id,this.user).then(data=>{
+          console.log(this.user+'users');
+          console.log(city1,address1);
+          console.log(this.user.email);
+      }
+      if(id!=null){
+         this.authserv.updateuser(id,this.user).then(data=>{
             console.log(data);
           }).catch(err=>{
             console.log(err);
           })
-      
-        
-          console.log(this.user+'users');
-          console.log(city1,address1);
-          
-        })
-      
-        
-      } */
+
+      }
      
       this.router.navigate(['Shipping']);
     }
