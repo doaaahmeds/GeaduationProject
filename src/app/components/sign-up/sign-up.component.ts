@@ -65,6 +65,7 @@ isUser : boolean = false
     this.authService.signUp(data.firstname , data.lastname , data.email , data.password ).subscribe((res)=>{
       this.userService.addNewUser(res.user.uid , data.firstname! , data.lastname! , data.email! )
       localStorage.setItem('userid',res.user.uid);
+      localStorage.setItem('username',data.firstname!);
    
     })
     if(this.signUpForm.invalid){
