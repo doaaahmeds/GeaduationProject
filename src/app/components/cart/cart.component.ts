@@ -46,26 +46,19 @@ export class CartComponent implements OnInit {
     })
   }
 
-  creaseProduct(index: number, id: string) {
+  increaseProduct(index: number, id: string) {
     if (this.iCartDetail != undefined ) {
-      console.log('creaseProduct');
+      console.log('creaseProduct cart.ts');
 
-      this.cartServ.addProductToCart(this.iCartDetail[index]);
+      this.cartServ.increaseOneProduct(this.iCartDetail[index])
     }
   }
 
   decreaseProduct(index: number, id: string) {
     if (this.iCartDetail != undefined) {
       console.log('decreaseProduct');
-      this.iCartDetail.forEach((prod) => {
-        if (prod.id == id) {
-          prod.quantity--;
-        }
 
-
-      })
-
-      this.cartServ.addProductToCart(this.iCartDetail[index]);
+      this.cartServ.decreaseOneProduct(this.iCartDetail[index]);
     }
   }
 

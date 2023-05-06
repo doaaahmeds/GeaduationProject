@@ -65,29 +65,14 @@ export class CartServService {
 
     if (localCart) {
 
-
       this.ListProductsOfCart = this.getProductsFromLocalToIcart()
       let index = this.ListProductsOfCart.findIndex(item => item.id == product.id)
 
       if (index != -1) {
 
-        if (this.ListProductsOfCart[index].quantity == product.quantity) {
-          this.ListProductsOfCart[index].quantity++;
-        } else if (product.quantity <=1 && this.ListProductsOfCart[index].quantity==1) {
-          console.log('delet');
-
-          this.ListProductsOfCart.splice(index, 1);
-        } else if (this.ListProductsOfCart[index].quantity ==
-          (product.quantity + 1)) {
-          this.ListProductsOfCart[index].quantity--;
-        }
-        else {
-          this.ListProductsOfCart[index].quantity = product.quantity
-        }
+        this.ListProductsOfCart[index].quantity = product.quantity
 
         this.ListProductsOfCart[index].totalPrice = (this.ListProductsOfCart[index].quantity) * (this.ListProductsOfCart[index].price)
-        console.log(this.ListProductsOfCart);
-        console.log('if');
 
         localStorage.setItem('products', JSON.stringify([... this.ListProductsOfCart]));
         this.storageBS.next([... this.ListProductsOfCart])
@@ -111,6 +96,48 @@ export class CartServService {
 
   }
 
+ 
+  increaseOneProduct(product :Icart){
+    let index = this.ListProductsOfCart.findIndex(item => item.id == product.id)
+
+    if (index != -1) {
+      this.ListProductsOfCart[index].quantity++;
+
+      this.ListProductsOfCart[index].totalPrice = (this.ListProductsOfCart[index].quantity) * (this.ListProductsOfCart[index].price)
+      
+      console.log('creaseOneProduct');
+
+      localStorage.setItem('products', JSON.stringify([... this.ListProductsOfCart]));
+      this.storageBS.next([... this.ListProductsOfCart])
+      this.totalPriceBS.next(this.getTotalPrice());
+      this.itemsOfCartBS.next(this.getNumberItemOfCart())
+   
+    }
+
+  }
+
+  decreaseOneProduct(product :Icart){
+    let index = this.ListProductsOfCart.findIndex(item => item.id == product.id)
+
+    if (index != -1) {
+      if(product.quantity<=1){
+        this.ListProductsOfCart.splice(index,1)
+        console.log('delet product in service');
+        
+      }else{
+      this.ListProductsOfCart[index].quantity--;
+      this.ListProductsOfCart[index].totalPrice = (this.ListProductsOfCart[index].quantity) * (this.ListProductsOfCart[index].price)
+       }
+      // console.log('decreaseOneProduct');
+
+      localStorage.setItem('products', JSON.stringify([... this.ListProductsOfCart]));
+      this.storageBS.next([... this.ListProductsOfCart])
+      this.totalPriceBS.next(this.getTotalPrice());
+      this.itemsOfCartBS.next(this.getNumberItemOfCart())
+  
+    }
+
+  }
 
 
 
