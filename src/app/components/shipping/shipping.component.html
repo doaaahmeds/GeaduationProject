@@ -91,20 +91,21 @@
 
         </ng-container>
       </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-9 ps-5">
             <input type="text" class="form-control" name="discount" placeholder="Discount code">
           </div>
           <div class="col">
             <button class="btn btn-secondary">{{"checkout.Apply"|translate}}</button>
           </div>
-        </div>
-        <div class="row pt-4 ps-4">
+        </div> -->
+        <hr>
+        <!-- <div class="row pt-4 ps-4">
           <div class="col-9 ps-4">
             <h6>{{"cart.Subtotal"|translate}}</h6>
           </div>
           <div class="col ps-4">
-            <p class="prodPrice">E£{{cartService.getTotalPrice()}}.00</p>
+            <p class="prodPrice">E£{{totalPrice}}.00</p>
           </div>
         </div>
         <div class="row ps-4">
@@ -114,13 +115,13 @@
           <div class="col ps-4">
             <p class="prodPrice">E£25.00</p>
           </div>
-        </div>
+        </div> -->
         <div class="row ps-4 pt-1">
           <div class="col-9 ps-4">
             <h6>{{"checkout.Total"|translate}}</h6>
           </div>
           <div class="col ps-4">
-            <h5>E£{{cartService.getTotalPrice()}}.00</h5>
+            <h5>E£{{totalPrice}}.00</h5>
           </div>
         </div>
       </div>

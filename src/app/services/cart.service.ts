@@ -27,8 +27,8 @@ export class CartService {
   cartItemList: Iproduct[] = [];
   totalPrice: number = 0;
   cartData: EventEmitter<Icart[]>;
-userid:string='';
-username:string='';
+userid:string;
+username:string;
 
   //  private newItems:Subject <Icart[]>  ;
   //  private itemsOfITransactionItem = new Subject<ITransactionItem[]>();
@@ -36,6 +36,8 @@ username:string='';
   constructor(private prodAPIService: ProductsAPIService,
     private db: Firestore, private firestore: AngularFirestore, private authService: AuthenticationService) {
     // this.newItems  = new BehaviorSubject<Icart[]>([])
+    this.username=localStorage.getItem('username')??'HASSAN'
+    this.userid=localStorage.getItem('userid')??'HPBfCqdaza4eaOly2URzElFTD61Z2'
     this.cartData = new EventEmitter<Icart[]>();
   }
 
@@ -297,8 +299,11 @@ username:string='';
 
   async addOrder(order: Icart) {
     let datetimeNow = new Date();
+    console.log(this.username);
+    console.log(this.username);
+    
     const docRef = await addDoc(collection(this.db, "Orders"), {
-      customer: this.username,
+      customer: localStorage.getItem('username')??'HASSAN',
       uid:this.userid,
       img: order.img,
       productName: order.name,
