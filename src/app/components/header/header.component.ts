@@ -5,10 +5,7 @@ import { ProductsAPIService } from 'src/app/services/products-api.service';
 import { TranslateService } from '@ngx-translate/core';
 import { LocalstorageeService } from 'src/app/services/localstoragee.service';
 import { SearchService } from 'src/app/services/search/search.service';
-
-import { CartService } from 'src/app/services/cart.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { Icart } from 'src/app/models/icart';
 import { CartServService } from 'src/app/services/cart/cart-serv.service';
 
 @Component({
@@ -19,9 +16,6 @@ import { CartServService } from 'src/app/services/cart/cart-serv.service';
 export class HeaderComponent implements OnInit {
   subCategoryofBags: IsubCategory[] | undefined = undefined;
   subCategoryofShose: IsubCategory[] | undefined = undefined;
-  totalPrice = this.cartService.getTotalPrice();
-  cartItems: number ;
-
   isOpen: boolean = false;
 
   @Output() openCart: EventEmitter<boolean>;
@@ -29,7 +23,6 @@ export class HeaderComponent implements OnInit {
   lang: string = '';
 
   isUser: boolean = false;
-
 
   numberOfCart:number = 0;
   totalPriceOfCart:number=0;
@@ -41,13 +34,10 @@ export class HeaderComponent implements OnInit {
     private translateservice: TranslateService,
     private localstorage: LocalstorageeService,
     private searchService: SearchService,
-    public cartService: CartService,
     private cartServ :CartServService,
   ) {
     this.openCart = new EventEmitter<boolean>();
     this.lang = this.localstorage.getStatus();
-     this.cartItems=this.cartService.getProducts().length;
-     this.totalPrice =this.cartService.getTotalPrice();
   }
 
   isSearch: boolean = false;
@@ -83,18 +73,6 @@ this.totalPriceOfCart=total;
         this.authService.userId = user.uid
       }
       else this.isUser = false
-    })
-
-    this.cartService.cartData.subscribe((items: Icart[]) => {
-       
-      items.map((item) =>{
-        this.totalPrice +=item.totalPrice??0
-      })
-      console.log( this.totalPrice);
-
-      this.cartItems = items.length;
-      console.log(items.length);
-      
     })
 
     this.getSubCatServ
