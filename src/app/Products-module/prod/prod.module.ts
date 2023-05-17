@@ -3,20 +3,20 @@ import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './products/products.component';
 import { SortComponent } from './sort/sort.component';
 import { SecondlayoutComponent } from './secondlayout/secondlayout.component';
-import {  RouterModule, Routes } from '@angular/router';
- import { EgyptPipe } from 'src/app/pipes/egypt.pipe';
+import { RouterModule, Routes } from '@angular/router';
+import { EgyptPipe } from 'src/app/pipes/egypt.pipe';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SingleproductComponent } from './singleproduct/singleproduct.component';
 import { FormsModule } from '@angular/forms';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './search/search.component';
 
-const routes :Routes=[
-  
-  {path: '', component:SecondlayoutComponent},
-  
+const routes: Routes = [
+
+  { path: '', component: SecondlayoutComponent },
+
 
 ]
 
@@ -25,28 +25,32 @@ const routes :Routes=[
     ProductsComponent,
     SortComponent,
     SecondlayoutComponent,
-   NavbarComponent,
-   SingleproductComponent ,
-   EgyptPipe,
-   SearchComponent,
-   
+    NavbarComponent,
+    SingleproductComponent,
+    EgyptPipe,
+    SearchComponent,
+
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-     TranslateModule.forChild({
-      defaultLanguage:'en',
+    TranslateModule.forChild({
+      defaultLanguage: `${(localStorage
+        .getItem('Language'))
+        ? JSON.parse(localStorage
+          .getItem('Language') ?? '') : 'en-US'}`
+      ,
       loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory1,
-          deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory1,
+        deps: [HttpClient]
       }
-    }) 
-  
+    })
+
   ]
 })
 export class ProdModule { } export function HttpLoaderFactory1(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
-  
+
 } 
