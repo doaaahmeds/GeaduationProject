@@ -109,8 +109,8 @@
                             </ng-container>
                         </div>
                     </div>
-                    <div class="carousel-item ">
-                        <div class="row content m-5">
+                    <div class="carousel-item  ">
+                        <div class="row content  justify-content-center ">
                             <ng-container *ngFor="let prd of AllCat,let i=index" class="col-sm-2 col-xs-1 ">
                                 <div *ngIf="i>=0&&i<5" class="col-md-2">
                                     <div dir="rtl" dir="rtl" class="ci">
@@ -119,7 +119,7 @@
                                         </div>
                                         <a [routerLink]="['/single',prd.id]">
                                             <img [src]="prd.imgs[0]" class="img-fluid ">
-                                            <div class="hide">{{"headr.Quick"|translate}}</div>
+                                            <!-- <div class="hide">{{"headr.Quick"|translate}}</div> -->
                                         </a>
                                     </div>
                                     <div class="text-center">
